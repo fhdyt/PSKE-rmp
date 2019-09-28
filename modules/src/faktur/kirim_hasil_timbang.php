@@ -10,7 +10,8 @@ if (empty($params['case']))
 
 $input = $params['input_option'];
 
-$sql33 = "SELECT * FROM pkb.nota_072019 WHERE id='".$input['ID_TIMBANG']."' LIMIT 1";
+$tanggalnota = date("mY");
+$sql33 = "SELECT * FROM pkb.nota_".$tanggalnota." WHERE id='".$input['ID_TIMBANG']."' LIMIT 1";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql33 ;

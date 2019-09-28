@@ -21,9 +21,10 @@ if (empty($input['JENIS_KELAPA']) or $input['JENIS_KELAPA'] == "")
     {
     $filter_a = "AND N.jenis_kelapa='".$input['JENIS_KELAPA']."'";
     }
-    
+
+$tanggalnota = date("mY");
 $sql = "SELECT * FROM
-pkb.nota_072019 AS N
+pkb.nota_".$tanggalnota." AS N
 LEFT JOIN
 RMP_FAKTUR_DETAIL AS F ON N.id=F.id_nota WHERE N.notr='".$input['NO_NOTA']."' ".$filter_a."";
 $this->MYSQL = new MYSQL();

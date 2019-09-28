@@ -9,7 +9,7 @@ if(empty($params['case'])){
 }
 
 $input=$params['input_option'];
-
+$tanggalnota = date("mY");
 $this->MYSQL=new MYSQL();
 $this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
 // $this->MYSQL->queri="select * from RMP_HASIL_TIMBANG
@@ -18,7 +18,7 @@ $this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
 // 					 RMP_HASIL_TIMBANG_TANGGAL='".$input['TANGGAL_NOTA']."' AND
 // 					  RECORD_STATUS='A' GROUP BY RMP_HASIL_TIMBANG_NO_NOTA";
 
-$this->MYSQL->queri="select * from pkb.nota_072019 WHERE notr LIKE '%".$input['q']."%' GROUP BY notr";
+$this->MYSQL->queri="select * from pkb.nota_".$tanggalnota." WHERE notr LIKE '%".$input['q']."%' GROUP BY notr";
 
 $result_a=$this->MYSQL->data();
 $no=1;

@@ -449,7 +449,7 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
                       </table>
                     </div>
                   </div>
-                  <a class="btn btn-success simpanreview">Simpan</a>
+                  <a class="btn btn-success simpanreview"><i class="fa fa-spinner fa-spin loading_simpan_faktur_cabang" style="display:none;"></i> Simpan</a>
                 </form>
       					</div>
       				</div>
@@ -462,6 +462,9 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
  </div>
 
 <script>
+$(function() {
+  $('a.sidebar-toggle').click()
+});
 
 $('.buat_faktur').on('click', function()
 {
@@ -662,6 +665,7 @@ function no_nota()
   var no_nota = $('.NO_NOTA').val();
   console.log(no_nota)
   hasil_timbang(no_nota);
+  faktur_list(no_faktur);
 }
 
 function hasil_timbang(no_nota)
@@ -848,7 +852,7 @@ function simpan_faktur()
     {
       if (data.respon.pesan == "sukses")
       {
-        $('.btn_cetak_faktur').removeAttr('style');
+        //$('.btn_cetak_faktur').removeAttr('style');
         for (i = 0; i < data.result.length; i++) {
           var id_faktur = data.result[i].RMP_FAKTUR_ID
           $('.ID_FAKTUR').val(id_faktur);
@@ -879,6 +883,30 @@ $('.simpan_faktur').on('click', function()
   if($('.POTONGAN').val() == '')
   {
     alert("Potongan Tidak Boleh Kosong")
+  }
+  else if($('.NO_NOTA').val() == null)
+  {
+    alert("Pilih Nomor Nota")
+  }
+  else if($('.NAMA_SUPPLIER').val() == null)
+  {
+    alert("Pilih Nama Supplier")
+  }
+  else if($('.OPERATOR_TIMBANG').val() == null)
+  {
+    alert("Pilih Nama Operator Timbang")
+  }
+  else if($('.INSPEKTUR_MUTU').val() == null)
+  {
+    alert("Pilih Nama Inspektur Mutu")
+  }
+  else if($('.CATATAN_PURCHASER').val() == '')
+  {
+    alert("Catatan Harus Diisi")
+  }
+  else if($('.CATATAN_SUPPLIER').val() == '')
+  {
+    alert("Catatan Harus Diisi")
   }
   else
   {
@@ -1183,6 +1211,29 @@ function id_faktur_cabang() {
 }
 
 $('.simpanreview').on('click',function(){
+  if($('.POTONGAN').val() != '0')
+  {
+    alert("Potongan Harus Diisi 0")
+  }
+  else if($('.OPERATOR_TIMBANG').val() == null)
+  {
+    alert("Pilih Nama Operator Timbang")
+  }
+  else if($('.INSPEKTUR_MUTU').val() == null)
+  {
+    alert("Pilih Nama Inspektur Mutu")
+  }
+  else if($('.CATATAN_PURCHASER').val() == '')
+  {
+    alert("Catatan Harus Diisi")
+  }
+  else if($('.CATATAN_SUPPLIER').val() == '')
+  {
+    alert("Catatan Harus Diisi")
+  }
+  else
+  {
+  $('.loading_simpan_faktur_cabang').removeAttr('style');
   var form_detail = $('#faktur_detail').serialize()
   var arrayInput = $('#arrayInput').serialize();
   var data = form_detail + "&" + arrayInput;
@@ -1200,6 +1251,7 @@ $('.simpanreview').on('click',function(){
       {
         console.log(data.respon.text_msg);
         //alert (data.respon.text_msg);
+        $('.loading_simpan_faktur_cabang').attr('style','display:none;');
         $('.simpanreview').html('Simpan');
       }
       else if (data.respon.pesan == "gagal")
@@ -1213,6 +1265,6 @@ $('.simpanreview').on('click',function(){
       console.log("Error Ajax");
     } //end error
   });
-
+}
 })
 </script>
