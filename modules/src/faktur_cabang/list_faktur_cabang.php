@@ -22,7 +22,12 @@ $input = $params['input_option'];
 //     $filter_a = "AND (RMP_MASTER_MATERIAL like '%" . $input['keyword'] . "%')";
 //     }
 
-$sql = "SELECT * FROM RMP_REKAP_FC WHERE RECORD_STATUS='A'
+$sql = "SELECT * FROM RMP_REKAP_FC AS FC
+        LEFT JOIN RMP_MASTER_PERSONAL AS P
+        ON
+          FC.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
+        WHERE FC.RECORD_STATUS='A'
+        AND P.RECORD_STATUS='A'
                         ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -36,7 +41,7 @@ $no = $posisi + 1;
 foreach($result_a as $r)
     {
     $r['NO'] = $no;
-    $r['TANGGAL']=tanggal_format(Date("Y-m-d",strtotime($r['RMP_REKAP_FC_GL_TANGGAL'])));
+    $r['TANGGAL']=tanggal_format(Date("Y-m-d",strtotime($r['RMP_REKAP_FC_TANGGAL'])));
 
     $result[] = $r;
     $no++;

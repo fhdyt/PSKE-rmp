@@ -133,7 +133,7 @@ function lisst_faktur_cabang(curPage)
           $("tbody#zone_data").append("<tr class='detailLogId'  >" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_REKAP_FC_ID + "</td>" +
-					"<td>" + data.result[i].RMP_REKAP_FC_CABANG + "</td>" +
+					"<td>" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +
 					"<td>" + data.result[i].RMP_REKAP_FC_KAPAL + "</td>" +
 					"<td>" + data.result[i].TANGGAL + "</td>" +
           "<td><a class='btn btn-default btn-sm' href='?show=rmp/faktur_cabang/tambah_faktur_cabang/"+ data.result[i].RMP_REKAP_FC_ID +"'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> Edit</a></td>" +

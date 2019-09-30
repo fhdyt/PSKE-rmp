@@ -488,7 +488,7 @@ function list_gl_a()
         for (i = 0; i < data.result_total_a.length; i++) {
           console.log(data.result_total_a[i].BRUTO)
           $("tfoot#total_a").append("<tr class='warning'>" +
-					"<td colspan='3' class='text-center'><b>Total</b></td>" +
+					"<td colspan='2' class='text-center'><b>Total</b></td>" +
 					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
 					"<td ><b>" + data.result_total_a[i].POTONGAN + "</b></td>" +
 					"<td ><b>" + data.result_total_a[i].NETTO + "</b></td>" +
@@ -544,7 +544,7 @@ function list_gl_b()
         for (i = 0; i < data.result_total_b.length; i++) {
           console.log(data.result_total_b[i].BRUTO)
           $("tfoot#total_b").append("<tr class='warning'>" +
-					"<td colspan='3' class='text-center'><b>Total</b></td>" +
+					"<td colspan='2' class='text-center'><b>Total</b></td>" +
 					"<td ><b>" + data.result_total_b[i].BRUTO + "</b></td>" +
 					"<td ><b>" + data.result_total_b[i].POTONGAN + "</b></td>" +
 					"<td ><b>" + data.result_total_b[i].NETTO + "</b></td>" +
@@ -601,7 +601,7 @@ function list_gl_c()
         for (i = 0; i < data.result_total_c.length; i++) {
           console.log(data.result_total_c[i].BRUTO)
           $("tfoot#total_c").append("<tr class='warning'>" +
-					"<td colspan='3' class='text-center'><b>Total</b></td>" +
+					"<td colspan='2' class='text-center'><b>Total</b></td>" +
 					"<td ><b>" + data.result_total_c[i].BRUTO + "</b></td>" +
 					"<td ><b>" + data.result_total_c[i].POTONGAN + "</b></td>" +
 					"<td ><b>" + data.result_total_c[i].NETTO + "</b></td>" +

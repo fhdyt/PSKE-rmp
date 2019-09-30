@@ -30,18 +30,16 @@ $total_qty_terima_pske = $qty_pske_a + $qty_pske_b + $qty_pske_c;
 
 //AMBIL TOTAL RUPIAH B///////////////////////////////////////////////////////////////////////////////
 $sqlc = "SELECT
-            SUM(FC.RMP_REKAP_FC_DETAIL_BRUTO) AS BRUTO,
-            SUM(FC.RMP_REKAP_FC_DETAIL_POTONGAN) AS POTONGAN,
-            SUM(FC.RMP_REKAP_FC_DETAIL_NETTO) AS NETTO,
-            SUM(FC.RMP_REKAP_FC_DETAIL_RP_KG) AS RP_KG,
-            SUM(FC.RMP_REKAP_FC_DETAIL_RUPIAH) AS RUPIAH
+            SUM(RMP_REKAP_FC_DETAIL_BRUTO) AS BRUTO,
+            SUM(RMP_REKAP_FC_DETAIL_POTONGAN) AS POTONGAN,
+            SUM(RMP_REKAP_FC_DETAIL_NETTO) AS NETTO,
+            SUM(RMP_REKAP_FC_DETAIL_RP_KG) AS RP_KG,
+            SUM(RMP_REKAP_FC_DETAIL_RUPIAH) AS RUPIAH
         FROM
-              RMP_REKAP_FC_DETAIL AS FC
-              LEFT JOIN RMP_MASTER_PERSONAL AS P
-              ON FC.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-              WHERE FC.RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-B'
-              AND FC.RECORD_STATUS='A' AND P.RECORD_STATUS='A'
-              AND FC.RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
+              RMP_REKAP_FC_DETAIL
+              WHERE RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-B'
+              AND RECORD_STATUS='A'
+              AND RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
           ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -52,14 +50,11 @@ $total_timbang_b_cabang2 = $total_timbang_b_cabang[0]['BRUTO'];
 //Ambiil data supplier KB GL
 $sql2 = "SELECT *
         FROM
-              RMP_REKAP_FC_DETAIL AS FC
-              LEFT JOIN RMP_MASTER_PERSONAL AS P
-              ON FC.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-              WHERE FC.RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-B'
-              AND P.RECORD_STATUS='A'
-              AND FC.RECORD_STATUS='A'
-              AND FC.RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
-              ORDER BY FC.RMP_REKAP_FC_DETAIL_INDEX ASC
+              RMP_REKAP_FC_DETAIL
+              WHERE RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-B'
+              AND RECORD_STATUS='A'
+              AND RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
+              ORDER BY RMP_REKAP_FC_DETAIL_INDEX ASC
           ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -100,18 +95,16 @@ foreach($data_b as $r)
 
 //AMBIL TOTAL RUPIAH C////////////////////////////////////////////////////////////////////////////////
 $sqlcb = "SELECT
-            SUM(FC.RMP_REKAP_FC_DETAIL_BRUTO) AS BRUTO,
-            SUM(FC.RMP_REKAP_FC_DETAIL_POTONGAN) AS POTONGAN,
-            SUM(FC.RMP_REKAP_FC_DETAIL_NETTO) AS NETTO,
-            SUM(FC.RMP_REKAP_FC_DETAIL_RP_KG) AS RP_KG,
-            SUM(FC.RMP_REKAP_FC_DETAIL_RUPIAH) AS RUPIAH
+            SUM(RMP_REKAP_FC_DETAIL_BRUTO) AS BRUTO,
+            SUM(RMP_REKAP_FC_DETAIL_POTONGAN) AS POTONGAN,
+            SUM(RMP_REKAP_FC_DETAIL_NETTO) AS NETTO,
+            SUM(RMP_REKAP_FC_DETAIL_RP_KG) AS RP_KG,
+            SUM(RMP_REKAP_FC_DETAIL_RUPIAH) AS RUPIAH
         FROM
-            RMP_REKAP_FC_DETAIL AS FC
-            LEFT JOIN RMP_MASTER_PERSONAL AS P
-            ON FC.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-            WHERE FC.RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-C'
-            AND FC.RECORD_STATUS='A' AND P.RECORD_STATUS='A'
-            AND FC.RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
+            RMP_REKAP_FC_DETAIL
+            WHERE RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-C'
+            AND RECORD_STATUS='A'
+            AND RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
           ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -122,14 +115,11 @@ $total_timbang_c_cabang2 = $total_timbang_c_cabang[0]['BRUTO'];
 //Ambiil data supplier KB GL case
 $sql2v = "SELECT *
             FROM
-              RMP_REKAP_FC_DETAIL AS FC
-              LEFT JOIN RMP_MASTER_PERSONAL AS P
-              ON FC.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-              WHERE FC.RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-C'
-              AND P.RECORD_STATUS='A'
-              AND FC.RECORD_STATUS='A'
-              AND FC.RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
-              ORDER BY FC.RMP_REKAP_FC_DETAIL_INDEX ASC ";
+              RMP_REKAP_FC_DETAIL
+              WHERE RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-C'
+              AND RECORD_STATUS='A'
+              AND RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
+              ORDER BY RMP_REKAP_FC_DETAIL_INDEX ASC ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql2v ;
@@ -187,18 +177,16 @@ $total_rupiah_a = $total_timbang_cabang[0]['RUPIAH']-($total_rupiah_b+$total_rup
 
 //AMBIL SUM TIMBANG DARI CABANG A
 $sqla = "SELECT
-            SUM(FC.RMP_REKAP_FC_DETAIL_BRUTO) AS BRUTO,
-            SUM(FC.RMP_REKAP_FC_DETAIL_POTONGAN) AS POTONGAN,
-            SUM(FC.RMP_REKAP_FC_DETAIL_NETTO) AS NETTO,
-            SUM(FC.RMP_REKAP_FC_DETAIL_RP_KG) AS RP_KG,
-            SUM(FC.RMP_REKAP_FC_DETAIL_RUPIAH) AS RUPIAH
+            SUM(RMP_REKAP_FC_DETAIL_BRUTO) AS BRUTO,
+            SUM(RMP_REKAP_FC_DETAIL_POTONGAN) AS POTONGAN,
+            SUM(RMP_REKAP_FC_DETAIL_NETTO) AS NETTO,
+            SUM(RMP_REKAP_FC_DETAIL_RP_KG) AS RP_KG,
+            SUM(RMP_REKAP_FC_DETAIL_RUPIAH) AS RUPIAH
         FROM
-              RMP_REKAP_FC_DETAIL AS FC
-              LEFT JOIN RMP_MASTER_PERSONAL AS P
-              ON FC.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-              WHERE FC.RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-A'
-              AND FC.RECORD_STATUS='A' AND P.RECORD_STATUS='A'
-              AND FC.RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
+              RMP_REKAP_FC_DETAIL
+              WHERE RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-A'
+              AND RECORD_STATUS='A'
+              AND RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
           ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -209,14 +197,11 @@ $total_timbang_a_cabang2 = $total_timbang_a_cabang[0]['BRUTO'];
 //Ambiil data supplier KB GL A
 $sql232 = "SELECT *
         FROM
-              RMP_REKAP_FC_DETAIL AS FC
-              LEFT JOIN RMP_MASTER_PERSONAL AS P
-              ON FC.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-              WHERE FC.RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-A'
-              AND P.RECORD_STATUS='A'
-              AND FC.RECORD_STATUS='A'
-              AND FC.RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
-              ORDER BY FC.RMP_REKAP_FC_DETAIL_INDEX ASC
+              RMP_REKAP_FC_DETAIL
+              WHERE RMP_REKAP_FC_DETAIL_JENIS = '".$jeniskb."-A'
+              AND RECORD_STATUS='A'
+              AND RMP_REKAP_FC_ID='".$input['ID_FAKTUR']."'
+              ORDER BY RMP_REKAP_FC_DETAIL_INDEX ASC
           ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
