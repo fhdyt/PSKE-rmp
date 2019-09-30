@@ -1,4 +1,6 @@
 <?php
+$RMP_CONFIG=new RMP_CONFIG();
+
 if ($d3 == '')
 {
   $id_faktur = waktu_decimal(Date("Y-m-d H:i:s"));
@@ -106,7 +108,30 @@ font-size: 12px;
             <div class="col-md-3">
               <div class="form-group">
                 <label for="ICD_TRANSAKSI_INVENTORI_LOKASI">PS Cabang</label>
-                <input autocomplete="off" class="form-control CABANG" id="CABANG" name="CABANG" placeholder="" type="text" value="<?php echo $faktur_cabang[0]['RMP_REKAP_FC_CABANG'] ?>"> <small class="help-block">Kapal</small>
+                <select class="CABANG form-control" name="CABANG">
+                  <option value="">
+                    --Pilih PS Cabang--
+                  </option><?php
+                  $data = $RMP_CONFIG->sel_ps_cabang();
+                        foreach ($data['rasult'] as $key => $value)
+                          {
+                            foreach ($value as $data => $isi)
+                            {
+                            if($faktur_cabang[0]['RMP_MASTER_PERSONAL_ID']==$isi['RMP_MASTER_PERSONAL_ID'])
+                               {
+                                 $sel="selected";
+                               }
+                             else
+                               {
+                                 $sel="";
+                               }
+
+                            ?>
+                  <option value="<?php echo $isi['RMP_MASTER_PERSONAL_ID']; ?>" <?php echo $sel; ?>>
+                    <?php  echo $isi['RMP_MASTER_PERSONAL_NAMA'];?>
+                  </option><?php   }}      ?>
+                </select>
+                <small class="help-block">Nama PS Cabang</small>
               </div>
             </div>
             <div class="col-md-3">
@@ -211,7 +236,6 @@ font-size: 12px;
 							<thead>
 								<tr>
 									<th>No.</th>
-									<th>No. Faktur</th>
 									<th style="padding-right:100px;">Nama Supplier</th>
 									<th>BRUTO</th>
 									<th>POTONGAN</th>
@@ -226,12 +250,8 @@ font-size: 12px;
 								<tr>
                   <td>
                   </td>
-									<td>
-										<input autocomplete="off" class="form-control NO_FAKTUR_A"  type="text">
-									</td>
                   <td>
-                    <select class="NAMA_SUPPLIER_A selectpicker with-ajax-personal form-control"  data-live-search="true">
-						              </select>
+                    <input autocomplete="off" class="form-control NAMA_SUPPLIER_A" id="NAMA_SUPPLIER_A" name="NAMA_SUPPLIER_A" placeholder="" type="text">
 									</td>
 									<td>
 										<input autocomplete="off" class="form-control BRUTO_A"  type="text" onkeyup="input_proses_a()">
@@ -274,7 +294,6 @@ font-size: 12px;
 							<thead>
 								<tr>
 									<th>No.</th>
-									<th>No. Faktur</th>
 									<th style="padding-right:100px;">Nama Supplier</th>
 									<th>BRUTO</th>
 									<th>POTONGAN</th>
@@ -289,12 +308,8 @@ font-size: 12px;
 								<tr>
                   <td>
                   </td>
-									<td>
-										<input autocomplete="off" class="form-control NO_FAKTUR_B"  type="text">
-									</td>
                   <td>
-                    <select class="NAMA_SUPPLIER_B selectpicker with-ajax-personal form-control"  data-live-search="true">
-						              </select>
+                    <input autocomplete="off" class="form-control NAMA_SUPPLIER_B" id="NAMA_SUPPLIER_B" name="NAMA_SUPPLIER_B" placeholder="" type="text">
 									</td>
 									<td>
 										<input autocomplete="off" class="form-control BRUTO_B"  type="text" onkeyup="input_proses_b()">
@@ -337,7 +352,6 @@ font-size: 12px;
 							<thead>
 								<tr>
 									<th>No.</th>
-									<th>No. Faktur</th>
 									<th style="padding-right:100px;">Nama Supplier</th>
 									<th>BRUTO</th>
 									<th>POTONGAN</th>
@@ -352,12 +366,8 @@ font-size: 12px;
 								<tr>
                   <td>
                   </td>
-									<td>
-										<input autocomplete="off" class="form-control NO_FAKTUR_C"  type="text">
-									</td>
                   <td>
-                    <select class="NAMA_SUPPLIER_C selectpicker with-ajax-personal form-control"  data-live-search="true">
-						              </select>
+                    <input autocomplete="off" class="form-control NAMA_SUPPLIER_C" id="NAMA_SUPPLIER_C" name="NAMA_SUPPLIER_C" placeholder="" type="text">
 									</td>
 									<td>
 										<input autocomplete="off" class="form-control BRUTO_C" type="text" onkeyup="input_proses_c()">
@@ -464,8 +474,7 @@ function list_gl_a()
         for (i = 0; i < data.result_a.length; i++) {
           $("tbody#zone_data_a").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_a[i].NO + ".</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_NO_FAKTUR  + "</td>" +
-					"<td>" + data.result_a[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_NAMA + "</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_BRUTO + "</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_POTONGAN + "</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_NETTO + "</td>" +
@@ -521,8 +530,7 @@ function list_gl_b()
         for (i = 0; i < data.result_b.length; i++) {
           $("tbody#zone_data_b").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_b[i].NO + ".</td>" +
-					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_NO_FAKTUR  + "</td>" +
-					"<td>" + data.result_b[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +
+					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_NAMA + "</td>" +
 					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_BRUTO + "</td>" +
 					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_POTONGAN + "</td>" +
 					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_NETTO + "</td>" +
@@ -579,8 +587,7 @@ function list_gl_c()
         for (i = 0; i < data.result_c.length; i++) {
           $("tbody#zone_data_c").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_c[i].NO + ".</td>" +
-					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_NO_FAKTUR  + "</td>" +
-					"<td>" + data.result_c[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +
+					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_NAMA + "</td>" +
 					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_BRUTO + "</td>" +
 					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_POTONGAN + "</td>" +
 					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_NETTO + "</td>" +
@@ -866,4 +873,5 @@ function hapus_detail_rekap(id){
   	} //end error
   });
 }
+
 </script>

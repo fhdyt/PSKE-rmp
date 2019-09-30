@@ -13,7 +13,7 @@ $data_detail2 = array(
 
 	'RMP_REKAP_FC_DETAIL_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
 	'RMP_REKAP_FC_ID' => $input['ID_FAKTUR_CABANG'],
-	'RMP_MASTER_PERSONAL_ID' => $input['NAMA_SUPPLIER'],
+	'RMP_REKAP_FC_DETAIL_NAMA' => $input['NAMA_SUPPLIER'],
 	'RMP_REKAP_FC_DETAIL_JENIS' => $input['JENIS'],
 	'RMP_REKAP_FC_DETAIL_TANGGAL' => date("Y-m-d"),
 	'RMP_REKAP_FC_DETAIL_NO_FAKTUR' => $input['NO_FAKTUR'],

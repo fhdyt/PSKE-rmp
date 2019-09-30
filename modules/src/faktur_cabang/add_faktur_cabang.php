@@ -27,7 +27,7 @@ if (empty($result_a))
 				'RMP_REKAP_FC_TANGGAL' => $input['TANGGAL_FAKTUR_CABANG'],
 				'RMP_REKAP_FC_KAPAL' => $input['KAPAL'],
 				'RMP_REKAP_FC_TIMBANG' => $input['PONTON'],
-				'RMP_REKAP_FC_CABANG' => $input['CABANG'],
+				'RMP_MASTER_PERSONAL_ID' => $input['CABANG'],
 				'RMP_REKAP_FC_TAMBANG' => $input['TAMBANG'],
 				'RMP_REKAP_FC_BIAYA' => $input['BIAYA'],
 				'RMP_REKAP_FC_JENIS_KB' => $input['JENIS_KB'],
@@ -73,7 +73,7 @@ if (empty($result_a))
 			$data_detail2 = array(
 				'RMP_REKAP_FC_ID' => $input['ID_FAKTUR_CABANG'],
 				'RMP_REKAP_FC_TANGGAL' => $input['TANGGAL_FAKTUR_CABANG'],
-				'RMP_REKAP_FC_CABANG' => $input['CABANG'],
+				'RMP_MASTER_PERSONAL_ID' => $input['CABANG'],
 				'RMP_REKAP_FC_KAPAL' => $input['KAPAL'],
 				'RMP_REKAP_FC_TIMBANG' => $input['PONTON'],
 				'RMP_REKAP_FC_TAMBANG' => $input['TAMBANG'],

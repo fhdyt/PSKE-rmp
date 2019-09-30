@@ -38,6 +38,21 @@ CLASS RMP_CONFIG extends CONFIG
 
 		return $this;
 	}//end sistem
+	public function sel_ps_cabang(){
+		$this->MYSQL=new MYSQL();
+		$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
+		$this->MYSQL->queri="select * from RMP_MASTER_PERSONAL WHERE RMP_MASTER_PERSONAL_NAMA LIKE '%PS%' AND RECORD_STATUS='A'";
+		$hasil=$this->MYSQL->data();
+		foreach($hasil as $r){
+
+		}
+		$callback['rasult']=array(
+			$hasil,
+
+		);
+	return $callback;
+	}
+
 	public function provinsi(){
 		$this->MYSQL=new MYSQL();
 		$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
