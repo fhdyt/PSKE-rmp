@@ -13,9 +13,9 @@ $batas = $params['batas'];
 $posisi = $this->PAGING->cariPosisi($batas, $halaman);
 $input = $params['input_option'];
 
-$sql = "SELECT * FROM RMP_FAKTUR_DETAIL 
+$sql = "SELECT * FROM RMP_FAKTUR_DETAIL
         WHERE
-    RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."' AND NOT RECORD_STATUS='D'";
+    RMP_FAKTUR_DETAIL_NO_NOTA='".$input['NO_NOTA']."' AND NOT RECORD_STATUS='D'";
 
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;

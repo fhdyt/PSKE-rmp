@@ -249,9 +249,9 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
       									</tr>
       								</tbody>
       							</table>
-      						<div class="text-left">
+      						<!-- <div class="text-left">
       							<a class="btn btn-success buat_faktur">Buat Faktur</a>
-      						</div>
+      						</div> -->
       					</div>
       				</div>
       			</div>
@@ -479,8 +479,8 @@ $('.buat_faktur').on('click', function()
     //$('div.form_faktur').toggle('hidden')
     //$('.NO_FAKTUR').val('<?= $buat_nomor_faktur;  ?>')
 
-    var no_faktur = $('.NO_FAKTUR').val()
-    faktur_list(no_faktur);
+    var no_nota = $('.NO_NOTA').val()
+    faktur_list(no_nota);
   }
   else
   {
@@ -665,7 +665,7 @@ function no_nota()
   var no_nota = $('.NO_NOTA').val();
   console.log(no_nota)
   hasil_timbang(no_nota);
-  faktur_list(no_faktur);
+  faktur_list(no_nota);
 }
 
 function hasil_timbang(no_nota)
@@ -767,7 +767,7 @@ function kirim_hasil_timbang(data)
       if (data.respon.pesan == "sukses")
       {
         console.log(data.respon.text_msg);
-        $(".NO_FAKTUR").val(data.respon.text_msg)
+        $(".NO_FAKTUR").val(data.respon.no_faktur)
         $("p.NO_FAKTUR").html(data.respon.text_msg)
         faktur_list(data.respon.text_msg);
       }
@@ -784,13 +784,13 @@ function kirim_hasil_timbang(data)
   });
 }
 
-function faktur_list(no_faktur)
+function faktur_list(no_nota)
 {
   $.ajax({
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=faktur_list&NO_FAKTUR='+no_faktur,
+    data: 'ref=faktur_list&NO_NOTA='+no_nota,
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {
@@ -835,8 +835,8 @@ function faktur_list(no_faktur)
 
 $(function()
 {
-  var no_faktur = $('.NO_FAKTUR').val()
-  faktur_list(no_faktur);
+  var no_nota = $('.NO_NOTA').val()
+  faktur_list(no_nota);
 });
 
 function simpan_faktur()
@@ -852,6 +852,7 @@ function simpan_faktur()
     {
       if (data.respon.pesan == "sukses")
       {
+        alert("Berhasil Disimpan")
         //$('.btn_cetak_faktur').removeAttr('style');
         for (i = 0; i < data.result.length; i++) {
           var id_faktur = data.result[i].RMP_FAKTUR_ID
@@ -863,6 +864,7 @@ function simpan_faktur()
           $('.ID_FAKTUR').val(id_faktur);
 
         }
+        location.reload()
 
       }
       else if (data.respon.pesan == "gagal")
@@ -913,9 +915,9 @@ $('.simpan_faktur').on('click', function()
   $(this).attr('disabled', 'disabled');
   var no_nota = $('.NO_NOTA').val();
   hasil_timbang(no_nota);
-  var no_faktur = $('.NO_FAKTUR').text();
+  var no_nota = $('.NO_NOTA').val();
   simpan_faktur();
-  faktur_list(no_faktur);
+  faktur_list(no_nota);
   }
 })
 
@@ -974,8 +976,8 @@ $("tbody#zone_data_faktur").on('click','a.kembali_hasil_timbang', function()
     kembali_hasil_timbang(data)
     var no_nota = $('.NO_NOTA').val()
     hasil_timbang(no_nota)
-    var no_faktur = $('.NO_FAKTUR').text()
-    faktur_list(no_faktur)
+    //var no_faktur = $('.NO_FAKTUR').text()
+    faktur_list(no_nota)
   }
 })
 

@@ -101,7 +101,8 @@ $this->MYSQL->record = $data_detail2;
 if ($this->MYSQL->simpan() == true)
 	{
 	$this->callback['respon']['pesan'] = "sukses";
-	$this->callback['respon']['text_msg'] = $buat_nomor_faktur;
+	$this->callback['respon']['text_msg'] = $result_a[0]['notr'];
+	$this->callback['respon']['no_faktur'] = $buat_nomor_faktur;
 	}
   else
 	{
