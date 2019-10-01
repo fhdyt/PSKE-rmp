@@ -60,7 +60,7 @@ table {
 			<div class="list-group-item">
 				<div class="row">
 					<div class="col-md-8">
-						<h3><i class="fa fa-calculator"></i> Kelapa Bulat</h3>
+						<h3><i class="fa fa-calculator"></i> Jambul</h3>
 						<hr>
 					</div>
 					<div class="col-md-4 text-right">
@@ -146,7 +146,7 @@ table {
 		<div class="modal-content">
 			<div class="modal-header">
 				<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Penyesuaian Harga Kelapa Bulat</h4>
+				<h4 class="modal-title" id="myModalLabel">Penyesuaian Harga Jambul</h4>
 			</div>
 			<div class="modal-body">
         <table class="table table-bordered table-hover">
@@ -179,13 +179,13 @@ table {
 		<div class="modal-content">
 			<div class="modal-header">
 				<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Tambah Penyesuaian Harga Kelapa Bulat</h4>
+				<h4 class="modal-title" id="myModalLabel">Tambah Penyesuaian Harga Jambul</h4>
 			</div>
 			<div class="modal-body">
         <form action="javascript:download();" class="fDataHarga" id="fDataHarga" name="fDataHarga">
           <div class="row">
             <input autocomplete="off" class="form-control MATERIAL" id="MATERIAL" name="MATERIAL" placeholder="" value="13" type="hidden">
-            <input autocomplete="off" class="form-control JENIS_MATERIAL" id="JENIS_MATERIAL" name="JENIS_MATERIAL" placeholder="" value="KELAPA BULAT" type="hidden">
+            <input autocomplete="off" class="form-control JENIS_MATERIAL" id="JENIS_MATERIAL" name="JENIS_MATERIAL" placeholder="" value="JAMBUL" type="hidden">
             <input autocomplete="off" class="form-control ID_SUPPLIER" id="ID_SUPPLIER" name="ID_SUPPLIER" placeholder="" type="hidden">
 
             <div class="col-md-4">
@@ -256,7 +256,7 @@ function supplier_list(curPage)
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=supplier_list_kb&batas=' + $('input#REC_PER_HALAMAN').val() + '&material_id=13&jenis_material=KELAPA BULAT&halaman=' + curPage + '&keyword=' + $("input#keyword").val() + '&' + filter,
+    data: 'ref=supplier_list_kb&batas=' + $('input#REC_PER_HALAMAN').val() + '&material_id=13&jenis_material=JAMBUL&halaman=' + curPage + '&keyword=' + $("input#keyword").val() + '&' + filter,
     success: function(data) {
       if (data.respon.pesan == "sukses") {
         $("tbody#zone_data").empty();
@@ -368,7 +368,7 @@ $("tbody#zone_data").on('click', '.simpan_harga', function(){
   var berlaku = "QUALITED_HARGA_TANGGAL_BERLAKU=" + $('.QUALITED_HARGA_TANGGAL_BERLAKU_'+id+'').val() + ""
   var berakhir = "QUALITED_HARGA_TANGGAL_BERAKHIR=" + $('.QUALITED_HARGA_TANGGAL_BERAKHIR_'+id+'').val() + ""
   var material = "MATERIAL=13"
-  var jenis_material = "JENIS_MATERIAL=KELAPA BULAT"
+  var jenis_material = "JENIS_MATERIAL=JAMBUL"
   var form = "" + id_supplier + "&" + harga_patokan_a + "&" + harga_patokan_b + "&" + berlaku + "&" + berakhir + "&" + material + "&" + jenis_material + ""
   console.log(form)
   $.ajax({
@@ -438,7 +438,7 @@ $("tbody#zone_data").on('click', '.list_harga', function(){
 function qualited_harga_list(id)
 {
   var material = "MATERIAL=13"
-  var jenis_material = "JENIS_MATERIAL=KELAPA BULAT"
+  var jenis_material = "JENIS_MATERIAL=JAMBUL"
   $.ajax({
     type: 'POST',
     url: refseeAPI,

@@ -131,9 +131,9 @@ font-size: 12px;
               <tr class="success">
                 <td><input type="checkbox" name="CEK_BIAYA" class="CEK_BIAYA"> <b>Biaya</b></td>
                 <td><input autocomplete="off" class="form-control INPUT_BIAYA" id="INPUT_BIAYA" name="INPUT_BIAYA" placeholder="" type="text">
-                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="text">
+                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="hidden">
                   <input autocomplete="off" class="form-control GRADE_MATERIAL" id="GRADE_MATERIAL" name="GRADE_MATERIAL" type="hidden">
-                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="text">
+                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="hidden">
                   <input autocomplete="off" class="form-control ID_FAKTUR_PURCHASER" id="ID_FAKTUR_PURCHASER" name="ID_FAKTUR_PURCHASER" type="hidden">
                 </td>
               </tr>
