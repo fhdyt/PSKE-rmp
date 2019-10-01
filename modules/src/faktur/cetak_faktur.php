@@ -34,6 +34,7 @@ $result_ab = $this->MYSQL->data();
 $diterima = $result_ab[0]['RMP_FAKTUR_CEK_DITERIMA'];
 $inspeksi = $result_ab[0]['RMP_FAKTUR_CEK_100_INSPEKSI'];
 $dipisah = $result_ab[0]['RMP_FAKTUR_CEK_DIPISAH'];
+
 $supplier = $result_ab[0]['RMP_MASTER_PERSONAL_NAMA'];
 $supplier_id = $result_ab[0]['RMP_MASTER_PERSONAL_ID'];
 $rekening = $result_ab[0]['RMP_REKENING_RELASI'];
