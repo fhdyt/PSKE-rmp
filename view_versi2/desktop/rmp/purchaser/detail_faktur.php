@@ -131,9 +131,9 @@ font-size: 12px;
               <tr class="success">
                 <td><input type="checkbox" name="CEK_BIAYA" class="CEK_BIAYA"> <b>Biaya</b></td>
                 <td><input autocomplete="off" class="form-control INPUT_BIAYA" id="INPUT_BIAYA" name="INPUT_BIAYA" placeholder="" type="text">
-                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="hidden">
+                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="text">
                   <input autocomplete="off" class="form-control GRADE_MATERIAL" id="GRADE_MATERIAL" name="GRADE_MATERIAL" type="hidden">
-                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="hidden">
+                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="text">
                   <input autocomplete="off" class="form-control ID_FAKTUR_PURCHASER" id="ID_FAKTUR_PURCHASER" name="ID_FAKTUR_PURCHASER" type="hidden">
                 </td>
               </tr>
@@ -285,8 +285,17 @@ function faktur_detail_list(curPage)
 					}
 
         for (i = 0; i < data.resultb.length; i++) {
+          if (data.result[i].RMP_FAKTUR_NAMA_SUB == "" )
+          {
+            var supplier = data.resultb[i].RMP_MASTER_PERSONAL_NAMA
+          }
+          else
+          {
+            var supplier = data.resultb[i].RMP_MASTER_PERSONAL_NAMA +" / <b>"+ data.resultb[i].RMP_FAKTUR_NAMA_SUB +"</b>"
+          }
+
           $("p.NO_FAKTUR").html(data.resultb[i].RMP_FAKTUR_NO_FAKTUR)
-          $("p.NAMA_SUPPLIER").html(data.resultb[i].RMP_MASTER_PERSONAL_NAMA)
+          $("p.NAMA_SUPPLIER").html(supplier)
           //$(".ID_SUPPLIER").val(data.resultb[i].RMP_MASTER_PERSONAL_ID)
           //$("p.NO_REKENING").html("-")
           $("p.TANGGAL_FAKTUR").html(data.resultb[i].TANGGAL)

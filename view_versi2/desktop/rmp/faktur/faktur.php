@@ -1012,7 +1012,7 @@ function list_review_faktur_cabang_c()
         for (i = 0; i < data.result_c.length; i++) {
           $("tbody#zone_data_c").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_c[i].NO + ".<input type='hidden' name='id_detail[]' value='" + data.result_c[i].RMP_REKAP_FC_DETAIL_ID  + "' id='id_detail_" + data.result_c[i].RMP_REKAP_FC_DETAIL_ID  + "'><input type='hidden' name='jenis[]' value='C' id='jenis_" + data.result_c[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
-					"<td>" + data.result_c[i].RMP_MASTER_PERSONAL_NAMA  + " <input type='hidden' name='supplier_name[]' value='" + data.result_c[i].RMP_MASTER_PERSONAL_ID  + "' id='supplier_name_" + data.result_c[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
+					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_NAMA  + " <input type='hidden' name='supplier_name[]' value='" + data.result_c[i].RMP_REKAP_FC_DETAIL_NAMA  + "' id='supplier_name_" + data.result_c[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_c[i].BRUTO_C_SUPPLIER  + "<input type='hidden' name='bruto[]' value='" + data.result_c[i].BRUTO_C_SUPPLIER  + "' id='bruto_" + data.result_c[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_POTONGAN  + "<input type='hidden' name='potongan[]' value='" + data.result_c[i].RMP_REKAP_FC_DETAIL_POTONGAN  + "' id='potongan_" + data.result_c[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_c[i].NETTO_C_SUPPLIER  + "<input type='hidden' name='netto[]' value='" + data.result_c[i].NETTO_C_SUPPLIER  + "' id='netto_" + data.result_c[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
@@ -1058,7 +1058,7 @@ function list_review_faktur_cabang_b()
         for (i = 0; i < data.result_b.length; i++) {
           $("tbody#zone_data_b").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_b[i].NO + ".<input type='hidden' name='id_detail[]' value='" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "' id='id_detail_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'><input type='hidden' name='jenis[]' value='B' id='jenis_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
-					"<td>" + data.result_b[i].RMP_MASTER_PERSONAL_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_b[i].RMP_MASTER_PERSONAL_ID  + "' id='supplier_name_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
+					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_b[i].RMP_REKAP_FC_DETAIL_NAMA  + "' id='supplier_name_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_b[i].BRUTO_B_SUPPLIER  + "<input type='hidden' name='bruto[]' value='" + data.result_b[i].BRUTO_B_SUPPLIER  + "' id='bruto_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_POTONGAN  + "<input type='hidden' name='potongan[]' value='" + data.result_b[i].RMP_REKAP_FC_DETAIL_POTONGAN  + "' id='potongan_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_b[i].NETTO_B_SUPPLIER  + "<input type='hidden' name='netto[]' value='" + data.result_b[i].NETTO_B_SUPPLIER  + "' id='netto_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
@@ -1106,7 +1106,7 @@ function list_review_faktur_cabang_a()
         for (i = 0; i < data.result_a.length; i++) {
           $("tbody#zone_data_a").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_a[i].NO + ".<input type='hidden' name='id_detail[]' value='" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "' id='id_detail_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'><input type='hidden' name='jenis[]' value='A' id='jenis_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
-					"<td>" + data.result_a[i].RMP_MASTER_PERSONAL_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_a[i].RMP_MASTER_PERSONAL_ID  + "' id='supplier_name_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_a[i].RMP_REKAP_FC_DETAIL_NAMA  + "' id='supplier_name_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_a[i].BRUTO_A_SUPPLIER  + "<input type='hidden' name='bruto[]' value='" + data.result_a[i].BRUTO_A_SUPPLIER  + "' id='bruto_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_POTONGAN  + "<input type='hidden' name='potongan[]' value='" + data.result_a[i].RMP_REKAP_FC_DETAIL_POTONGAN  + "' id='potongan_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_a[i].NETTO_A_SUPPLIER  + "<input type='hidden' name='netto[]' value='" + data.result_a[i].NETTO_A_SUPPLIER  + "' id='netto_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
@@ -1181,12 +1181,12 @@ var options =
         {
           // text: data.result[i].RMP_HASIL_TIMBANG_NO_NOTA,
           // value: data.result[i].RMP_HASIL_TIMBANG_NO_NOTA,
-          text: data.result[i].RMP_REKAP_FC_CABANG,
+          text: data.result[i].RMP_MASTER_PERSONAL_NAMA,
           value: data.result[i].RMP_REKAP_FC_ID,
           data:
           {
-            subtext: data.result[i].RMP_REKAP_FC_ID,
-            cabang: data.result[i].RMP_REKAP_FC_CABANG,
+            subtext: data.result[i].TANGGAL_REKAP,
+            cabang: data.result[i].RMP_MASTER_PERSONAL_NAMA,
             tanggal: data.result[i].TANGGAL_REKAP,
           }
         }));

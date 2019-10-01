@@ -19,6 +19,15 @@ $this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
 // 					  RECORD_STATUS='A' GROUP BY RMP_HASIL_TIMBANG_NO_NOTA";
 
 $tanggal = date("Y-m-d");
+if ($input['material'] == "JAMBUL")
+{
+	$input['material'] = "KELAPA BULAT";
+}
+else
+{
+	$input['material'] = $input['material'];
+
+}
 $this->MYSQL->queri="SELECT *, PH.RMP_PENYESUAIAN_HARGA_KB_".$input['grade']." AS HARGA FROM RMP_MASTER_PERSONAL AS P LEFT JOIN RMP_REKENING_RELASI AS R
 												ON P.RMP_MASTER_PERSONAL_ID=R.RMP_MASTER_PERSONAL_ID
 												LEFT JOIN RMP_PENYESUAIAN_HARGA_KB AS PH ON P.RMP_MASTER_PERSONAL_ID=PH.RMP_MASTER_PERSONAL_ID

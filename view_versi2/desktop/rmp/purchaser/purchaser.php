@@ -172,10 +172,18 @@ function faktur_list(curPage)
           {
             var nama_supplier = data.result[i].NAMA_SUPPLIER_FAKTUR
           }
+          if (data.result[i].RMP_FAKTUR_NAMA_SUB == "" )
+          {
+            var supplier = data.result[i].RMP_MASTER_PERSONAL_NAMA
+          }
+          else
+          {
+            var supplier = data.result[i].RMP_MASTER_PERSONAL_NAMA +" / <b>"+ data.result[i].RMP_FAKTUR_NAMA_SUB +"</b>"
+          }
           $("tbody#zone_data").append("<tr class='"+tr+"'  >" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR + "</td>" +
-					"<td>" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +
+					"<td>" + supplier + "</td>" +
 					"<td>" + nama_supplier + "" + verifikasi + "</td>" +
 					"<td>" + data.result[i].RMP_MASTER_WILAYAH + "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_JENIS_MATERIAL + "</td>" +

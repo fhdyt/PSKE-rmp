@@ -11,12 +11,18 @@ if (empty($params['case']))
 $input = $params['input_option'];
 $id_detail = $input['id_detail'];
 
-$sql33 = "SELECT * FROM RMP_REKAP_FC WHERE RMP_REKAP_FC_ID='".$input['ID_FAKTUR_CABANG']."' AND RECORD_STATUS='A'";
+$sql33 = "SELECT * FROM RMP_REKAP_FC AS FC
+					LEFT JOIN RMP_MASTER_PERSONAL AS P
+					ON FC.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
+					WHERE FC.RMP_REKAP_FC_ID='".$input['ID_FAKTUR_CABANG']."'
+					AND FC.RECORD_STATUS='A'
+					AND P.RECORD_STATUS='A'
+					";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql33 ;
 $result_a = $this->MYSQL->data();
-
+$nama_ps = $result_a[0]['RMP_MASTER_PERSONAL_ID'];
 foreach($id_detail as $key => $value)
 {
 	if ($input['jenis'][$key] == "A")
@@ -39,7 +45,7 @@ foreach($id_detail as $key => $value)
 	$buat_nomor_faktur=$RMP_CONFIG->buat_nomor_faktur($jenis_kelapa,$ponton)->callback['nomor'];
 	$data_detail2 = array(
 		'RMP_FAKTUR_CABANG_DETAIL_ID' => $input['id_detail'][$key],
-		'RMP_MASTER_PERSONAL_ID' => $input['supplier_name'][$key],
+		'RMP_FAKTUR_CABANG_DETAIL_NAMA' => $input['supplier_name'][$key],
 		'RMP_REKAP_FC_ID' => $result_a[0]['RMP_REKAP_FC_ID'],
 		'RMP_FAKTUR_NO_FAKTUR'=> $buat_nomor_faktur,
 		'RMP_FAKTUR_CABANG_DETAIL_JENIS' => $jenis_kelapa,
@@ -93,7 +99,8 @@ foreach($id_detail as $key => $value)
 	$data_detail4 = array(
 		'RMP_FAKTUR_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
 		'RMP_FAKTUR_NO_FAKTUR'=> $buat_nomor_faktur,
-		'RMP_MASTER_PERSONAL_ID'=> $input['supplier_name'][$key],
+		'RMP_MASTER_PERSONAL_ID'=> $nama_ps,
+		'RMP_FAKTUR_NAMA_SUB'=> $input['supplier_name'][$key],
 		'RMP_FAKTUR_KAPAL' =>  $result_a[0]['RMP_REKAP_FC_KAPAL'],
 		'RMP_FAKTUR_TANGGAL' => date("Y-m-d H:i:s"),
 		'RMP_FAKTUR_POTONGAN' => str_replace(',', '', $input['potongan'][$key]),
@@ -118,7 +125,7 @@ foreach($id_detail as $key => $value)
 	$data_detail22222 = array(
 		'RMP_FAKTUR_PURCHASER_ID'=> waktu_decimal(Date("Y-m-d H:i:s")),
 		'RMP_FAKTUR_NO_FAKTUR'=> $buat_nomor_faktur,
-		'RMP_MASTER_PERSONAL_ID'=> $input['supplier_name'][$key],
+		'RMP_MASTER_PERSONAL_ID'=> $nama_ps,
 		'RMP_FAKTUR_PURCHASER_RP_KG' => str_replace(',', '', $input['rp_kg'][$key]),
 		'RMP_FAKTUR_PURCHASER_TAMBANG' => str_replace(',', '', $input['tambang'][$key]),
 		'RMP_FAKTUR_PURCHASER_BIAYA' => str_replace(',', '', $input['biaya'][$key]),
