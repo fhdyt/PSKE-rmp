@@ -29,12 +29,12 @@
 						<li class="active" id="material" role="presentation">
 							<a href="?show=rmp/konfigurasi_rmp/material">Material</a>
 						</li>
-						<li class="active" id="harga" role="presentation">
+						<!-- <li class="active" id="harga" role="presentation">
 							<a href="?show=rmp/konfigurasi_rmp/harga">Harga</a>
 						</li>
 						<li class="active" id="harga_faktur_cabang" role="presentation">
 							<a href="?show=rmp/konfigurasi_rmp/harga_faktur_cabang">Harga Faktur Cabang</a>
-						</li>
+						</li> -->
 					</ul><!-- nav nav-tabs -->
 					<br>
 					<script>

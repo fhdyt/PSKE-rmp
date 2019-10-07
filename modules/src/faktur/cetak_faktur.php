@@ -40,6 +40,8 @@ $supplier_id = $result_ab[0]['RMP_MASTER_PERSONAL_ID'];
 $rekening = $result_ab[0]['RMP_REKENING_RELASI'];
 $tambang= $result_ab[0]['RMP_FAKTUR_PURCHASER_TAMBANG'];
 $biaya = $result_ab[0]['RMP_FAKTUR_PURCHASER_BIAYA'];
+$cek_tambang= $result_ab[0]['RMP_FAKTUR_CEK_TAMBANG'];
+$cek_biaya = $result_ab[0]['RMP_FAKTUR_CEK_BIAYA'];
 
 
 
@@ -184,6 +186,8 @@ if (empty($result_a))
     $this->callback['rekening'] = $rekening;
     $this->callback['tambang'] = $tambang;
     $this->callback['biaya'] = $biaya;
+    $this->callback['cek_tambang'] = $cek_tambang;
+    $this->callback['cek_biaya'] = $cek_biaya;
 
     }
 

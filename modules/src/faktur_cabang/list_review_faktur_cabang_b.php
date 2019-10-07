@@ -22,6 +22,8 @@ $qty_pske_a = $result_a[0]['RMP_REKAP_FC_QTY_PSKE_A'];
 $qty_pske_b = $result_a[0]['RMP_REKAP_FC_QTY_PSKE_B'];
 $qty_pske_c = $result_a[0]['RMP_REKAP_FC_QTY_PSKE_C'];
 $jeniskb = $result_a[0]['RMP_REKAP_FC_JENIS_KB'];
+$id_supplier = $result_a[0]['RMP_MASTER_PERSONAL_ID'];
+$material = $result_a[0]['RMP_REKAP_FC_JENIS_KB'];
 $total_qty_terima_pske = $qty_pske_a + $qty_pske_b + $qty_pske_c;
 
 //AMBIL SUM TIMBANG DARI CABANG B
@@ -61,18 +63,37 @@ foreach($data_b as $r)
     {
     $r['NO'] = $no;
     $tanggal = date("Y-m-d");
-    $sqly = "SELECT * FROM RMP_KONFIGURASI_HARGA_FC
-                        WHERE
-                          (RMP_KONFIGURASI_HARGA_FC_TANGGAL_BERLAKU<='".$tanggal."'
-                        AND
-                          RMP_KONFIGURASI_HARGA_FC_TANGGAL_BERAKHIR>='".$tanggal."')
-                        OR
-                          (RMP_KONFIGURASI_HARGA_FC_TANGGAL_BERLAKU<='".$tanggal."'
-                        AND
-                          RMP_KONFIGURASI_HARGA_FC_TANGGAL_BERAKHIR='0000-00-00')
-                        AND
-                            RECORD_STATUS='A'
-                  ";
+    $sqly = "SELECT *
+              FROM RMP_MASTER_PERSONAL AS P
+              LEFT JOIN RMP_REKENING_RELASI AS R
+    					ON P.RMP_MASTER_PERSONAL_ID=R.RMP_MASTER_PERSONAL_ID
+    					LEFT JOIN RMP_PENYESUAIAN_HARGA_KB AS PH ON P.RMP_MASTER_PERSONAL_ID=PH.RMP_MASTER_PERSONAL_ID
+    					WHERE
+              R.RMP_REKENING_RELASI_MATERIAL='".$input['material']."'
+							AND (PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal."'
+              AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR>='".$tanggal."')
+							OR (PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal."'
+              AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR='0000-00-00')
+							AND PH.RMP_PENYESUAIAN_HARGA_KB_JENIS_MATERIAL='".$material."'
+							AND R.RMP_REKENING_RELASI_MATERIAL='".$material."'
+							AND P.RECORD_STATUS='A'
+							AND PH.RECORD_STATUS='A'
+							AND R.RECORD_STATUS='A'
+							AND P.RMP_MASTER_PERSONAL_ID LIKE '%".$id_supplier."%'
+    ";
+
+    // $sqly = "SELECT * FROM RMP_KONFIGURASI_HARGA_FC
+    //                     WHERE
+    //                       (RMP_KONFIGURASI_HARGA_FC_TANGGAL_BERLAKU<='".$tanggal."'
+    //                     AND
+    //                       RMP_KONFIGURASI_HARGA_FC_TANGGAL_BERAKHIR>='".$tanggal."')
+    //                     OR
+    //                       (RMP_KONFIGURASI_HARGA_FC_TANGGAL_BERLAKU<='".$tanggal."'
+    //                     AND
+    //                       RMP_KONFIGURASI_HARGA_FC_TANGGAL_BERAKHIR='0000-00-00')
+    //                     AND
+    //                         RECORD_STATUS='A'
+    //               ";
     $this->MYSQL = new MYSQL();
     $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
     $this->MYSQL->queri = $sqly ;
@@ -80,7 +101,7 @@ foreach($data_b as $r)
 
     $r['BRUTO_B_SUPPLIER'] = round($qty_pske_b / $total_timbang_b_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO']) ;
     $r['NETTO_B_SUPPLIER'] = $r['BRUTO_B_SUPPLIER']-$r['RMP_REKAP_FC_DETAIL_POTONGAN'] ;
-    $r['RP_KG_B'] = $result_acd[0]['RMP_KONFIGURASI_HARGA_FC_B'];
+    $r['RP_KG_B'] = $result_acd[0]['RMP_PENYESUAIAN_HARGA_KB_B'];
     $r['RUPIAH_B'] = number_format($r['RP_KG_B']*$r['NETTO_B_SUPPLIER']);
     $r['QWERTY'] = $penyesuaian_harga;
     $total_bruto += $r['BRUTO_B_SUPPLIER'];

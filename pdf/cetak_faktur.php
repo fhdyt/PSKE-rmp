@@ -85,6 +85,8 @@ $supplier =$respon['supplier'];
 $rekening =$respon['rekening'];
 $tambang =$respon['tambang'];
 $biaya =$respon['biaya'];
+$cek_tambang =$respon['cek_tambang'];
+$cek_biaya =$respon['cek_biaya'];
 
 $total_jumlah = $kelapa+$tambang+$biaya;
 $terbilang=terbilang($total_jumlah);
@@ -159,6 +161,46 @@ else if ($printed == "beacukai")
 	$total_jumlah_title = " ";
 	$total_jumlah_rp = " ";
 	$total_jumlah_total = " ";
+
+
+}
+
+else if ($printed == "relasi")
+{
+	if($cek_tambang == "Y")
+	{
+		$tambang_title = "Tambang";
+		$tambang_rp = " : Rp.";
+		$tambang_total = number_format($tambang,0,",",".");
+	}
+	else {
+		$tambang_title = " ";
+		$tambang_rp = " ";
+		$tambang_total = " ";
+	}
+
+	if($cek_biaya == "Y")
+	{
+		$biaya_title = "Biaya";
+		$biaya_rp = " : Rp.";
+		$biaya_total = number_format($biaya,0,",",".");
+	}
+	else {
+		$biaya_title = " ";
+		$biaya_rp = " ";
+		$biaya_total = " ";
+	}
+
+	$cetak_catatan_purchaser = $catatan_purchaser;
+	$kelapa_title = "Kelapa";
+	$kelapa_rp = " : Rp.";
+	$kelapa_total = number_format($total_jumlah,0,",",".");
+
+	$hr = "<hr>";
+
+	$total_jumlah_title = "Jumlah";
+	$total_jumlah_rp = " : Rp.";
+	$total_jumlah_total = number_format($total_jumlah,0,",",".");
 
 
 }
@@ -288,7 +330,7 @@ tr {
 						:
 					</td>
 					<td>
-
+						
 					</td>
 				</tr>
 			</table>
