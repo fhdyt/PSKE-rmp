@@ -13,16 +13,18 @@ $batas = $params['batas'];
 $posisi = $this->PAGING->cariPosisi($batas, $halaman);
 $input = $params['input_option'];
 
-if(!empty($input['D2']))
-{
-  $d2="";
-}
-else {
-  $d2="AND NOT RECORD_STATUS='A'";
-}
-$sql = "SELECT * FROM RMP_FAKTUR_DETAIL
-        WHERE
-    RMP_FAKTUR_DETAIL_NO_NOTA='".$input['NO_NOTA']."' AND NOT RECORD_STATUS='D' ".$d2."";
+$sql = "SELECT * FROM RMP_FAKTUR AS F
+          LEFT JOIN RMP_MASTER_PERSONAL AS P
+          ON F.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
+          LEFT JOIN RMP_FAKTUR_DETAIL AS FD
+          ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
+          WHERE
+          F.RECORD_STATUS='A'
+          AND
+          P.RECORD_STATUS='A'
+          GROUP BY F.RMP_FAKTUR_NO_FAKTUR
+          ORDER BY F.ENTRI_WAKTU DESC
+          ";
 
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -36,10 +38,7 @@ $no = $posisi + 1;
 foreach($result_a as $r)
     {
     $r['NO'] = $no;
-    $r['ENTRI']=tanggal_format(Date("Y-m-d",strtotime($r['ENTRI_WAKTU'])));
-    $total_kg += $r['RMP_FAKTUR_DETAIL_NETTO'] ;
     $result[] = $r;
-
     $no++;
     }
 

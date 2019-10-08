@@ -36,7 +36,7 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
  font-size: 9px;
  } */
 
- .modal-gudang{
+ .modalMD{
    width:1000px;
  }
  </style>
@@ -52,6 +52,9 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
       	<div class="col-md-12">
           <div class="row">
             <div class="col-md-8">
+              <button class="btn btn-warning lihat_faktur btn-sm" type="button"><i class="fa fa-list-ol" aria-hidden="true"></i> Faktur</button>
+              <a class="btn btn-success buat_faktur_baru btn-sm" type="button" style="display:none;" href="?show=rmp/faktur"><i class="fa fa-plus" aria-hidden="true"></i> Buat Faktur Baru</a>
+              <a class="btn btn-default cetak_faktur btn-sm" type="button" style="display:none;"><i class="fa fa-print" aria-hidden="true"></i> Cetak Faktur</a>
             </div>
            <div class="col-md-4">
              <select class="form-control CHANGE_JENIS_FAKTUR" onchange="change_jenis_faktur()">
@@ -60,9 +63,11 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
              </select>
              <p class="help-block">Jenis Faktur yang akan diproses.</p>
            </div>
+
           </div>
 
       		<div class="row form_faktur_hasil_timbang">
+
       			<div class="col-md-6">
       				<div class="small-box bg-aqua">
       					<div class="inner">
@@ -112,6 +117,7 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
             </div>
 
             <div class="form_faktur_hasil_timbang">
+
             <div class="col-md-4">
             <div class="form-group">
               <label for="exampleInputEmail1">Nomor Nota</label> <select class="NO_NOTA selectpicker with-ajax-personal form-control" data-live-search="true" id="NO_NOTA" name="NO_NOTA" onchange="no_nota()">
@@ -170,17 +176,17 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
               <input type="checkbox" name="CEK_DIPISAH"> Dipisah -->
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" name="CEK_DITERIMA"> Bisa Diterima
+                  <input type="checkbox" name="CEK_DITERIMA" class="CEK_DITERIMA"> Bisa Diterima
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" name="CEK_100_INSPEKSI"> 100 % Inspeksi
+                  <input type="checkbox" name="CEK_100_INSPEKSI" class="CEK_100_INSPEKSI"> 100 % Inspeksi
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" name="CEK_DIPISAH"> Dipisah
+                  <input type="checkbox" name="CEK_DIPISAH" class="CEK_DIPISAH"> Dipisah
                 </label>
               </div>
             </div>
@@ -461,33 +467,79 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
  	</div>
  </div>
 
+
+
+ <div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg modalLihatFaktur" role="dialog" tabindex="-1">
+ 	<div class="modal-dialog modalMD" role="document">
+ 		<div class="modal-content">
+ 			<div class="modal-header">
+ 				<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+ 				<h4 class="modal-title" id="myModalLabel">Faktur</h4>
+ 			</div>
+ 			<div class="modal-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>No. Faktur</th>
+              <th>No. Nota</th>
+              <th>Nama</th>
+              <th>Tanggal</th>
+              <th></th>
+
+            </tr>
+          </thead>
+          <tbody id="zone_lihat_faktur">
+            <tr>
+              <td colspan="9">
+                <center>
+                  <div class="loader"></div>
+                </center>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+ 		</div>
+ 	</div>
+ </div>
+ </div>
+
 <script>
+
+var d2 = "<?php echo $d2; ?>";
+
+if(d2 == "")
+{
+  $(function()
+  {
+    var no_nota = $('.NO_NOTA').val()
+    faktur_list(no_nota);
+    sel_nama_karyawan();
+    sel_nama_supplier();
+    onchange_pilih_nota();
+    hasil_timbang();
+  });
+}
+else {
+  $(function()
+  {
+    edit_faktur(d2)
+  })
+
+  $(".buat_faktur_baru").removeAttr("style")
+  $(".cetak_faktur").removeAttr("style")
+  //hasil_timbang(no_nota)
+}
+
+$('.lihat_faktur').on('click', function()
+{
+	$(".modalLihatFaktur").modal('show');
+  lihat_faktur()
+});
 $(function() {
   $('a.sidebar-toggle').click()
 });
 
-$('.buat_faktur').on('click', function()
-{
-  if ($('.NO_NOTA').val() == null)
-  {
-    alert('Pilih Nomor Nota Terlebih Dahulu')
-  }
-  else if ($('.NO_FAKTUR').val() == '')
-  {
-    $(this).html('Buat Faktur Baru');
-    $('.NO_NOTA').attr('disabled', 'disabled');
-    //$('div.form_faktur').toggle('hidden')
-    //$('.NO_FAKTUR').val('<?= $buat_nomor_faktur;  ?>')
-
-    var no_nota = $('.NO_NOTA').val()
-    faktur_list(no_nota);
-  }
-  else
-  {
-    $(this).attr('disabled', 'disabled');
-    location.reload();
-  }
-})
 
 $(function()
 {
@@ -648,16 +700,16 @@ function sel_nama_karyawan()
   $('.INSPEKTUR_MUTU,.OPERATOR_TIMBANG').selectpicker().filter('.with-ajax-personal').ajaxSelectPicker(options);
 }
 
-$(function() {
-  sel_nama_karyawan();
-});
-
-$(function() {
-  sel_nama_supplier();
-});
-$(function() {
-  onchange_pilih_nota();
-});
+// $(function() {
+//   sel_nama_karyawan();
+// });
+//
+// $(function() {
+//   sel_nama_supplier();
+// });
+// $(function() {
+//   onchange_pilih_nota();
+// });
 
 
 function no_nota()
@@ -735,9 +787,9 @@ function hasil_timbang(no_nota)
   });
 }
 
-$(function() {
-  hasil_timbang();
-});
+// $(function() {
+//   hasil_timbang();
+// });
 
 $("tbody#zone_data").on('click','a.kirim_hasil_timbang', function()
 {
@@ -786,11 +838,12 @@ function kirim_hasil_timbang(data)
 
 function faktur_list(no_nota)
 {
+
   $.ajax({
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=faktur_list&NO_NOTA='+no_nota,
+    data: 'ref=faktur_list&NO_NOTA='+no_nota+'&D2=<?php echo $d2; ?>',
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {
@@ -804,7 +857,7 @@ function faktur_list(no_nota)
           }
           else if(data.result[i].RECORD_STATUS=='A')
           {
-            var a = ""
+            var a = "<a class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-angle-double-left'></i></a>"
           }
           else
           {
@@ -1268,5 +1321,114 @@ $('.simpanreview').on('click',function(){
     } //end error
   });
 }
+})
+
+
+function lihat_faktur()
+{
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=lihat_faktur',
+    success: function(data) {
+      if (data.respon.pesan == "sukses") {
+				console.log(data.respon.text_msg);
+        $("tbody#zone_lihat_faktur").empty();
+        for (i = 0; i < data.result.length; i++) {
+          $("tbody#zone_lihat_faktur").append("<tr class='detailLogId'>" +
+					"<td >" + data.result[i].NO + ".</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR +  "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "</td>" +
+					"<td>" + data.result[i].RMP_MASTER_PERSONAL_NAMA +  "</td>" +
+					"<td>" + data.result[i].ENTRI_WAKTU +  "</td>" +
+					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Edit</a></td>" +
+					"</tr>");
+        }
+      } else if (data.respon.pesan == "gagal") {
+        $("tbody#zone_lihat_faktur").html("<tr><td colspan='9'><div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> " + data.respon.text_msg + "</div></td></tr>");
+      }
+    }, //end success
+    error: function(x, e) {
+    } //end error
+  });
+}
+function edit_faktur(d2)
+{
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=edit_faktur&FAKTUR_ID='+d2+'',
+    success: function(data) {
+      if (data.respon.pesan == "sukses") {
+        for (i = 0; i < data.result.length; i++)
+        {
+
+        }
+        console.log(data.result2[0].PERSONAL_NAME)
+        $("p.NO_FAKTUR").html(data.result[0].RMP_FAKTUR_NO_FAKTUR)
+        $("p.NO_NOTA_INPUT").html(data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA)
+        $(".ID_FAKTUR").val(data.result[0].RMP_FAKTUR_ID)
+        $(".NO_FAKTUR").val(data.result[0].RMP_FAKTUR_NO_FAKTUR)
+        $(".JENIS_KELAPA").val(data.result[0].RMP_FAKTUR_DETAIL_JENIS_MATERIAL)
+        $('select.NO_NOTA').append('<option value="'+data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA+'" selected="selected">'+data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA+'</option>').selectpicker('refresh');
+        $('select.NO_NOTA').trigger('change');
+        $('select.NAMA_SUPPLIER').append('<option value="'+data.result[0].RMP_MASTER_PERSONAL_ID+'" selected="selected">'+data.result[0].RMP_MASTER_PERSONAL_NAMA+'</option>').selectpicker('refresh');
+        $('select.NAMA_SUPPLIER').trigger('change');
+        $('select.OPERATOR_TIMBANG').append('<option value="'+data.result[0].PERSONAL_NIK+'" selected="selected">'+data.result[0].PERSONAL_NAME+'</option>').selectpicker('refresh');
+        $('select.OPERATOR_TIMBANG').trigger('change');
+        $(".POTONGAN").val(data.result[0].RMP_FAKTUR_POTONGAN)
+        $(".CATATAN_PURCHASER").val(data.result[0].RMP_FAKTUR_CATATAN_PURCHASER)
+        $(".CATATAN_SUPPLIER").val(data.result[0].RMP_FAKTUR_CATATAN_SUPPLIER)
+
+
+
+        if(data.result[0].RMP_FAKTUR_CEK_DITERIMA =='Y')
+        {
+          $('.CEK_DITERIMA').attr('checked', true);
+        }
+        else {
+          $('.CEK_DITERIMA').attr('checked', false);
+        }
+
+        if(data.result[0].RMP_FAKTUR_CEK_100_INSPEKSI =='Y')
+        {
+          $('.CEK_100_INSPEKSI').attr('checked', true);
+        }
+        else {
+          $('.CEK_100_INSPEKSI').attr('checked', false);
+        }
+
+        if(data.result[0].RMP_FAKTUR_CEK_DIPISAH =='Y')
+        {
+          $('.CEK_DIPISAH').attr('checked', true);
+        }
+        else {
+          $('.CEK_DIPISAH').attr('checked', false);
+        }
+
+        hasil_timbang(data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA)
+
+        $('select.INSPEKTUR_MUTU').append('<option value="'+data.result2[0].PERSONAL_NIK+'" selected="selected">'+data.result2[0].PERSONAL_NAME+'</option>').selectpicker('refresh');
+        $('select.INSPEKTUR_MUTU').trigger('change');
+
+      }
+      else if (data.respon.pesan == "gagal") {
+      }
+    }, //end success
+    error: function(x, e) {
+    } //end error
+  });
+}
+
+$(".cetak_faktur").on("click", function(){
+  // var no_faktur = btoa(fikri); // Enskrip
+  // var no_faktur = atob(Zmlrcmk=); // Dekrip
+  var s = " ";
+  var rp_kg = btoa(s)
+  var material = btoa($('.JENIS_KELAPA').val())
+  var printed = btoa($(this).attr("PRINTED"))
+  window.open("?show=rmp/pdf/cetak_faktur_adm/<?php echo $d2; ?>/"+ rp_kg +"/"+ material +"/"+ printed +"", "_blank");
 })
 </script>
