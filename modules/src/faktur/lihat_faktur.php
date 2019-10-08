@@ -13,17 +13,23 @@ $batas = $params['batas'];
 $posisi = $this->PAGING->cariPosisi($batas, $halaman);
 $input = $params['input_option'];
 
-$sql = "SELECT * FROM RMP_FAKTUR AS F
-          LEFT JOIN RMP_MASTER_PERSONAL AS P
+$sql = "SELECT * FROM
+            RMP_FAKTUR AS F
+          LEFT JOIN
+            RMP_MASTER_PERSONAL AS P
           ON F.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-          LEFT JOIN RMP_FAKTUR_DETAIL AS FD
+          LEFT JOIN
+            RMP_FAKTUR_DETAIL AS FD
           ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
           WHERE
-          F.RECORD_STATUS='A'
+            F.RECORD_STATUS='A'
           AND
-          P.RECORD_STATUS='A'
-          GROUP BY F.RMP_FAKTUR_NO_FAKTUR
-          ORDER BY F.ENTRI_WAKTU DESC
+            P.RECORD_STATUS='A'
+          GROUP BY
+            F.RMP_FAKTUR_NO_FAKTUR
+          ORDER BY 
+            F.ENTRI_WAKTU
+          DESC
           ";
 
 $this->MYSQL = new MYSQL();
