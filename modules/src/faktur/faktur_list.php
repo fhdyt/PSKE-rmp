@@ -15,7 +15,7 @@ $input = $params['input_option'];
 
 $sql = "SELECT * FROM RMP_FAKTUR_DETAIL
         WHERE
-    RMP_FAKTUR_DETAIL_NO_NOTA='".$input['NO_NOTA']."' AND NOT RECORD_STATUS='D'";
+    RMP_FAKTUR_DETAIL_NO_NOTA='".$input['NO_NOTA']."' AND NOT RECORD_STATUS='D' AND NOT RECORD_STATUS='A'";
 
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
