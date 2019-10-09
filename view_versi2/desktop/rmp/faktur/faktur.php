@@ -855,7 +855,8 @@ $("tbody#zone_data").on('click','a.kirim_hasil_timbang', function()
   var id_timbang = $(this).attr('ID_HASIL_TIMBANG');
   var no_nota = $(this).attr('NO_NOTA');
   var jenis_kelapa = $(this).attr('JENIS_KELAPA');
-  var data = 'ID_TIMBANG='+id_timbang+'&NO_NOTA='+no_nota;
+  var no_faktur = $(".NO_FAKTUR").val();
+  var data = 'ID_TIMBANG='+id_timbang+'&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur;
   $(".JENIS_KELAPA").val(jenis_kelapa);
     kirim_hasil_timbang(data)
     var no_nota = $('.NO_NOTA').val();
@@ -878,7 +879,7 @@ function kirim_hasil_timbang(data)
       {
         console.log(data.respon.text_msg);
         $(".NO_FAKTUR").val(data.respon.no_faktur)
-        $("p.NO_FAKTUR").html(data.respon.text_msg)
+        $("p.NO_FAKTUR").html(data.respon.no_faktur)
         faktur_list(data.respon.text_msg);
       }
       else if (data.respon.pesan == "gagal")

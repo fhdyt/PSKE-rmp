@@ -73,7 +73,13 @@ $result_a = $this->MYSQL->data();
 
 $jenis_kelapa = $result_a[0]['jenis_kelapa'];
 $ponton = $result_a[0]['id_timbang'];
-$buat_nomor_faktur=$RMP_CONFIG->buat_nomor_faktur($jenis_kelapa,$ponton)->callback['nomor'];
+if(empty($input['NO_FAKTUR']))
+{
+	$buat_nomor_faktur=$RMP_CONFIG->buat_nomor_faktur($jenis_kelapa,$ponton)->callback['nomor'];
+}
+else {
+	$buat_nomor_faktur = $input['NO_FAKTUR'];
+}
 
 $data_detail2 = array(
 	'RMP_FAKTUR_DETAIL_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
