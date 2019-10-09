@@ -193,6 +193,9 @@ switch($ref){
 			case 'sel_operator_timbang':
 				require_once("ajax/faktur/sel_operator_timbang.php");
 			break;
+			case 'sel_inspektur_mutu':
+				require_once("ajax/faktur/sel_inspektur_mutu.php");
+			break;
 			case 'sel_id_faktur_cabang':
 				require_once("ajax/faktur/sel_id_faktur_cabang.php");
 			break;

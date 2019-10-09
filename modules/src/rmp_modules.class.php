@@ -326,6 +326,9 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_sel_operator_timbang':
 			require_once ("faktur/sel_operator_timbang.php");
 		break;
+		case 'nonlogin_sel_inspektur_mutu':
+			require_once ("faktur/sel_inspektur_mutu.php");
+		break;
 		case 'nonlogin_sel_id_faktur_cabang':
 			require_once ("faktur/sel_id_faktur_cabang.php");
 		break;

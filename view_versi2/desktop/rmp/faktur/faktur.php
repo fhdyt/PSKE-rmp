@@ -162,7 +162,7 @@
 
             <div class="col-md-4">
               <div class="form-group">
-                <label for="exampleInputEmail1">Inspektur Mutu</label><select class="INSPEKTUR_MUTU with-ajax-personal form-control" data-live-search="true" id="INSPEKTUR_MUTU" name="INSPEKTUR_MUTU" onchange="sel_nama_karyawan()">
+                <label for="exampleInputEmail1">Inspektur Mutu</label><select class="INSPEKTUR_MUTU with-ajax-personal form-control" data-live-search="true" id="INSPEKTUR_MUTU" name="INSPEKTUR_MUTU" onchange="sel_inspektur_mutu()">
                 </select>
                 <p class="help-block">Nama Inspektur Mutu.</p>
               </div>
@@ -521,6 +521,7 @@ if(d2 == "")
     var no_nota = $('.NO_NOTA').val()
     faktur_list(no_nota);
     sel_operator_timbang();
+    sel_inspektur_mutu();
     sel_nama_supplier();
     onchange_pilih_nota();
     hasil_timbang();
@@ -703,7 +704,57 @@ function sel_operator_timbang()
       return array;
     }
   };
-  $('.INSPEKTUR_MUTU,.OPERATOR_TIMBANG').selectpicker().filter('.with-ajax-personal').ajaxSelectPicker(options);
+  $('.OPERATOR_TIMBANG').selectpicker().filter('.with-ajax-personal').ajaxSelectPicker(options);
+}
+
+function sel_inspektur_mutu()
+{
+  var options =
+  {
+    ajax: {
+      url: refseeAPI,
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        q: '{{{q}}}',
+        ref: 'sel_inspektur_mutu',
+      }
+    },
+    locale:
+    {
+      emptyTitle: 'Pilih Nama'
+    },
+    log: 3,
+    preprocessData: function(data)
+    {
+      var i, l = data.result.length,
+        array = [];
+      if (l)
+      {
+        for (i = 0; i < l; i++)
+        {
+          array.push($.extend(true, data.result[i],
+          {
+            // text: data.result[i].RMP_HASIL_TIMBANG_NO_NOTA,
+            // value: data.result[i].RMP_HASIL_TIMBANG_NO_NOTA,
+            text: data.result[i].RMP_KONFIGURASI_PETUGAS_NAMA,
+            value: data.result[i].RMP_KONFIGURASI_PETUGAS_NIK,
+            data:
+            {
+              subtext: ''
+            }
+          }));
+        }
+      }
+      else
+      {
+      }$(function() {
+  sel_nama_supplier();
+});
+      return array;
+    }
+  };
+  $('.INSPEKTUR_MUTU').selectpicker().filter('.with-ajax-personal').ajaxSelectPicker(options);
 }
 
 // $(function() {
