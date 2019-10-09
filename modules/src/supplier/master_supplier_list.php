@@ -76,6 +76,20 @@ foreach($result_a as $r)
         {
           $r['MASTER_WILAYAH']=$rb['RMP_MASTER_WILAYAH'];
         }
+
+        $sql22 = "SELECT * FROM
+                 RMP_REKENING_RELASI
+                 WHERE
+                 RMP_MASTER_PERSONAL_ID='".$r['RMP_MASTER_PERSONAL_ID']."' AND RECORD_STATUS='A' AND RMP_REKENING_RELASI_MATERIAL='".$input['FILTER_MATERIAL']."' LIMIT 1";
+        $this->MYSQL = new MYSQL();
+        $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+        $this->MYSQL->queri = $sql22 ;
+        $result_bc = $this->MYSQL->data();
+
+        foreach($result_bc as $rbc)
+        {
+          $r['REKENING_RELASI']=$rbc['RMP_REKENING_RELASI'];
+        }
         $result[] = $r;
         $no++;
     }

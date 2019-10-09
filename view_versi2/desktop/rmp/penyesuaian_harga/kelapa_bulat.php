@@ -68,7 +68,7 @@ table {
            <!-- <form class="form-inline"action="javascript:rekap_perminggu();">
              <div class="form-group">
                <input autocomplete="off" class="form-control tanggal_berlaku datepicker" data-date-format="yyyy/mm/dd" type="text" value="">
-               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+
              </div>
              <button class="btn btn-success btn-view btn-reload set_tanggal" type="submit" id="btn-reload">
                <i class="fa fa-refresh">
@@ -79,7 +79,7 @@ table {
 
        <div class="row">
          <div class="col-md-9">
-           <button class="btn btn-success btn-view perbarui_harga" type="submit" id="btn-reload">
+           <button class="btn btn-success btn-view perbarui_harga btn-sm" type="submit" id="btn-reload">
              <i class="fa fa-plus">
              </i> Perbarui Harga</button>
          </div>
@@ -214,28 +214,28 @@ table {
              <div class="form-group">
                <label for="exampleInputEmail1">Harga Patokan B</label>
                <input autocomplete="off" class="form-control HARGA_PATOKAN_B" id="HARGA_PATOKAN_B" name="HARGA_PATOKAN_B" placeholder="" type="text">
-               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+
              </div>
            </div>
            <!-- <div class="col-md-4">
              <div class="form-group">
                <label for="exampleInputEmail1">Harga Patokan C</label>
                <input autocomplete="off" class="form-control HARGA_PATOKAN_C" id="HARGA_PATOKAN_C" name="HARGA_PATOKAN_C" placeholder="" type="text">
-               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+
              </div>
            </div> -->
            <div class="col-md-4">
              <div class="form-group">
                <label for="exampleInputEmail1">Tanggal Berlaku</label>
                <input autocomplete="off" class="form-control datepicker QUALITED_HARGA_TANGGAL_BERLAKU" data-date-format="yyyy/mm/dd" id="QUALITED_HARGA_TANGGAL_BERLAKU" name="QUALITED_HARGA_TANGGAL_BERLAKU" type="text" value="">
-               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+
              </div>
            </div>
            <div class="col-md-4">
              <div class="form-group">
                <label for="exampleInputEmail1">Tanggal Berakhir</label>
              <input autocomplete="off" class="form-control datepicker QUALITED_HARGA_TANGGAL_BERAKHIR" data-date-format="yyyy/mm/dd" id="QUALITED_HARGA_TANGGAL_BERAKHIR" name="QUALITED_HARGA_TANGGAL_BERAKHIR" type="text" value="">
-               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+
              </div>
            </div>
          </div>
@@ -277,28 +277,28 @@ table {
              <div class="form-group">
                <label for="exampleInputEmail1">Harga Patokan B</label>
                <input autocomplete="off" class="form-control HARGA_PATOKAN_B" id="HARGA_PATOKAN_B" name="HARGA_PATOKAN_B" placeholder="" type="text">
-               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+
              </div>
            </div>
            <!-- <div class="col-md-4">
              <div class="form-group">
                <label for="exampleInputEmail1">Harga Patokan C</label>
                <input autocomplete="off" class="form-control HARGA_PATOKAN_C" id="HARGA_PATOKAN_C" name="HARGA_PATOKAN_C" placeholder="" type="text">
-               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+
              </div>
            </div> -->
            <div class="col-md-4">
              <div class="form-group">
                <label for="exampleInputEmail1">Tanggal Berlaku</label>
                <input autocomplete="off" class="form-control datepicker QUALITED_HARGA_TANGGAL_BERLAKU" data-date-format="yyyy/mm/dd" id="QUALITED_HARGA_TANGGAL_BERLAKU" name="QUALITED_HARGA_TANGGAL_BERLAKU" type="text" value="">
-               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+
              </div>
            </div>
            <div class="col-md-4">
              <div class="form-group">
                <label for="exampleInputEmail1">Tanggal Berakhir</label>
              <input autocomplete="off" class="form-control datepicker QUALITED_HARGA_TANGGAL_BERAKHIR" data-date-format="yyyy/mm/dd" id="QUALITED_HARGA_TANGGAL_BERAKHIR" name="QUALITED_HARGA_TANGGAL_BERAKHIR" type="text" value="">
-               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+
              </div>
            </div>
          </div>
@@ -307,6 +307,7 @@ table {
            <div class="col-md-12">
              <div class="form-group">
                <button class="btn btn-success btn-sm FormKirimPerbaruiHarga">Simpan</button>
+               <p class="help-block"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <i>Anda akan mengganti seluruh penyesuaian harga supplier untuk kelapa Jambul.</i></p>
              </div>
            </div>
          </div>

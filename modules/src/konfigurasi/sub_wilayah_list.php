@@ -17,7 +17,9 @@ $sql = "SELECT * FROM
               RMP_MASTER_WILAYAH AS W LEFT JOIN RMP_MASTER_MATERIAL AS M
               ON W.RMP_MASTER_MATERIAL_ID=M.RMP_MASTER_MATERIAL_ID
           WHERE
-              W.RMP_MASTER_WILAYAH_PREV_LINK='".$input['ID_WILAYAH']."' ORDER BY W.RMP_MASTER_WILAYAH_KODE ASC
+              W.RMP_MASTER_WILAYAH_PREV_LINK='".$input['ID_WILAYAH']."'
+              AND W.RECORD_STATUS='A'
+              ORDER BY W.RMP_MASTER_WILAYAH_KODE ASC
           ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;

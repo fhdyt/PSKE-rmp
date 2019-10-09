@@ -65,7 +65,7 @@ table-detail {
 					<div class="col-md-4 text-right"></div>
 				</div><!--/.row-->
 				<div class="row">
-					<div class="col-md-8">
+					<div class="col-md-4">
 						<a class="btn btn-primary btn-sm" href="?show=rmp/supplier/add_supplier">Tambah Supplier</a>
 					</div>
 					<div class="col-md-4 ">
@@ -94,6 +94,22 @@ table-detail {
         }?>
                   </select>
                   <p class="help-block">Filter Lokasi.</p>
+          </div>
+					<div class="col-md-4 ">
+            <select id="FILTER_MATERIAL" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_material()">
+                    <?php
+                    $data = $RMP_CONFIG->material();
+                    foreach ($data['rasult'] as $key => $value) {
+                      foreach ($value as $data => $isi) {
+            ?>
+            <option value="<?php echo $isi['RMP_MASTER_MATERIAL']; ?>"> <?php  echo $isi['RMP_MASTER_MATERIAL'];?></option>
+            <?php
+
+          }
+
+        }?>
+                  </select>
+                  <p class="help-block">Filter Material.</p>
                 </form>
           </div>
 				</div><!--/.row-->
@@ -103,7 +119,7 @@ table-detail {
 						<tr>
 							<th>No.</th>
 							<th>Nama</th>
-							<th>Tanggal Daftar</th>
+							<th>Rekening Relasi</th>
 							<th>Wilayah</th>
 							<th>Lokasi</th>
 							<th>Aksi</th>
@@ -612,10 +628,17 @@ function supplier_list(curPage)
           currentPage: curPage,
         });
         for (i = 0; i < data.result.length; i++) {
+          if (data.result[i].REKENING_RELASI == undefined)
+          {
+            var rekening_relasi = "<p class='text-danger'><i>Tidak Tersedia</i></p>"
+          }
+          else {
+            var rekening_relasi = data.result[i].REKENING_RELASI
+          }
           $("tbody#zone_data").append("<tr class='detailLogId'  detailLogId='" + data.result[i].RMP_MASTER_PERSONAL_ID + "'>" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +
-					"<td>" + data.result[i].TANGGAL_DAFTAR + "</td>" +
+					"<td>" + rekening_relasi + "</td>" +
 					"<td>" + data.result[i].MASTER_WILAYAH + "</td>" +
 					"<td>" + data.result[i].RMP_MASTER_WILAYAH + "</td>" +
 					"<td><a class='btn btn-primary btn-sm' href='?show=rmp/supplier/add_supplier/" + data.result[i].RMP_MASTER_PERSONAL_ID + "'><i class='fa fa-pencil' aria-hidden='true'></i> Edit</a> <a class='lihat btn btn-success btn-sm' ID_SUPPLIER='" + data.result[i].RMP_MASTER_PERSONAL_ID + "'><i class='fa fa-eye' aria-hidden='true'></i> Lihat</a></td>" + "</tr>");
@@ -643,6 +666,9 @@ function search() {
 }
 
 function filter_wilayah(){
+  supplier_list('1');
+}
+function filter_material(){
   supplier_list('1');
 }
 
