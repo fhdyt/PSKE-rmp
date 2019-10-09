@@ -150,6 +150,15 @@ switch($ref){
 			case 'sub_wilayah_list':
 				require_once("ajax/konfigurasi/sub_wilayah_list.php");
 			break;
+			case 'petugas_list':
+				require_once("ajax/konfigurasi/petugas_list.php");
+			break;
+			case 'petugas_add':
+				require_once("ajax/konfigurasi/petugas_add.php");
+			break;
+			case 'sel_nama_karyawan':
+				require_once("ajax/konfigurasi/sel_nama_karyawan.php");
+			break;
 
 
 
@@ -181,8 +190,8 @@ switch($ref){
 			case 'sel_nama_supplier':
 				require_once("ajax/faktur/sel_nama_supplier.php");
 			break;
-			case 'sel_nama_karyawan':
-				require_once("ajax/faktur/sel_nama_karyawan.php");
+			case 'sel_operator_timbang':
+				require_once("ajax/faktur/sel_operator_timbang.php");
 			break;
 			case 'sel_id_faktur_cabang':
 				require_once("ajax/faktur/sel_id_faktur_cabang.php");

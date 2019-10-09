@@ -277,6 +277,15 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_sub_wilayah_list':
 			require_once ("konfigurasi/sub_wilayah_list.php");
 		break;
+		case 'nonlogin_petugas_list':
+			require_once ("konfigurasi/petugas_list.php");
+		break;
+		case 'nonlogin_petugas_add':
+			require_once ("konfigurasi/petugas_add.php");
+		break;
+		case 'nonlogin_sel_nama_karyawan':
+			require_once ("konfigurasi/sel_nama_karyawan.php");
+		break;
 
 
 
@@ -314,8 +323,8 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_sel_nama_supplier':
 			require_once ("faktur/sel_nama_supplier.php");
 		break;
-		case 'nonlogin_sel_nama_karyawan':
-			require_once ("faktur/sel_nama_karyawan.php");
+		case 'nonlogin_sel_operator_timbang':
+			require_once ("faktur/sel_operator_timbang.php");
 		break;
 		case 'nonlogin_sel_id_faktur_cabang':
 			require_once ("faktur/sel_id_faktur_cabang.php");

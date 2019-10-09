@@ -29,6 +29,9 @@
 						<li class="active" id="material" role="presentation">
 							<a href="?show=rmp/konfigurasi_rmp/material">Material</a>
 						</li>
+						<li id="petugas" role="presentation">
+							<a href="?show=rmp/konfigurasi_rmp/petugas">Petugas</a>
+						</li>
 						<!-- <li class="active" id="harga" role="presentation">
 							<a href="?show=rmp/konfigurasi_rmp/harga">Harga</a>
 						</li>
@@ -54,14 +57,18 @@
 				        {
 				            require_once("tab/konfigurasi_material.php");
 				        }
-				        elseif($d2=='harga')
+				        elseif($d2=='petugas')
 				        {
-				            require_once("tab/konfigurasi_harga.php");
+				            require_once("tab/petugas.php");
 				        }
-				        elseif($d2=='harga_faktur_cabang')
-				        {
-				            require_once("tab/konfigurasi_harga_fc.php");
-				        }
+				        // elseif($d2=='harga')
+				        // {
+				        //     require_once("tab/konfigurasi_harga.php");
+				        // }
+				        // elseif($d2=='harga_faktur_cabang')
+				        // {
+				        //     require_once("tab/konfigurasi_harga_fc.php");
+				        // }
 				        else
 				        {
 				            require_once("tab/konfigurasi_wilayah.php");

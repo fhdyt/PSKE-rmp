@@ -1,14 +1,16 @@
 <?php
-$RMP_CONFIG=new RMP_CONFIG();
-$SISTEM_CONFIG=new SISTEM_CONFIG();
- ?>
+  $RMP_CONFIG=new RMP_CONFIG();
+  $SISTEM_CONFIG=new SISTEM_CONFIG();
+?>
 
  <style>
- .table-small {
+ .table-small
+ {
  	font-size: 12px;
  }
 
- .loader {
+ .loader
+ {
    border: 5px solid #f3f3f3;
    border-radius: 50%;
    border-top: 5px solid #3498db;
@@ -19,12 +21,14 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
  }
 
  /* Safari */
- @-webkit-keyframes spin {
+ @-webkit-keyframes spin
+ {
    0% { -webkit-transform: rotate(0deg); }
    100% { -webkit-transform: rotate(360deg); }
  }
 
- @keyframes spin {
+ @keyframes spin
+ {
    0% { transform: rotate(0deg); }
    100% { transform: rotate(360deg); }
  }
@@ -36,9 +40,11 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
  font-size: 9px;
  } */
 
- .modalMD{
+ .modalMD
+ {
    width:1000px;
  }
+
  </style>
  <div class="row">
  	<div class="col-lg-12 col-md-12">
@@ -148,7 +154,7 @@ $SISTEM_CONFIG=new SISTEM_CONFIG();
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label for="exampleInputEmail1">Operator Timbang</label><select class="OPERATOR_TIMBANG with-ajax-personal form-control" data-live-search="true" id="OPERATOR_TIMBANG" name="OPERATOR_TIMBANG" onchange="sel_nama_karyawan()">
+                <label for="exampleInputEmail1">Operator Timbang</label><select class="OPERATOR_TIMBANG with-ajax-personal form-control" data-live-search="true" id="OPERATOR_TIMBANG" name="OPERATOR_TIMBANG" onchange="sel_operator_timbang()">
                 </select>
                 <p class="help-block">Nama Operator Timbang.</p>
               </div>
@@ -514,7 +520,7 @@ if(d2 == "")
   {
     var no_nota = $('.NO_NOTA').val()
     faktur_list(no_nota);
-    sel_nama_karyawan();
+    sel_operator_timbang();
     sel_nama_supplier();
     onchange_pilih_nota();
     hasil_timbang();
@@ -650,7 +656,7 @@ function sel_nama_supplier()
   $('.NAMA_SUPPLIER').selectpicker().filter('.with-ajax-personal').ajaxSelectPicker(options);
 }
 
-function sel_nama_karyawan()
+function sel_operator_timbang()
 {
   var options =
   {
@@ -660,7 +666,7 @@ function sel_nama_karyawan()
       dataType: 'json',
       data: {
         q: '{{{q}}}',
-        ref: 'sel_nama_karyawan',
+        ref: 'sel_operator_timbang',
       }
     },
     locale:
@@ -680,8 +686,8 @@ function sel_nama_karyawan()
           {
             // text: data.result[i].RMP_HASIL_TIMBANG_NO_NOTA,
             // value: data.result[i].RMP_HASIL_TIMBANG_NO_NOTA,
-            text: data.result[i].PERSONAL_NAME,
-            value: data.result[i].PERSONAL_NIK,
+            text: data.result[i].RMP_KONFIGURASI_PETUGAS_NAMA,
+            value: data.result[i].RMP_KONFIGURASI_PETUGAS_NIK,
             data:
             {
               subtext: ''
