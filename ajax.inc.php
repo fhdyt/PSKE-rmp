@@ -224,6 +224,9 @@ switch($ref){
 			case 'supplier_list_kb':
 				require_once("ajax/penyesuaian_harga/supplier_list_kb.php");
 			break;
+			case 'perbarui_harga':
+				require_once("ajax/penyesuaian_harga/perbarui_harga.php");
+			break;
 
 
 			case 'list_gl_a':

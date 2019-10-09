@@ -365,6 +365,9 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_supplier_list_licin':
 			require_once ("penyesuaian_harga/supplier_list_licin.php");
 		break;
+		case 'nonlogin_perbarui_harga':
+			require_once ("penyesuaian_harga/perbarui_harga.php");
+		break;
 
 
 

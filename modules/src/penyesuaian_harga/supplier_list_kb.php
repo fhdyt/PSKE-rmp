@@ -57,8 +57,6 @@ $no = $posisi + 1;
 foreach($result_a as $r)
     {
         $r['NO'] = $no;
-        $r['TANGGAL_DAFTAR']=tanggal_format(Date("Y-m-d",strtotime($r['RMP_MASTER_PERSONAL_TANGGAL_DAFTAR'])));
-
         $sql2 = "SELECT * FROM
                  RMP_MASTER_WILAYAH
                  WHERE
@@ -73,24 +71,13 @@ foreach($result_a as $r)
           $r['MASTER_WILAYAH']=$rb['RMP_MASTER_WILAYAH'];
         }
         $tanggal = date("Y-m-d");
-          $sql9 = "SELECT * FROM
-                   RMP_PENYESUAIAN_HARGA_KB AS Q,
-                   RMP_MASTER_MATERIAL AS M,
-                   RMP_REKENING_RELASI AS R
-                   WHERE
-                   Q.RMP_MASTER_MATERIAL_ID=M.RMP_MASTER_MATERIAL_ID
-                   AND (Q.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU <= '".$tanggal."' AND Q.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR >='".$tanggal."')
-                   OR (Q.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU <= '".$tanggal."' AND Q.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR='0000-00-00')
-                   AND
-                   Q.RMP_MASTER_PERSONAL_ID='".$r['RMP_MASTER_PERSONAL_ID']."'
-                   AND
-                   Q.RMP_MASTER_MATERIAL_ID='".$input['material_id']."'
-                   AND
-                   Q.RMP_PENYESUAIAN_HARGA_KB_JENIS_MATERIAL='".$input['jenis_material']."'
-                   AND
-                   Q.RECORD_STATUS='A'
-                   AND
-                   M.RECORD_STATUS='A'";
+        $sql9 = "SELECT * FROM RMP_PENYESUAIAN_HARGA_KB
+                  WHERE
+                  RMP_MASTER_MATERIAL_ID='".$input['material_id']."'
+                  AND RMP_PENYESUAIAN_HARGA_KB_JENIS_MATERIAL='".$input['jenis_material']."'
+                  AND ((RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU <= '".$tanggal."' AND RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR >='".$tanggal."')
+                  OR (RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU <= '".$tanggal."' AND RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR='0000-00-00'))
+                  AND RMP_MASTER_PERSONAL_ID='".$r['RMP_MASTER_PERSONAL_ID']."'";
 
         $this->MYSQL = new MYSQL();
         $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
