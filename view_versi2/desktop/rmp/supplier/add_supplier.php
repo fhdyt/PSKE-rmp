@@ -121,9 +121,9 @@ foreach($da['refs'] as $r)
 						<!-- <li>
 							<a data-toggle="tab" href="#qualited_harga">Kualitet dan Harga</a>
 						</li> -->
-						<li>
+						<!-- <li>
 							<a data-toggle="tab" href="#toleransi_mutu">Toleransi Mutu</a>
-						</li>
+						</li> -->
 						<li>
 							<a data-toggle="tab" href="#kontak">Kontak</a>
 						</li>
@@ -820,7 +820,7 @@ foreach($da['refs'] as $r)
 								<label for="exampleInputEmail1">Material </label>
 								<select class="form-control JENIS_REKENING" id="JENIS_REKENING" name="JENIS_REKENING" onchange="jenis_rekening()">
 									<option value="">
-										--Pilih Bank--
+										--Pilih Material--
 									</option><?php  $data = $RMP_CONFIG->material(); foreach ($data['rasult'] as $key => $value) {   foreach ($value as $data => $isi)       { ?>
 									<option value="<?php echo $isi['RMP_MASTER_MATERIAL_ID']; ?>" nama_material="<?php  echo $isi['RMP_MASTER_MATERIAL'];?>">
 										<?php  echo $isi['RMP_MASTER_MATERIAL'];?>

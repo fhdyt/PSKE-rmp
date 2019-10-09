@@ -79,16 +79,19 @@ table {
 
        <div class="row">
          <div class="col-md-9">
+           <button class="btn btn-success btn-view perbarui_harga" type="submit" id="btn-reload">
+             <i class="fa fa-plus">
+             </i> Perbarui Harga</button>
          </div>
          <div class="col-md-3">
-           <div class="input-group">
+           <!-- <div class="input-group">
            <input type="text" class="form-control tanggal_berlaku datepicker" data-date-format="yyyy/mm/dd" placeholder="yyyy/mm/dd">
            <span class="input-group-btn">
              <button class="btn btn-success btn-view btn-reload set_tanggal" type="submit" id="btn-reload">
                <i class="fa fa-refresh">
                </i></button>
            </span>
-           </div><!-- /input-group -->
+           </div> -->
          </div>
        </div>
      <br>
@@ -99,15 +102,26 @@ table {
              <thead>
                <tr>
                  <th>No.</th>
+                 <th>No Rekening</th>
+                 <th>Nama</th>
+                 <th>Wilayah</th>
+                 <th>Lokasi</th>
+                 <th>Harga A</th>
+                 <th>Harga B</th>
+                 <th>Berlaku</th>
+                 <th>Berakhir</th>
+                 <th></th>
+                 <!-- <th>No.</th>
                  <th style="padding-right:100px;">No Rekening</th>
                  <th style="padding-right:100px;">Nama</th>
                  <th style="padding-right:100px;">Wilayah</th>
                  <th style="padding-right:100px;">Lokasi</th>
                  <th style="padding-right:100px;">Harga A</th>
                  <th style="padding-right:100px;">Harga B</th>
+                 <th style="padding-right:100px;">Harga C</th>
                  <th style="padding-right:100px;">Berlaku</th>
                  <th style="padding-right:100px;">Berakhir</th>
-                 <th style="padding-right:130px;"></th>
+                 <th style="padding-right:130px;"></th> -->
                </tr>
              </thead>
              <tbody id="zone_data">
@@ -146,7 +160,7 @@ table {
    <div class="modal-content">
      <div class="modal-header">
        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-       <h4 class="modal-title" id="myModalLabel">Penyesuaian Harga Kelapa Bulat</h4>
+       <h4 class="modal-title" id="myModalLabel">Penyesuaian Harga Licin</h4>
      </div>
      <div class="modal-body">
        <table class="table table-bordered table-hover">
@@ -155,6 +169,7 @@ table {
              <th>No.</th>
              <th>Harga Patokan A</th>
              <th>Harga Patokan B</th>
+             <!-- <th>Harga Patokan C</th> -->
              <th>Tanggal Berlaku</th>
              <th>Tanggal Berakhir</th>
            </tr>
@@ -179,7 +194,7 @@ table {
    <div class="modal-content">
      <div class="modal-header">
        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-       <h4 class="modal-title" id="myModalLabel">Tambah Penyesuaian Harga Kelapa Bulat</h4>
+       <h4 class="modal-title" id="myModalLabel">Tambah Penyesuaian Harga Licin</h4>
      </div>
      <div class="modal-body">
        <form action="javascript:download();" class="fDataHarga" id="fDataHarga" name="fDataHarga">
@@ -202,6 +217,13 @@ table {
                <p class="help-block">Isi sesuai kartu identitas anda.</p>
              </div>
            </div>
+           <!-- <div class="col-md-4">
+             <div class="form-group">
+               <label for="exampleInputEmail1">Harga Patokan C</label>
+               <input autocomplete="off" class="form-control HARGA_PATOKAN_C" id="HARGA_PATOKAN_C" name="HARGA_PATOKAN_C" placeholder="" type="text">
+               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+             </div>
+           </div> -->
            <div class="col-md-4">
              <div class="form-group">
                <label for="exampleInputEmail1">Tanggal Berlaku</label>
@@ -230,7 +252,81 @@ table {
  </div>
 </div>
 </div>
+
+
+<div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg modalPerbaruiHarga" role="dialog" tabindex="-1">
+ <div class="modal-dialog modal-large" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+       <h4 class="modal-title" id="myModalLabel">Perbarui Harga Licin</h4>
+     </div>
+     <div class="modal-body">
+       <form action="javascript:download();" class="fDataPerbaruiHarga" id="fDataPerbaruiHarga" name="fDataPerbaruiHarga">
+         <div class="row">
+           <input autocomplete="off" class="form-control MATERIAL" id="MATERIAL" name="MATERIAL" placeholder="" value="13" type="hidden">
+           <input autocomplete="off" class="form-control JENIS_MATERIAL" id="JENIS_MATERIAL" name="JENIS_MATERIAL" placeholder="" value="LICIN" type="hidden">
+           <div class="col-md-4">
+             <div class="form-group">
+               <label for="exampleInputEmail1">Harga Patokan A</label>
+               <input autocomplete="off" class="form-control HARGA_PATOKAN_A" id="HARGA_PATOKAN_A" name="HARGA_PATOKAN_A" placeholder="" type="text">
+               <p class="help-block QUALITED_WARNING text-danger"></p>
+             </div>
+           </div>
+           <div class="col-md-4">
+             <div class="form-group">
+               <label for="exampleInputEmail1">Harga Patokan B</label>
+               <input autocomplete="off" class="form-control HARGA_PATOKAN_B" id="HARGA_PATOKAN_B" name="HARGA_PATOKAN_B" placeholder="" type="text">
+               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+             </div>
+           </div>
+           <!-- <div class="col-md-4">
+             <div class="form-group">
+               <label for="exampleInputEmail1">Harga Patokan C</label>
+               <input autocomplete="off" class="form-control HARGA_PATOKAN_C" id="HARGA_PATOKAN_C" name="HARGA_PATOKAN_C" placeholder="" type="text">
+               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+             </div>
+           </div> -->
+           <div class="col-md-4">
+             <div class="form-group">
+               <label for="exampleInputEmail1">Tanggal Berlaku</label>
+               <input autocomplete="off" class="form-control datepicker QUALITED_HARGA_TANGGAL_BERLAKU" data-date-format="yyyy/mm/dd" id="QUALITED_HARGA_TANGGAL_BERLAKU" name="QUALITED_HARGA_TANGGAL_BERLAKU" type="text" value="">
+               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+             </div>
+           </div>
+           <div class="col-md-4">
+             <div class="form-group">
+               <label for="exampleInputEmail1">Tanggal Berakhir</label>
+             <input autocomplete="off" class="form-control datepicker QUALITED_HARGA_TANGGAL_BERAKHIR" data-date-format="yyyy/mm/dd" id="QUALITED_HARGA_TANGGAL_BERAKHIR" name="QUALITED_HARGA_TANGGAL_BERAKHIR" type="text" value="">
+               <p class="help-block">Isi sesuai kartu identitas anda.</p>
+             </div>
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="col-md-12">
+             <div class="form-group">
+               <button class="btn btn-success btn-sm FormKirimPerbaruiHarga">Simpan</button>
+             </div>
+           </div>
+         </div>
+       </form>
+   </div>
+ </div>
+</div>
+</div>
+
+
 <script>
+$(function() {
+  $('a.sidebar-toggle').click()
+});
+
+$('.perbarui_harga').on('click', function()
+{
+	$(".modalPerbaruiHarga").modal('show');
+});
+
 $('.set_tanggal').on('click', function(){
  var tanggal_berlaku = $('.tanggal_berlaku').val()
  $('.set_tanggal_berlaku').val(tanggal_berlaku)
@@ -251,7 +347,6 @@ function supplier_list(curPage)
    }
  }
  var filter = $("#form_filter").serialize();
- console.log(filter);
  $.ajax({
    type: 'POST',
    url: refseeAPI,
@@ -267,7 +362,7 @@ function supplier_list(curPage)
        });
        for (i = 0; i < data.result.length; i++)
        {
-         console.log(data.result[i].STATUS_QUALITED)
+         console.log(data.respon.text_msg)
          if (data.result[i].STATUS_QUALITED == 'EMPTY'){
            var tr = ""
            var harga_patokan_a = "<input autocomplete='off' class='form-control HARGA_PATOKAN_A_" + data.result[i].RMP_MASTER_PERSONAL_ID + "' id='HARGA_PATOKAN_A_" + data.result[i].RMP_MASTER_PERSONAL_ID + "' name='HARGA_PATOKAN_A_" + data.result[i].RMP_MASTER_PERSONAL_ID + "' placeholder='' type='text'><p class='help-block" + data.result[i].RMP_MASTER_PERSONAL_ID + " text-danger'></p>"
@@ -513,6 +608,34 @@ console.log(form)
      {
        $(".modalTambahHarga").modal('hide');
        alert("Penyesuaian Harga Tersimpan")
+       supplier_list('1');
+     }
+     else if (data.respon.pesan == "gagal")
+     {
+       console.log(data.respon.text_msg);
+       alert("Gagal Menyimpan");
+     }
+   }, //end success
+   error: function(x, e)
+   {
+     console.log("Error Ajax QUALITED");
+   } //end error
+ });
+})
+
+$(".FormKirimPerbaruiHarga").on('click', function(){
+var form = $("#fDataPerbaruiHarga").serialize();
+console.log(form)
+ $.ajax({
+   type: 'POST',
+   url: refseeAPI,
+   dataType: 'json',
+   data: 'ref=perbarui_harga&' + form ,
+   success: function(data) {
+     if (data.respon.pesan == "sukses")
+     {
+       console.log(data.respon.text_msg);
+       $(".modalPerbaruiHarga").modal('hide');
        supplier_list('1');
      }
      else if (data.respon.pesan == "gagal")

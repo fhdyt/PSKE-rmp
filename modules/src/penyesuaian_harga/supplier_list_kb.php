@@ -77,7 +77,8 @@ foreach($result_a as $r)
                   AND RMP_PENYESUAIAN_HARGA_KB_JENIS_MATERIAL='".$input['jenis_material']."'
                   AND ((RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU <= '".$tanggal."' AND RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR >='".$tanggal."')
                   OR (RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU <= '".$tanggal."' AND RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR='0000-00-00'))
-                  AND RMP_MASTER_PERSONAL_ID='".$r['RMP_MASTER_PERSONAL_ID']."'";
+                  AND RMP_MASTER_PERSONAL_ID='".$r['RMP_MASTER_PERSONAL_ID']."'
+                  AND RECORD_STATUS='A'";
 
         $this->MYSQL = new MYSQL();
         $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;

@@ -38,7 +38,36 @@ $result_a = $this->MYSQL->data();
 $no = $posisi + 1;
 foreach($result_a as $key => $value)
 {
-	
+  $this->MYSQL = new MYSQL();
+  $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+  $this->MYSQL->queri = "SELECT * FROM RMP_PENYESUAIAN_HARGA_KB
+  												WHERE RMP_MASTER_PERSONAL_ID='" . $result_a[$key]['RMP_MASTER_PERSONAL_ID'] . "'
+  												AND RMP_MASTER_MATERIAL_ID='" . $input['MATERIAL'] . "'
+  												AND RMP_PENYESUAIAN_HARGA_KB_JENIS_MATERIAL='" . $input['JENIS_MATERIAL'] . "'
+  												AND RECORD_STATUS='A'
+  												ORDER BY RMP_PENYESUAIAN_HARGA_KB_INDEX DESC LIMIT 1 ";
+  $result_ab = $this->MYSQL->data() [0];
+  $sisa = $result_ab['RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU'];
+  $id = $result_ab['RMP_PENYESUAIAN_HARGA_KB_ID'];
+  if(empty($result_ab))
+  {
+  	//$tanggal_berakhir = "";
+  }
+  else
+  {
+  	$data_detail3 = array(
+    	'RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR' => $input['QUALITED_HARGA_TANGGAL_BERLAKU'],
+    );
+    $this->MYSQL = new MYSQL;
+    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+    $this->MYSQL->tabel = "RMP_PENYESUAIAN_HARGA_KB";
+    $this->MYSQL->record = $data_detail3;
+    $this->MYSQL->dimana = "where RMP_PENYESUAIAN_HARGA_KB_ID='".$id."' AND RECORD_STATUS='A'";
+    $this->MYSQL->ubah();
+
+  	//$tanggal_berakhir = $result_a['RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU'];;
+  }
+
 	$data_detail2 = array(
 		'RMP_PENYESUAIAN_HARGA_KB_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
 	  'RMP_MASTER_PERSONAL_ID' => $result_a[$key]['RMP_MASTER_PERSONAL_ID'],

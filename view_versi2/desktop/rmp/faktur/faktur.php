@@ -543,6 +543,7 @@ $('.lihat_faktur').on('click', function()
 	$(".modalLihatFaktur").modal('show');
   lihat_faktur()
 });
+
 $(function() {
   $('a.sidebar-toggle').click()
 });
