@@ -164,6 +164,26 @@ table {
        <h4 class="modal-title" id="myModalLabel">Penyesuaian Harga Kelapa Bulat</h4>
      </div>
      <div class="modal-body">
+       <!-- Detail -->
+       <div class="row">
+         <div class="col-md-4">
+           <table class="table">
+             <tr>
+               <td><b>Nama</b></td>
+               <td> : </td>
+               <td><p class="detail_nama"></p></td>
+             </tr>
+             <tr>
+               <td><b>Rekening Relasi</b></td>
+               <td> : </td>
+               <td><p class="detail_rekening_relasi"></p></td>
+             </tr>
+           </table>
+         </div>
+         <div class="col-md-8">
+         </div>
+       </div>
+       <!-- End Detail -->
        <table class="table table-bordered table-hover">
          <thead>
            <tr>
@@ -198,6 +218,26 @@ table {
        <h4 class="modal-title" id="myModalLabel">Tambah Penyesuaian Harga Kelapa Bulat</h4>
      </div>
      <div class="modal-body">
+       <!-- Detail -->
+       <div class="row">
+         <div class="col-md-4">
+           <table class="table">
+             <tr>
+               <td><b>Nama</b></td>
+               <td> : </td>
+               <td><p class="detail_nama"></p></td>
+             </tr>
+             <tr>
+               <td><b>Rekening Relasi</b></td>
+               <td> : </td>
+               <td><p class="detail_rekening_relasi"></p></td>
+             </tr>
+           </table>
+         </div>
+         <div class="col-md-8">
+         </div>
+       </div>
+       <!-- End Detail -->
        <form action="javascript:download();" class="fDataHarga" id="fDataHarga" name="fDataHarga">
          <div class="row">
            <input autocomplete="off" class="form-control MATERIAL" id="MATERIAL" name="MATERIAL" placeholder="" value="12" type="hidden">
@@ -382,11 +422,11 @@ function supplier_list(curPage)
            var berlaku = data.result[i].TANGGAL_BERLAKU
            var berakhir = data.result[i].TANGGAL_BERAKHIR
            var btn = "<button class='btn btn-danger hapus_harga btn-sm' ID_KUALITET_HARGA='" + data.result[i].ID_PENYESUAIAN_HARGA + "'><i class='fa fa-trash' aria-hidden='true'></i></button>"
-           var btn_add = "<button class='btn btn-primary tambah_harga btn-sm' SUPPLIER_ID='" + data.result[i].RMP_MASTER_PERSONAL_ID + "'><i class='fa fa-plus' aria-hidden='true'></i></button>"
+           var btn_add = "<button class='btn btn-primary tambah_harga btn-sm' SUPPLIER_ID='" + data.result[i].RMP_MASTER_PERSONAL_ID + "' SUPPLIER_NAMA='" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "' SUPPLIER_REKENING='" + data.result[i].RMP_REKENING_RELASI + "'><i class='fa fa-plus' aria-hidden='true'></i></button>"
 
          }
 
-         var btn_list = "<button class='btn btn-default list_harga btn-sm' ID_SUPPLIER='" + data.result[i].RMP_MASTER_PERSONAL_ID + "'><i class='fa fa-list' aria-hidden='true'></i></button>"
+         var btn_list = "<button class='btn btn-default list_harga btn-sm' ID_SUPPLIER='" + data.result[i].RMP_MASTER_PERSONAL_ID + "' SUPPLIER_NAMA='" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "' SUPPLIER_REKENING='" + data.result[i].RMP_REKENING_RELASI + "'><i class='fa fa-list' aria-hidden='true'></i></button>"
 
          $("tbody#zone_data").append("<tr class='"+tr+"'  detailLogId='" + data.result[i].RMP_MASTER_PERSONAL_ID + "'>" +
          "<td >" + data.result[i].NO + ".</td>" +
@@ -531,6 +571,10 @@ function hapus_penyesuaian_harga(id)
 $("tbody#zone_data").on('click', '.list_harga', function(){
  var id = $(this).attr("ID_SUPPLIER")
  console.log(id)
+ var nama = $(this).attr("SUPPLIER_NAMA")
+ var rekening = $(this).attr("SUPPLIER_REKENING")
+ $('p.detail_nama').html(nama)
+ $('p.detail_rekening_relasi').html(rekening)
  $('.modalQualitedHarga').modal('show')
  qualited_harga_list(id)
 })
@@ -596,8 +640,12 @@ function onchange_qualited(att){
 
 $("tbody#zone_data").on('click', '.tambah_harga', function(){
  var id = $(this).attr("SUPPLIER_ID")
+ var nama = $(this).attr("SUPPLIER_NAMA")
+ var rekening = $(this).attr("SUPPLIER_REKENING")
  console.log(id)
  $('.ID_SUPPLIER').val(id)
+ $('p.detail_nama').html(nama)
+ $('p.detail_rekening_relasi').html(rekening)
  $(".modalTambahHarga").modal('show');
 })
 
@@ -632,6 +680,8 @@ console.log(form)
 $(".FormKirimPerbaruiHarga").on('click', function(){
 var form = $("#fDataPerbaruiHarga").serialize();
 console.log(form)
+$(this).html("Loading...")
+$(this).attr("disabled", true);
  $.ajax({
    type: 'POST',
    url: refseeAPI,
@@ -641,6 +691,8 @@ console.log(form)
      if (data.respon.pesan == "sukses")
      {
        console.log(data.respon.text_msg);
+       $(".FormKirimPerbaruiHarga").html("Simpan")
+       $(".FormKirimPerbaruiHarga").attr("disabled", false);
        $(".modalPerbaruiHarga").modal('hide');
        supplier_list('1');
      }

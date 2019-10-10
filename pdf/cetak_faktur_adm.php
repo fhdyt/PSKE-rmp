@@ -88,7 +88,6 @@ $cek_tambang =$respon['cek_tambang'];
 $cek_biaya =$respon['cek_biaya'];
 
 $total_jumlah = $kelapa+$tambang+$biaya;
-$terbilang=terbilang($total_jumlah);
 if($diterima == 'Y')
 {
 	$check_diterima = 'checked.png';
@@ -425,7 +424,6 @@ tr {
 		</tr>
 	</table>
 	<br>
-<p align="right"><i><b>Terbilang :</b> '.ucwords($terbilang).' Rupiah</i></p>
 
 	<br>
 	<table class="table2">
