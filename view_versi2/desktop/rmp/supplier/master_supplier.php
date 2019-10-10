@@ -109,7 +109,7 @@ table-detail {
 
         }?>
                   </select>
-                  <p class="help-block">Filter Material.</p>
+                  <p class="help-block">Rekening Relasi.</p>
                 </form>
           </div>
 				</div><!--/.row-->
@@ -342,7 +342,7 @@ table-detail {
 							</table>
 	          </div>
 	        </div> -->
-							<div class="box box-primary">
+							<!-- <div class="box box-primary">
 	          <div class="box-header with-border">
 	            <h3 class="box-title"><i class="fa fa-gavel" aria-hidden="true"></i> Toleransi Mutu</h3>
 	          </div>
@@ -368,8 +368,7 @@ table-detail {
 								</tbody>
 							</table>
 	          </div>
-	          <!-- /.box-body -->
-	        </div>
+	        </div> -->
 							<div class="box box-primary">
 	          <div class="box-header with-border">
 	            <h3 class="box-title"><i class="fa fa-address-book-o" aria-hidden="true"></i> Kontak</h3>
@@ -585,7 +584,7 @@ $("tbody").on('click','a.lihat', function()
 	qualited_harga_list(id_supplier);
 	keluarga_list(id_supplier);
 	dokumen_list(id_supplier);
-  toleransi_mutu_list(id_supplier);
+  //toleransi_mutu_list(id_supplier);
 
 	$(".modalPersonalFile").modal('show');
 });

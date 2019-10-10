@@ -56,6 +56,15 @@ font-size: 15px;
 		<div class="list-group">
 			<div class="list-group-item">
 				<div class="row">
+          <?php
+          $b1 = "2.4327";
+          $b2 = "2.5543";
+          $b3 = "2.6123";
+          echo " ".$b1." Dibulatkan menjadi ".round($b1)."<br>";
+          echo " ".$b2." Dibulatkan menjadi ".round($b2)."<br>";
+          echo " ".$b3." Dibulatkan menjadi ".round($b3)."<br>";
+
+           ?>
 					<div class="col-md-8">
 						<h3><i class="fa fa-calculator"></i>Faktur Cabang</h3>
 						<hr>

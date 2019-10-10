@@ -227,13 +227,13 @@ foreach($data_a as $r)
     $r['NO'] = $no;
     $r['BRUTO_A_SUPPLIER'] = round($qty_pske_a / $total_timbang_a_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO']) ;
     $r['NETTO_A_SUPPLIER'] = $r['BRUTO_A_SUPPLIER']-$r['RMP_REKAP_FC_DETAIL_POTONGAN'] ;
-    $r['TAMBANG'] = number_format($tambang*$r['NETTO_A_SUPPLIER']);
+    $r['TAMBANG'] = number_format($tambang*$r['NETTO_A_SUPPLIER'],0,",",".");
     $r['TAMBANGA'] = $tambang*$r['NETTO_A_SUPPLIER'];
-    $r['BIAYA'] = number_format($biaya*$r['BRUTO_A_SUPPLIER']);
+    $r['BIAYA'] = number_format($biaya*$r['BRUTO_A_SUPPLIER'],0,",",".");
     $r['BIAYAA'] =$biaya*$r['BRUTO_A_SUPPLIER'];
-    $r['RUPIAH_A'] = number_format(($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER']);
+    $r['RUPIAH_A'] = number_format(($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER'],0,",",".");
     $r['RUPIAH_AA'] = ($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER'];
-    $r['TOTAL_RUPIAH_A'] = number_format(($tambang*$r['NETTO_A_SUPPLIER'])+($biaya*$r['BRUTO_A_SUPPLIER'])+(($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER']));
+    $r['TOTAL_RUPIAH_A'] = number_format(($tambang*$r['NETTO_A_SUPPLIER'])+($biaya*$r['BRUTO_A_SUPPLIER'])+(($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER']),0,",",".");
     $r['TOTAL_RUPIAH_AA'] = ($tambang*$r['NETTO_A_SUPPLIER'])+($biaya*$r['BRUTO_A_SUPPLIER'])+(($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER']);
     $r['RP_KG_A'] = round($r['TOTAL_RUPIAH_AA']/$r['NETTO_A_SUPPLIER']);
 
@@ -259,26 +259,26 @@ if (empty($result_a))
     $this->callback['respon']['pesan'] = "sukses";
     $this->callback['respon']['text_msg'] = print_r($total_timbang_cabang[0]['RUPIAH'], true);
     $this->callback['result_a']= $result_a;
-    $this->callback['total_rupiah_a']= number_format($total_rupiah_a);
+    $this->callback['total_rupiah_a']= number_format($total_rupiah_a,0,",",".");
     $this->callback['total_bruto_a']= $total_bruto_a;
     $this->callback['total_potongan_a']= $total_potongan_a;
     $this->callback['total_netto_a']= $total_netto_a;
-    $this->callback['total_tambang_a']= number_format($total_tambang_a);
-    $this->callback['total_biaya_a']= number_format($total_biaya_a);
-    $this->callback['total_seluruh_a']= number_format($total_seluruh_a);
+    $this->callback['total_tambang_a']= number_format($total_tambang_a,0,",",".");
+    $this->callback['total_biaya_a']= number_format($total_biaya_a,0,",",".");
+    $this->callback['total_seluruh_a']= number_format($total_seluruh_a,0,",",".");
 
 
     $this->callback['note_kg_a']= $total_netto_a;
-    $this->callback['note_rp_kg_a']= number_format($total_rupiah_a/$total_netto_a);
-    $this->callback['note_rupiah_a']= number_format($total_rupiah_a);
+    $this->callback['note_rp_kg_a']= number_format($total_rupiah_a/$total_netto_a,0,",",".");
+    $this->callback['note_rupiah_a']= number_format($total_rupiah_a,0,",",".");
 
     $this->callback['note_kg_b']= $total_netto_b;
-    $this->callback['note_rp_kg_b']= number_format($total_rupiah_b/$total_netto_b);
-    $this->callback['note_rupiah_b']= number_format($total_rupiah_b);
+    $this->callback['note_rp_kg_b']= number_format($total_rupiah_b/$total_netto_b,0,",",".");
+    $this->callback['note_rupiah_b']= number_format($total_rupiah_b,0,",",".");
 
     $this->callback['note_kg_c']= $total_netto_c;
-    $this->callback['note_rp_kg_c']= number_format($total_rupiah_c/$total_netto_c);
-    $this->callback['note_rupiah_c']= number_format($total_rupiah_c);
+    $this->callback['note_rp_kg_c']= number_format($total_rupiah_c/$total_netto_c,0,",",".");
+    $this->callback['note_rupiah_c']= number_format($total_rupiah_c,0,",",".");
     }
 
 ?>

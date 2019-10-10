@@ -90,7 +90,7 @@ foreach($data_c as $r)
     $r['BRUTO_C_SUPPLIER'] = round($qty_pske_c / $total_timbang_c_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO']) ;
     $r['NETTO_C_SUPPLIER'] = $r['BRUTO_C_SUPPLIER']-$r['RMP_REKAP_FC_DETAIL_POTONGAN'] ;
     $r['RP_KG_C'] = $result_acd[0]['RMP_PENYESUAIAN_HARGA_KB_C'];
-    $r['RUPIAH_C'] = number_format($r['RP_KG_C']*$r['NETTO_C_SUPPLIER']);
+    $r['RUPIAH_C'] = number_format($r['RP_KG_C']*$r['NETTO_C_SUPPLIER'],0,",",".");
     $total_bruto += $r['BRUTO_C_SUPPLIER'];
     $total_potongan += $r['RMP_REKAP_FC_DETAIL_POTONGAN'];
     $total_netto += $r['NETTO_C_SUPPLIER'];
@@ -110,7 +110,7 @@ if (empty($result_a))
     $this->callback['respon']['pesan'] = "sukses";
     $this->callback['respon']['text_msg'] = print_r($result_c, true);
     $this->callback['result_c']= $result_c;
-    $this->callback['total_rupiah']= number_format($total_rupiah);
+    $this->callback['total_rupiah']= number_format($total_rupiah,0,",",".");
     $this->callback['total_bruto']= $total_bruto;
     $this->callback['total_potongan']= $total_potongan;
     $this->callback['total_netto']= $total_netto;
