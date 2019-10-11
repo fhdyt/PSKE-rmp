@@ -58,7 +58,7 @@
       	<div class="col-md-12">
           <div class="row">
             <div class="col-md-8">
-              <button class="btn btn-warning lihat_faktur btn-sm" type="button"><i class="fa fa-list-ol" aria-hidden="true"></i> Faktur</button>
+              <a class="btn btn-warning lihat_faktur btn-sm" type="button"><i class="fa fa-list-ol" aria-hidden="true"></i> Faktur</a>
               <a class="btn btn-success buat_faktur_baru btn-sm" type="button" style="display:none;" href="?show=rmp/faktur"><i class="fa fa-plus" aria-hidden="true"></i> Buat Faktur Baru</a>
               <a class="btn btn-default cetak_faktur btn-sm" type="button" style="display:none;"><i class="fa fa-print" aria-hidden="true"></i> Cetak Faktur</a>
             </div>
@@ -138,6 +138,7 @@
                 <input autocomplete="off" class="form-control ID_FAKTUR" id="ID_FAKTUR" name="ID_FAKTUR" placeholder="ID_FAKTUR" type="hidden" >
                 <input autocomplete="off" class="form-control NO_FAKTUR" id="NO_FAKTUR" name="NO_FAKTUR" placeholder="NO_FAKTUR" type="hidden" >
                 <input autocomplete="off" class="form-control JENIS_KELAPA" id="JENIS_KELAPA" name="JENIS_KELAPA" placeholder="JENIS_KELAPA" type="hidden" >
+                <input autocomplete="off" class="form-control KAPAL_FAKTUR" id="KAPAL_FAKTUR" name="KAPAL_FAKTUR" placeholder="KAPAL_FAKTUR" type="hidden" >
                 <p class="help-block">Nama Supplier Pada Nota Timbang.</p>
               </div>
 
@@ -611,6 +612,7 @@ function onchange_pilih_nota()
             // value: data.result[i].RMP_HASIL_TIMBANG_NO_NOTA,
             text: data.result[i].notr,
             value: data.result[i].notr,
+            kapal: data.result[i].kapal,
             data:
             {
               subtext: ''
@@ -809,6 +811,7 @@ function hasil_timbang(no_nota)
       if (data.respon.pesan == "sukses")
       {
         $("tbody#zone_data").empty();
+        $('.KAPAL_FAKTUR').val(data.kapal)
         for (i = 0; i < data.result.length; i++)
         {
           //console.log(data.result[i].nama_relasi)
@@ -836,7 +839,7 @@ function hasil_timbang(no_nota)
           {
             // var a = "<a class='btn btn-default btn-sm kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_HASIL_TIMBANG_ID +  "' NO_NOTA='" + data.result[i].RMP_HASIL_TIMBANG_NO_NOTA +  "'><i aria-hidden='true' class='fa fa-external-link'></i></a>"
             // var tr = ""
-            var a = "<button class='btn btn-default btn-sm kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].id +  "' NO_NOTA='" + data.result[i].notr +  "'   BRUTO='" + data.result[i].gross + "' PONTON='" + data.result[i].id_timbang + "' JENIS_KELAPA='" + data.result[i].jenis_kelapa + "'><i aria-hidden='true' class='fa fa-angle-double-right'></i></button>"
+            var a = "<button class='btn btn-default btn-xs kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].id +  "' NO_NOTA='" + data.result[i].notr +  "'   BRUTO='" + data.result[i].gross + "' PONTON='" + data.result[i].id_timbang + "' JENIS_KELAPA='" + data.result[i].jenis_kelapa + "'><i aria-hidden='true' class='fa fa-angle-double-right'></i></button>"
             var tr= ""
           }
 
@@ -869,7 +872,7 @@ function hasil_timbang(no_nota)
 
 $("tbody#zone_data").on('click','button.kirim_hasil_timbang', function()
 {
-  $("a.kirim_hasil_timbang").attr("style","display:none;")
+  //$("button.kirim_hasil_timbang").attr("style","display:none;")
   var id_timbang = $(this).attr('ID_HASIL_TIMBANG');
   var no_nota = $(this).attr('NO_NOTA');
   var jenis_kelapa = $(this).attr('JENIS_KELAPA');
@@ -877,8 +880,6 @@ $("tbody#zone_data").on('click','button.kirim_hasil_timbang', function()
   var data = 'ID_TIMBANG='+id_timbang+'&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur;
   $(".JENIS_KELAPA").val(jenis_kelapa);
     kirim_hasil_timbang(data)
-    var no_nota = $('.NO_NOTA').val();
-    hasil_timbang(no_nota);
     var no_faktur = $('.NO_FAKTUR').val()
     //console.log("NOMOR FAKTUR::::::::::::::::::"+no_faktur)
 
@@ -898,7 +899,10 @@ function kirim_hasil_timbang(data)
         //console.log(data.respon.text_msg);
         $(".NO_FAKTUR").val(data.respon.no_faktur)
         $("p.NO_FAKTUR").html(data.respon.no_faktur)
-        faktur_list(data.respon.text_msg);
+        //faktur_list(data.respon.text_msg);
+        var no_nota = $('.NO_NOTA').val();
+        hasil_timbang(no_nota);
+        faktur_list(no_nota)
       }
       else if (data.respon.pesan == "gagal")
       {
@@ -934,12 +938,12 @@ function faktur_list(no_nota)
           }
           else if(data.result[i].RECORD_STATUS=='A')
           {
-            var a = "<button class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-angle-double-left'></i></button>"
+            var a = "<button class='btn btn-default btn-xs kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-angle-double-left'></i></button>"
           }
           else
           {
             // var a = "<button class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_HASIL_TIMBANG_ID +  "' NO_NOTA='" + data.result[i].RMP_HASIL_TIMBANG_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-external-link'></i></button>"
-            var a = "<button class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-angle-double-left'></i></button>"
+            var a = "<button class='btn btn-default btn-xs kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-angle-double-left'></i></button>"
           }
           $("tbody#zone_data_faktur").append("<tr class='default'  detailLogId='" + data.result[i].ICD_BARANG_KODE_INVENTORI + "'>" +
             "<td >" + data.result[i].NO + ".</td>" +
@@ -1074,13 +1078,20 @@ function kembali_hasil_timbang(data)
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {
-        //console.log(data.respon.text_msg);
+        var no_nota = $('.NO_NOTA').val()
+        hasil_timbang(no_nota)
+        faktur_list(no_nota)
 
       }
       else if (data.respon.pesan == "gagal")
       {
         //console.log(data.respon.text_msg);
         alert("Gagal Menghapus");
+      }
+      else if (data.respon.pesan == "gagal_purchaser")
+      {
+        //console.log(data.respon.text_msg);
+        alert("Faktur Telah Diproses oleh Purchaser");
       }
     }, //end success
     error: function(x, e)
@@ -1092,7 +1103,7 @@ function kembali_hasil_timbang(data)
 
 $("tbody#zone_data_faktur").on('click','button.kembali_hasil_timbang', function()
 {
-  $("button.kembali_hasil_timbang").attr("style","display:none;")
+  //$("button.kembali_hasil_timbang").attr("style","display:none;")
   var id_timbang = $(this).attr('ID_HASIL_TIMBANG');
   var no_nota = $(this).attr('NO_NOTA');
   var no_faktur = $('.NO_FAKTUR').text();
@@ -1105,10 +1116,7 @@ $("tbody#zone_data_faktur").on('click','button.kembali_hasil_timbang', function(
   else
   {
     kembali_hasil_timbang(data)
-    var no_nota = $('.NO_NOTA').val()
-    hasil_timbang(no_nota)
-    //var no_faktur = $('.NO_FAKTUR').text()
-    faktur_list(no_nota)
+
   }
 })
 
@@ -1429,7 +1437,7 @@ function lihat_faktur()
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "</td>" +
 					"<td>" + nama +  "</td>" +
 					"<td>" + data.result[i].ENTRI_WAKTU +  "</td>" +
-					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Edit</a></td>" +
+					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Lihat</a></td>" +
 					"</tr>");
         }
       } else if (data.respon.pesan == "gagal") {
@@ -1444,6 +1452,7 @@ function lihat_faktur()
 function filter_tanggal_list(){
   lihat_faktur()
 }
+
 function edit_faktur(d2)
 {
   console.log("edit_faktur")
@@ -1486,8 +1495,6 @@ function edit_faktur(d2)
         $(".CATATAN_PURCHASER").val(data.result[0].RMP_FAKTUR_CATATAN_PURCHASER)
         $(".CATATAN_SUPPLIER").val(data.result[0].RMP_FAKTUR_CATATAN_SUPPLIER)
         $(".NAMA_PETANI").val(data.result[0].RMP_FAKTUR_NAMA_SUB)
-
-
 
         if(data.result[0].RMP_FAKTUR_CEK_DITERIMA =='Y')
         {

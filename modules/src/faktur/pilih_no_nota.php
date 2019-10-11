@@ -18,7 +18,12 @@ $this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
 // 					 RMP_HASIL_TIMBANG_TANGGAL='".$input['TANGGAL_NOTA']."' AND
 // 					  RECORD_STATUS='A' GROUP BY RMP_HASIL_TIMBANG_NO_NOTA";
 
-$this->MYSQL->queri="select * from pkb.nota_".$tanggalnota." WHERE notr LIKE '%".$input['q']."%' GROUP BY notr";
+$this->MYSQL->queri="select * from pkb.master_".$tanggalnota." AS M
+													LEFT JOIN
+													pkb.nota_".$tanggalnota." AS N
+													ON
+													M.notr=N.notr
+													WHERE N.notr LIKE '%".$input['q']."%' GROUP BY N.notr";
 
 $result_a=$this->MYSQL->data();
 $no=1;

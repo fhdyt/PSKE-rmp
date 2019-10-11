@@ -26,12 +26,23 @@ $tanggalnota = date("mY");
 $sql = "SELECT * FROM
 pkb.nota_".$tanggalnota." AS N
 LEFT JOIN
-RMP_FAKTUR_DETAIL AS F ON N.id=F.id_nota WHERE N.notr='".$input['NO_NOTA']."' ".$filter_a."";
+RMP_FAKTUR_DETAIL AS F ON N.id=F.id_nota AND NOT F.RECORD_STATUS='D' WHERE N.notr='".$input['NO_NOTA']."'".$filter_a." GROUP BY N.id";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql ;
 $result_a = $this->MYSQL->data();
 
+$sql_kapal = "select * from pkb.master_".$tanggalnota." AS M
+													LEFT JOIN
+													pkb.nota_".$tanggalnota." AS N
+													ON
+													M.notr=N.notr
+													WHERE N.notr='".$input['NO_NOTA']."' GROUP BY N.notr";
+$this->MYSQL = new MYSQL();
+$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+$this->MYSQL->queri = $sql_kapal ;
+$result_kapal = $this->MYSQL->data();
+$kapal = $result_kapal[0]['kapal'];
 // -- >>
 
 $no = $posisi + 1;
@@ -57,6 +68,7 @@ if (empty($result_a))
     $this->callback['respon']['text_msg'] = "OK..";
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
+    $this->callback['kapal'] = $kapal;
 
     }
 
