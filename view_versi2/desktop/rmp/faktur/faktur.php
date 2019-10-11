@@ -124,14 +124,14 @@
 
             <div class="form_faktur_hasil_timbang">
 
-            <div class="col-md-4">
+            <div class="col-md-3">
             <div class="form-group">
               <label for="exampleInputEmail1">Nomor Nota</label> <select class="NO_NOTA selectpicker with-ajax-personal form-control" data-live-search="true" id="NO_NOTA" name="NO_NOTA" onchange="no_nota()">
               </select>
               <p class="help-block">Pilih Nomor Nota.</p>
             </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="form-group">
                 <label for="exampleInputEmail1">Nama Nota</label>
                 <input autocomplete="off" class="form-control NAMA_NOTA" id="NAMA_NOTA" name="NAMA_NOTA" type="text" readonly>
@@ -142,11 +142,18 @@
               </div>
 
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="form-group">
               <label for="exampleInputEmail1">Nama Supplier</label><select class="NAMA_SUPPLIER with-ajax-personal form-control" data-live-search="true" id="NAMA_SUPPLIER" name="NAMA_SUPPLIER" onchange="sel_nama_supplier()">
               </select>
               <p class="help-block">Nama Supplier Untuk Faktur.</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nama Petani</label>
+              <input autocomplete="off" class="form-control NAMA_PETANI" id="NAMA_PETANI" name="NAMA_PETANI"  type="text" >
+              <p class="help-block">Nama Petani Untuk Faktur.</p>
             </div>
           </div>
             </div>
@@ -1440,6 +1447,7 @@ function edit_faktur(d2)
         $(".POTONGAN").val(data.result[0].RMP_FAKTUR_POTONGAN)
         $(".CATATAN_PURCHASER").val(data.result[0].RMP_FAKTUR_CATATAN_PURCHASER)
         $(".CATATAN_SUPPLIER").val(data.result[0].RMP_FAKTUR_CATATAN_SUPPLIER)
+        $(".NAMA_PETANI").val(data.result[0].RMP_FAKTUR_NAMA_SUB)
 
 
 

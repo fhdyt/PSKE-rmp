@@ -55,6 +55,7 @@ if(empty($input['ID_FAKTUR']))
 				'RMP_FAKTUR_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
 				'RMP_FAKTUR_NO_FAKTUR' => $input['NO_FAKTUR'],
 				'RMP_MASTER_PERSONAL_ID' => $input['NAMA_SUPPLIER'],
+				'RMP_FAKTUR_NAMA_SUB' => $input['NAMA_PETANI'],
 				'RMP_FAKTUR_TANGGAL' => date("Y-m-d H:i:s"),
 				'RMP_FAKTUR_POTONGAN' => $input['POTONGAN'],
 				'RMP_FAKTUR_JENIS_MATERIAL' => $input['JENIS_KELAPA'],

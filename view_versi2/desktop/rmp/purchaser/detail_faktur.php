@@ -82,6 +82,7 @@ font-size: 12px;
                   <td class="success"><p class="NAMA_SUPPLIER_PURCHASER">
                     <select class="NAMA_SUPPLIER form-control select2" style="width: 100%;" id="NAMA_SUPPLIER" name="NAMA_SUPPLIER">
                       <option value=""></option>
+                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_HIDDEN" id="NAMA_SUPPLIER_HIDDEN" name="NAMA_SUPPLIER_HIDDEN" type="hidden">
                     </select>
                 </p>
                   <input autocomplete="off" class="form-control ID_SUPPLIER" id="ID_SUPPLIER" name="ID_SUPPLIER" type="hidden">
@@ -296,6 +297,7 @@ function faktur_detail_list(curPage)
 
           $("p.NO_FAKTUR").html(data.resultb[i].RMP_FAKTUR_NO_FAKTUR)
           $("p.NAMA_SUPPLIER").html(supplier)
+          $(".NAMA_SUPPLIER_HIDDEN").val(data.resultb[i].RMP_MASTER_PERSONAL_NAMA)
           //$(".ID_SUPPLIER").val(data.resultb[i].RMP_MASTER_PERSONAL_ID)
           //$("p.NO_REKENING").html("-")
           $("p.TANGGAL_FAKTUR").html(data.resultb[i].TANGGAL)
@@ -415,7 +417,7 @@ function sel_nama_supplier()
     success: function(data) {
       if (data.respon.pesan == "sukses") {
         for (i = 0; i < data.result.length; i++) {
-          if ($("p.NAMA_SUPPLIER").text() == data.result[i].RMP_MASTER_PERSONAL_NAMA)
+          if ($(".NAMA_SUPPLIER_HIDDEN").val() == data.result[i].RMP_MASTER_PERSONAL_NAMA)
           {
             var sel = "selected"
             $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)

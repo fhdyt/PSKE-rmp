@@ -82,6 +82,14 @@ $diterima =$respon['diterima'];
 $inspeksi =$respon['inspeksi'];
 $dipisah =$respon['dipisah'];
 $supplier =$respon['supplier'];
+$supplier_sub =$respon['supplier_sub'];
+if($supplier_sub == "")
+{
+	$nama_supplier = $supplier;
+}
+else {
+	$nama_supplier = $supplier.' / '.$supplier_sub;
+}
 $rekening =$respon['rekening'];
 $tambang =$respon['tambang'];
 $biaya =$respon['biaya'];
@@ -330,7 +338,7 @@ tr {
 						:
 					</td>
 					<td>
-						
+
 					</td>
 				</tr>
 			</table>
@@ -348,7 +356,7 @@ tr {
 			:
 			</td>
 			<td>
-			'.$supplier.'
+			'.$nama_supplier.'
 			</td>
 
 				<td style="padding-left: 300;">

@@ -14,12 +14,9 @@ $posisi = $this->PAGING->cariPosisi($batas, $halaman);
 $input = $params['input_option'];
 
 $sql2="SELECT * FROM RMP_FAKTUR AS F
-LEFT JOIN
-RMP_FAKTUR_PURCHASER AS FR ON F.RMP_FAKTUR_NO_FAKTUR=FR.RMP_FAKTUR_NO_FAKTUR
-LEFT JOIN RMP_MASTER_PERSONAL AS P
-ON FR.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-LEFT JOIN RMP_REKENING_RELASI AS RR
-ON P.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
+LEFT JOIN RMP_FAKTUR_PURCHASER AS FR ON F.RMP_FAKTUR_NO_FAKTUR=FR.RMP_FAKTUR_NO_FAKTUR
+LEFT JOIN RMP_MASTER_PERSONAL AS P ON FR.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
+LEFT JOIN RMP_REKENING_RELASI AS RR ON P.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
 WHERE F.RMP_FAKTUR_ID='".$input['NO_FAKTUR']."'
 AND RR.RMP_REKENING_RELASI_MATERIAL='".$input['MATERIAL']."'
 AND F.RECORD_STATUS='A'
@@ -36,6 +33,7 @@ $inspeksi = $result_ab[0]['RMP_FAKTUR_CEK_100_INSPEKSI'];
 $dipisah = $result_ab[0]['RMP_FAKTUR_CEK_DIPISAH'];
 
 $supplier = $result_ab[0]['RMP_MASTER_PERSONAL_NAMA'];
+$supplier_sub = $result_ab[0]['RMP_FAKTUR_NAMA_SUB'];
 $supplier_id = $result_ab[0]['RMP_MASTER_PERSONAL_ID'];
 $rekening = $result_ab[0]['RMP_REKENING_RELASI'];
 $tambang= $result_ab[0]['RMP_FAKTUR_PURCHASER_TAMBANG'];
@@ -183,6 +181,7 @@ if (empty($result_a))
     $this->callback['inspeksi'] = $inspeksi;
     $this->callback['dipisah'] = $dipisah;
     $this->callback['supplier'] = $supplier;
+    $this->callback['supplier_sub'] = $supplier_sub;
     $this->callback['rekening'] = $rekening;
     $this->callback['tambang'] = $tambang;
     $this->callback['biaya'] = $biaya;
