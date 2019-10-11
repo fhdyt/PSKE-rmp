@@ -118,6 +118,14 @@ font-size: 12px;
                 <td><b>Berat Bruto</b></td>
                 <td><p class="TOTAL_BRUTO"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
+              <tr>
+                <td><b>Potongan</b></td>
+                <td><p class="POTONGAN"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+              </tr>
+              <tr>
+                <td><b>Berat Netto</b></td>
+                <td><p class="TOTAL_NETTO"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+              </tr>
               <tr class="success">
                 <td><b>@Rp</b></td>
                 <td><p class="RP_KG"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
@@ -256,6 +264,9 @@ function faktur_detail_list(curPage)
         $('p.TOTAL_GROSS').html( data.total_gross)
         $('p.TOTAL_TARA').html( data.total_tara)
         $('p.TOTAL_BRUTO').html( data.total_bruto)
+        $('p.POTONGAN').html( data.potongan + " %")
+        var potongan = data.total_bruto*(data.potongan/100)
+        $('p.TOTAL_NETTO').html(Math.round(data.total_bruto-potongan))
         $("tbody#zone_data").empty();
         for (i = 0; i < data.result.length; i++) {
           if(data.result[i].RMP_FAKTUR_CEK_DITERIMA == 'Y')
@@ -470,10 +481,13 @@ $(".simpanHargaPurchaser").on('click', function(){
   var tambang = "TAMBANG=" +$('.INPUT_TAMBANG').val()+ ""
   var biaya = "BIAYA=" +$('.INPUT_BIAYA').val()+ ""
   var id_faktur_purchaser = "ID_FAKTUR_PURCHASER=" +$('.ID_FAKTUR_PURCHASER').val()+ ""
+  var bruto = "TOTAL_BRUTO=" +$('.TOTAL_BRUTO').text()+ ""
+  var potongan = "POTONGAN=" +$('.POTONGAN').text()+ ""
+  var netto = "TOTAL_NETTO=" +$('.TOTAL_NETTO').text()+ ""
 
   var cek_tambang = "CEK_TAMBANG=" +$('.CEK_TAMBANG').is(":checked")+ ""
   var cek_biaya = "CEK_BIAYA=" +$('.CEK_BIAYA').is(":checked")+ ""
-  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + cek_tambang + "&" + cek_biaya + ""
+  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + cek_tambang + "&" + cek_biaya + ""
   console.log(form)
   $.ajax({
     type: 'POST',

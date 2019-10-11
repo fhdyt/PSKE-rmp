@@ -31,6 +31,7 @@ $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql ;
 $result_a = $this->MYSQL->data();
+$no_faktur = $result_a[0]['RMP_FAKTUR_NO_FAKTUR'];
 
 $sql2 = "SELECT * FROM RMP_FAKTUR AS F
         LEFT JOIN PERSONAL AS PERSONAL
@@ -44,6 +45,23 @@ $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql2 ;
 $result_a2 = $this->MYSQL->data();
+
+
+$sql28 = "SELECT * FROM RMP_FAKTUR_PURCHASER
+        WHERE RMP_FAKTUR_NO_FAKTUR='".$no_faktur."' AND RECORD_STATUS='A'";
+
+$this->MYSQL = new MYSQL();
+$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+$this->MYSQL->queri = $sql28 ;
+$result_a28 = $this->MYSQL->data();
+if (empty($result_a28))
+    {
+      $purchaser_proses = "TERSEDIA";
+    }
+  else
+    {
+      $purchaser_proses = "TIDAK TERSEDIA";
+    }
 // -- >>
 
 $no = $posisi + 1;
@@ -75,6 +93,7 @@ if (empty($result_a))
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
     $this->callback['result2'] = $result2;
+    $this->callback['purchaser_proses'] = $purchaser_proses;
 
     }
 

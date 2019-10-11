@@ -176,8 +176,8 @@
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="exampleInputEmail1">Potongan</label> <input autocomplete="off" class="form-control POTONGAN" id="POTONGAN" name="POTONGAN" placeholder="POTONGAN" value="0" type="text">
-                <p class="help-block">Masukkan Potongan.</p>
+                <label for="exampleInputEmail1">Potongan</label> <input autocomplete="off" class="form-control POTONGAN" id="POTONGAN" name="POTONGAN" placeholder="POTONGAN" value="0" type="number">
+                <p class="help-block">Gunakan "." untuk bilangan desimal</p>
               </div>
             </div>
           </div>
@@ -294,7 +294,7 @@
       							</div>
       						</div>
 
-      						<table class="table table-small table-bordered">
+      						<table id="faktur" class="table table-small table-bordered">
       							<thead>
       								<tr>
       									<th>No.</th>
@@ -490,6 +490,16 @@
  				<h4 class="modal-title" id="myModalLabel">Faktur</h4>
  			</div>
  			<div class="modal-body">
+        <div class="row">
+          <div class="col-md-8">
+          </div>
+          <div class="col-md-4">
+            <form id="form_filter" method="POST">
+              <input type="date" id="FILTER_TANGGAL_LIST" class="form-control FILTER_TANGGAL_LIST" name="FILTER_TANGGAL" onchange="filter_tanggal_list()" value="<?php echo date("Y-m-d"); ?>"/>
+                  <p class="help-block">Tanggal.</p>
+              </form>
+          </div>
+        </div>
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
@@ -538,6 +548,7 @@ else {
   $(function()
   {
     edit_faktur(d2)
+    $(".CHANGE_JENIS_FAKTUR").attr("disabled", true)
   })
 
   $(".buat_faktur_baru").removeAttr("style")
@@ -566,9 +577,9 @@ $(function()
 
 function onchange_pilih_nota()
 {
-  console.log('onchange')
+  //console.log('onchange')
   var tanggal = $('.TANGGAL_NOTA').val();
-  console.log(tanggal)
+  //console.log(tanggal)
   var options =
   {
     ajax: {
@@ -618,7 +629,7 @@ function onchange_pilih_nota()
 
 function sel_nama_supplier()
 {
-  console.log("sel_nama_supplier")
+  //console.log("sel_nama_supplier")
   var options =
   {
     ajax: {
@@ -780,7 +791,7 @@ function sel_inspektur_mutu()
 function no_nota()
 {
   var no_nota = $('.NO_NOTA').val();
-  console.log(no_nota)
+  //console.log(no_nota)
   hasil_timbang(no_nota);
   faktur_list(no_nota);
 }
@@ -800,7 +811,7 @@ function hasil_timbang(no_nota)
         $("tbody#zone_data").empty();
         for (i = 0; i < data.result.length; i++)
         {
-          console.log(data.result[i].nama_relasi)
+          //console.log(data.result[i].nama_relasi)
           $('.NAMA_NOTA').val(data.result[i].nama_relasi)
           // $('p.TANGGAL').html(data.result[i].RMP_HASIL_TIMBANG_TANGGAL)
           $('p.TANGGAL').html(data.result[i].tgl)
@@ -825,7 +836,7 @@ function hasil_timbang(no_nota)
           {
             // var a = "<a class='btn btn-default btn-sm kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_HASIL_TIMBANG_ID +  "' NO_NOTA='" + data.result[i].RMP_HASIL_TIMBANG_NO_NOTA +  "'><i aria-hidden='true' class='fa fa-external-link'></i></a>"
             // var tr = ""
-            var a = "<a class='btn btn-default btn-sm kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].id +  "' NO_NOTA='" + data.result[i].notr +  "'   BRUTO='" + data.result[i].gross + "' PONTON='" + data.result[i].id_timbang + "' JENIS_KELAPA='" + data.result[i].jenis_kelapa + "'><i aria-hidden='true' class='fa fa-angle-double-right'></i></a>"
+            var a = "<button class='btn btn-default btn-sm kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].id +  "' NO_NOTA='" + data.result[i].notr +  "'   BRUTO='" + data.result[i].gross + "' PONTON='" + data.result[i].id_timbang + "' JENIS_KELAPA='" + data.result[i].jenis_kelapa + "'><i aria-hidden='true' class='fa fa-angle-double-right'></i></button>"
             var tr= ""
           }
 
@@ -856,7 +867,7 @@ function hasil_timbang(no_nota)
 //   hasil_timbang();
 // });
 
-$("tbody#zone_data").on('click','a.kirim_hasil_timbang', function()
+$("tbody#zone_data").on('click','button.kirim_hasil_timbang', function()
 {
   $("a.kirim_hasil_timbang").attr("style","display:none;")
   var id_timbang = $(this).attr('ID_HASIL_TIMBANG');
@@ -869,7 +880,7 @@ $("tbody#zone_data").on('click','a.kirim_hasil_timbang', function()
     var no_nota = $('.NO_NOTA').val();
     hasil_timbang(no_nota);
     var no_faktur = $('.NO_FAKTUR').val()
-    console.log("NOMOR FAKTUR::::::::::::::::::"+no_faktur)
+    //console.log("NOMOR FAKTUR::::::::::::::::::"+no_faktur)
 
 })
 
@@ -884,14 +895,14 @@ function kirim_hasil_timbang(data)
     {
       if (data.respon.pesan == "sukses")
       {
-        console.log(data.respon.text_msg);
+        //console.log(data.respon.text_msg);
         $(".NO_FAKTUR").val(data.respon.no_faktur)
         $("p.NO_FAKTUR").html(data.respon.no_faktur)
         faktur_list(data.respon.text_msg);
       }
       else if (data.respon.pesan == "gagal")
       {
-        console.log(data.respon.text_msg);
+        //console.log(data.respon.text_msg);
         alert("Gagal Menghapus");
       }
     }, //end success
@@ -923,12 +934,12 @@ function faktur_list(no_nota)
           }
           else if(data.result[i].RECORD_STATUS=='A')
           {
-            var a = "<a class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-angle-double-left'></i></a>"
+            var a = "<button class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-angle-double-left'></i></button>"
           }
           else
           {
-            // var a = "<a class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_HASIL_TIMBANG_ID +  "' NO_NOTA='" + data.result[i].RMP_HASIL_TIMBANG_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-external-link'></i></a>"
-            var a = "<a class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-angle-double-left'></i></a>"
+            // var a = "<button class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_HASIL_TIMBANG_ID +  "' NO_NOTA='" + data.result[i].RMP_HASIL_TIMBANG_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-external-link'></i></button>"
+            var a = "<button class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-angle-double-left'></i></button>"
           }
           $("tbody#zone_data_faktur").append("<tr class='default'  detailLogId='" + data.result[i].ICD_BARANG_KODE_INVENTORI + "'>" +
             "<td >" + data.result[i].NO + ".</td>" +
@@ -961,7 +972,7 @@ $(function()
 function simpan_faktur()
 {
   var fData = $("#faktur_detail").serialize();
-  console.log(fData)
+  //console.log(fData)
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -988,7 +999,7 @@ function simpan_faktur()
       }
       else if (data.respon.pesan == "gagal")
       {
-        console.log(data.respon.text_msg);
+        //console.log(data.respon.text_msg);
         alert("Gagal Menghapus");
       }
     }, //end success
@@ -1054,6 +1065,7 @@ $('.btn_lihat_faktur').on('click', function()
 
 function kembali_hasil_timbang(data)
 {
+  console.log("kembali_hasil_timbang")
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -1062,12 +1074,12 @@ function kembali_hasil_timbang(data)
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {
-        console.log(data.respon.text_msg);
+        //console.log(data.respon.text_msg);
 
       }
       else if (data.respon.pesan == "gagal")
       {
-        console.log(data.respon.text_msg);
+        //console.log(data.respon.text_msg);
         alert("Gagal Menghapus");
       }
     }, //end success
@@ -1078,14 +1090,14 @@ function kembali_hasil_timbang(data)
   });
 }
 
-$("tbody#zone_data_faktur").on('click','a.kembali_hasil_timbang', function()
+$("tbody#zone_data_faktur").on('click','button.kembali_hasil_timbang', function()
 {
-  $("a.kembali_hasil_timbang").attr("style","display:none;")
+  $("button.kembali_hasil_timbang").attr("style","display:none;")
   var id_timbang = $(this).attr('ID_HASIL_TIMBANG');
   var no_nota = $(this).attr('NO_NOTA');
   var no_faktur = $('.NO_FAKTUR').text();
   var data = 'ID_TIMBANG='+id_timbang+'&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur;;
-  console.log(data)
+  //console.log(data)
   if(no_faktur == "")
   {
     alert('Buat Faktur Terlebih Dahulu')
@@ -1360,7 +1372,7 @@ $('.simpanreview').on('click',function(){
   var data = form_detail + "&" + arrayInput;
   $(this).attr("disabled", true);
   $(this).html('Loading...');
-  console.log(data)
+  //console.log(data)
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -1370,14 +1382,14 @@ $('.simpanreview').on('click',function(){
     {
       if (data.respon.pesan == "sukses")
       {
-        console.log(data.respon.text_msg);
+        //console.log(data.respon.text_msg);
         //alert (data.respon.text_msg);
         $('.loading_simpan_faktur_cabang').attr('style','display:none;');
         $('.simpanreview').html('Simpan');
       }
       else if (data.respon.pesan == "gagal")
       {
-        console.log(data.respon.text_msg);
+        //console.log(data.respon.text_msg);
         alert("Gagal Menyimpan");
       }
     }, //end success
@@ -1396,17 +1408,26 @@ function lihat_faktur()
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=lihat_faktur',
+    data: 'ref=lihat_faktur&TANGGAL='+$(".FILTER_TANGGAL_LIST").val()+'',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
-				console.log(data.respon.text_msg);
+				//console.log(data.respon.text_msg);
         $("tbody#zone_lihat_faktur").empty();
         for (i = 0; i < data.result.length; i++) {
+          if(data.result[i].RMP_FAKTUR_NAMA_SUB == "")
+          {
+            var nama = data.result[i].RMP_MASTER_PERSONAL_NAMA
+          }
+          else
+          {
+            var nama = "" + data.result[i].RMP_MASTER_PERSONAL_NAMA + " / " + data.result[i].RMP_FAKTUR_NAMA_SUB + ""
+          }
+
           $("tbody#zone_lihat_faktur").append("<tr class='detailLogId'>" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR +  "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "</td>" +
-					"<td>" + data.result[i].RMP_MASTER_PERSONAL_NAMA +  "</td>" +
+					"<td>" + nama +  "</td>" +
 					"<td>" + data.result[i].ENTRI_WAKTU +  "</td>" +
 					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Edit</a></td>" +
 					"</tr>");
@@ -1419,8 +1440,13 @@ function lihat_faktur()
     } //end error
   });
 }
+
+function filter_tanggal_list(){
+  lihat_faktur()
+}
 function edit_faktur(d2)
 {
+  console.log("edit_faktur")
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -1432,7 +1458,19 @@ function edit_faktur(d2)
         {
 
         }
-        console.log(data.result2[0].PERSONAL_NAME)
+        //alert(data.purchaser_proses)
+        if(data.purchaser_proses == "TIDAK TERSEDIA")
+        {
+
+          $("tbody#zone_data_faktur button.kembali_hasil_timbang").attr("disabled",true)
+          $("button").attr("disabled", true)
+          $("input").attr("disabled", true)
+          $("select").attr("disabled", true)
+          $("text").attr("disabled", true)
+          $(".CATATAN_SUPPLIER").attr("disabled", true)
+          $(".CATATAN_PURCHASER").attr("disabled", true)
+        }
+        //console.log(data.result2[0].PERSONAL_NAME)
         $("p.NO_FAKTUR").html(data.result[0].RMP_FAKTUR_NO_FAKTUR)
         $("p.NO_NOTA_INPUT").html(data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA)
         $(".ID_FAKTUR").val(data.result[0].RMP_FAKTUR_ID)

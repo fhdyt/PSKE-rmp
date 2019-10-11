@@ -30,6 +30,7 @@ $inspeksi = $result_ab[0]['RMP_FAKTUR_CEK_100_INSPEKSI'];
 $dipisah = $result_ab[0]['RMP_FAKTUR_CEK_DIPISAH'];
 
 $supplier = $result_ab[0]['RMP_MASTER_PERSONAL_NAMA'];
+$supplier_sub = $result_ab[0]['RMP_FAKTUR_NAMA_SUB'];
 $supplier_id = $result_ab[0]['RMP_MASTER_PERSONAL_ID'];
 $rekening = $result_ab[0]['RMP_REKENING_RELASI'];
 $tambang= $result_ab[0]['RMP_FAKTUR_PURCHASER_TAMBANG'];
@@ -177,6 +178,7 @@ if (empty($result_a))
     $this->callback['inspeksi'] = $inspeksi;
     $this->callback['dipisah'] = $dipisah;
     $this->callback['supplier'] = $supplier;
+    $this->callback['supplier_sub'] = $supplier_sub;
     $this->callback['rekening'] = $rekening;
     $this->callback['tambang'] = $tambang;
     $this->callback['biaya'] = $biaya;

@@ -25,9 +25,11 @@ $sql = "SELECT * FROM
             F.RECORD_STATUS='A'
           AND
             P.RECORD_STATUS='A'
+          AND
+            F.RMP_FAKTUR_TANGGAL LIKE '%".$input['TANGGAL']."%'
           GROUP BY
             F.RMP_FAKTUR_NO_FAKTUR
-          ORDER BY 
+          ORDER BY
             F.ENTRI_WAKTU
           DESC
           ";
