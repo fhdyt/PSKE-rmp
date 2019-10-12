@@ -919,12 +919,12 @@ function kirim_hasil_timbang(data)
 
 function faktur_list(no_nota)
 {
-
+  var no_faktur = $(".NO_FAKTUR").val()
   $.ajax({
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=faktur_list&NO_NOTA='+no_nota+'&D2=<?php echo $d2; ?>',
+    data: 'ref=faktur_list&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur+'&D2=<?php echo $d2; ?>',
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {

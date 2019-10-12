@@ -20,9 +20,17 @@ if(!empty($input['D2']))
 else {
   $d2="AND NOT RECORD_STATUS='A'";
 }
+
+if(empty($input['NO_FAKTUR']))
+{
+  $no_faktur="";
+}
+else {
+  $no_faktur="AND RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."'";
+}
 $sql = "SELECT * FROM RMP_FAKTUR_DETAIL
         WHERE
-    RMP_FAKTUR_DETAIL_NO_NOTA='".$input['NO_NOTA']."' AND NOT RECORD_STATUS='D' ".$d2."";
+    RMP_FAKTUR_DETAIL_NO_NOTA='".$input['NO_NOTA']."' ".$no_faktur." AND NOT RECORD_STATUS='D' ".$d2."";
 
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
