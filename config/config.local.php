@@ -288,7 +288,7 @@ CLASS RMP_CONFIG extends CONFIG
 				$tanggal=Date('m/Y');
 					$this->MYSQL=new MYSQL();
 					$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
-					$this->MYSQL->queri="select RMP_FAKTUR_NO_FAKTUR from RMP_FAKTUR where (RMP_FAKTUR_NO_FAKTUR like'%".$tanggal."%' and RMP_FAKTUR_NO_FAKTUR like'%".$ptn_kelapa."%') and RECORD_STATUS='A' order by RMP_FAKTUR_NO_FAKTUR desc";
+					$this->MYSQL->queri="select RMP_FAKTUR_NO_FAKTUR from RMP_FAKTUR where (RMP_FAKTUR_NO_FAKTUR like'%".$tanggal."%' and RMP_FAKTUR_NO_FAKTUR like'%".$kelapa."%') and RECORD_STATUS='A' order by RMP_FAKTUR_NO_FAKTUR desc";
 					$cek_nomor=$this->MYSQL->data();
 					if(empty($cek_nomor))
 					{
@@ -299,7 +299,7 @@ CLASS RMP_CONFIG extends CONFIG
 						//CEK NOMOR TERAKHIR DI TAHUN YANG SAMA
 						$this->MYSQL=new MYSQL();
 						$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
-						$this->MYSQL->queri="select RMP_FAKTUR_NO_FAKTUR from RMP_FAKTUR where (RMP_FAKTUR_NO_FAKTUR like'%".$tanggal."%' and RMP_FAKTUR_NO_FAKTUR like'%".$ptn_kelapa."%') and RECORD_STATUS='A' order by RMP_FAKTUR_NO_FAKTUR desc LIMIT 1";
+						$this->MYSQL->queri="select RMP_FAKTUR_NO_FAKTUR from RMP_FAKTUR where (RMP_FAKTUR_NO_FAKTUR like'%".$tanggal."%' and RMP_FAKTUR_NO_FAKTUR like'%".$kelapa."%') and RECORD_STATUS='A' order by RMP_FAKTUR_NO_FAKTUR desc LIMIT 1";
 						$cek_nomor2=$this->MYSQL->data();
 						$nomorBaru=explode("/",$cek_nomor2[0]['RMP_FAKTUR_NO_FAKTUR']);
 						$nomorBaruNya=($nomorBaru[0])+1;
