@@ -22,7 +22,7 @@ UPDATE RMP_PENYESUAIAN_HARGA_KB SET RMP_PENYESUAIAN_HARGA_KB_JENIS_MATERIAL='JAM
 
 ************** Trial ******************
 
-* Ganti default RMP_FAKTUR_KAPAL pada table RMP_FAKTUR dari "0" ke No Default
+<!-- * Ganti default RMP_FAKTUR_KAPAL pada table RMP_FAKTUR dari "0" ke No Default
 * Tambah RMP_FAKTUR_PURCHASER_BRUTO pada table RMP_FAKTUR_PURCHASER
 * Tambah RMP_FAKTUR_PURCHASER_POTONGAN pada table RMP_FAKTUR_PURCHASER (Desimal 10,1)
 * Tambah RMP_FAKTUR_PURCHASER_NETTO pada table RMP_FAKTUR_PURCHASER
@@ -46,4 +46,4 @@ COLLATE='latin1_swedish_ci'
 ENGINE=InnoDB
 ROW_FORMAT=COMPACT
 AUTO_INCREMENT=4
-;
+; -->
