@@ -131,6 +131,7 @@ $(function()
 });
 
 function filter(){
+$("tbody#zone_data").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
 faktur_list('1')
 }
 
@@ -222,13 +223,16 @@ $(function() {
   faktur_list('1');
 });
 $(window).on('hashchange', function(e) {
+  $("tbody#zone_data").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
   faktur_list('1');
 });
 $("input#REC_PER_HALAMAN").on('change', function() {
+  $("tbody#zone_data").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
   faktur_list('1')
 });
 
 function search() {
+  $("tbody#zone_data").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
   faktur_list('1');
 }
 </script>

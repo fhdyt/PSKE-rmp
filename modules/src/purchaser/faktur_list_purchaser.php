@@ -41,7 +41,7 @@ $sql = "SELECT * FROM RMP_FAKTUR AS F
             WHERE F.RECORD_STATUS='A' AND P.RECORD_STATUS='A' AND FD.RECORD_STATUS='A'
             AND
             W.RECORD_STATUS='A' " . $filter_b . " " . $filter_c . "
-            GROUP BY F.RMP_FAKTUR_NO_FAKTUR ORDER BY F.RMP_FAKTUR_INDEX DESC
+             GROUP BY F.RMP_FAKTUR_NO_FAKTUR ORDER BY F.RMP_FAKTUR_INDEX DESC
                         ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
