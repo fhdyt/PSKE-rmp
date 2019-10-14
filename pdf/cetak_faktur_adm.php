@@ -340,84 +340,38 @@ tr {
 		<tr>
 		<td>Berat Bruto</td>
 		<td>: </td>
-		<td>'.number_format($bruto,0,",",".").' </td>
-		<td>Kg</td>
+		<td>'.number_format($bruto,0,",",".").' Kg</td>
 		</tr>
 		<tr>
-		<td>Potongan</td>
+		<td>Potongan ('.$potongan.' %)</td>
 		<td>: </td>
-		<td>'.$potongan.' %</td>
-		<td></td>
+		<td>'.number_format($total_potongan,0,",",".").' Kg</td>
 		</tr>
 		<tr>
 		<td>Berat Netto</td>
 		<td>: </td>
-		<td>'.number_format(round($netto),0,",",".").' </td>
-		<td>Kg</td>
+		<td>'.number_format(round($netto),0,",",".").' Kg</td>
 		</tr>
 		<tr>
-		<td>
-		&nbsp;
-		</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>'.$tambang_title.'</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$tambang_rp.'</td>
-		<td align="right">'.$tambang_total.'</td>
+		<td>&nbsp;</td>
 		</tr>
 		<tr>
-		<td>
-		&nbsp;
-		</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>'.$biaya_title.'</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$biaya_rp.'</td>
-		<td align="right">'.$biaya_total.'</td>
+		<td>&nbsp;</td>
 		</tr>
 		<tr>
-		<td>
-		&nbsp;
-		</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td colspan="3">'.$hr.'</td>
+		<td>&nbsp;</td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
 		</tr>
 		<tr>
 		<td><img src="aplikasi/rmp/asset/'.$check_diterima.'" width="10" /> Berat Diterima</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td><b>'.$total_jumlah_title.'</b></td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'.$total_jumlah_rp.'</b></td>
-		<td align="right"><b>'.$total_jumlah_total.'</b></td>
 		</tr>
 		<tr>
 		<td><img src="aplikasi/rmp/asset/'.$check_inspeksi.'" width="10" /> 100 % Inspeksi</td>
-		<td></td>
-		<td></td>
-		<td></td>
 		</tr>
 		<tr>
 		<td><img src="aplikasi/rmp/asset/'.$check_dipisah.'" width="10" /> Dipisah</td>
-		<td></td>
-		<td></td>
-		<td></td>
 		</tr>
 		<tr>
 		<td><br></td>

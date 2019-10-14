@@ -438,9 +438,9 @@ tr {
 		<td></td>
 		</tr>
 		<tr>
-		<td>Potongan</td>
+		<td>Potongan ('.$potongan.' %)</td>
 		<td>: </td>
-		<td>'.$potongan.' %</td>
+		<td>'.number_format($total_potongan,0,",",".").' Kg</td>
 		<td></td>
 		</tr>
 		<tr>
