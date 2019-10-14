@@ -28,7 +28,7 @@ if (empty($input['tanggal']) or $input['tanggal'] == "")
     }
   else
     {
-    $filter_c = "AND F.RMP_FAKTUR_TANGGAL like '%" . $input['tanggal'] . "%' ";
+    $filter_c = "AND F.RMP_FAKTUR_TANGGAL = '" . $input['tanggal'] . "' ";
     }
 
 $sql = "SELECT * FROM RMP_FAKTUR AS F
@@ -87,7 +87,7 @@ foreach($result_a as $r)
 if (empty($result_a))
     {
     $this->callback['respon']['pesan'] = "gagal";
-    $this->callback['respon']['text_msg'] = "Data tidak ada";
+    $this->callback['respon']['text_msg'] = "Data tidak ada.";
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
     }

@@ -59,26 +59,26 @@ font-size: 12px;
 					<div class="col-md-4 text-right"></div>
 				</div><!--/.row-->
         <div class="row">
-					<div class="col-md-4">
-					</div>
-					<div class="col-md-4 ">
-            <form id="form_filter" method="POST">
+          <div class="col-md-12 text-right">
+            <form id="form_filter" class="form-inline" method="POST" action="javascript:filter();">
+              <div class="form-group">
             <select id="FILTER_MATERIAL" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_material()">
             <option value="">--Semua--</option>
             <option value="GELONDONG">GELONDONG</option>
             <option value="JAMBUL">JAMBUL</option>
             <option value="LICIN">LICIN</option>
                   </select>
-                  <p class="help-block">Material.</p>
-                </form>
+                </div>
+					<div class="form-group">
+              <input type="text" id="FILTER_TANGGAL" class="form-control FILTER_TANGGAL datepicker" name="FILTER_TANGGAL" value="<?php echo date("Y/m/d") ?>"/>
           </div>
-					<div class="col-md-4 ">
-            <form id="form_filter" method="POST">
-              <input type="date" id="FILTER_TANGGAL" class="form-control FILTER_TANGGAL" name="FILTER_TANGGAL" onchange="filter_tanggal()"/>
-                  <p class="help-block">Tanggal.</p>
-                </form>
+					<div class="form-group">
+            <button type="submit" class="btn btn-success filter"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+          </div>
           </div>
 				</div><!--/.row-->
+        <br>
         <div class="row">
           <div class="col-md-12">
             <table class="table table-hover table-bordered">
@@ -121,6 +121,19 @@ font-size: 12px;
   </div>
 </div>
 <script>
+
+$(function()
+{
+	$(".datepicker").datepicker().on('changeDate', function(ev)
+	{
+		$('.datepicker').datepicker('hide');
+	});
+});
+
+function filter(){
+faktur_list('1')
+}
+
 function faktur_list(curPage)
 {
   var url = window.location.href;
@@ -204,12 +217,6 @@ function faktur_list(curPage)
   });
 }
 
-function filter_material(){
-  faktur_list('1');
-}
-function filter_tanggal(){
-  faktur_list('1');
-}
 $(function() {
   console.log("function");
   faktur_list('1');
