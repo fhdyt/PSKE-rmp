@@ -57,7 +57,7 @@ if(empty($input['ID_FAKTUR']))
 				'RMP_MASTER_PERSONAL_ID' => $input['NAMA_SUPPLIER'],
 				'RMP_FAKTUR_NAMA_SUB' => $input['NAMA_PETANI'],
 				'RMP_FAKTUR_KAPAL' => $input['KAPAL_FAKTUR'],
-				'RMP_FAKTUR_TANGGAL' => date("Y-m-d H:i:s"),
+				'RMP_FAKTUR_TANGGAL' => $input['TANGGAL_FAKTUR'],
 				'RMP_FAKTUR_POTONGAN' => $input['POTONGAN'],
 				'RMP_FAKTUR_JENIS_MATERIAL' => $input['JENIS_KELAPA'],
 				'RMP_FAKTUR_OPERATOR_TIMBANG' => $input['OPERATOR_TIMBANG'],
@@ -116,15 +116,15 @@ else
 {
 
 			$input = $params['input_option'];
-			$sql = "SELECT * FROM RMP_FAKTUR
-			        WHERE
-			    RMP_FAKTUR_ID='".$input['ID_FAKTUR']."' AND RECORD_STATUS='A'";
-
-			$this->MYSQL = new MYSQL();
-			$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-			$this->MYSQL->queri = $sql ;
-			$result_a = $this->MYSQL->data();
-			$tanggal_faktur = $result_a[0]['RMP_FAKTUR_TANGGAL'];
+			// $sql = "SELECT * FROM RMP_FAKTUR
+			//         WHERE
+			//     RMP_FAKTUR_ID='".$input['ID_FAKTUR']."' AND RECORD_STATUS='A'";
+			//
+			// $this->MYSQL = new MYSQL();
+			// $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+			// $this->MYSQL->queri = $sql ;
+			// $result_a = $this->MYSQL->data();
+			// $tanggal_faktur = $result_a[0]['RMP_FAKTUR_TANGGAL'];
 
 			$data_detail7778 = array(
 				'RECORD_STATUS' => "E"
@@ -183,7 +183,7 @@ else
 				'RMP_MASTER_PERSONAL_ID' => $input['NAMA_SUPPLIER'],
 				'RMP_FAKTUR_NAMA_SUB' => $input['NAMA_PETANI'],
 				'RMP_FAKTUR_KAPAL' => $input['KAPAL_FAKTUR'],
-				'RMP_FAKTUR_TANGGAL' => $tanggal_faktur,
+				'RMP_FAKTUR_TANGGAL' => $input['TANGGAL_FAKTUR'],
 				'RMP_FAKTUR_POTONGAN' => $input['POTONGAN'],
 				'RMP_FAKTUR_JENIS_MATERIAL' => $input['JENIS_KELAPA'],
 				'RMP_FAKTUR_OPERATOR_TIMBANG' => $input['OPERATOR_TIMBANG'],

@@ -160,7 +160,14 @@
             </div>
       		</div>
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Tanggal</label>
+                <input autocomplete="off" class="form-control TANGGAL_FAKTUR datepicker" id="TANGGAL_FAKTUR" name="TANGGAL_FAKTUR" placeholder="" type="text" value="<?php echo date("Y/m/d"); ?>">
+                <p class="help-block">Tanggal faktur.</p>
+              </div>
+            </div>
+            <div class="col-md-3">
               <div class="form-group">
                 <label for="exampleInputEmail1">Operator Timbang</label><select class="OPERATOR_TIMBANG with-ajax-personal form-control" data-live-search="true" id="OPERATOR_TIMBANG" name="OPERATOR_TIMBANG" onchange="sel_operator_timbang()">
                 </select>
@@ -168,14 +175,14 @@
               </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="form-group">
                 <label for="exampleInputEmail1">Inspektur Mutu</label><select class="INSPEKTUR_MUTU with-ajax-personal form-control" data-live-search="true" id="INSPEKTUR_MUTU" name="INSPEKTUR_MUTU" onchange="sel_inspektur_mutu()">
                 </select>
                 <p class="help-block">Nama Inspektur Mutu.</p>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="form-group">
                 <label for="exampleInputEmail1">Potongan</label> <input autocomplete="off" class="form-control POTONGAN" id="POTONGAN" name="POTONGAN" placeholder="POTONGAN" value="0" type="number">
                 <p class="help-block">Gunakan "." untuk bilangan desimal</p>
@@ -529,6 +536,13 @@
  </div>
 
 <script>
+$(function()
+{
+	$(".datepicker").datepicker().on('changeDate', function(ev)
+	{
+		$('.datepicker').datepicker('hide');
+	});
+});
 
 var d2 = "<?php echo $d2; ?>";
 
@@ -1484,6 +1498,7 @@ function edit_faktur(d2)
         $("p.NO_NOTA_INPUT").html(data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA)
         $(".ID_FAKTUR").val(data.result[0].RMP_FAKTUR_ID)
         $(".NO_FAKTUR").val(data.result[0].RMP_FAKTUR_NO_FAKTUR)
+        $(".TANGGAL_FAKTUR").val(data.result[0].RMP_FAKTUR_TANGGAL)
         $(".JENIS_KELAPA").val(data.result[0].RMP_FAKTUR_DETAIL_JENIS_MATERIAL)
         $('select.NO_NOTA').append('<option value="'+data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA+'" selected="selected">'+data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA+'</option>').selectpicker('refresh');
         $('select.NO_NOTA').trigger('change');
