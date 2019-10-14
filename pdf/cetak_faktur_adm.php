@@ -144,7 +144,7 @@ foreach($respon['result'] as $r){
 	'.$r['RMP_FAKTUR_DETAIL_TARA'].' Kg
 	</td>
 	<td>
-	'.$r['RMP_FAKTUR_DETAIL_BRUTO'].' Kg
+	'.number_format($r['RMP_FAKTUR_DETAIL_BRUTO'],0,",",".").' Kg
 	</td>
 
 	</tr>
@@ -328,7 +328,7 @@ tr {
 			</td>
 
 			<td>
-			'.$bruto.' Kg
+			'.number_format($bruto,0,",",".").' Kg
 			</td>
 
 		</tr>
@@ -340,7 +340,7 @@ tr {
 		<tr>
 		<td>Berat Bruto</td>
 		<td>: </td>
-		<td>'.$bruto.' </td>
+		<td>'.number_format($bruto,0,",",".").' </td>
 		<td>Kg</td>
 		</tr>
 		<tr>
@@ -352,7 +352,7 @@ tr {
 		<tr>
 		<td>Berat Netto</td>
 		<td>: </td>
-		<td>'.round($netto).' </td>
+		<td>'.number_format(round($netto),0,",",".").' </td>
 		<td>Kg</td>
 		</tr>
 		<tr>
