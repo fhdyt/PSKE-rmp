@@ -37,7 +37,7 @@ $tambang= $result_ab[0]['RMP_FAKTUR_PURCHASER_TAMBANG'];
 $biaya = $result_ab[0]['RMP_FAKTUR_PURCHASER_BIAYA'];
 $cek_tambang= $result_ab[0]['RMP_FAKTUR_CEK_TAMBANG'];
 $cek_biaya = $result_ab[0]['RMP_FAKTUR_CEK_BIAYA'];
-
+$tanggal_faktur = $result_ab[0]['RMP_FAKTUR_TANGGAL'];
 
 
 // DATA FAKTUR

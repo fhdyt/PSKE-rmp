@@ -40,6 +40,7 @@ $tambang= $result_ab[0]['RMP_FAKTUR_PURCHASER_TAMBANG'];
 $biaya = $result_ab[0]['RMP_FAKTUR_PURCHASER_BIAYA'];
 $cek_tambang= $result_ab[0]['RMP_FAKTUR_CEK_TAMBANG'];
 $cek_biaya = $result_ab[0]['RMP_FAKTUR_CEK_BIAYA'];
+$tanggal_faktur = $result_ab[0]['RMP_FAKTUR_TANGGAL'];
 
 
 
@@ -187,6 +188,7 @@ if (empty($result_a))
     $this->callback['biaya'] = $biaya;
     $this->callback['cek_tambang'] = $cek_tambang;
     $this->callback['cek_biaya'] = $cek_biaya;
+    $this->callback['tanggal_faktur'] = $tanggal_faktur;
 
     }
 

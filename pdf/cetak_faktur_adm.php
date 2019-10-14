@@ -54,7 +54,7 @@ $total_potongan = $bruto * ($potongan / 100);
 $netto = $bruto - $total_potongan;
 $kelapa = round($netto)*round($rp_kg);
 $today = date("Y-m-d");
-$tanggal = tanggal_format(Date("Y-m-d",strtotime($today)));
+$tanggal = tanggal_format(Date("Y-m-d",strtotime($respon['tanggal_faktur'])));
 
 $adm =$respon['respon']['adm'];
 $admnama =$respon['respon']['admnama'];
