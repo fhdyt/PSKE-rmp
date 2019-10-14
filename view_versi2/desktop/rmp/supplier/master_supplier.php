@@ -651,20 +651,25 @@ function supplier_list(curPage)
   });
 }
 $(function() {
+  $("tbody#zone_data").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
   supplier_list('1');
 });
 $(window).on('hashchange', function(e) {
+  $("tbody#zone_data").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
   supplier_list('1');
 });
 $("input#REC_PER_HALAMAN").on('change', function() {
+  $("tbody#zone_data").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
   supplier_list('1')
 });
 
 function search() {
+  $("tbody#zone_data").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
   supplier_list('1');
 }
 
 function filter_wilayah(){
+  $("tbody#zone_data").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
   supplier_list('1');
 }
 function filter_material(){
