@@ -72,6 +72,16 @@
 
           </div>
 
+          <div class="row">
+            <div class="col-md-12">
+              <div class="callout callout-warning warning_faktur" hidden>
+                  <h4>Faktur telah diproses oleh Purchaser!</h4>
+
+                  <p>Anda tidak dapat melakukan perubahan.</p>
+                </div>
+            </div>
+          </div>
+
       		<div class="row form_faktur_hasil_timbang">
 
       			<div class="col-md-6">
@@ -923,6 +933,11 @@ function kirim_hasil_timbang(data)
         //console.log(data.respon.text_msg);
         alert("Gagal Menghapus");
       }
+      else if (data.respon.pesan == "gagal_purchaser")
+      {
+        //console.log(data.respon.text_msg);
+        alert("Faktur Telah Diproses oleh Purchaser");
+      }
     }, //end success
     error: function(x, e)
     {
@@ -1492,6 +1507,7 @@ function edit_faktur(d2)
           $("text").attr("disabled", true)
           $(".CATATAN_SUPPLIER").attr("disabled", true)
           $(".CATATAN_PURCHASER").attr("disabled", true)
+          $("div.warning_faktur").attr("hidden", false)
         }
         //console.log(data.result2[0].PERSONAL_NAME)
         $("p.NO_FAKTUR").html(data.result[0].RMP_FAKTUR_NO_FAKTUR)

@@ -10,7 +10,7 @@ if (empty($params['case']))
 
 $input = $params['input_option'];
 
-$sql = "SELECT * FROM RMP_FAKTUR_CATATAN_PURCHASER
+$sql = "SELECT * FROM RMP_FAKTUR_PURCHASER
         WHERE
     RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."' AND RECORD_STATUS='A' ";
 
