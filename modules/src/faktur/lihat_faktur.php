@@ -46,6 +46,25 @@ $no = $posisi + 1;
 foreach($result_a as $r)
     {
     $r['NO'] = $no;
+    $sql_purchaser = "SELECT * FROM
+                RMP_FAKTUR_PURCHASER
+              WHERE
+                RMP_FAKTUR_NO_FAKTUR = '".$r['RMP_FAKTUR_NO_FAKTUR']."'
+                AND RECORD_STATUS='A'
+              ";
+
+    $this->MYSQL = new MYSQL();
+    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+    $this->MYSQL->queri = $sql_purchaser ;
+    $result_purchaser = $this->MYSQL->data();
+    if (empty($result_purchaser))
+    {
+      $r['PURCHASER_STATUS'] = "BELUM DIPROSES";
+    }
+    else
+    {
+      $r['PURCHASER_STATUS'] = "TELAH DIPROSES";
+    }
     $result[] = $r;
     $no++;
     }

@@ -1460,12 +1460,21 @@ function lihat_faktur()
             var nama = "" + data.result[i].RMP_MASTER_PERSONAL_NAMA + " / " + data.result[i].RMP_FAKTUR_NAMA_SUB + ""
           }
 
+          if(data.result[i].PURCHASER_STATUS == "BELUM DIPROSES")
+          {
+            var purchaser_status = ""
+          }
+          else
+          {
+            var purchaser_status = "<p class='text-success'><i>Telah diproses oleh Purchaser</i></p>"
+          }
+
           $("tbody#zone_lihat_faktur").append("<tr class='detailLogId'>" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR +  "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "</td>" +
 					"<td>" + nama +  "</td>" +
-					"<td>" + data.result[i].ENTRI_WAKTU +  "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_TANGGAL +  "</td>" +
 					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Lihat</a></td>" +
 					"</tr>");
         }

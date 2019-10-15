@@ -184,6 +184,7 @@ if (empty($result_a))
     $this->callback['biaya'] = $biaya;
     $this->callback['cek_tambang'] = $cek_tambang;
     $this->callback['cek_biaya'] = $cek_biaya;
+    $this->callback['tanggal_faktur'] = $tanggal_faktur;
 
     }
 
