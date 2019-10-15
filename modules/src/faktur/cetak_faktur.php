@@ -21,7 +21,9 @@ WHERE F.RMP_FAKTUR_ID='".$input['NO_FAKTUR']."'
 AND RR.RMP_REKENING_RELASI_MATERIAL='".$input['MATERIAL']."'
 AND F.RECORD_STATUS='A'
 AND FR.RECORD_STATUS='A'
-AND P.RECORD_STATUS='A'";
+AND P.RECORD_STATUS='A'
+AND RR.RECORD_STATUS='A'
+";
 
 $this->MYSQL=new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;

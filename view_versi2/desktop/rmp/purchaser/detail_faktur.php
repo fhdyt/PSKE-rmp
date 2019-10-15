@@ -73,6 +73,10 @@ font-size: 12px;
                   <td><p class="TANGGAL_FAKTUR"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
                 </tr>
                 <tr>
+                  <td><b>Kapal</b></td>
+                  <td><p class="KAPAL_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                </tr>
+                <tr>
                   <td class="success"><b>Nama Supplier</b> <small><i>Admin<i></small></td>
                   <td class="success"><p class="NAMA_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
                   </td>
@@ -307,10 +311,9 @@ function faktur_detail_list(curPage)
           }
 
           $("p.NO_FAKTUR").html(data.resultb[i].RMP_FAKTUR_NO_FAKTUR)
+          $("p.KAPAL_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_KAPAL)
           $("p.NAMA_SUPPLIER").html(supplier)
           $(".NAMA_SUPPLIER_HIDDEN").val(data.resultb[i].RMP_MASTER_PERSONAL_NAMA)
-          //$(".ID_SUPPLIER").val(data.resultb[i].RMP_MASTER_PERSONAL_ID)
-          //$("p.NO_REKENING").html("-")
           $("p.TANGGAL_FAKTUR").html(data.resultb[i].TANGGAL)
           $("p.MATERIAL").html(data.resultb[i].RMP_FAKTUR_DETAIL_JENIS_MATERIAL)
           $(".NAMA_MATERIAL").val(data.resultb[i].NAMA_MATERIAL)
@@ -342,6 +345,7 @@ function detail_purchaser(curPage)
 
         for (i = 0; i < data.resultbc.length; i++) {
           //alert(data.respon.text_msg)
+
           $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $("p.NO_REKENING").html(data.resultbc[i].REKENING)
           $(".INPUT_RP_KG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
