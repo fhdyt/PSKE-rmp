@@ -1508,6 +1508,7 @@ function edit_faktur(d2)
           $(".CATATAN_SUPPLIER").attr("disabled", true)
           $(".CATATAN_PURCHASER").attr("disabled", true)
           $("div.warning_faktur").attr("hidden", false)
+          $(".FILTER_TANGGAL_LIST").attr("disabled", false)
         }
         //console.log(data.result2[0].PERSONAL_NAME)
         $("p.NO_FAKTUR").html(data.result[0].RMP_FAKTUR_NO_FAKTUR)
