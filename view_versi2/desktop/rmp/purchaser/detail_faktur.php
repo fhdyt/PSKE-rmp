@@ -254,6 +254,20 @@ font-size: 12px;
  </div>
 </div>
 </div>
+
+<div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-sm modalCetakFaktur" role="dialog" tabindex="-1">
+ <div class="modal-dialog modal-sm" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+       <h4 class="modal-title" id="myModalLabel">Cetak Faktur</h4>
+     </div>
+     <div class="modal-body">
+
+   </div>
+ </div>
+</div>
+</div>
 <script>
 $(function () {
   //Initialize Select2 Elements
