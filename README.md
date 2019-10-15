@@ -21,7 +21,7 @@ UPDATE RMP_PENYESUAIAN_HARGA_KB SET RMP_PENYESUAIAN_HARGA_KB_JENIS_MATERIAL='JAM
 
 
 ************** Trial ******************
-Table RMP_FAKTUR gati type data RMP_FAKTUR_TANGGAL dari DATETIME menjadi DATE
+<!-- Table RMP_FAKTUR gati type data RMP_FAKTUR_TANGGAL dari DATETIME menjadi DATE -->
 
 <!-- * Ganti default RMP_FAKTUR_KAPAL pada table RMP_FAKTUR dari "0" ke No Default
 * Tambah RMP_FAKTUR_PURCHASER_BRUTO pada table RMP_FAKTUR_PURCHASER
