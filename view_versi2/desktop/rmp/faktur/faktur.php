@@ -1466,12 +1466,12 @@ function lihat_faktur()
           }
           else
           {
-            var purchaser_status = "<p class='text-success'><i>Telah diproses oleh Purchaser</i></p>"
+            var purchaser_status = "<p class='text-success'><small><i>Telah diproses oleh Purchaser</i></small></p>"
           }
 
           $("tbody#zone_lihat_faktur").append("<tr class='detailLogId'>" +
 					"<td >" + data.result[i].NO + ".</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR +  "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR +  " "+purchaser_status+"</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "</td>" +
 					"<td>" + nama +  "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_TANGGAL +  "</td>" +
