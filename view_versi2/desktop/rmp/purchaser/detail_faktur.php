@@ -97,6 +97,10 @@ font-size: 12px;
                   <td><p class="NO_REKENING">-</p></td>
                 </tr>
                 <tr>
+                  <td><b>Alamat</b></td>
+                  <td><p class="ALAMAT_SUPPLIER">-</p></td>
+                </tr>
+                <tr>
                   <td><b>Jenis Material</b></td>
                   <td><p class="MATERIAL"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
 
@@ -348,6 +352,7 @@ function detail_purchaser(curPage)
 
           $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $("p.NO_REKENING").html(data.resultbc[i].REKENING)
+          $("p.ALAMAT_SUPPLIER").html(data.resultbc[i].ALAMAT)
           $(".INPUT_RP_KG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $(".INPUT_TAMBANG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_TAMBANG)
           $("p.NAMA_SUPPLIER_PURCHASER").html(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
@@ -437,6 +442,7 @@ function sel_nama_supplier()
             var sel = "selected"
             $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
             $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
+            $('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
             if($('.INPUT_RP_KG').val() == '')
             {
             $('p.RP_KG').html(data.result[i].HARGA + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
@@ -446,7 +452,7 @@ function sel_nama_supplier()
           {
             var sel = "sel"
           }
-          $("select.NAMA_SUPPLIER").append("<option value='"+ data.result[i].RMP_MASTER_PERSONAL_ID +"' RP='"+data.result[i].HARGA+"' REKENING='"+data.result[i].RMP_REKENING_RELASI+"' "+sel+">"+ data.result[i].RMP_MASTER_PERSONAL_NAMA +"</option>");
+          $("select.NAMA_SUPPLIER").append("<option value='"+ data.result[i].RMP_MASTER_PERSONAL_ID +"' RP='"+data.result[i].HARGA+"' REKENING='"+data.result[i].RMP_REKENING_RELASI+"' ALAMAT='"+data.result[i].ALAMAT+"' "+sel+">"+ data.result[i].RMP_MASTER_PERSONAL_NAMA +"</option>");
 					}
 
       } else if (data.respon.pesan == "gagal") {
@@ -463,6 +469,8 @@ function sel_nama_supplier()
     $('.ID_SUPPLIER').val(id_supplier)
     var rekening = $('.NAMA_SUPPLIER option:selected').attr('REKENING');
     $('p.NO_REKENING').html(rekening);
+    var alamat = $('.NAMA_SUPPLIER option:selected').attr('ALAMAT');
+    $('p.ALAMAT_SUPPLIER').html(alamat);
     if($('.INPUT_RP_KG').val() == '')
     {
       var rp = $('.NAMA_SUPPLIER option:selected').attr('RP');

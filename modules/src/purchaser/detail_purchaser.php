@@ -44,16 +44,25 @@ $result_abc = $this->MYSQL->data();
 $no = $posisi + 1;
     foreach($result_abc as $rrr)
         {
-          $sql445d = "SELECT * FROM RMP_REKENING_RELASI
-                      WHERE
-                      RMP_REKENING_RELASI_MATERIAL='".$material."'
-                      AND RMP_MASTER_PERSONAL_ID='".$rrr['RMP_MASTER_PERSONAL_ID']."' AND RECORD_STATUS='A'";
-          $this->MYSQL = new MYSQL();
-          $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-          $this->MYSQL->queri = $sql445d;
-          $result_abcd = $this->MYSQL->data();
-
+        $sql445d = "SELECT * FROM RMP_REKENING_RELASI
+                    WHERE
+                    RMP_REKENING_RELASI_MATERIAL='".$material."'
+                    AND RMP_MASTER_PERSONAL_ID='".$rrr['RMP_MASTER_PERSONAL_ID']."' AND RECORD_STATUS='A'";
+        $this->MYSQL = new MYSQL();
+        $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+        $this->MYSQL->queri = $sql445d;
+        $result_abcd = $this->MYSQL->data();
         $rrr['REKENING'] = $result_abcd[0]['RMP_REKENING_RELASI'];
+
+        //ALAMAT RELASI
+        $sqlU = "SELECT * FROM RMP_MASTER_PERSONAL AS P LEFT JOIN RMP_MASTER_WILAYAH AS W
+      	ON P.SUB_WILAYAH_ID=W.RMP_MASTER_WILAYAH_ID WHERE P.RMP_MASTER_PERSONAL_ID='".$rrr['RMP_MASTER_PERSONAL_ID']."'";
+      	$this->MYSQL = new MYSQL();
+      	$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+      	$this->MYSQL->queri = $sqlU;
+      	$result_au = $this->MYSQL->data();
+      	$rrr['ALAMAT'] = $result_au[0]['RMP_MASTER_WILAYAH'];
+
         $resultbc[] = $rrr;
         }
 

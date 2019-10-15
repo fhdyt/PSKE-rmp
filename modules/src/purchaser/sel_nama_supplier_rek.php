@@ -37,6 +37,15 @@ $result_a=$this->MYSQL->data();
 $no=1;
 foreach($result_a as $r){
 
+	$sqlU = "SELECT * FROM RMP_MASTER_PERSONAL AS P LEFT JOIN RMP_MASTER_WILAYAH AS W
+	ON P.SUB_WILAYAH_ID=W.RMP_MASTER_WILAYAH_ID WHERE P.RMP_MASTER_PERSONAL_ID='".$r['RMP_MASTER_PERSONAL_ID']."'";
+
+	$this->MYSQL = new MYSQL();
+	$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+	$this->MYSQL->queri = $sqlU;
+	$result_au = $this->MYSQL->data();
+	$r['ALAMAT'] = $result_au[0]['RMP_MASTER_WILAYAH'];
+
 	$result[]=$r;
 
 $no++;
