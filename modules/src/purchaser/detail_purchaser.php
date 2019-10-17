@@ -56,7 +56,7 @@ $no = $posisi + 1;
 
         //ALAMAT RELASI
         $sqlU = "SELECT * FROM RMP_MASTER_PERSONAL AS P LEFT JOIN RMP_MASTER_WILAYAH AS W
-      	ON P.SUB_WILAYAH_ID=W.RMP_MASTER_WILAYAH_ID WHERE P.RMP_MASTER_PERSONAL_ID='".$rrr['RMP_MASTER_PERSONAL_ID']."'";
+      	ON P.SUB_WILAYAH_ID=W.RMP_MASTER_WILAYAH_ID WHERE P.RMP_MASTER_PERSONAL_ID='".$rrr['RMP_MASTER_PERSONAL_ID']."' AND P.RECORD_STATUS='A' AND W.RECORD_STATUS='A'";
       	$this->MYSQL = new MYSQL();
       	$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
       	$this->MYSQL->queri = $sqlU;
