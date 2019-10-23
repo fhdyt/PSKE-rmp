@@ -143,7 +143,9 @@ font-size: 12px;
               </tr>
               <tr class="success">
                 <td><input type="checkbox" name="CEK_TAMBANG" class="CEK_TAMBANG"> <b>Tambang</b></td>
-                <td><input autocomplete="off" class="form-control INPUT_TAMBANG" id="INPUT_TAMBANG" name="INPUT_TAMBANG" placeholder="" type="text"></td>
+                <td><input autocomplete="off" class="form-control INPUT_TAMBANG" id="INPUT_TAMBANG" name="INPUT_TAMBANG" placeholder="" type="text">
+                    <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="" type="hidden">
+                </td>
               </tr>
               <tr class="success">
                 <td><input type="checkbox" name="CEK_BIAYA" class="CEK_BIAYA"> <b>Biaya</b></td>
@@ -337,6 +339,7 @@ function faktur_detail_list(curPage)
           $(".NAMA_MATERIAL").val(data.resultb[i].NAMA_MATERIAL)
           $(".GRADE_MATERIAL").val(data.resultb[i].GRADE_MATERIAL)
           $(".CATATAN").html(data.resultb[i].RMP_FAKTUR_CATATAN_PURCHASER)
+          $(".JENIS_FAKTUR").val(data.resultb[i].RMP_FAKTUR_JENIS)
 					}
           sel_nama_supplier();
 
@@ -372,6 +375,7 @@ function detail_purchaser(curPage)
           $("p.NAMA_SUPPLIER_PURCHASER").html(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
           $(".INPUT_BIAYA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_BIAYA)
           $(".ID_SUPPLIER").val(data.resultbc[i].RMP_MASTER_PERSONAL_ID)
+          $(".JENIS_FAKTUR").val(data.resultbc[i].RMP_FAKTUR_JENIS)
           if(data.resultbc[i].FRRECORD_STATUS == 'A')
           {
             if(data.resultbc[i].RMP_FAKTUR_CEK_TAMBANG == "Y")
@@ -510,10 +514,11 @@ $(".simpanHargaPurchaser").on('click', function(){
   var bruto = "TOTAL_BRUTO=" +$('.TOTAL_BRUTO').text()+ ""
   var potongan = "POTONGAN=" +$('.POTONGAN').text()+ ""
   var netto = "TOTAL_NETTO=" +$('.TOTAL_NETTO').text()+ ""
+  var jenis_faktur = "JENIS_FAKTUR=" +$('.JENIS_FAKTUR').val()+ ""
 
   var cek_tambang = "CEK_TAMBANG=" +$('.CEK_TAMBANG').is(":checked")+ ""
   var cek_biaya = "CEK_BIAYA=" +$('.CEK_BIAYA').is(":checked")+ ""
-  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + cek_tambang + "&" + cek_biaya + ""
+  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + cek_tambang + "&" + cek_biaya + "&" + jenis_faktur + ""
   console.log(form)
   $.ajax({
     type: 'POST',

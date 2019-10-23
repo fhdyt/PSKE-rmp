@@ -28,6 +28,15 @@ else
 	$cek_biaya = "N";
 }
 
+if($input['JENIS_FAKTUR'] == "FAKTUR")
+{
+	$total_tambang = $input['TOTAL_NETTO']*$input['TAMBANG'];
+}
+else if($input['JENIS_FAKTUR'] == "FAKTUR CABANG")
+{
+	$total_tambang = $input['TAMBANG'];
+}
+
 if($input['ID_FAKTUR_PURCHASER'] != "")
 {
 	$data_detail3 = array(
@@ -61,6 +70,7 @@ $data_detail2 = array(
 	  'RMP_FAKTUR_PURCHASER_POTONGAN' => $input['POTONGAN'],
 	  'RMP_FAKTUR_PURCHASER_NETTO' => $input['TOTAL_NETTO'],
 	  'RMP_FAKTUR_PURCHASER_TAMBANG' => $input['TAMBANG'],
+	  'RMP_FAKTUR_PURCHASER_TOTAL_TAMBANG' => $total_tambang,
 	  'RMP_FAKTUR_PURCHASER_BIAYA' => $input['BIAYA'],
 	  'RMP_FAKTUR_PURCHASER_RP_KG' => $input['RP_KG'],
 	  'RMP_FAKTUR_PURCHASER_PURCHASER_NIK' => $user_login['PERSONAL_NIK'],
