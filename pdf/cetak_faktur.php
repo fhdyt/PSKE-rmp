@@ -155,7 +155,7 @@ else if ($printed == "beacukai")
 	$cetak_catatan_purchaser = $catatan_purchaser;
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
-	$kelapa_total = number_format($total_jumlah,0,",",".");
+	$kelapa_total = number_format($kelapa,0,",",".");
 
 	$tambang_title = " ";
 	$tambang_rp = " ";
@@ -203,7 +203,7 @@ else if ($printed == "relasi")
 	$cetak_catatan_purchaser = $catatan_purchaser;
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
-	$kelapa_total = number_format($total_jumlah,0,",",".");
+	$kelapa_total = number_format($kelapa,0,",",".");
 
 	$hr = "<hr>";
 
