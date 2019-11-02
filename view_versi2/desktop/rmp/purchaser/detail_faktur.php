@@ -135,7 +135,7 @@ font-size: 12px;
                 <td><p class="TOTAL_NETTO"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
               <tr class="success">
-                <td><b>@Rp</b></td>
+                <td><input type="checkbox" name="CEK_RP_KG" class="CEK_RP_KG"> <b>@Rp</b></td>
                 <td><p class="RP_KG"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
                   <p class="VERIFIKASI_HARGA_NOTE text-danger loading"></p>
                   <input autocomplete="off" class="form-control INPUT_RP_KG" id="INPUT_RP_KG" name="INPUT_RP_KG" type="hidden">
@@ -265,7 +265,6 @@ font-size: 12px;
        <h4 class="modal-title" id="myModalLabel">Cetak Faktur</h4>
      </div>
      <div class="modal-body">
-
    </div>
  </div>
 </div>

@@ -45,6 +45,8 @@
    width:1000px;
  }
 
+
+
  </style>
  <div class="row">
  	<div class="col-lg-12 col-md-12">
@@ -57,7 +59,37 @@
 
       	<div class="col-md-12">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-2">
+              <select class="form-control BULAN_NOTA" onchange="onchange_pilih_nota()">
+                <option value="01" <?php if (date("m")=="01"){echo "selected";} ?>>Januari</option>
+                <option value="02" <?php if (date("m")=="02"){echo "selected";} ?>>Februari</option>
+                <option value="03" <?php if (date("m")=="03"){echo "selected";} ?>>Maret</option>
+                <option value="04" <?php if (date("m")=="04"){echo "selected";} ?>>April</option>
+                <option value="05" <?php if (date("m")=="05"){echo "selected";} ?>>Mei</option>
+                <option value="06" <?php if (date("m")=="06"){echo "selected";} ?>>Juni</option>
+                <option value="07" <?php if (date("m")=="07"){echo "selected";} ?>>Juli</option>
+                <option value="08" <?php if (date("m")=="08"){echo "selected";} ?>>Agusutus</option>
+                <option value="09" <?php if (date("m")=="09"){echo "selected";} ?>>September</option>
+                <option value="10" <?php if (date("m")=="10"){echo "selected";} ?>>Oktober</option>
+                <option value="11" <?php if (date("m")=="11"){echo "selected";} ?>>November</option>
+                <option value="12" <?php if (date("m")=="12"){echo "selected";} ?>>Desember</option>
+              </select>
+              <p class="help-block">Bulan Nota.</p>
+            </div>
+            <div class="col-md-1">
+              <select class="form-control TAHUN_NOTA" onchange="onchange_pilih_nota()">
+                <option value="2018" <?php if (date("Y")=="2018"){echo "selected";} ?> >2018</option>
+                <option value="2019" <?php if (date("Y")=="2019"){echo "selected";} ?> >2019</option>
+                <option value="2020" <?php if (date("Y")=="2020"){echo "selected";} ?> >2020</option>
+                <option value="2021" <?php if (date("Y")=="2021"){echo "selected";} ?> >2021</option>
+                <option value="2022" <?php if (date("Y")=="2022"){echo "selected";} ?> >2022</option>
+                <option value="2033" <?php if (date("Y")=="2023"){echo "selected";} ?> >2023</option>
+                <option value="2024" <?php if (date("Y")=="2024"){echo "selected";} ?> >2024</option>
+                <option value="2025" <?php if (date("Y")=="2025"){echo "selected";} ?> >2025</option>
+              </select>
+              <p class="help-block">Tahun Nota.</p>
+            </div>
+            <div class="col-md-5">
               <a class="btn btn-warning lihat_faktur btn-sm" type="button"><i class="fa fa-list-ol" aria-hidden="true"></i> Faktur</a>
               <a class="btn btn-success buat_faktur_baru btn-sm" type="button" style="display:none;" href="?show=rmp/faktur"><i class="fa fa-plus" aria-hidden="true"></i> Buat Faktur Baru</a>
               <a class="btn btn-default cetak_faktur btn-sm" type="button" style="display:none;"><i class="fa fa-print" aria-hidden="true"></i> Cetak Faktur</a>
@@ -69,7 +101,6 @@
              </select>
              <p class="help-block">Jenis Faktur yang akan diproses.</p>
            </div>
-
           </div>
 
           <div class="row">
@@ -134,9 +165,10 @@
 
             <div class="form_faktur_hasil_timbang">
 
-            <div class="col-md-3">
+            <div class="col-md-2">
             <div class="form-group">
-              <label for="exampleInputEmail1">Nomor Nota</label> <select class="NO_NOTA selectpicker with-ajax-personal form-control" data-live-search="true" id="NO_NOTA" name="NO_NOTA" onchange="no_nota()">
+              <label for="exampleInputEmail1">Nomor Nota</label>
+              <select class="NO_NOTA form-control select2" style="width: 100%;" id="NO_NOTA" name="NO_NOTA" onchange="no_nota()">
               </select>
               <p class="help-block">Pilih Nomor Nota.</p>
             </div>
@@ -155,16 +187,24 @@
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <label for="exampleInputEmail1">Nama Supplier</label><select class="NAMA_SUPPLIER with-ajax-personal form-control" data-live-search="true" id="NAMA_SUPPLIER" name="NAMA_SUPPLIER" onchange="sel_nama_supplier()">
+              <label for="exampleInputEmail1">Nama Supplier</label>
+              <select class="NAMA_SUPPLIER with-ajax-personal form-control" data-live-search="true" id="NAMA_SUPPLIER" name="NAMA_SUPPLIER" onchange="sel_nama_supplier()">
               </select>
               <p class="help-block">Nama Supplier Untuk Faktur.</p>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <div class="form-group">
               <label for="exampleInputEmail1">Nama Petani</label>
               <input autocomplete="off" class="form-control NAMA_PETANI" id="NAMA_PETANI" name="NAMA_PETANI"  type="text" >
               <p class="help-block">Nama Petani Untuk Faktur.</p>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Alamat</label>
+              <input autocomplete="off" class="form-control ALAMAT_SUPPLIER" id="ALAMAT_SUPPLIER" name="ALAMAT_SUPPLIER"  type="text" >
+              <p class="help-block">Alamat Petani Untuk Faktur.</p>
             </div>
           </div>
             </div>
@@ -546,6 +586,11 @@
  </div>
 
 <script>
+$(function () {
+  //Initialize Select2 Elements
+  $('.select2').select2()
+})
+
 $(function()
 {
 	$(".datepicker").datepicker().on('changeDate', function(ev)
@@ -569,6 +614,7 @@ if(d2 == "")
     hasil_timbang();
   });
 }
+
 else {
   $(function()
   {
@@ -602,55 +648,77 @@ $(function()
 
 function onchange_pilih_nota()
 {
-  //console.log('onchange')
-  var tanggal = $('.TANGGAL_NOTA').val();
-  //console.log(tanggal)
-  var options =
-  {
-    ajax: {
-      url: refseeAPI,
-      type: 'POST',
-      dataType: 'json',
-      data: {
-        q: '{{{q}}}',
-        TANGGAL_NOTA: tanggal,
-        ref: 'pilih_no_nota',
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=pilih_no_nota&TANGGAL_NOTA='+$(".BULAN_NOTA").val()+''+$(".TAHUN_NOTA").val()+'',
+    success: function(data) {
+      if (data.respon.pesan == "sukses") {
+        $("select.NO_NOTA").empty()
+        for (i = 0; i < data.result.length; i++) {
+          $("select.NO_NOTA").append("<option value='"+ data.result[i].notr +"' >"+ data.result[i].notr +"</option>");
+					}
+      } else if (data.respon.pesan == "gagal") {
       }
-    },
-    locale:
-    {
-      emptyTitle: 'Pilih Nota Timbang'
-    },
-    log: 3,
-    preprocessData: function(data)
-    {
-      var i, l = data.result.length,
-        array = [];
-      if (l)
-      {
-        for (i = 0; i < l; i++)
-        {
-          array.push($.extend(true, data.result[i],
-          {
-            // text: data.result[i].RMP_HASIL_TIMBANG_NO_NOTA,
-            // value: data.result[i].RMP_HASIL_TIMBANG_NO_NOTA,
-            text: data.result[i].notr,
-            value: data.result[i].notr,
-            kapal: data.result[i].kapal,
-            data:
-            {
-              subtext: ''
-            }
-          }));
-        }
-      }
-      else
-      {
-      }
-      return array;
-    }
-  };
-  $('.selectpicker').selectpicker().filter('.with-ajax-personal').ajaxSelectPicker(options);
+    }, //end success
+    error: function(x, e) {
+      console.log("Error Ajax");
+    } //end error
+  });
+
+  // var tanggal = $(".BULAN_NOTA").val()+""+$(".TAHUN_NOTA").val();
+  // console.log(tanggal)
+  // var options =
+  // {
+  //   ajax: {
+  //     url: refseeAPI,
+  //     type: 'POST',
+  //     dataType: 'json',
+  //     data: {
+  //       q: '{{{q}}}',
+  //       TANGGAL_NOTA: tanggal,
+  //       ref: 'pilih_no_nota',
+  //     }
+  //   },
+  //   locale:
+  //   {
+  //     emptyTitle: 'Pilih Nota Timbang'
+  //   },
+  //   log: 3,
+  //   preprocessData: function(data)
+  //   {
+  //
+  //     var i, l = data.result.length,
+  //       array = [];
+  //
+  //     if (l)
+  //     {
+  //       alert(data.respon.text_msg)
+  //       for (i = 0; i < l; i++)
+  //       {
+  //         array.push($.extend(true, data.result[i],
+  //         {
+  //           // text: data.result[i].RMP_HASIL_TIMBANG_NO_NOTA,
+  //           // value: data.result[i].RMP_HASIL_TIMBANG_NO_NOTA,
+  //           text: data.result[i].notr,
+  //           value: data.result[i].notr,
+  //           kapal: data.result[i].kapal,
+  //           data:
+  //           {
+  //             subtext: ''
+  //           }
+  //         }));
+  //       }
+  //     }
+  //     else
+  //     {
+  //       //console.log(data.respon.text_msg)
+  //     }
+  //     return array;
+  //   }
+  // };
+  // $('.selectpicker').selectpicker().filter('.with-ajax-personal').ajaxSelectPicker(options);
 }
 
 function sel_nama_supplier()
@@ -1098,7 +1166,7 @@ $('.btn_lihat_faktur').on('click', function()
 
 function kembali_hasil_timbang(data)
 {
-  console.log("kembali_hasil_timbang")
+//  console.log("kembali_hasil_timbang")
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -1493,7 +1561,7 @@ function filter_tanggal_list(){
 
 function edit_faktur(d2)
 {
-  console.log("edit_faktur")
+//  console.log("edit_faktur")
   $.ajax({
     type: 'POST',
     url: refseeAPI,

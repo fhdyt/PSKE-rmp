@@ -39,17 +39,7 @@ $sql = "SELECT * FROM RMP_MASTER_PERSONAL AS P
         W.RECORD_STATUS='A'
         AND
         (P.RMP_MASTER_PERSONAL_ROLE='PETANI' OR P.RMP_MASTER_PERSONAL_ROLE='PENGEPUL') " . $filter_a . " " . $filter_b . " GROUP BY P.RMP_MASTER_PERSONAL_ID";
-// $sql = "SELECT * FROM RMP_MASTER_PERSONAL AS P
-//         LEFT JOIN RMP_MASTER_WILAYAH AS W ON P.SUB_WILAYAH_ID=W.RMP_MASTER_WILAYAH_ID
-//         LEFT JOIN RMP_REKENING_RELASI AS R ON P.RMP_MASTER_PERSONAL_ID=R.RMP_MASTER_PERSONAL_ID
-//         WHERE
-//         P.RECORD_STATUS='A'
-//         AND
-//         W.RECORD_STATUS='A'
-//         AND
-//         R.RECORD_STATUS='A'
-//         AND
-//         (P.RMP_MASTER_PERSONAL_ROLE='PETANI' OR P.RMP_MASTER_PERSONAL_ROLE='PENGEPUL') " . $filter_a . " " . $filter_b . " GROUP BY P.RMP_MASTER_PERSONAL_ID ORDER BY R.RMP_MASTER_WILAYAH_KODE, R.SUB_WILAYAH_KODE ASC";
+
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql . " limit " . $posisi . "," . $batas;
