@@ -655,7 +655,8 @@ function onchange_pilih_nota()
     data: 'ref=pilih_no_nota&TANGGAL_NOTA='+$(".BULAN_NOTA").val()+''+$(".TAHUN_NOTA").val()+'',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
-        $("select.NO_NOTA").empty()
+          $("select.NO_NOTA").empty()
+          $("select.NO_NOTA").append("<option value='' >Pilih No Nota</option>");
         for (i = 0; i < data.result.length; i++) {
           $("select.NO_NOTA").append("<option value='"+ data.result[i].notr +"' >"+ data.result[i].notr +"</option>");
 					}
@@ -893,7 +894,7 @@ function no_nota()
 function hasil_timbang(no_nota)
 {
   var jenis_kelapa = $(".JENIS_KELAPA").val()
-  var data = "JENIS_KELAPA="+jenis_kelapa+"&NO_NOTA="+no_nota+"";
+  var data = "JENIS_KELAPA="+jenis_kelapa+"&NO_NOTA="+no_nota+"&TANGGAL_NOTA="+$(".BULAN_NOTA").val()+""+$(".TAHUN_NOTA").val()+"";
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -904,6 +905,7 @@ function hasil_timbang(no_nota)
       {
         $("tbody#zone_data").empty();
         $('.KAPAL_FAKTUR').val(data.kapal)
+        console.log(data.respon.text_msg2)
         for (i = 0; i < data.result.length; i++)
         {
           //console.log(data.result[i].nama_relasi)

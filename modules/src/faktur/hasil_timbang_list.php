@@ -24,7 +24,7 @@ if (empty($input['JENIS_KELAPA']) or $input['JENIS_KELAPA'] == "")
 
 $tanggalnota = date("mY");
 $sql = "SELECT * FROM
-pkb.nota_".$tanggalnota." AS N
+pkb.nota_".$input['TANGGAL_NOTA']." AS N
 LEFT JOIN
 RMP_FAKTUR_DETAIL AS F ON N.id=F.id_nota AND NOT F.RECORD_STATUS='D' WHERE N.notr='".$input['NO_NOTA']."'".$filter_a." GROUP BY N.id";
 $this->MYSQL = new MYSQL();
@@ -66,6 +66,7 @@ if (empty($result_a))
     {
     $this->callback['respon']['pesan'] = "sukses";
     $this->callback['respon']['text_msg'] = "OK..";
+    $this->callback['respon']['text_msg2'] = "OK..";
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
     $this->callback['kapal'] = $kapal;

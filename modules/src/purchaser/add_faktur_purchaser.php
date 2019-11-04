@@ -10,6 +10,8 @@ if (empty($params['case']))
 
 $input = $params['input_option'];
 
+
+
 if($input['CEK_TAMBANG'] == "true")
 {
 	$cek_tambang = "Y";
@@ -28,6 +30,15 @@ else
 	$cek_biaya = "N";
 }
 
+if($input['CEK_RP_KG'] == "true")
+{
+	$cek_rp = "Y";
+}
+else
+{
+	$cek_rp = "N";
+}
+
 if($input['JENIS_FAKTUR'] == "FAKTUR")
 {
 	$total_tambang = $input['TOTAL_NETTO']*$input['TAMBANG'];
@@ -40,7 +51,7 @@ else if($input['JENIS_FAKTUR'] == "FAKTUR CABANG")
 if($input['ID_FAKTUR_PURCHASER'] != "")
 {
 	$data_detail3 = array(
-		'RECORD_STATUS' => "VV"
+		'RECORD_STATUS' => "E"
 	);
 	$this->MYSQL = new MYSQL;
 	$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -49,18 +60,19 @@ if($input['ID_FAKTUR_PURCHASER'] != "")
 	$this->MYSQL->dimana = "where RMP_FAKTUR_PURCHASER_ID='".$input['ID_FAKTUR_PURCHASER']."'";
 	$this->MYSQL->ubah();
 }
-else{}
+else
+{
+}
 
-	$data_detail3V = array(
-		'RMP_FAKTUR_CEK_TAMBANG' => $cek_tambang,
-		'RMP_FAKTUR_CEK_BIAYA' => $cek_biaya
-	);
-	$this->MYSQL = new MYSQL;
-	$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-	$this->MYSQL->tabel = "RMP_FAKTUR";
-	$this->MYSQL->record = $data_detail3V;
-	$this->MYSQL->dimana = "where RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."' AND RECORD_STATUS='A'";
-	$this->MYSQL->ubah();
+	// $data_detail3V = array(
+	//
+	// );
+	// $this->MYSQL = new MYSQL;
+	// $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+	// $this->MYSQL->tabel = "RMP_FAKTUR";
+	// $this->MYSQL->record = $data_detail3V;
+	// $this->MYSQL->dimana = "where RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."' AND RECORD_STATUS='A'";
+	// $this->MYSQL->ubah();
 
 $data_detail2 = array(
 		'RMP_FAKTUR_PURCHASER_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
@@ -74,6 +86,9 @@ $data_detail2 = array(
 	  'RMP_FAKTUR_PURCHASER_BIAYA' => $input['BIAYA'],
 	  'RMP_FAKTUR_PURCHASER_RP_KG' => $input['RP_KG'],
 	  'RMP_FAKTUR_PURCHASER_PURCHASER_NIK' => $user_login['PERSONAL_NIK'],
+		'RMP_FAKTUR_PURCHASER_CEK_TAMBANG' => $cek_tambang,
+		'RMP_FAKTUR_PURCHASER_CEK_BIAYA' => $cek_biaya,
+		'RMP_FAKTUR_PURCHASER_CEK_RP' => $cek_rp,
 
 	  'ENTRI_WAKTU' => date("Y-m-d H:i:s") ,
 	  'ENTRI_OPERATOR' => $user_login['PERSONAL_NIK'],

@@ -375,9 +375,11 @@ function detail_purchaser(curPage)
           $(".INPUT_BIAYA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_BIAYA)
           $(".ID_SUPPLIER").val(data.resultbc[i].RMP_MASTER_PERSONAL_ID)
           $(".JENIS_FAKTUR").val(data.resultbc[i].RMP_FAKTUR_JENIS)
+        //  $(".ID_FAKTUR_PURCHASER").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_ID)
           if(data.resultbc[i].FRRECORD_STATUS == 'A')
           {
-            if(data.resultbc[i].RMP_FAKTUR_CEK_TAMBANG == "Y")
+            $(".ID_FAKTUR_PURCHASER").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_ID)
+            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_TAMBANG == "Y")
             {
               $('.CEK_TAMBANG').prop('checked', true);
             }
@@ -386,7 +388,7 @@ function detail_purchaser(curPage)
               $('.CEK_TAMBANG').prop('checked', false);
             }
 
-            if(data.resultbc[i].RMP_FAKTUR_CEK_BIAYA == "Y")
+            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_BIAYA == "Y")
             {
               $('.CEK_BIAYA').prop('checked', true);
             }
@@ -395,11 +397,15 @@ function detail_purchaser(curPage)
               $('.CEK_BIAYA').prop('checked', false);
             }
 
-            $(".CEK_TAMBANG").attr("disabled", true);
-            $(".CEK_BIAYA").attr("disabled", true);
-            $(".simpanHargaPurchaser").attr("disabled", true)
-            $(".INPUT_BIAYA").attr("readonly", true)
-            $(".INPUT_TAMBANG").attr("readonly", true)
+            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_RP == "Y")
+            {
+              $('.CEK_RP_KG').prop('checked', true);
+            }
+            else
+            {
+              $('.CEK_RP_KG').prop('checked', false);
+            }
+
             $('.cetak_relasi_dropdown').removeAttr('style');
           }
           else if(data.resultbc[i].FRRECORD_STATUS == "V")
@@ -517,7 +523,8 @@ $(".simpanHargaPurchaser").on('click', function(){
 
   var cek_tambang = "CEK_TAMBANG=" +$('.CEK_TAMBANG').is(":checked")+ ""
   var cek_biaya = "CEK_BIAYA=" +$('.CEK_BIAYA').is(":checked")+ ""
-  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + cek_tambang + "&" + cek_biaya + "&" + jenis_faktur + ""
+  var cek_rp = "CEK_RP_KG=" +$('.CEK_RP_KG').is(":checked")+ ""
+  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
   console.log(form)
   $.ajax({
     type: 'POST',

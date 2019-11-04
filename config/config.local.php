@@ -284,7 +284,7 @@ CLASS RMP_CONFIG extends CONFIG
 				{
 					$kelapa = "";
 				}
-				$ptn_kelapa = $ptn."-".$kelapa;
+				$ptn_kelapa =$kelapa;
 				$tanggal=Date('m/Y');
 					$this->MYSQL=new MYSQL();
 					$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
