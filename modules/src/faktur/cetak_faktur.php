@@ -40,9 +40,11 @@ $supplier_id = $result_ab[0]['RMP_MASTER_PERSONAL_ID'];
 $rekening = $result_ab[0]['RMP_REKENING_RELASI'];
 $tambang= $result_ab[0]['RMP_FAKTUR_PURCHASER_TOTAL_TAMBANG'];
 $biaya = $result_ab[0]['RMP_FAKTUR_PURCHASER_BIAYA'];
-$cek_tambang= $result_ab[0]['RMP_FAKTUR_CEK_TAMBANG'];
-$cek_biaya = $result_ab[0]['RMP_FAKTUR_CEK_BIAYA'];
+$cek_tambang= $result_ab[0]['RMP_FAKTUR_PURCHASER_CEK_TAMBANG'];
+$cek_biaya = $result_ab[0]['RMP_FAKTUR_PURCHASER_CEK_BIAYA'];
+$cek_rp_kg = $result_ab[0]['RMP_FAKTUR_PURCHASER_CEK_RP'];
 $tanggal_faktur = $result_ab[0]['RMP_FAKTUR_TANGGAL'];
+$lokasi = $result_ab[0]['RMP_FAKTUR_ALAMAT'];
 
 
 
@@ -71,7 +73,7 @@ $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sqlU;
 $result_au = $this->MYSQL->data();
-$lokasi = $result_au[0]['RMP_MASTER_WILAYAH'];
+//$lokasi = $result_au[0]['RMP_MASTER_WILAYAH'];
 
 //NAMA OPERATOR TIMBANG
 $sql3333 = "SELECT * FROM RMP_FAKTUR AS F LEFT JOIN PERSONAL AS P ON F.RMP_FAKTUR_OPERATOR_TIMBANG=P.PERSONAL_NIK
@@ -190,6 +192,7 @@ if (empty($result_a))
     $this->callback['biaya'] = $biaya;
     $this->callback['cek_tambang'] = $cek_tambang;
     $this->callback['cek_biaya'] = $cek_biaya;
+    $this->callback['cek_rp_kg'] = $cek_rp_kg;
     $this->callback['tanggal_faktur'] = $tanggal_faktur;
 
     }

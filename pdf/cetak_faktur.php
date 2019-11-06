@@ -96,9 +96,10 @@ $tambang =$respon['tambang'];
 $biaya =$respon['biaya'];
 $cek_tambang =$respon['cek_tambang'];
 $cek_biaya =$respon['cek_biaya'];
+$cek_rp_kg =$respon['cek_rp_kg'];
 
-$total_jumlah = $kelapa+$tambang+$biaya;
-$terbilang=terbilang($total_jumlah);
+
+
 if($diterima == 'Y')
 {
 	$check_diterima = 'checked.png';
@@ -181,11 +182,13 @@ else if ($printed == "relasi")
 		$tambang_title = "Tambang";
 		$tambang_rp = " : Rp.";
 		$tambang_total = number_format($tambang,0,",",".");
+		$tambang = $tambang;
 	}
 	else {
 		$tambang_title = " ";
 		$tambang_rp = " ";
 		$tambang_total = " ";
+		$tambang = "0";
 	}
 
 	if($cek_biaya == "Y")
@@ -193,18 +196,40 @@ else if ($printed == "relasi")
 		$biaya_title = "Biaya";
 		$biaya_rp = " : Rp.";
 		$biaya_total = number_format($biaya,0,",",".");
+		$biaya = $biaya;
 	}
 	else {
 		$biaya_title = " ";
 		$biaya_rp = " ";
 		$biaya_total = " ";
+		$biaya = "0";
 	}
+
+	if($cek_rp_kg == "Y")
+	{
+		$rp_kg_cetak = "@Rp ".number_format(round($rp_kg),0,",",".")."";
+	}
+	else {
+		$rp_kg_cetak = "";
+
+		$tambang_title = " ";
+		$tambang_rp = " ";
+		$tambang_total = " ";
+		$tambang = "0";
+
+		$biaya_title = " ";
+		$biaya_rp = " ";
+		$biaya_total = " ";
+		$biaya = "0";
+	}
+
 
 	$cetak_catatan_purchaser = $catatan_purchaser;
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
 	$kelapa_total = number_format($kelapa,0,",",".");
-
+	$total_jumlah = $kelapa+$tambang+$biaya;
+	$terbilang=terbilang($total_jumlah);
 	$hr = "<hr>";
 
 	$total_jumlah_title = "Jumlah";
@@ -212,11 +237,13 @@ else if ($printed == "relasi")
 	$total_jumlah_total = number_format($total_jumlah,0,",",".");
 
 
+
 }
 else
 {
 	$cetak_catatan_purchaser = "";
 }
+
 foreach($respon['result'] as $r){
 	$detail_timbang .='
 	<tr>
@@ -431,7 +458,7 @@ tr {
 
 	</table >
 	<br>
-	<table>
+	<table boder="1">
 		<tr>
 		<td>Berat Bruto</td>
 		<td>: </td>
@@ -448,7 +475,7 @@ tr {
 		<td>Berat Netto</td>
 		<td>: </td>
 		<td>'.number_format(round($netto),0,",",".").' Kg</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Rp '.number_format(round($rp_kg),0,",",".").'</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$rp_kg_cetak.'</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
