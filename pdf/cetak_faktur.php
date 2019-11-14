@@ -129,6 +129,7 @@ else
 
 if ($printed == "admin")
 {
+	$rp_kg_cetak = "@Rp ".number_format(round($rp_kg),0,",",".")."";
 	$cetak_catatan_purchaser = $catatan_purchaser;
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
@@ -143,20 +144,23 @@ if ($printed == "admin")
 	$biaya_total = number_format($biaya,0,",",".");
 
 	$hr = "<hr>";
-
+	$total_jumlah = $kelapa+$tambang+$biaya;
 	$total_jumlah_title = "Jumlah";
 	$total_jumlah_rp = " : Rp.";
 	$total_jumlah_total = number_format($total_jumlah,0,",",".");
+	$terbilang=terbilang($total_jumlah);
 
 
 }
 
 else if ($printed == "beacukai")
 {
+	$rp_kg_cetak = "@Rp ".number_format(round($rp_kg),0,",",".")."";
 	$cetak_catatan_purchaser = $catatan_purchaser;
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
 	$kelapa_total = number_format($kelapa,0,",",".");
+	$terbilang=terbilang($kelapa_total);
 
 	$tambang_title = " ";
 	$tambang_rp = " ";
@@ -273,6 +277,67 @@ foreach($respon['result'] as $r){
 	';
 }
 
+$headerHTML = '<table table-unbordered>
+	<tr>
+		<td>
+			<table>
+				<tr>
+					<td>
+						<img src="/asset/images/logo_label.png" height="52">
+					</td>
+					<td>
+						<b>PT PULAU SAMBU (KUALA ENOK)</b><br>
+						FAKTUR TIMBANG KELAPA BULAT <br>
+						KELAPA '.$material.'
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td style="padding-left: 90px;">
+		<table>
+		<tr>
+		<td colspan="3">
+		<p><font size="2"><i>Printed for '.$printed.'</i></font></p>
+		</td>
+		</tr>
+			<tr>
+				<td>
+					Faktur No.
+				</td>
+				<td>
+					:
+				</td>
+				<td>
+					'.$respon['result'][0]['RMP_FAKTUR_NO_FAKTUR'].'
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Tanggal
+				</td>
+				<td>
+					:
+				</td>
+				<td>
+					'.$tanggal.'
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Halaman
+				</td>
+				<td>
+					:
+				</td>
+				<td>
+				 {PAGENO}{nbpg}
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>';
+
 $html = '
 	<html>
 	<head>
@@ -313,66 +378,10 @@ tr {
 }
 </style>
 	<body>
-	<table>
-		<tr>
-			<td>
-				<table>
-					<tr>
-						<td>
-							<img src="/asset/images/logo_label.png" height="52">
-						</td>
-						<td>
-							<b>PT PULAU SAMBU (KUALA ENOK)</b><br>
-							FAKTUR TIMBANG KELAPA BULAT <br>
-							KELAPA '.$material.'
-						</td>
-					</tr>
-				</table>
-			</td>
-			<td style="padding-left: 90px;">
-			<table>
-			<tr>
-			<td colspan="3">
-			<p><font size="2"><i>Printed for '.$printed.'</i></font></p>
-			</td>
-			</tr>
-				<tr>
-					<td>
-						Faktur No.
-					</td>
-					<td>
-						:
-					</td>
-					<td>
-						'.$respon['result'][0]['RMP_FAKTUR_NO_FAKTUR'].'
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Tanggal
-					</td>
-					<td>
-						:
-					</td>
-					<td>
-						'.$tanggal.'
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Halaman
-					</td>
-					<td>
-						:
-					</td>
-					<td>
-
-					</td>
-				</tr>
-			</table>
-			</td>
-		</tr>
-	</table>
+	<br>
+	<br>
+	<br>
+	<br>
 	<br>
 
 	<table>
@@ -594,7 +603,7 @@ $footer = '
 
 // echo $html;
 // exit;
-//$mpdf->SetHeader($header,'O');
+$mpdf->SetHTMLHeader($headerHTML);
 //$mpdf->SetHTMLFooter($footer);
 //==============================================================
 $mpdf->SetDisplayMode('fullpage');

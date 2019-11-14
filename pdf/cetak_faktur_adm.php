@@ -151,6 +151,66 @@ foreach($respon['result'] as $r){
 	';
 }
 
+$headerHTML = '<table>
+	<tr>
+		<td>
+			<table>
+				<tr>
+					<td>
+						<img src="/asset/images/logo_label.png" height="52">
+					</td>
+					<td>
+						<b>PT PULAU SAMBU (KUALA ENOK)</b><br>
+						FAKTUR TIMBANG KELAPA BULAT <br>
+						KELAPA '.$material.'
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td style="padding-left: 90px;">
+		<table>
+		<tr>
+		<td colspan="3">
+		</td>
+		</tr>
+			<tr>
+				<td>
+					Faktur No.
+				</td>
+				<td>
+					:
+				</td>
+				<td>
+					'.$respon['result'][0]['RMP_FAKTUR_NO_FAKTUR'].'
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Tanggal
+				</td>
+				<td>
+					:
+				</td>
+				<td>
+					'.$tanggal.'
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Halaman
+				</td>
+				<td>
+					:
+				</td>
+				<td>
+				 {PAGENO}{nbpg}
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>';
+
 $html = '
 	<html>
 	<head>
@@ -191,66 +251,10 @@ tr {
 }
 </style>
 	<body>
-	<table>
-		<tr>
-			<td>
-				<table>
-					<tr>
-						<td>
-							<img src="/asset/images/logo_label.png" height="52">
-						</td>
-						<td>
-							<b>PT PULAU SAMBU (KUALA ENOK)</b><br>
-							FAKTUR TIMBANG KELAPA BULAT <br>
-							KELAPA '.$material.'
-						</td>
-					</tr>
-				</table>
-			</td>
-			<td style="padding-left: 90px;">
-			<table>
-			<tr>
-			<td colspan="3">
-			<p><font size="2"></p>
-			</td>
-			</tr>
-				<tr>
-					<td>
-						Faktur No.
-					</td>
-					<td>
-						:
-					</td>
-					<td>
-						'.$respon['result'][0]['RMP_FAKTUR_NO_FAKTUR'].'
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Tanggal
-					</td>
-					<td>
-						:
-					</td>
-					<td>
-						'.$tanggal.'
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Halaman
-					</td>
-					<td>
-						:
-					</td>
-					<td>
-
-					</td>
-				</tr>
-			</table>
-			</td>
-		</tr>
-	</table>
+	<br>
+	<br>
+	<br>
+	<br>
 	<br>
 
 	<table>
@@ -417,6 +421,7 @@ $footer = '
 
 // echo $html;
 // exit;
+$mpdf->SetHTMLHeader($headerHTML);
 //$mpdf->SetHeader($header,'O');
 //$mpdf->SetHTMLFooter($footer);
 //==============================================================
