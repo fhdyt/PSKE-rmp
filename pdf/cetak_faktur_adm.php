@@ -10,10 +10,10 @@ $mpdf=new mPDF('c','A4','','',10,10,9,10,5,5);
 
 //==============================================================
 
-$mpdf->pagenumPrefix = 'Halaman ';
+$mpdf->pagenumPrefix = '';
 $mpdf->pagenumSuffix = '';
 $mpdf->nbpgPrefix = ' dari ';
-$mpdf->nbpgSuffix = '.';
+$mpdf->nbpgSuffix = '';
 $header = array(
 	'L' => array(
 	),

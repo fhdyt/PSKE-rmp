@@ -38,7 +38,7 @@ $biaya = $result_ab[0]['RMP_FAKTUR_PURCHASER_BIAYA'];
 $cek_tambang= $result_ab[0]['RMP_FAKTUR_CEK_TAMBANG'];
 $cek_biaya = $result_ab[0]['RMP_FAKTUR_CEK_BIAYA'];
 $tanggal_faktur = $result_ab[0]['RMP_FAKTUR_TANGGAL'];
-
+$lokasi = $result_ab[0]['RMP_FAKTUR_ALAMAT'];
 
 // DATA FAKTUR
 $sql = "SELECT *, F.ENTRI_OPERATOR AS FENTRI_OPERATOR
@@ -65,7 +65,7 @@ $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sqlU;
 $result_au = $this->MYSQL->data();
-$lokasi = $result_au[0]['RMP_MASTER_WILAYAH'];
+//$lokasi = $result_au[0]['RMP_MASTER_WILAYAH'];
 
 //NAMA OPERATOR TIMBANG
 $sql3333 = "SELECT * FROM RMP_FAKTUR AS F LEFT JOIN PERSONAL AS P ON F.RMP_FAKTUR_OPERATOR_TIMBANG=P.PERSONAL_NIK

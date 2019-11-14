@@ -61,7 +61,7 @@ $no = $posisi + 1;
       	$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
       	$this->MYSQL->queri = $sqlU;
       	$result_au = $this->MYSQL->data();
-      	$rrr['ALAMAT'] = $result_au[0]['RMP_MASTER_WILAYAH'];
+      	$rrr['ALAMAT'] = $rrr[0]['RMP_FAKTUR_ALAMAT'];
 
         $resultbc[] = $rrr;
         }

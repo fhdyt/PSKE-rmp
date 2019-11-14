@@ -331,6 +331,7 @@ function faktur_detail_list(curPage)
 
           $("p.NO_FAKTUR").html(data.resultb[i].RMP_FAKTUR_NO_FAKTUR)
           $("p.KAPAL_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_KAPAL)
+          $("p.ALAMAT_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_ALAMAT)
           $("p.NAMA_SUPPLIER").html(supplier)
           $(".NAMA_SUPPLIER_HIDDEN").val(data.resultb[i].RMP_MASTER_PERSONAL_NAMA)
           $("p.TANGGAL_FAKTUR").html(data.resultb[i].TANGGAL)
@@ -368,7 +369,7 @@ function detail_purchaser(curPage)
 
           $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $("p.NO_REKENING").html(data.resultbc[i].REKENING)
-          $("p.ALAMAT_SUPPLIER").html(data.resultbc[i].ALAMAT)
+          //$("p.ALAMAT_SUPPLIER").html(data.resultbc[i].ALAMAT)
           $(".INPUT_RP_KG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $(".INPUT_TAMBANG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_TAMBANG)
           $("p.NAMA_SUPPLIER_PURCHASER").html(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
@@ -465,7 +466,7 @@ function sel_nama_supplier()
             var sel = "selected"
             $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
             $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
-            $('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
+            //$('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
             if($('.INPUT_RP_KG').val() == '')
             {
             $('p.RP_KG').html(data.result[i].HARGA + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
@@ -492,8 +493,8 @@ function sel_nama_supplier()
     $('.ID_SUPPLIER').val(id_supplier)
     var rekening = $('.NAMA_SUPPLIER option:selected').attr('REKENING');
     $('p.NO_REKENING').html(rekening);
-    var alamat = $('.NAMA_SUPPLIER option:selected').attr('ALAMAT');
-    $('p.ALAMAT_SUPPLIER').html(alamat);
+    // var alamat = $('.NAMA_SUPPLIER option:selected').attr('ALAMAT');
+    // $('p.ALAMAT_SUPPLIER').html(alamat);
     if($('.INPUT_RP_KG').val() == '')
     {
       var rp = $('.NAMA_SUPPLIER option:selected').attr('RP');
