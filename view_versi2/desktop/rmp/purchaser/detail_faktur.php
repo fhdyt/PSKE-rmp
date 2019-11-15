@@ -63,7 +63,7 @@ font-size: 12px;
 				</div><!--/.row-->
           <div class="row">
             <div class="col-md-6">
-              <table class="table table-hover">
+              <table class="table">
                 <tr>
                   <td><b>No Faktur</b></td>
                   <td><p class="NO_FAKTUR"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
@@ -77,18 +77,18 @@ font-size: 12px;
                   <td><p class="KAPAL_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
                 </tr>
                 <tr>
-                  <td class="success"><b>Nama Supplier</b> <small><i>Admin<i></small></td>
-                  <td class="success"><p class="NAMA_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                  <td bgcolor="#239B56"><font color="white"><b>Nama Supplier</b> <small><i>Admin<i></small></font></td>
+                  <td bgcolor="#239B56"><font color="white"><p class="NAMA_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></font>
                   </td>
                 </tr>
                 <tr>
-                  <td class="success"><b>Nama Supplier</b> <small><i>Purchaser<i></small></td>
-                  <td class="success"><p class="NAMA_SUPPLIER_PURCHASER">
+                  <td bgcolor="#239B56"><font color="white"><b>Nama Supplier</b> <small><i>Purchaser<i></small></font></td>
+                  <td bgcolor="#239B56"><font color="white"><p class="NAMA_SUPPLIER_PURCHASER">
                     <select class="NAMA_SUPPLIER form-control select2" style="width: 100%;" id="NAMA_SUPPLIER" name="NAMA_SUPPLIER">
                       <option value=""></option>
                       <input autocomplete="off" class="form-control NAMA_SUPPLIER_HIDDEN" id="NAMA_SUPPLIER_HIDDEN" name="NAMA_SUPPLIER_HIDDEN" type="hidden">
                     </select>
-                </p>
+                </p></font>
                   <input autocomplete="off" class="form-control ID_SUPPLIER" id="ID_SUPPLIER" name="ID_SUPPLIER" type="hidden">
                 </td>
                 </tr>
@@ -113,17 +113,17 @@ font-size: 12px;
               </table>
           </div>
           <div class="col-md-4">
-            <table class="table table-hover">
+            <table class="table">
               <tr>
-                <td><b>Berat Gross</b></td>
+                <td><b>Berat Gross (Kg)</b></td>
                 <td><p class="TOTAL_GROSS"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
               <tr>
-                <td><b>Berat Tara</b></td>
+                <td><b>Berat Tara (Kg)</b></td>
                 <td><p class="TOTAL_TARA"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
               <tr>
-                <td><b>Berat Bruto</b></td>
+                <td><b>Berat Bruto (Kg)</b></td>
                 <td><p class="TOTAL_BRUTO"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
               <tr>
@@ -131,25 +131,25 @@ font-size: 12px;
                 <td><p class="POTONGAN"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
               <tr>
-                <td><b>Berat Netto</b></td>
+                <td><b>Berat Netto (Kg)</b></td>
                 <td><p class="TOTAL_NETTO"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
-              <tr class="success">
-                <td><input type="checkbox" name="CEK_RP_KG" class="CEK_RP_KG"> <b>@Rp</b></td>
-                <td><p class="RP_KG"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+              <tr bgcolor="#239B56">
+                <td><input type="checkbox" name="CEK_RP_KG" class="CEK_RP_KG"> <font color="white"><b>@Rp</b></font></td>
+                <td><font color="white"><p class="RP_KG"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></font>
                   <p class="VERIFIKASI_HARGA_NOTE text-danger loading"></p>
                   <input autocomplete="off" class="form-control INPUT_RP_KG" id="INPUT_RP_KG" name="INPUT_RP_KG" type="hidden">
                 </td>
               </tr>
-              <tr class="success">
-                <td><input type="checkbox" name="CEK_TAMBANG" class="CEK_TAMBANG"> <b>Tambang</b></td>
-                <td><input autocomplete="off" class="form-control INPUT_TAMBANG" id="INPUT_TAMBANG" name="INPUT_TAMBANG" placeholder="" type="text">
+              <tr bgcolor="#239B56">
+                <td><input type="checkbox" name="CEK_TAMBANG" class="CEK_TAMBANG"> <font color="white"><b>Tambang</b></font></td>
+                <td><input autocomplete="off" class="form-control INPUT_TAMBANG" id="INPUT_TAMBANG" name="INPUT_TAMBANG" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
                     <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="" type="hidden">
                 </td>
               </tr>
-              <tr class="success">
-                <td><input type="checkbox" name="CEK_BIAYA" class="CEK_BIAYA"> <b>Biaya</b></td>
-                <td><input autocomplete="off" class="form-control INPUT_BIAYA" id="INPUT_BIAYA" name="INPUT_BIAYA" placeholder="" type="text">
+              <tr bgcolor="#239B56">
+                <td><input type="checkbox" name="CEK_BIAYA" class="CEK_BIAYA"> <font color="white"><b>Biaya</b></font></td>
+                <td><input autocomplete="off" class="form-control INPUT_BIAYA" id="INPUT_BIAYA" name="INPUT_BIAYA" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
                   <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="hidden">
                   <input autocomplete="off" class="form-control GRADE_MATERIAL" id="GRADE_MATERIAL" name="GRADE_MATERIAL" type="hidden">
                   <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="hidden">
@@ -178,7 +178,7 @@ font-size: 12px;
       		</div>
           <hr>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-7">
             <table class="table table-hover table-bordered">
               <thead>
                 <tr>
@@ -201,17 +201,38 @@ font-size: 12px;
               </tbody>
             </table>
           </div>
-        </div>
-        <button class="btn btn-success btn-sm simpanHargaPurchaser">Simpan</button>
-        <div class="btn-group" hidden>
-          <button type="button" class="btn btn-sm   btn-default dropdown-toggle cetak_relasi_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display:none;">
-            <i class="fa fa-print" aria-hidden="true"></i> Cetak <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="relasi">Relasi</a></li>
-            <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="admin">Admin</a></li>
-            <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="beacukai">Beacukai</a></li>
-          </ul>
+          <div class="col-md-5">
+            <table class="table table-hover">
+              <tr>
+                <td><b>Kelapa (Rp)</b></td>
+                <td align="right"><p class="KELAPA_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+              </tr>
+              <tr>
+                <td><b>Tambang (Rp)</b></td>
+                <td align="right"><p class="TAMBANG_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+              </tr>
+              <tr>
+                <td><b>Biaya (Rp)</b></td>
+                <td align="right"><p class="BIAYA_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+              </tr>
+              <tr>
+                <td bgcolor="#239B56"><font color="white"><h4><b>Total (Rp)</b></h4></font></td>
+                <td align="right" bgcolor="#239B56"><font color="white"><h4><b><p class="TOTAL_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></b></h4></font></td>
+              </tr>
+            </table>
+            <p class="help-block">Mohon periksa kembali kesesuaian data faktur dan data yang anda masukkan.</p>
+            <button class="btn btn-success simpanHargaPurchaser">Simpan</button>
+            <div class="btn-group" hidden>
+              <button type="button" class="btn btn-default dropdown-toggle cetak_relasi_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display:none;">
+                <i class="fa fa-print" aria-hidden="true"></i> Cetak <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="relasi">Relasi</a></li>
+                <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="admin">Admin</a></li>
+                <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="beacukai">Beacukai</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -270,6 +291,29 @@ font-size: 12px;
 </div>
 </div>
 <script>
+
+function number_format (number, decimals, dec_point, thousands_sep) {
+    number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
+    var n = !isFinite(+number) ? 0 : +number,
+        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+        sep = (typeof thousands_sep === 'undefined') ? '.' : thousands_sep,
+        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+        s = '',
+        toFixedFix = function (n, prec) {
+            var k = Math.pow(10, prec);
+            return '' + Math.round(n * k) / k;
+        };
+    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+    if (s[0].length > 3) {
+        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+    }
+    if ((s[1] || '').length < prec) {
+        s[1] = s[1] || '';
+        s[1] += new Array(prec - s[1].length + 1).join('0');
+    }
+    return s.join(dec);
+}
+
 $(function () {
   //Initialize Select2 Elements
   $('.select2').select2()
@@ -376,6 +420,7 @@ function detail_purchaser(curPage)
           $(".INPUT_BIAYA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_BIAYA)
           $(".ID_SUPPLIER").val(data.resultbc[i].RMP_MASTER_PERSONAL_ID)
           $(".JENIS_FAKTUR").val(data.resultbc[i].RMP_FAKTUR_JENIS)
+          kalkulasi_biaya()
         //  $(".ID_FAKTUR_PURCHASER").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_ID)
           if(data.resultbc[i].FRRECORD_STATUS == 'A')
           {
@@ -433,6 +478,7 @@ function detail_purchaser(curPage)
         $(".INPUT_TAMBANG").val("0")
         $(".INPUT_BIAYA").val("0")
       }
+
     }, //end success
     error: function(x, e) {
       console.log("Error Ajax");
@@ -444,9 +490,8 @@ function detail_purchaser(curPage)
 
 $(function() {
   console.log("function");
-  faktur_detail_list('1');
-  detail_purchaser('1');
-
+  faktur_detail_list();
+  detail_purchaser();
 });
 
 function sel_nama_supplier()
@@ -501,7 +546,9 @@ function sel_nama_supplier()
       $('p.RP_KG').html(rp + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
     }
     else{}
+    kalkulasi_biaya()
   })
+
 
 function edit_harga(){
 var harga_lama = $('p.RP_KG').text()
@@ -595,4 +642,23 @@ $(".cetak_faktur").on("click", function(){
   var printed = btoa($(this).attr("PRINTED"))
   window.open("?show=rmp/pdf/cetak_faktur/<?php echo $d3; ?>/"+ rp_kg +"/"+ material +"/"+ printed +"", "_blank");
 })
+
+
+function kalkulasi_biaya()
+{
+  var netto = $('.TOTAL_NETTO').text()
+  var rp = $('.RP_KG').text()
+  var potongan = $('.POTONGAN').text()
+  var tambang = $('.INPUT_TAMBANG').val()
+  var biaya = parseInt($('.INPUT_BIAYA').val())
+  var kelapa_total = parseInt(rp*netto);
+  var tambang_rp = parseInt(tambang*netto);
+  var total_rp = parseInt(biaya+kelapa_total+tambang_rp);
+  $('p.KELAPA_RP').html(number_format(kelapa_total));
+  $('p.TAMBANG_RP').html(number_format(tambang_rp));
+  $('p.BIAYA_RP').html(number_format(biaya));
+  $('p.TOTAL_RP').html(number_format(total_rp));
+
+
+}
 </script>
