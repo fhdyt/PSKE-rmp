@@ -940,6 +940,7 @@ function hasil_timbang(no_nota)
           $("tbody#zone_data").append("<tr class='"+tr+"'  detailLogId='" + data.result[i].ICD_BARANG_KODE_INVENTORI + "'>" +
             "<td >" + data.result[i].NO + ".<input type='hidden' class='idnota'></td>" +
             // "<td>" + data.result[i].RMP_HASIL_TIMBANG_TANGGAL + "</td>" +
+            //"<td>" + data.result[i].id + "</td>"+
             "<td>" + data.result[i].tgl + "</td>"+
             // "<td>" + data.result[i].RMP_HASIL_TIMBANG_KG + "</td>" +
             "<td>" + data.result[i].gross + "</td>"+
