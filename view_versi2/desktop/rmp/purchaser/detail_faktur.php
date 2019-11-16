@@ -283,9 +283,41 @@ font-size: 12px;
    <div class="modal-content">
      <div class="modal-header">
        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-       <h4 class="modal-title" id="myModalLabel">Cetak Faktur</h4>
+       <h4 class="modal-title" id="myModalLabel"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Berhasil Disimpan</h4>
      </div>
      <div class="modal-body">
+       <div class="row">
+         <div class="col-md-12">
+             <table class="table-hover table">
+               <tr>
+                 <td>
+                   Cetak Untuk Relasi
+                 </td>
+                 <td>
+                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success" PRINTED="relasi"><i class="fa fa-print" aria-hidden="true"></i></a>
+                 </td>
+               </tr>
+               <tr>
+                 <td>
+                   Cetak Untuk Admin
+                 </td>
+                 <td>
+                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success" PRINTED="admin"><i class="fa fa-print" aria-hidden="true"></i></a>
+                 </td>
+               </tr>
+               <tr>
+                 <td>
+                   Cetak Untuk Beacukai
+                 </td>
+                 <td>
+                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success" PRINTED="beacukai"><i class="fa fa-print" aria-hidden="true"></i></a>
+                 </td>
+               </tr>
+             </table>
+
+         </div>
+       </div>
+
    </div>
  </div>
 </div>
@@ -582,9 +614,10 @@ $(".simpanHargaPurchaser").on('click', function(){
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {
-        alert(data.respon.text_msg)
+        //alert(data.respon.text_msg)
         faktur_detail_list();
         detail_purchaser();
+        $('.modalCetakFaktur').modal('show')
       }
       else if (data.respon.pesan == "gagal")
       {
