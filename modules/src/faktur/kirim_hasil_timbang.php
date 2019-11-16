@@ -25,7 +25,7 @@ foreach($result_abx as $r)
 
 if (empty($result_abx))
 {
-				$tanggalnota = date("mY");
+				$tanggalnota = $input['TANGGAL_NOTA'];
 				$sql33 = "SELECT * FROM pkb.nota_".$tanggalnota." WHERE id='".$input['ID_TIMBANG']."' LIMIT 1";
 				$this->MYSQL = new MYSQL();
 				$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;

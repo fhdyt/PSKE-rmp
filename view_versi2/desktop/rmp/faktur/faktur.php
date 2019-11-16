@@ -972,7 +972,7 @@ $("tbody#zone_data").on('click','button.kirim_hasil_timbang', function()
   var no_nota = $(this).attr('NO_NOTA');
   var jenis_kelapa = $(this).attr('JENIS_KELAPA');
   var no_faktur = $(".NO_FAKTUR").val();
-  var data = 'ID_TIMBANG='+id_timbang+'&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur;
+  var data = 'ID_TIMBANG='+id_timbang+'&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur+"&TANGGAL_NOTA="+$(".BULAN_NOTA").val()+""+$(".TAHUN_NOTA").val()+"";
   $(".JENIS_KELAPA").val(jenis_kelapa);
     kirim_hasil_timbang(data)
     var no_faktur = $('.NO_FAKTUR').val()
