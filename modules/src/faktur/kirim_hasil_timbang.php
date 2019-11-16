@@ -36,7 +36,7 @@ if (empty($result_abx))
 				$ponton = $result_a[0]['id_timbang'];
 				if(empty($input['NO_FAKTUR']))
 				{
-					$buat_nomor_faktur=$RMP_CONFIG->buat_nomor_faktur($jenis_kelapa,$ponton)->callback['nomor'];
+					$buat_nomor_faktur=$RMP_CONFIG->buat_nomor_faktur($jenis_kelapa,$ponton,$tanggalnota)->callback['nomor'];
 				}
 				else {
 					$buat_nomor_faktur = $input['NO_FAKTUR'];

@@ -230,7 +230,7 @@ CLASS RMP_CONFIG extends CONFIG
 	 	 	return $no;
 	 	 }
 
-			public function buat_nomor_faktur($jenis_kelapa,$ponton){
+			public function buat_nomor_faktur($jenis_kelapa,$ponton,$tanggalnota){
 				if($ponton == 'PTN-1')
 				{
 					$ptn = "A";
@@ -285,7 +285,9 @@ CLASS RMP_CONFIG extends CONFIG
 					$kelapa = "";
 				}
 				$ptn_kelapa =$kelapa;
-				$tanggal=Date('m/Y');
+				$tanggal_bulan = substr($tanggalnota,0,2);
+				$tanggal_tahun = substr($tanggalnota,2,4);
+				$tanggal=$tanggal_bulan.'/'.$tanggal_tahun;
 					$this->MYSQL=new MYSQL();
 					$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
 					$this->MYSQL->queri="select RMP_FAKTUR_NO_FAKTUR from RMP_FAKTUR where (RMP_FAKTUR_NO_FAKTUR like'%".$tanggal."%' and RMP_FAKTUR_NO_FAKTUR like'%".$kelapa."%') and RECORD_STATUS='A' order by RMP_FAKTUR_NO_FAKTUR desc";
