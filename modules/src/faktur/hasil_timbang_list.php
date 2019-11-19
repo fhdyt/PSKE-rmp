@@ -19,14 +19,18 @@ if (empty($input['JENIS_KELAPA']) or $input['JENIS_KELAPA'] == "")
     }
   else
     {
-    $filter_a = "AND N.jenis_kelapa='".$input['JENIS_KELAPA']."'";
+    $filter_a = "AND jenis_kelapa='".$input['JENIS_KELAPA']."'";
+    //$filter_a = "AND N.jenis_kelapa='".$input['JENIS_KELAPA']."'";
     }
 
 $tanggalnota = date("mY");
 $sql = "SELECT * FROM
-pkb.nota_".$input['TANGGAL_NOTA']." AS N
-LEFT JOIN
-RMP_FAKTUR_DETAIL AS F ON N.tgl=F.RMP_FAKTUR_DETAIL_TANGGAL AND NOT F.RECORD_STATUS='D' WHERE N.notr='".$input['NO_NOTA']."'".$filter_a." GROUP BY N.id";
+pkb.nota_".$input['TANGGAL_NOTA']." WHERE notr='".$input['NO_NOTA']."'".$filter_a." GROUP BY id";
+
+// $sql = "SELECT * FROM
+// pkb.nota_".$input['TANGGAL_NOTA']." AS N
+// LEFT JOIN
+// RMP_FAKTUR_DETAIL AS F ON N.tgl=F.RMP_FAKTUR_DETAIL_TANGGAL AND NOT F.RECORD_STATUS='D' WHERE N.notr='".$input['NO_NOTA']."'".$filter_a." GROUP BY N.id";
 
 // $sql = "SELECT * FROM
 // pkb.nota_".$input['TANGGAL_NOTA']." AS N
