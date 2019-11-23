@@ -600,12 +600,13 @@ $(".simpanHargaPurchaser").on('click', function(){
   var bruto = "TOTAL_BRUTO=" +$('.TOTAL_BRUTO').text()+ ""
   var potongan = "POTONGAN=" +$('.POTONGAN').text()+ ""
   var netto = "TOTAL_NETTO=" +$('.TOTAL_NETTO').text()+ ""
+  var rekening = "NO_REKENING=" +$('.NO_REKENING').text()+ ""
   var jenis_faktur = "JENIS_FAKTUR=" +$('.JENIS_FAKTUR').val()+ ""
 
   var cek_tambang = "CEK_TAMBANG=" +$('.CEK_TAMBANG').is(":checked")+ ""
   var cek_biaya = "CEK_BIAYA=" +$('.CEK_BIAYA').is(":checked")+ ""
   var cek_rp = "CEK_RP_KG=" +$('.CEK_RP_KG').is(":checked")+ ""
-  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
+  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + rekening + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
   console.log(form)
   $.ajax({
     type: 'POST',
