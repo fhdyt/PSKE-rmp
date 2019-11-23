@@ -148,7 +148,7 @@ if ($printed == "admin")
 	$total_jumlah_title = "Jumlah";
 	$total_jumlah_rp = " : Rp.";
 	$total_jumlah_total = number_format($total_jumlah,0,",",".");
-	$terbilang=terbilang($total_jumlah);
+	$terbilang=terbilang($total_jumlah)." Rupiah";
 
 
 }
@@ -160,7 +160,7 @@ else if ($printed == "beacukai")
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
 	$kelapa_total = number_format($kelapa,0,",",".");
-	$terbilang=terbilang($kelapa_total);
+	$terbilang=terbilang($kelapa_total)." Rupiah";
 
 	$tambang_title = " ";
 	$tambang_rp = " ";
@@ -193,6 +193,18 @@ else if ($printed == "relasi")
 		$tambang_rp = " ";
 		$tambang_total = " ";
 		$tambang = "0";
+
+		$cetak_catatan_purchaser = $catatan_purchaser;
+		$kelapa_title = "Kelapa";
+		$kelapa_rp = " : Rp.";
+		$kelapa_total = number_format($kelapa,0,",",".");
+		$total_jumlah = $kelapa+$tambang+$biaya;
+		$terbilang=terbilang($total_jumlah)." Rupiah";
+		$hr = "<hr>";
+
+		$total_jumlah_title = "Jumlah";
+		$total_jumlah_rp = " : Rp.";
+		$total_jumlah_total = number_format($total_jumlah,0,",",".");
 	}
 
 	if($cek_biaya == "Y")
@@ -207,6 +219,18 @@ else if ($printed == "relasi")
 		$biaya_rp = " ";
 		$biaya_total = " ";
 		$biaya = "0";
+
+		$cetak_catatan_purchaser = $catatan_purchaser;
+		$kelapa_title = "Kelapa";
+		$kelapa_rp = " : Rp.";
+		$kelapa_total = number_format($kelapa,0,",",".");
+		$total_jumlah = $kelapa+$tambang+$biaya;
+		$terbilang=terbilang($total_jumlah)." Rupiah";
+		$hr = "<hr>";
+
+		$total_jumlah_title = "Jumlah";
+		$total_jumlah_rp = " : Rp.";
+		$total_jumlah_total = number_format($total_jumlah,0,",",".");
 	}
 
 	if($cek_rp_kg == "Y")
@@ -225,20 +249,32 @@ else if ($printed == "relasi")
 		$biaya_rp = " ";
 		$biaya_total = " ";
 		$biaya = "0";
+
+		$cetak_catatan_purchaser = " ";
+		$kelapa_title = " ";
+		$kelapa_rp = " ";
+		$kelapa_total = " ";
+		$total_jumlah = " ";
+		$terbilang="-";
+		$hr = " ";
+
+		$total_jumlah_title = " ";
+		$total_jumlah_rp = " ";
+		$total_jumlah_total = " ";
 	}
 
 
-	$cetak_catatan_purchaser = $catatan_purchaser;
-	$kelapa_title = "Kelapa";
-	$kelapa_rp = " : Rp.";
-	$kelapa_total = number_format($kelapa,0,",",".");
-	$total_jumlah = $kelapa+$tambang+$biaya;
-	$terbilang=terbilang($total_jumlah);
-	$hr = "<hr>";
-
-	$total_jumlah_title = "Jumlah";
-	$total_jumlah_rp = " : Rp.";
-	$total_jumlah_total = number_format($total_jumlah,0,",",".");
+	// $cetak_catatan_purchaser = $catatan_purchaser;
+	// $kelapa_title = "Kelapa";
+	// $kelapa_rp = " : Rp.";
+	// $kelapa_total = number_format($kelapa,0,",",".");
+	// $total_jumlah = $kelapa+$tambang+$biaya;
+	// $terbilang=terbilang($total_jumlah);
+	// $hr = "<hr>";
+	//
+	// $total_jumlah_title = "Jumlah";
+	// $total_jumlah_rp = " : Rp.";
+	// $total_jumlah_total = number_format($total_jumlah,0,",",".");
 
 
 
@@ -566,7 +602,7 @@ tr {
 		</tr>
 	</table>
 	<br>
-<p align="right"><i><b>Terbilang :</b> '.ucwords($terbilang).' Rupiah</i></p>
+<p align="right"><i><b>Terbilang :</b> '.ucwords($terbilang).'</i></p>
 
 	<br>
 	<table class="table2">
