@@ -6,7 +6,7 @@
 include("../../main.config.php");
 
 $tanggalsekarang=date('d F Y');
-$mpdf=new mPDF('c','A4','','',10,10,9,10,5,5);
+$mpdf=new mPDF('c','A4','','',10,10,30,10,5,5);
 
 //==============================================================
 
@@ -345,6 +345,7 @@ $html = '
 		<title>Cetak Faktur</title>
 	</head>
 <style>
+
 	body {
     font-family:"Arial Black", Gadget, sans-serif;
 }
@@ -378,12 +379,6 @@ tr {
 }
 </style>
 	<body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
 	<table>
 		<tr>
 			<td>
