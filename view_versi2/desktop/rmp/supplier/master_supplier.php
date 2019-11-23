@@ -97,6 +97,7 @@ table-detail {
           </div>
 					<div class="col-md-4 ">
             <select id="FILTER_MATERIAL" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_material()">
+              <option value="">--Semua Material--</option>
                     <?php
                     $data = $RMP_CONFIG->material();
                     foreach ($data['rasult'] as $key => $value) {
