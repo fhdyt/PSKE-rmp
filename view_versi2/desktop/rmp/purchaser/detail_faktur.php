@@ -693,7 +693,5 @@ function kalkulasi_biaya()
   $('p.TAMBANG_RP').html(number_format(tambang_rp));
   $('p.BIAYA_RP').html(number_format(biaya));
   $('p.TOTAL_RP').html(number_format(total_rp));
-
-
 }
 </script>
