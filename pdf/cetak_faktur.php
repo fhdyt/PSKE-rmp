@@ -194,7 +194,7 @@ else if ($printed == "relasi")
 		$tambang_total = " ";
 		$tambang = "0";
 
-		$cetak_catatan_purchaser = $catatan_purchaser;
+		$cetak_catatan_purchaser = "";
 		$kelapa_title = "Kelapa";
 		$kelapa_rp = " : Rp.";
 		$kelapa_total = number_format($kelapa,0,",",".");
@@ -220,7 +220,7 @@ else if ($printed == "relasi")
 		$biaya_total = " ";
 		$biaya = "0";
 
-		$cetak_catatan_purchaser = $catatan_purchaser;
+		//$cetak_catatan_purchaser = $catatan_purchaser;
 		$kelapa_title = "Kelapa";
 		$kelapa_rp = " : Rp.";
 		$kelapa_total = number_format($kelapa,0,",",".");
@@ -250,7 +250,7 @@ else if ($printed == "relasi")
 		$biaya_total = " ";
 		$biaya = "0";
 
-		$cetak_catatan_purchaser = " ";
+		//$cetak_catatan_purchaser = " ";
 		$kelapa_title = " ";
 		$kelapa_rp = " ";
 		$kelapa_total = " ";
