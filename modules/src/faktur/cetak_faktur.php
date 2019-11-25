@@ -30,6 +30,8 @@ $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql2;
 $result_ab = $this->MYSQL->data();
 
+$netto = $result_ab[0]['RMP_FAKTUR_PURCHASER_NETTO'];
+
 $diterima = $result_ab[0]['RMP_FAKTUR_CEK_DITERIMA'];
 $inspeksi = $result_ab[0]['RMP_FAKTUR_CEK_100_INSPEKSI'];
 $dipisah = $result_ab[0]['RMP_FAKTUR_CEK_DIPISAH'];
@@ -194,6 +196,7 @@ if (empty($result_a))
     $this->callback['cek_biaya'] = $cek_biaya;
     $this->callback['cek_rp_kg'] = $cek_rp_kg;
     $this->callback['tanggal_faktur'] = $tanggal_faktur;
+    $this->callback['netto'] = $netto;
 
     }
 
