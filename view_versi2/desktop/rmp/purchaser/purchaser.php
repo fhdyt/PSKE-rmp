@@ -122,6 +122,8 @@ font-size: 12px;
 </div>
 <script>
 
+
+
 $(function()
 {
 	$(".datepicker").datepicker().on('changeDate', function(ev)

@@ -132,7 +132,10 @@ font-size: 12px;
               </tr>
               <tr>
                 <td><b>Berat Netto (Kg)</b></td>
-                <td><p class="TOTAL_NETTO"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td>
+                  <p class="TOTAL_NETTO"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                  <p class="TOTAL_NETTO_SEBELUM" style="font-size:10px;color:grey;"></i></p>
+                </td>
               </tr>
               <tr bgcolor="#239B56">
                 <td><input type="checkbox" name="CEK_RP_KG" class="CEK_RP_KG"> <font color="white"><b>@Rp</b></font></td>
@@ -323,6 +326,20 @@ font-size: 12px;
 </div>
 </div>
 <script>
+function customRound(n){
+  var angka = n.toString()
+  var r = angka.split(".")
+  var x = r[1].substr(0,1)
+  if (x <= 5)
+  {
+  var bulat = Math.floor(angka)
+  }
+  else
+  {
+  var bulat = Math.ceil(angka)
+  }
+  return bulat;
+}
 
 function number_format (number, decimals, dec_point, thousands_sep) {
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
@@ -365,7 +382,10 @@ function faktur_detail_list(curPage)
         $('p.TOTAL_BRUTO').html( data.total_bruto)
         $('p.POTONGAN').html( data.potongan + " %")
         var potongan = data.total_bruto*(data.potongan/100)
-        $('p.TOTAL_NETTO').html(Math.round(data.total_bruto-potongan))
+        $('p.TOTAL_NETTO').html(customRound(data.total_bruto-potongan))
+        $('p.TOTAL_NETTO_SEBELUM').html(data.total_bruto-potongan)
+        //alert(data.total_bruto-potongan)
+        //$('p.TOTAL_NETTO').html(Math.round(data.total_bruto-potongan))
         $("tbody#zone_data").empty();
         for (i = 0; i < data.result.length; i++) {
           if(data.result[i].RMP_FAKTUR_CEK_DITERIMA == 'Y')
