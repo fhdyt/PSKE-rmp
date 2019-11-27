@@ -51,30 +51,179 @@ font-size: 12px;
       <th rowspan="2">Alamat</th>
       <th rowspan="2">Rekening</th>
       <th rowspan="2">Nomor Faktur</th>
-      <th colspan="3"><center>KB-A</center></th>
+      <th colspan="5"><center>KB-A</center></th>
 
-      <th colspan="3"><center>KB-B</center></th>
+      <th colspan="5"><center>KB-B</center></th>
 
     </tr>
     <tr>
-      <th>Kg NETTO</th>
+      <th><center>Kg BRUTO</center></th>
+      <th><center>%</center></th>
+      <th><center>Kg NETTO</center></th>
       <th id="td_rp_a">@Rp</th>
-      <th>Rp</th>
-      <th>Kg NETTO</th>
+      <th><center>Rp</center></th>
+
+      <th><center>Kg BRUTO</center></th>
+      <th><center>%</center></th>
+      <th><center>Kg NETTO</center></th>
       <th id="td_rp_b">@Rp</th>
-      <th>Rp</th>
+      <th><center>Rp</center></th>
 
     </tr>
   </thead>
-  <tbody id="zone_data">
+  <tbody id="zone_data_02"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
+  <tfooter id="foot_data_02">
     <tr>
-      <td colspan="9">
-        <center>
-          <div class="loader"></div>
-        </center>
-      </td>
-    </tr>
-  </tbody>
+      <td colspan="5" style="text-align:right"># (02)</td>
+      <td id="02_SUM_BRUTO_A"></td>
+      <td id="02_SUM_PERSEN_A"></td>
+      <td id="02_SUM_NETTO_A"></td>
+      <td id="02_SUM_RP_KG_A"></td>
+      <td id="02_SUM_RP_A"></td>
+
+      <td id="02_SUM_BRUTO_B"></td>
+      <td id="02_SUM_PERSEN_B"></td>
+      <td id="02_SUM_NETTO_B"></td>
+      <td id="02_SUM_RP_KG_B"></td>
+      <td id="02_SUM_RP_B"></td>
+    </tr></tfooter>
+
+  <tbody id="zone_data_03"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
+  <tfooter id="foot_data_03">
+    <tr>
+      <td colspan="5" style="text-align:right"># (03)</td>
+      <td id="03_SUM_BRUTO_A"></td>
+      <td id="03_SUM_PERSEN_A"></td>
+      <td id="03_SUM_NETTO_A"></td>
+      <td id="03_SUM_RP_KG_A"></td>
+      <td id="03_SUM_RP_A"></td>
+
+      <td id="03_SUM_BRUTO_B"></td>
+      <td id="03_SUM_PERSEN_B"></td>
+      <td id="03_SUM_NETTO_B"></td>
+      <td id="03_SUM_RP_KG_B"></td>
+      <td id="03_SUM_RP_B"></td>
+    </tr></tfooter>
+
+  <tbody id="zone_data_04"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
+  <tfooter id="foot_data_04">
+    <tr>
+      <td colspan="5" style="text-align:right"># (04)</td>
+      <td id="04_SUM_BRUTO_A"></td>
+      <td id="04_SUM_PERSEN_A"></td>
+      <td id="04_SUM_NETTO_A"></td>
+      <td id="04_SUM_RP_KG_A"></td>
+      <td id="04_SUM_RP_A"></td>
+
+      <td id="04_SUM_BRUTO_B"></td>
+      <td id="04_SUM_PERSEN_B"></td>
+      <td id="04_SUM_NETTO_B"></td>
+      <td id="04_SUM_RP_KG_B"></td>
+      <td id="04_SUM_RP_B"></td>
+    </tr></tfooter>
+
+  <tbody id="zone_data_05"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
+  <tfooter id="foot_data_05">
+    <tr>
+      <td colspan="5" style="text-align:right"># (05)</td>
+      <td id="05_SUM_BRUTO_A"></td>
+      <td id="05_SUM_PERSEN_A"></td>
+      <td id="05_SUM_NETTO_A"></td>
+      <td id="05_SUM_RP_KG_A"></td>
+      <td id="05_SUM_RP_A"></td>
+
+      <td id="05_SUM_BRUTO_B"></td>
+      <td id="05_SUM_PERSEN_B"></td>
+      <td id="05_SUM_NETTO_B"></td>
+      <td id="05_SUM_RP_KG_B"></td>
+      <td id="05_SUM_RP_B"></td>
+    </tr></tfooter>
+
+  <tbody id="zone_data_06"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
+  <tfooter id="foot_data_06">
+    <tr>
+      <td colspan="5" style="text-align:right"># (06)</td>
+      <td id="06_SUM_BRUTO_A"></td>
+      <td id="06_SUM_PERSEN_A"></td>
+      <td id="06_SUM_NETTO_A"></td>
+      <td id="06_SUM_RP_KG_A"></td>
+      <td id="06_SUM_RP_A"></td>
+
+      <td id="06_SUM_BRUTO_B"></td>
+      <td id="06_SUM_PERSEN_B"></td>
+      <td id="06_SUM_NETTO_B"></td>
+      <td id="06_SUM_RP_KG_B"></td>
+      <td id="06_SUM_RP_B"></td>
+    </tr></tfooter>
+
+  <tbody id="zone_data_07"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
+  <tfooter id="foot_data_07">
+    <tr>
+      <td colspan="5" style="text-align:right"># (07)</td>
+      <td id="07_SUM_BRUTO_A"></td>
+      <td id="07_SUM_PERSEN_A"></td>
+      <td id="07_SUM_NETTO_A"></td>
+      <td id="07_SUM_RP_KG_A"></td>
+      <td id="07_SUM_RP_A"></td>
+
+      <td id="07_SUM_BRUTO_B"></td>
+      <td id="07_SUM_PERSEN_B"></td>
+      <td id="07_SUM_NETTO_B"></td>
+      <td id="07_SUM_RP_KG_B"></td>
+      <td id="07_SUM_RP_B"></td>
+    </tr></tfooter>
+
+  <tbody id="zone_data_08"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
+  <tfooter id="foot_data_08">
+    <tr>
+      <td colspan="5" style="text-align:right"># (08)</td>
+      <td id="08_SUM_BRUTO_A"></td>
+      <td id="08_SUM_PERSEN_A"></td>
+      <td id="08_SUM_NETTO_A"></td>
+      <td id="08_SUM_RP_KG_A"></td>
+      <td id="08_SUM_RP_A"></td>
+
+      <td id="08_SUM_BRUTO_B"></td>
+      <td id="08_SUM_PERSEN_B"></td>
+      <td id="08_SUM_NETTO_B"></td>
+      <td id="08_SUM_RP_KG_B"></td>
+      <td id="08_SUM_RP_B"></td>
+    </tr></tfooter>
+
+  <tbody id="zone_data_09"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
+  <tfooter id="foot_data_09">
+    <tr>
+      <td colspan="5" style="text-align:right"># (09)</td>
+      <td id="09_SUM_BRUTO_A"></td>
+      <td id="09_SUM_PERSEN_A"></td>
+      <td id="09_SUM_NETTO_A"></td>
+      <td id="09_SUM_RP_KG_A"></td>
+      <td id="09_SUM_RP_A"></td>
+
+      <td id="09_SUM_BRUTO_B"></td>
+      <td id="09_SUM_PERSEN_B"></td>
+      <td id="09_SUM_NETTO_B"></td>
+      <td id="09_SUM_RP_KG_B"></td>
+      <td id="09_SUM_RP_B"></td>
+    </tr></tfooter>
+
+  <tbody id="zone_data_10"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
+  <tfooter id="foot_data_10">
+    <tr>
+      <td colspan="5" style="text-align:right"># (10)</td>
+      <td id="10_SUM_BRUTO_A"></td>
+      <td id="10_SUM_PERSEN_A"></td>
+      <td id="10_SUM_NETTO_A"></td>
+      <td id="10_SUM_RP_KG_A"></td>
+      <td id="10_SUM_RP_A"></td>
+
+      <td id="10_SUM_BRUTO_B"></td>
+      <td id="10_SUM_PERSEN_B"></td>
+      <td id="10_SUM_NETTO_B"></td>
+      <td id="10_SUM_RP_KG_B"></td>
+      <td id="10_SUM_RP_B"></td>
+    </tr></tfooter>
+
 </table>
 <div class="row">
 <div class="col-md-9">
@@ -85,7 +234,8 @@ font-size: 12px;
 <div class="col-md-3 text-right">
 <label>Jumlah Baris Per Halaman</label> <input class="form-control" id="REC_PER_HALAMAN" max='1000' min="1" name="REC_PER_HALAMAN" required="" type="number" value="10">
 </div>
-</div><!--/row-->
+</div>
+<!--/row-->
 
 <script>
 
@@ -93,7 +243,7 @@ $(function() {
   $('a.sidebar-toggle').click()
 });
 
-function laporan_faktur_list(curPage)
+function laporan_faktur_list(curPage,wilayah)
 {
   var url = window.location.href;
   var pageA = url.split("#");
@@ -109,11 +259,11 @@ function laporan_faktur_list(curPage)
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=laporan_faktur&batas=' + $('input#REC_PER_HALAMAN').val() + '&halaman=' + curPage + '&keyword=' + $("input#keyword").val()+ '&tanggal=' + $(".FILTER_TANGGAL").val()+ '&material=jambul',
+    data: 'ref=laporan_faktur&batas=' + $('input#REC_PER_HALAMAN').val() + '&halaman=' + curPage + '&keyword=' + $("input#keyword").val()+ '&tanggal=' + $(".FILTER_TANGGAL").val()+ '&wilayah=' + wilayah + '&material=jambul',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
 				console.log("Sukses");
-        $("tbody#zone_data").empty();
+        $("tbody#zone_data_"+wilayah+"").empty();
         $('#tujuan-light-pagination').pagination({
           pages: data.result_option.jml_halaman,
           cssStyle: 'light-theme',
@@ -124,42 +274,35 @@ function laporan_faktur_list(curPage)
           var jumlah_data = data.result.length;
           var nomor = i;
           // console.log(nomor);
-          $("tbody#zone_data").append("<tr class='detailLogId' id='list_laporan' >" +
+          $("tbody#zone_data_"+wilayah+"").append("<tr class='detailLogId' id='list_laporan' >" +
 					"<td >" + data.result[i].NO + ".</td>" +
-				//	"<td>" + data.result[i+1].RMP_MASTER_WILAYAH_KODE + "</td>" +
 					"<td>" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +
 					"<td>" + data.result[i].MASTER_WILAYAH + "</td>" +
 					"<td>" + data.result[i].RMP_REKENING_RELASI + "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR + "</td>" +
+					"<td>" + data.result[i].BRUTO_A + "</td>" +
+					"<td>" + data.result[i].PERSEN_A + "</td>" +
 					"<td>" + data.result[i].NETTO_A + "</td>" +
           "<td>" + data.result[i].RP_KG_A + "</td>" +
           "<td>" + data.result[i].RP_A + "</td>" +
+
+          "<td>" + data.result[i].BRUTO_B + "</td>" +
+          "<td>" + data.result[i].PERSEN_B + "</td>" +
 					"<td>" + data.result[i].NETTO_B + "</td>" +
           "<td>" + data.result[i].RP_KG_B + "</td>" +
           "<td>" + data.result[i].RP_B + "</td>" +
-					// "<td>" + data.result[i].NETTO_C + "</td>" +
-          // "<td>" + data.result[i].RP_KG_C + "</td>" +
-          // "<td>" + data.result[i].RP_C + "</td>" +
           "</tr>");
-          if(data.result[i].RMP_MASTER_WILAYAH_KODE != data.result[i+1].RMP_MASTER_WILAYAH_KODE)
-          {
-            $("tbody#zone_data").append("<tr class='detailLogId' id='list_laporan' >" +
-            "<td >Total</td>" +
-            "</tr>");
-          }
-          else if(data.result[i].NO === jumlah_data)
-          {
-             alert("berhasil")
-            $("tbody#zone_data").append("<tr class='detailLogId' id='list_laporan' >" +
-            "<td >Total</td>" +
-            "</tr>");
-					}
-          console.log(data.result[i].NO)
+
+          $("td#"+wilayah+"_SUM_BRUTO_A").html(data.result[i].SUM_BRUTO_A)
+          $("td#"+wilayah+"_SUM_NETTO_A").html(data.result[i].SUM_NETTO_A)
+          $("td#"+wilayah+"_SUM_RP_A").html(data.result[i].SUM_RP_A)
+
+          $("td#"+wilayah+"_SUM_BRUTO_B").html(data.result[i].SUM_BRUTO_B)
+          $("td#"+wilayah+"_SUM_NETTO_B").html(data.result[i].SUM_NETTO_B)
+          $("td#"+wilayah+"_SUM_RP_B").html(data.result[i].SUM_RP_B)
         }
       } else if (data.respon.pesan == "gagal") {
-        console.log("Gagal");
-        console.log(data.respon.text_msg)
-        $("tbody#zone_data").html("<tr><td colspan='25'><div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> " + data.respon.text_msg + "</div></td></tr>");
+        $("tbody#zone_data_"+wilayah+"").html("");
       }
     }, //end success
     error: function(x, e) {
@@ -169,7 +312,15 @@ function laporan_faktur_list(curPage)
 }
 $(function() {
   console.log("function");
-  laporan_faktur_list('1');
+  laporan_faktur_list('1','02');
+  laporan_faktur_list('1','03');
+  laporan_faktur_list('1','04');
+  laporan_faktur_list('1','05');
+  laporan_faktur_list('1','06');
+  laporan_faktur_list('1','07');
+  laporan_faktur_list('1','08');
+  laporan_faktur_list('1','09');
+  laporan_faktur_list('1','10');
 });
 $(window).on('hashchange', function(e) {
   laporan_faktur_list('1');
