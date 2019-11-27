@@ -26,11 +26,11 @@
 						<li id="gelondong" role="presentation">
 							<a href="?show=rmp/laporan/laporan_faktur/gelondong">Gelondong</a>
 						</li>
-						<li class="active" id="kelapa_bulat" role="presentation">
-							<a href="?show=rmp/laporan/laporan_faktur/kelapa_bulat">Kelapa Bulat</a>
+						<li class="active" id="jambul" role="presentation">
+							<a href="?show=rmp/laporan/laporan_faktur/jambul">Jambul</a>
 						</li>
-						<li class="active" id="kelapa_licin" role="presentation">
-							<a href="?show=rmp/laporan/laporan_faktur/kelapa_licin">Kelapa Licin</a>
+						<li class="active" id="licin" role="presentation">
+							<a href="?show=rmp/laporan/laporan_faktur/licin">Licin</a>
 						</li>
 					</ul><!-- nav nav-tabs -->
 					<br>
@@ -47,17 +47,17 @@
 				        {
 				            require_once("tab/gelondong.php");
 				        }
-				        elseif($d3=='kelapa_bulat')
+				        elseif($d3=='jambul')
 				        {
-				            require_once("tab/kelapa_bulat.php");
+				            require_once("tab/jambul.php");
 				        }
-				        elseif($d3=='kelapa_licin')
+				        elseif($d3=='licin')
 				        {
-				            require_once("tab/kelapa_licin.php");
+				            require_once("tab/licin.php");
 				        }
 				        else
 				        {
-				            require_once("tab/gelondong.php");
+				            require_once("tab/jambul.php");
 				        }
 
 				    ?>

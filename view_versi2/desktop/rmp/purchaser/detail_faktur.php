@@ -220,7 +220,10 @@ font-size: 12px;
               </tr>
               <tr>
                 <td bgcolor="#239B56"><font color="white"><h4><b>Total (Rp)</b></h4></font></td>
-                <td align="right" bgcolor="#239B56"><font color="white"><h4><b><p class="TOTAL_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></b></h4></font></td>
+                <td align="right" bgcolor="#239B56"><font color="white"><h4><b>
+                  <p class="TOTAL_RP" id="TOTAL_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                  <input autocomplete="off" class="form-control TOTAL_SELURUH" id="TOTAL_SELURUH" name="TOTAL_SELURUH" type="hidden">
+                </b></h4></font></td>
               </tr>
             </table>
             <p class="help-block">Mohon periksa kembali kesesuaian data faktur dan data yang anda masukkan.</p>
@@ -621,12 +624,13 @@ $(".simpanHargaPurchaser").on('click', function(){
   var potongan = "POTONGAN=" +$('.POTONGAN').text()+ ""
   var netto = "TOTAL_NETTO=" +$('.TOTAL_NETTO').text()+ ""
   var rekening = "NO_REKENING=" +$('.NO_REKENING').text()+ ""
+  var total_seluruh = "TOTAL_SELURUH=" +$('.TOTAL_SELURUH').val()+ ""
   var jenis_faktur = "JENIS_FAKTUR=" +$('.JENIS_FAKTUR').val()+ ""
 
   var cek_tambang = "CEK_TAMBANG=" +$('.CEK_TAMBANG').is(":checked")+ ""
   var cek_biaya = "CEK_BIAYA=" +$('.CEK_BIAYA').is(":checked")+ ""
   var cek_rp = "CEK_RP_KG=" +$('.CEK_RP_KG').is(":checked")+ ""
-  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + rekening + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
+  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + rekening + "&" + total_seluruh + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
   console.log(form)
   $.ajax({
     type: 'POST',
@@ -713,5 +717,6 @@ function kalkulasi_biaya()
   $('p.TAMBANG_RP').html(number_format(tambang_rp));
   $('p.BIAYA_RP').html(number_format(biaya));
   $('p.TOTAL_RP').html(number_format(total_rp));
+  $('.TOTAL_SELURUH').val(total_rp);
 }
 </script>

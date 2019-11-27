@@ -83,14 +83,12 @@ foreach($result_a as $r)
       $r['MASTER_WILAYAH']=$rb['RMP_MASTER_WILAYAH'];
     }
 
-    $sql23 = "SELECT *,SUM(RMP_FAKTUR_DETAIL_NETTO) AS SUM FROM
-             RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR_DETAIL AS FD
-             ON FP.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
+    $sql23 = "SELECT * FROM
+             RMP_FAKTUR_PURCHASER
              WHERE
-             FP.RMP_FAKTUR_NO_FAKTUR='".$r['RMP_FAKTUR_NO_FAKTUR']."'
-             AND FP.RECORD_STATUS='A'
-             AND FD.RECORD_STATUS='A'
-             GROUP BY FP.RMP_FAKTUR_NO_FAKTUR
+             RMP_FAKTUR_NO_FAKTUR='".$r['RMP_FAKTUR_NO_FAKTUR']."'
+             AND RECORD_STATUS='A'
+             GROUP BY RMP_FAKTUR_NO_FAKTUR
              ";
     $this->MYSQL = new MYSQL();
     $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -101,15 +99,15 @@ foreach($result_a as $r)
     {
       foreach($result_b3 as $rb3)
       {
-        $r['RP_A'] =number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG']*($rb3['SUM']-(round(($rb3['SUM']*$potongan)/100))),0,",",".");
+        $r['RP_A'] =number_format($rb3['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR'],0,",",".");
         $r['RP_B'] ="";
         $r['RP_C'] ="";
 
-        $r['NETTO_A'] =$rb3['SUM']-(round(($rb3['SUM']*$potongan)/100));
+        $r['NETTO_A'] =number_format($rb3['RMP_FAKTUR_PURCHASER_NETTO'],0,",",".");
         $r['NETTO_B'] ="";
         $r['NETTO_C'] ="";
 
-        $r['RP_KG_A']=$rb3['RMP_FAKTUR_PURCHASER_RP_KG'];
+        $r['RP_KG_A']=number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG'],0,",",".");
         $r['RP_KG_B']="";
         $r['RP_KG_C']="";
       }
@@ -118,16 +116,16 @@ foreach($result_a as $r)
     {
       foreach($result_b3 as $rb3)
       {
+        $r['RP_B'] =number_format($rb3['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR'],0,",",".");
         $r['RP_A'] ="";
-        $r['RP_B'] =number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG']*($rb3['SUM']-(round(($rb3['SUM']*$potongan)/100))),0,",",".");
         $r['RP_C'] ="";
 
+        $r['NETTO_B'] =number_format($rb3['RMP_FAKTUR_PURCHASER_NETTO'],0,",",".");
         $r['NETTO_A'] ="";
-        $r['NETTO_B'] =$rb3['SUM']-(round(($rb3['SUM']*$potongan)/100));
         $r['NETTO_C'] ="";
 
+        $r['RP_KG_B']=number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG'],0,",",".");
         $r['RP_KG_A']="";
-        $r['RP_KG_B']=$rb3['RMP_FAKTUR_PURCHASER_RP_KG'];
         $r['RP_KG_C']="";
       }
     }
@@ -135,17 +133,17 @@ foreach($result_a as $r)
     {
       foreach($result_b3 as $rb3)
       {
+        $r['RP_C'] =number_format($rb3['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR'],0,",",".");
         $r['RP_A'] ="";
         $r['RP_B'] ="";
-        $r['RP_C'] =number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG']*($rb3['SUM']-(round(($rb3['SUM']*$potongan)/100))),0,",",".");
 
+        $r['NETTO_C'] =number_format($rb3['RMP_FAKTUR_PURCHASER_NETTO'],0,",",".");
         $r['NETTO_A'] ="";
         $r['NETTO_B'] ="";
-        $r['NETTO_C'] =$rb3['SUM']-(round(($rb3['SUM']*$potongan)/100));
 
+        $r['RP_KG_C']=number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG'],0,",",".");
         $r['RP_KG_A']="";
         $r['RP_KG_B']="";
-        $r['RP_KG_C']=$rb3['RMP_FAKTUR_PURCHASER_RP_KG'];
       }
     }
     $result[] = $r;

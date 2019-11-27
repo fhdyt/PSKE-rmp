@@ -68,6 +68,22 @@ font-size: 12px;
             <option value="JAMBUL">JAMBUL</option>
             <option value="LICIN">LICIN</option>
                   </select>
+
+            <select id="FILTER_BULAN" name="FILTER_BULAN" type="text" class=" form-control FILTER_BULAN"  autocomplete="off" onchange="filter_material()">
+            <option value="">--Bulan--</option>
+            <option value="01">Januari</option>
+            <option value="02">Februari</option>
+            <option value="03">Maret</option>
+            <option value="04">April</option>
+            <option value="05">Mei</option>
+            <option value="06">Juni</option>
+            <option value="07">Juli</option>
+            <option value="08">Agustus</option>
+            <option value="09">September</option>
+            <option value="10">Oktober</option>
+            <option value="11">November</option>
+            <option value="12">Desember</option>
+                  </select>
                 </div>
 					<div class="form-group">
               <input type="text" id="FILTER_TANGGAL" class="form-control FILTER_TANGGAL datepicker" name="FILTER_TANGGAL" value="<?php echo date("Y/m/d") ?>"/>
@@ -153,7 +169,7 @@ function faktur_list(curPage)
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=faktur_list_purchaser&batas=' + $('input#REC_PER_HALAMAN').val() + '&halaman=' + curPage + '&keyword=' + $("input#keyword").val() + '&material=' + $(".FILTER_MATERIAL").val() + '&tanggal=' + $(".FILTER_TANGGAL").val(),
+    data: 'ref=faktur_list_purchaser&batas=' + $('input#REC_PER_HALAMAN').val() + '&halaman=' + curPage + '&keyword=' + $("input#keyword").val() + '&material=' + $(".FILTER_MATERIAL").val() + '&bulan=' + $(".FILTER_BULAN").val() + '&tanggal=' + $(".FILTER_TANGGAL").val(),
     success: function(data) {
       if (data.respon.pesan == "sukses") {
         //alert(data.respon.text_msg)

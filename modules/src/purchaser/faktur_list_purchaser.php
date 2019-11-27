@@ -22,14 +22,23 @@ if (empty($input['material']) or $input['material'] == "")
     $filter_b = "AND FD.RMP_FAKTUR_DETAIL_JENIS_MATERIAL like '%" . $input['material'] . "%' ";
     }
 
-if (empty($input['tanggal']) or $input['tanggal'] == "")
-    {
-    $filter_c = "";
-    }
-  else
+if (empty($input['bulan']) or $input['bulan'] == "")
     {
     $filter_c = "AND F.RMP_FAKTUR_TANGGAL = '" . $input['tanggal'] . "' ";
     }
+  else
+    {
+    $filter_c = "AND MONTH(F.RMP_FAKTUR_TANGGAL) = '" . $input['bulan'] . "' ";
+    }
+
+// if (empty($input['tanggal']) or $input['tanggal'] == "")
+//     {
+//     $filter_c = "";
+//     }
+//   else
+//     {
+//     $filter_c = "AND F.RMP_FAKTUR_TANGGAL = '" . $input['tanggal'] . "' ";
+//     }
 
 $sql = "SELECT * FROM RMP_FAKTUR AS F
             LEFT JOIN RMP_MASTER_PERSONAL AS P
