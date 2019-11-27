@@ -334,6 +334,15 @@ function search() {
 }
 
 function filter_tanggal(){
-  laporan_faktur_list('1');
+  laporan_faktur_list('1','02');
+  laporan_faktur_list('1','03');
+  laporan_faktur_list('1','04');
+  laporan_faktur_list('1','05');
+  laporan_faktur_list('1','06');
+  laporan_faktur_list('1','07');
+  laporan_faktur_list('1','08');
+  laporan_faktur_list('1','09');
+  laporan_faktur_list('1','10');
+
 }
 </script>
