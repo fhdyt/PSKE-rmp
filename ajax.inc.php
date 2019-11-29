@@ -300,6 +300,9 @@ switch($ref){
 			case 'laporan_faktur':
 				require_once("ajax/laporan/laporan_faktur.php");
 			break;
+			case 'total_laporan':
+				require_once("ajax/laporan/total_laporan.php");
+			break;
 
 
 //--------------Handle Error Page-----------------------------------

@@ -2,7 +2,7 @@
 
 	if(empty($d3))
 	{
-		$d3 = "gelondong";
+		$d3 = "jambul";
 	}
 	else
 	{
