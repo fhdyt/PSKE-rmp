@@ -390,17 +390,17 @@ font-size: 12px;
 
       <tr class="success">
         <td colspan="5" style="text-align:right">Bulan Ini</td>
-        <td id="TOTAL_SUM_BRUTO_A"></td>
+        <td id="TOTAL_BULAN_SUM_BRUTO_A"></td>
         <td id="TOTAL_SUM_PERSEN_A"></td>
-        <td id="TOTAL_SUM_NETTO_A"></td>
+        <td id="TOTAL_BULAN_SUM_NETTO_A"></td>
         <td id="TOTAL_SUM_RP_KG_A"></td>
-        <td id="TOTAL_SUM_RP_A"></td>
+        <td id="TOTAL_BULAN_SUM_RP_A"></td>
 
-        <td id="TOTAL_SUM_BRUTO_B"></td>
+        <td id="TOTAL_BULAN_SUM_BRUTO_B"></td>
         <td id="TOTAL_SUM_PERSEN_B"></td>
-        <td id="TOTAL_SUM_NETTO_B"></td>
+        <td id="TOTAL_BULAN_SUM_NETTO_B"></td>
         <td id="TOTAL_SUM_RP_KG_B"></td>
-        <td id="TOTAL_SUM_RP_B"></td>
+        <td id="TOTAL_BULAN_SUM_RP_B"></td>
       </tr></tbody>
 
 </table>
@@ -500,7 +500,7 @@ function total_laporan()
     success: function(data) {
       //alert(data.respon.pesan)
       if (data.respon.pesan == "sukses") {
-
+        // KELAPA A
         for (i = 0; i < data.result.length; i++) {
           $("td#TANGGAL_LAPORAN").html("Tanggal "+data.result[i].TANGGAL)
           $("td#TOTAL_SUM_BRUTO_A").html(data.result[i].TOTAL_SUM_BRUTO_A)
@@ -508,11 +508,25 @@ function total_laporan()
           $("td#TOTAL_SUM_RP_A").html(data.result[i].TOTAL_SUM_RP_A)
         }
 
-        console.log(data.result_b)
+        // KELAPA B
         for (i = 0; i < data.result_b.length; i++) {
           $("td#TOTAL_SUM_BRUTO_B").html(data.result_b[i].TOTAL_SUM_BRUTO_B)
           $("td#TOTAL_SUM_NETTO_B").html(data.result_b[i].TOTAL_SUM_NETTO_B)
           $("td#TOTAL_SUM_RP_B").html(data.result_b[i].TOTAL_SUM_RP_B)
+        }
+
+        // KELAPA A
+        for (i = 0; i < data.result_bulan.length; i++) {
+          $("td#TOTAL_BULAN_SUM_BRUTO_A").html(data.result_bulan[i].TOTAL_BULAN_SUM_BRUTO_A)
+          $("td#TOTAL_BULAN_SUM_NETTO_A").html(data.result_bulan[i].TOTAL_BULAN_SUM_NETTO_A)
+          $("td#TOTAL_BULAN_SUM_RP_A").html(data.result_bulan[i].TOTAL_BULAN_SUM_RP_A)
+        }
+
+        // KELAPA B
+        for (i = 0; i < data.result_bulan_b.length; i++) {
+          $("td#TOTAL_BULAN_SUM_BRUTO_B").html(data.result_bulan_b[i].TOTAL_BULAN_SUM_BRUTO_B)
+          $("td#TOTAL_BULAN_SUM_NETTO_B").html(data.result_bulan_b[i].TOTAL_BULAN_SUM_NETTO_B)
+          $("td#TOTAL_BULAN_SUM_RP_B").html(data.result_bulan_b[i].TOTAL_BULAN_SUM_RP_B)
         }
 
       } else if (data.respon.pesan == "gagal") {
@@ -523,6 +537,14 @@ function total_laporan()
         $("td#TOTAL_SUM_BRUTO_B").html("0")
         $("td#TOTAL_SUM_NETTO_B").html("0")
         $("td#TOTAL_SUM_RP_B").html("0")
+
+        $("td#TOTAL_BULAN_SUM_BRUTO_A").html("0")
+        $("td#TOTAL_BULAN_SUM_NETTO_A").html("0")
+        $("td#TOTAL_BULAN_SUM_RP_A").html("0")
+
+        $("td#TOTAL_BULAN_SUM_BRUTO_B").html("0")
+        $("td#TOTAL_BULAN_SUM_NETTO_B").html("0")
+        $("td#TOTAL_BULAN_SUM_RP_B").html("0")
       }
     }, //end success
     error: function(x, e) {

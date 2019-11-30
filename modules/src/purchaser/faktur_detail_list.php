@@ -60,13 +60,13 @@ foreach($result_a as $r)
     $no++;
     }
 
-    foreach($result_ab as $rr)
-        {
-        $rr['TANGGAL']=tanggal_format(Date("Y-m-d",strtotime($r['RMP_FAKTUR_TANGGAL'])));
-        $rr['NAMA_MATERIAL']=substr($r['RMP_FAKTUR_DETAIL_JENIS_MATERIAL'],0,-2);
-        $rr['GRADE_MATERIAL']=substr($r['RMP_FAKTUR_DETAIL_JENIS_MATERIAL'],-1);
-        $resultb[] = $rr;
-        }
+foreach($result_ab as $rr)
+    {
+    $rr['TANGGAL']=tanggal_format(Date("Y-m-d",strtotime($r['RMP_FAKTUR_TANGGAL'])));
+    $rr['NAMA_MATERIAL']=substr($r['RMP_FAKTUR_DETAIL_JENIS_MATERIAL'],0,-2);
+    $rr['GRADE_MATERIAL']=substr($r['RMP_FAKTUR_DETAIL_JENIS_MATERIAL'],-1);
+    $resultb[] = $rr;
+    }
 
 if (empty($result_a))
     {

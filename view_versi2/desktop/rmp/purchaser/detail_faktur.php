@@ -331,17 +331,27 @@ font-size: 12px;
 <script>
 function customRound(n){
   var angka = n.toString()
-  var r = angka.split(".")
-  var x = r[1].substr(0,1)
-  if (x <= 5)
+
+  if (angka.includes('.') == true)
   {
-  var bulat = Math.floor(angka)
+    var r = angka.split(".")
+    var x = r[1].substr(0,1)
+    if (x <= 5)
+    {
+    var bulat = Math.floor(angka)
+    }
+    else
+    {
+    var bulat = Math.ceil(angka)
+    }
+    return bulat;
   }
   else
   {
-  var bulat = Math.ceil(angka)
+    return n
   }
-  return bulat;
+
+
 }
 
 function number_format (number, decimals, dec_point, thousands_sep) {
@@ -376,19 +386,19 @@ function faktur_detail_list(curPage)
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=faktur_detail_list&ID_FAKTUR=<?php echo$d3; ?>',
+    data: 'ref=faktur_detail_list&ID_FAKTUR=<?php echo $d3; ?>',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
-				console.log("Sukses");
         $('p.TOTAL_GROSS').html( data.total_gross)
         $('p.TOTAL_TARA').html( data.total_tara)
         $('p.TOTAL_BRUTO').html( data.total_bruto)
         $('p.POTONGAN').html( data.potongan + " %")
+
         var potongan = data.total_bruto*(data.potongan/100)
+
         $('p.TOTAL_NETTO').html(customRound(data.total_bruto-potongan))
         $('p.TOTAL_NETTO_SEBELUM').html(data.total_bruto-potongan)
-        //alert(data.total_bruto-potongan)
-        //$('p.TOTAL_NETTO').html(Math.round(data.total_bruto-potongan))
+
         $("tbody#zone_data").empty();
         for (i = 0; i < data.result.length; i++) {
           if(data.result[i].RMP_FAKTUR_CEK_DITERIMA == 'Y')
@@ -429,6 +439,7 @@ function faktur_detail_list(curPage)
           }
 
           $("p.NO_FAKTUR").html(data.resultb[i].RMP_FAKTUR_NO_FAKTUR)
+          //alert(data.resultb[i].RMP_FAKTUR_NO_FAKTUR)
           $("p.KAPAL_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_KAPAL)
           $("p.ALAMAT_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_ALAMAT)
           $("p.NAMA_SUPPLIER").html(supplier)
