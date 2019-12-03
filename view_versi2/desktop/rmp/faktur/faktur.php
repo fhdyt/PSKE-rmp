@@ -59,7 +59,7 @@
 
       	<div class="col-md-12">
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <select class="form-control BULAN_NOTA" onchange="onchange_pilih_nota()">
                 <option value="01" <?php if (date("m")=="01"){echo "selected";} ?>>Januari</option>
                 <option value="02" <?php if (date("m")=="02"){echo "selected";} ?>>Februari</option>
@@ -76,7 +76,7 @@
               </select>
               <p class="help-block">Bulan Nota.</p>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
               <select class="form-control TAHUN_NOTA" onchange="onchange_pilih_nota()">
                 <option value="2018" <?php if (date("Y")=="2018"){echo "selected";} ?> >2018</option>
                 <option value="2019" <?php if (date("Y")=="2019"){echo "selected";} ?> >2019</option>
@@ -94,13 +94,13 @@
               <a class="btn btn-success buat_faktur_baru btn-sm" type="button" style="display:none;" href="?show=rmp/faktur"><i class="fa fa-plus" aria-hidden="true"></i> Buat Faktur Baru</a>
               <a class="btn btn-default cetak_faktur btn-sm" type="button" style="display:none;"><i class="fa fa-print" aria-hidden="true"></i> Cetak Faktur</a>
             </div>
-           <div class="col-md-4">
+           <!-- <div class="col-md-4">
              <select class="form-control CHANGE_JENIS_FAKTUR" onchange="change_jenis_faktur()">
                <option value="faktur">Faktur</option>
                <option value="faktur_cabang">Faktur Cabang</option>
              </select>
              <p class="help-block">Jenis Faktur yang akan diproses.</p>
-           </div>
+           </div> -->
           </div>
 
           <div class="row">
@@ -648,6 +648,7 @@ $(function()
 
 function onchange_pilih_nota()
 {
+
   $.ajax({
     type: 'POST',
     url: refseeAPI,

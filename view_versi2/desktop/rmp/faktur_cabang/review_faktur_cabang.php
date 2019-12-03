@@ -58,14 +58,7 @@ font-size: 15px;
 				<div class="row">
 
 					<div class="col-md-8">
-            <?php
-            $b1 = "2.4327";
-            $b2 = "2.5243";
-            $b3 = "2.6123";
-            echo " ".$b1." Dibulatkan menjadi -> ".round($b1)."<br>";
-            echo " ".$b2." Dibulatkan menjadi -> ".round($b2)."<br>";
-            echo " ".$b3." Dibulatkan menjadi -> ".round($b3)."<br>";
-             ?>
+            
 						<h3><i class="fa fa-calculator"></i>Faktur Cabang</h3>
 						<hr>
 					</div>
