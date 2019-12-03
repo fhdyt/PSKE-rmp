@@ -10,7 +10,6 @@ if (empty($params['case']))
 
 $input = $params['input_option'];
 $data_detail2 = array(
-
 	'RMP_REKAP_FC_DETAIL_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
 	'RMP_REKAP_FC_ID' => $input['ID_FAKTUR_CABANG'],
 	'RMP_REKAP_FC_DETAIL_NAMA' => $input['NAMA_SUPPLIER'],

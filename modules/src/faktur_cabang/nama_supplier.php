@@ -28,7 +28,7 @@ $no++;
 }
 if(empty($result)){
 	$this->callback['respon']['pesan']="gagal";
-	$this->callback['respon']['text_msg']="Data kosong _".$input['q'];
+	$this->callback['respon']['text_msg']="Data kosong";
 	$this->callback['result']=$result;
 }else{
 	$this->callback['respon']['pesan']="sukses";
