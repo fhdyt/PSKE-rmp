@@ -314,6 +314,32 @@ CLASS RMP_CONFIG extends CONFIG
 				return $this;
 			}//end presensi_proposal_nomor_create()
 
+			public function pembulatan($bilangan){
+
+				if (strpos($bilangan, ".") == true)
+			  {
+			    $r = explode(".",$bilangan);
+			    $x = substr($r[1],0,1);
+			    if ($x <= 5)
+			    {
+			    $bulat = floor($bilangan);
+			    }
+			    else
+			    {
+			    $bulat = ceil($bilangan);
+			    }
+			    $this->callback['nomor']=$bulat;
+					return $this;
+			  }
+			  else
+			  {
+					$this->callback['nomor']=$bilangan;
+					return $this;
+			  }
+
+
+			}
+
 
 }
 

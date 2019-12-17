@@ -1,5 +1,5 @@
 <?php
-
+$RMP_CONFIG=new RMP_CONFIG();
 if (empty($params['case']))
     {
     $result['respon']['pesan'] == "gagal";
@@ -89,7 +89,7 @@ foreach($data_b as $r)
     $result_acd = $this->MYSQL->data();
 
 
-    $r['BRUTO_B_SUPPLIER'] = round($qty_pske_b / $total_timbang_b_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO']) ;
+    $r['BRUTO_B_SUPPLIER'] = $qty_pske_b / $total_timbang_b_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO'];
     $r['NETTO_B_SUPPLIER'] = $r['BRUTO_B_SUPPLIER']-$r['RMP_REKAP_FC_DETAIL_POTONGAN'] ;
     $r['RP_KG_B'] = $result_acd[0]['RMP_PENYESUAIAN_HARGA_KB_B'];
     $r['RUPIAH_B'] = $r['RP_KG_B']*$r['NETTO_B_SUPPLIER'];
@@ -160,7 +160,7 @@ foreach($data_c as $r)
     $this->MYSQL->queri = $sqly ;
     $result_acd = $this->MYSQL->data();
 
-    $r['BRUTO_C_SUPPLIER'] = round($qty_pske_c / $total_timbang_c_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO']) ;
+    $r['BRUTO_C_SUPPLIER'] = $qty_pske_c / $total_timbang_c_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO'];
     $r['NETTO_C_SUPPLIER'] = $r['BRUTO_C_SUPPLIER']-$r['RMP_REKAP_FC_DETAIL_POTONGAN'] ;
     $r['RP_KG_C'] = $result_acd[0]['RMP_PENYESUAIAN_HARGA_KB_C'];
     $r['RUPIAH_C'] = $r['RP_KG_C']*$r['NETTO_C_SUPPLIER'];
@@ -225,7 +225,7 @@ $no = $posisi + 1;
 foreach($data_a as $r)
     {
     $r['NO'] = $no;
-    $r['BRUTO_A_SUPPLIER'] = round($qty_pske_a / $total_timbang_a_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO']) ;
+    $r['BRUTO_A_SUPPLIER'] = $RMP_CONFIG->pembulatan($qty_pske_a / $total_timbang_a_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO'])->callback['nomor'];
     $r['NETTO_A_SUPPLIER'] = $r['BRUTO_A_SUPPLIER']-$r['RMP_REKAP_FC_DETAIL_POTONGAN'] ;
     $r['TAMBANG'] = number_format($tambang*$r['NETTO_A_SUPPLIER'],0,",",".");
     $r['TAMBANGA'] = $tambang*$r['NETTO_A_SUPPLIER'];
@@ -235,7 +235,7 @@ foreach($data_a as $r)
     $r['RUPIAH_AA'] = ($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER'];
     $r['TOTAL_RUPIAH_A'] = number_format(($tambang*$r['NETTO_A_SUPPLIER'])+($biaya*$r['BRUTO_A_SUPPLIER'])+(($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER']),0,",",".");
     $r['TOTAL_RUPIAH_AA'] = ($tambang*$r['NETTO_A_SUPPLIER'])+($biaya*$r['BRUTO_A_SUPPLIER'])+(($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER']);
-    $r['RP_KG_A'] = round($r['TOTAL_RUPIAH_AA']/$r['NETTO_A_SUPPLIER']);
+    $r['RP_KG_A'] = $RMP_CONFIG->pembulatan($r['TOTAL_RUPIAH_AA']/$r['NETTO_A_SUPPLIER'])->callback['nomor'];
 
     $total_bruto_a += $r['BRUTO_A_SUPPLIER'];
     $total_potongan_a += $r['RMP_REKAP_FC_DETAIL_POTONGAN'];
