@@ -399,7 +399,7 @@ font-size: 12px;
         </div>
         <div class="row">
           <div class="col-md-6">
-            <a class="btn btn-primary SimpanFaktur">Draft</a>
+            <a class="btn btn-primary SimpanFaktur">Simpan</a>
             <a class="btn btn-warning" href="?show=rmp/faktur_cabang/review_faktur_cabang/<?php echo $id_faktur;  ?>">Review</a>
           </div>
           <div class="col-md-6">

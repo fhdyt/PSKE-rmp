@@ -225,7 +225,8 @@ $no = $posisi + 1;
 foreach($data_a as $r)
     {
     $r['NO'] = $no;
-    $r['BRUTO_A_SUPPLIER'] = $RMP_CONFIG->pembulatan($qty_pske_a / $total_timbang_a_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO'])->callback['nomor'];
+    $r['BRUTO_A_SUPPLIER'] = $qty_pske_a / $total_timbang_a_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO'];
+    //$r['BRUTO_A_SUPPLIER'] = $RMP_CONFIG->pembulatan($qty_pske_a / $total_timbang_a_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO'])->callback['nomor'];
     $r['NETTO_A_SUPPLIER'] = $r['BRUTO_A_SUPPLIER']-$r['RMP_REKAP_FC_DETAIL_POTONGAN'] ;
     $r['TAMBANG'] = number_format($tambang*$r['NETTO_A_SUPPLIER'],0,",",".");
     $r['TAMBANGA'] = $tambang*$r['NETTO_A_SUPPLIER'];
