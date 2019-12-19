@@ -58,8 +58,8 @@ font-size: 15px;
 				<div class="row">
 
 					<div class="col-md-8">
-            
-						<h3><i class="fa fa-calculator"></i>Faktur Cabang</h3>
+
+						<h3><i class="fa fa-calculator"></i> Faktur Cabang</h3>
 						<hr>
 					</div>
 					<div class="col-md-4 text-right"></div>
@@ -67,7 +67,7 @@ font-size: 15px;
         <form id="arrayInput">
         <div class="row">
           <div class="col-md-12">
-            <h4>Kelapa Bulat (Gelondong) A</h4>
+            <h4>Kelapa Bulat A</h4>
           </div>
           <div class="col-md-12">
             <table class="table table-hover">
@@ -115,7 +115,7 @@ font-size: 15px;
         </div>
         <div class="row">
           <div class="col-md-12">
-            <h4>Kelapa Bulat (Gelondong) B</h4>
+            <h4>Kelapa Bulat B</h4>
           </div>
           <div class="col-md-12">
             <table class="table table-hover">
@@ -165,7 +165,7 @@ font-size: 15px;
 
         <div class="row">
           <div class="col-md-12">
-            <h4>Kelapa Bulat (Gelondong) C</h4>
+            <h4>Kelapa Bulat C</h4>
           </div>
           <div class="col-md-12">
             <table class="table table-hover">
@@ -309,7 +309,7 @@ function list_review_faktur_cabang_b()
 					"<td >" + data.result_b[i].NO + ".<input type='hidden' name='id_detail[]' value='" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "' id='id_detail_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'><input type='hidden' name='jenis[]' value='B' id='jenis_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_b[i].RMP_REKAP_FC_DETAIL_NAMA  + "' id='supplier_name_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_b[i].BRUTO_B_SUPPLIER  + "<input type='hidden' name='bruto[]' value='" + data.result_b[i].BRUTO_B_SUPPLIER  + "' id='bruto_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
-					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_POTONGAN  + "<input type='hidden' name='potongan[]' value='" + data.result_b[i].RMP_REKAP_FC_DETAIL_POTONGAN  + "' id='potongan_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
+					"<td>" + data.result_b[i].POTONGAN_B  + "<input type='hidden' name='potongan[]' value='" + data.result_b[i].POTONGAN_B  + "' id='potongan_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_b[i].NETTO_B_SUPPLIER  + "<input type='hidden' name='netto[]' value='" + data.result_b[i].NETTO_B_SUPPLIER  + "' id='netto_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_b[i].RUPIAH_B  + "<input type='hidden' name='rupiah[]' value='" + data.result_b[i].RUPIAH_B  + "' id='rupiah_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
           "<td><input type='hidden' name='biaya[]' value='0' id='biaya_" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
@@ -357,7 +357,7 @@ function list_review_faktur_cabang_a()
 					"<td >" + data.result_a[i].NO + ".<input type='hidden' name='id_detail[]' value='" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "' id='id_detail_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'><input type='hidden' name='jenis[]' value='A' id='jenis_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_a[i].RMP_REKAP_FC_DETAIL_NAMA  + "' id='supplier_name_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_a[i].BRUTO_A_SUPPLIER  + "<input type='hidden' name='bruto[]' value='" + data.result_a[i].BRUTO_A_SUPPLIER  + "' id='bruto_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_POTONGAN  + "<input type='hidden' name='potongan[]' value='" + data.result_a[i].RMP_REKAP_FC_DETAIL_POTONGAN  + "' id='potongan_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
+					"<td>" + data.result_a[i].POTONGAN_A  + "<input type='hidden' name='potongan[]' value='" + data.result_a[i].POTONGAN_A  + "' id='potongan_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_a[i].NETTO_A_SUPPLIER  + "<input type='hidden' name='netto[]' value='" + data.result_a[i].NETTO_A_SUPPLIER  + "' id='netto_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_a[i].RUPIAH_A  + "<input type='hidden' name='rupiah[]' value='" + data.result_a[i].RUPIAH_A  + "' id='rupiah_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +
 					"<td>" + data.result_a[i].TAMBANG  + "<input type='hidden' name='tambang[]' value='" + data.result_a[i].TAMBANG  + "' id='tambang_" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'></td>" +

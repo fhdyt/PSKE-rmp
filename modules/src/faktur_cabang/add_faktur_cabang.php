@@ -34,6 +34,8 @@ if (empty($result_a))
 				'RMP_REKAP_FC_QTY_PSKE_A' => $input['QTY_TERIMA_PSKE_A'],
 				'RMP_REKAP_FC_QTY_PSKE_B' => $input['QTY_TERIMA_PSKE_B'],
 				'RMP_REKAP_FC_QTY_PSKE_C' => $input['QTY_TERIMA_PSKE_C'],
+				'RMP_REKAP_FC_POTONGAN_A' => $input['POTONGAN_KELAPA_A'],
+				'RMP_REKAP_FC_POTONGAN_B' => $input['POTONGAN_KELAPA_B'],
 			  'ENTRI_WAKTU' => date("Y-m-d H:i:s"),
 			  'ENTRI_OPERATOR' => $user_login['PERSONAL_NIK'],
 			  'RECORD_STATUS' => "A"
@@ -82,6 +84,8 @@ if (empty($result_a))
 				'RMP_REKAP_FC_QTY_PSKE_A' => $input['QTY_TERIMA_PSKE_A'],
 				'RMP_REKAP_FC_QTY_PSKE_B' => $input['QTY_TERIMA_PSKE_B'],
 				'RMP_REKAP_FC_QTY_PSKE_C' => $input['QTY_TERIMA_PSKE_C'],
+				'RMP_REKAP_FC_POTONGAN_A' => $input['POTONGAN_KELAPA_A'],
+				'RMP_REKAP_FC_POTONGAN_B' => $input['POTONGAN_KELAPA_B'],
 			  'ENTRI_WAKTU' => date("Y-m-d H:i:s"),
 			  'ENTRI_OPERATOR' => $user_login['PERSONAL_NIK'],
 			  'RECORD_STATUS' => "A"

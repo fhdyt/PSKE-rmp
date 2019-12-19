@@ -28,6 +28,8 @@ $biaya = $result_nb[0]['RMP_REKAP_FC_BIAYA']/$result_nb[0]['RMP_REKAP_FC_QTY_PSK
 $total_qty_terima_pske = $qty_pske_a + $qty_pske_b + $qty_pske_c;
 $id_supplier = $result_nb[0]['RMP_MASTER_PERSONAL_ID'];
 $material = $result_nb[0]['RMP_REKAP_FC_JENIS_KB'];
+$persen_potongan_a = $result_nb[0]['RMP_REKAP_FC_POTONGAN_A'];
+$persen_potongan_b = $result_nb[0]['RMP_REKAP_FC_POTONGAN_B'];
 
 //AMBIL TOTAL RUPIAH B///////////////////////////////////////////////////////////////////////////////
 $sqlc = "SELECT
@@ -227,7 +229,8 @@ foreach($data_a as $r)
     $r['NO'] = $no;
     $r['BRUTO_A_SUPPLIER'] = $qty_pske_a / $total_timbang_a_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO'];
     //$r['BRUTO_A_SUPPLIER'] = $RMP_CONFIG->pembulatan($qty_pske_a / $total_timbang_a_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO'])->callback['nomor'];
-    $r['NETTO_A_SUPPLIER'] = $r['BRUTO_A_SUPPLIER']-$r['RMP_REKAP_FC_DETAIL_POTONGAN'] ;
+    $r['POTONGAN_A'] = $r['BRUTO_A_SUPPLIER'] * ($persen_potongan_a/100);
+    $r['NETTO_A_SUPPLIER'] = $r['BRUTO_A_SUPPLIER']-$r['POTONGAN_A'] ;
     $r['TAMBANG'] = number_format($tambang*$r['NETTO_A_SUPPLIER'],0,",",".");
     $r['TAMBANGA'] = $tambang*$r['NETTO_A_SUPPLIER'];
     $r['BIAYA'] = number_format($biaya*$r['BRUTO_A_SUPPLIER'],0,",",".");
@@ -236,10 +239,12 @@ foreach($data_a as $r)
     $r['RUPIAH_AA'] = ($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER'];
     $r['TOTAL_RUPIAH_A'] = number_format(($tambang*$r['NETTO_A_SUPPLIER'])+($biaya*$r['BRUTO_A_SUPPLIER'])+(($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER']),0,",",".");
     $r['TOTAL_RUPIAH_AA'] = ($tambang*$r['NETTO_A_SUPPLIER'])+($biaya*$r['BRUTO_A_SUPPLIER'])+(($total_rupiah_a/$qty_pske_a)*$r['NETTO_A_SUPPLIER']);
-    $r['RP_KG_A'] = $RMP_CONFIG->pembulatan($r['TOTAL_RUPIAH_AA']/$r['NETTO_A_SUPPLIER'])->callback['nomor'];
+    //$r['RP_KG_A'] = $RMP_CONFIG->pembulatan($r['TOTAL_RUPIAH_AA']/$r['NETTO_A_SUPPLIER'])->callback['nomor'];
+    $r['RP_KG_A'] = round($r['TOTAL_RUPIAH_AA']/$r['NETTO_A_SUPPLIER']);
+
 
     $total_bruto_a += $r['BRUTO_A_SUPPLIER'];
-    $total_potongan_a += $r['RMP_REKAP_FC_DETAIL_POTONGAN'];
+    $total_potongan_a += $r['POTONGAN_A'];
     $total_netto_a += $r['NETTO_A_SUPPLIER'];
     $total_rupiah_a_gl += $r['RUPIAH_AA'];
     $total_biaya_a += $r['BIAYAA'];

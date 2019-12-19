@@ -87,7 +87,8 @@ foreach($data_c as $r)
     $result_acd = $this->MYSQL->data();
 
 
-    $r['BRUTO_C_SUPPLIER'] = $RMP_CONFIG->pembulatan($qty_pske_c / $total_timbang_c_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO'])->callback['nomor'];
+    //$r['BRUTO_C_SUPPLIER'] = $RMP_CONFIG->pembulatan($qty_pske_c / $total_timbang_c_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO'])->callback['nomor'];
+    $r['BRUTO_C_SUPPLIER'] = round($qty_pske_c / $total_timbang_c_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO']);
     $r['NETTO_C_SUPPLIER'] = $r['BRUTO_C_SUPPLIER']-$r['RMP_REKAP_FC_DETAIL_POTONGAN'] ;
     $r['RP_KG_C'] = $result_acd[0]['RMP_PENYESUAIAN_HARGA_KB_C'];
     $r['RUPIAH_C'] = number_format($r['RP_KG_C']*$r['NETTO_C_SUPPLIER'],0,",",".");

@@ -156,12 +156,13 @@ font-size: 12px;
             <div class="col-md-3">
               <div class="form-group">
                 <label for="ICD_TRANSAKSI_INVENTORI_LOKASI">Jenis Kelapa Bulat</label>
-                <select class="form-control JENIS_KB" id="JENIS_KB" name="JENIS_KB">
+                <select class="form-control JENIS_KB" id="JENIS_KB" name="JENIS_KB" onchange="potongan()">
                   <option value="">--Pilih Kelapa Bulat--</option>
                   <option <?php if ($faktur_cabang[0]['RMP_REKAP_FC_JENIS_KB'] == "JAMBUL" ) echo 'selected' ; ?> value="JAMBUL">JAMBUL</option>
                   <option <?php if ($faktur_cabang[0]['RMP_REKAP_FC_JENIS_KB'] == "LICIN" ) echo 'selected' ; ?> value="LICIN">LICIN</option>
                   <option <?php if ($faktur_cabang[0]['RMP_REKAP_FC_JENIS_KB'] == "GELONDONG" ) echo 'selected' ; ?> value="GELONDONG">GELONDONG</option>
                 </select>
+                <small class="help-block">Jenis Material Kelapa Bulat</small>
               </div>
             </div>
             <div class="col-md-3">
@@ -221,6 +222,30 @@ font-size: 12px;
                 </div>
                   <small class="help-block">Quantity Terima C PSKE</small>
               </div>
+            </div>
+          </div>
+          <div class="row potongan" hidden>
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label for="ICD_TRANSAKSI_INVENTORI_LOKASI">Potongan Kelapa A</label>
+                <div class="input-group">
+                  <input autocomplete="off" class="form-control POTONGAN_KELAPA_A" id="POTONGAN_KELAPA_A" name="POTONGAN_KELAPA_A" placeholder="" type="text" value="<?php echo $faktur_cabang[0]['RMP_REKAP_FC_POTONGAN_A'] ?>">
+                  <span class="input-group-addon" id="basic-addon2">%</span>
+                </div>
+                  <small class="help-block">Potonga Kelapa A, Jika Ada</small>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label for="ICD_TRANSAKSI_INVENTORI_LOKASI">Potongan Kelapa B</label>
+                <div class="input-group">
+                  <input autocomplete="off" class="form-control POTONGAN_KELAPA_B" id="POTONGAN_KELAPA_B" name="POTONGAN_KELAPA_B" placeholder="" type="text" value="<?php echo $faktur_cabang[0]['RMP_REKAP_FC_POTONGAN_B'] ?>">
+                  <span class="input-group-addon" id="basic-addon2">%</span>
+                </div>
+                  <small class="help-block">Potonga Kelapa B, Jika Ada</small>
+              </div>
+            </div>
+            <div class="col-md-6">
             </div>
           </div>
         <br>
@@ -414,13 +439,26 @@ font-size: 12px;
 
 <script>
 
+
+
 $(function()
 {
 	$(".datepicker").datepicker().on('changeDate', function(ev)
 	{
 		$('.datepicker').datepicker('hide');
 	});
+  potongan();
 });
+
+function potongan(){
+  if($('.JENIS_KB').val() == "JAMBUL" || $('.JENIS_KB').val() == "LICIN" )
+  {
+    $('div.potongan').attr('hidden', false)
+  }
+  else {
+    $('div.potongan').attr('hidden', true)
+  }
+}
 
 var options = {
 ajax: {

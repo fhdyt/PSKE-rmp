@@ -71,6 +71,7 @@ font-size: 12px;
                   <th>No.</th>
                   <th>ID Faktur Cabang</th>
                   <th>PS Cabang</th>
+                  <th>Material</th>
                   <th>Kapal</th>
                   <th>Tanggal</th>
                   <th></th>
@@ -134,6 +135,7 @@ function lisst_faktur_cabang(curPage)
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_REKAP_FC_ID + "</td>" +
 					"<td>" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +
+					"<td>" + data.result[i].RMP_REKAP_FC_JENIS_KB + "</td>" +
 					"<td>" + data.result[i].RMP_REKAP_FC_KAPAL + "</td>" +
 					"<td>" + data.result[i].TANGGAL + "</td>" +
           "<td><a class='btn btn-default btn-sm' href='?show=rmp/faktur_cabang/tambah_faktur_cabang/"+ data.result[i].RMP_REKAP_FC_ID +"'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> Edit</a></td>" +

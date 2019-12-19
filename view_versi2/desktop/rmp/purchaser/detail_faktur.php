@@ -336,7 +336,7 @@ function customRound(n){
   {
     var r = angka.split(".")
     var x = r[1].substr(0,1)
-    if (x <= 5)
+    if (x < 5)
     {
     var bulat = Math.floor(angka)
     }
