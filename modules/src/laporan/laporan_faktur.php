@@ -316,6 +316,13 @@ foreach($result_a as $r)
         $r['RP_KG_B']="";
       }
     }
+    if (empty($r['RMP_FAKTUR_NAMA_SUB']))
+    {
+      $r['RMP_MASTER_PERSONAL_NAMA']=$r['RMP_MASTER_PERSONAL_NAMA'];
+    }
+    else {
+      $r['RMP_MASTER_PERSONAL_NAMA']=$r['RMP_MASTER_PERSONAL_NAMA'].' / '.$r['RMP_FAKTUR_NAMA_SUB'];
+    }
     $result[] = $r;
     $no++;
     }
