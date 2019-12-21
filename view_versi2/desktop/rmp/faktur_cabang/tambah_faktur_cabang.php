@@ -39,7 +39,7 @@ foreach($da['refs'] as $r)
 
 .modalMD
 {
-  width: 1000px;
+  width: 400px;
 }
 .modal
 {
@@ -193,7 +193,17 @@ font-size: 12px;
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label for="ICD_TRANSAKSI_INVENTORI_LOKASI">Harga Kelapa Bulat</label>
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon2">Rp.</span>
+                  <input autocomplete="off" class="form-control HARGA_KELAPA_BULAT" id="HARGA_KELAPA_BULAT" name="HARGA_KELAPA_BULAT" placeholder="" type="text" value="<?php echo $faktur_cabang[0]['RMP_REKAP_FC_KELAPA'] ?>">
+                </div>
+                  <small class="help-block">Quantity Terima A PSKE</small>
+              </div>
+            </div>
+            <div class="col-md-3">
               <div class="form-group">
                   <label for="ICD_TRANSAKSI_INVENTORI_LOKASI">QTY PSKe A</label>
                 <div class="input-group">
@@ -203,7 +213,7 @@ font-size: 12px;
                   <small class="help-block">Quantity Terima A PSKE</small>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="form-group">
                   <label for="ICD_TRANSAKSI_INVENTORI_LOKASI">QTY PSKe B</label>
                 <div class="input-group">
@@ -213,7 +223,7 @@ font-size: 12px;
                   <small class="help-block">Quantity Terima B PSKE</small>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="form-group">
                   <label for="ICD_TRANSAKSI_INVENTORI_LOKASI">QTY PSKe C</label>
                 <div class="input-group">
@@ -252,180 +262,337 @@ font-size: 12px;
         <br>
       </form>
 
-        <div class="row">
-          <div class="col-md-12">
-            <h4>Kelapa A</h4>
-          </div>
-          <div class="col-md-12 gelondong_a">
-            <table class="table table-bordered table-hover kb-gl-a">
-							<thead>
-								<tr>
-									<th>No.</th>
-									<th style="padding-right:100px;">Nama Supplier</th>
-									<th>BRUTO</th>
-									<th>POTONGAN</th>
-									<th>NETTO</th>
-									<th>@Rp/Kg</th>
-									<th>Rupiah KB</th>
-									<th></th>
-								</tr>
-							</thead>
-              <form action="javascript:download();" class="fData_GL_A" id="fData_GL_A" name="fData_GL_A">
-							<tbody id="dynamic_field">
-								<tr>
-                  <td>
-                  </td>
-                  <td>
-                    <input autocomplete="off" class="form-control NAMA_SUPPLIER_A" id="NAMA_SUPPLIER_A" name="NAMA_SUPPLIER_A" placeholder="" type="text">
-									</td>
-									<td>
-										<input autocomplete="off" class="form-control BRUTO_A"  type="text" onkeyup="input_proses_a()">
-									</td>
-                  <td>
-										<input class="form-control POTONGAN_A"  type="text" autocomplete="off" onkeyup="input_proses_a()">
-									</td>
-                  <td>
-										<input class="form-control NETTO_A"  type="text" autocomplete="off" onkeyup="input_proses_a()" readonly>
-									</td>
-									<td>
-										<input autocomplete="off" class="form-control RP_KG_A"  type="text" onkeyup="input_proses_a()">
-									</td>
-                  <td>
-										<input class="form-control RUPIAH_A"  type="text" autocomplete="off" onkeyup="input_proses_a()" readonly>
-									</td>
-                  <td>
-                    <button type="button" name="add" id="add_a" class="btn btn-primary add_a"><i class="fa fa-plus">
-                  </td>
-								</tr>
-							</tbody>
-              <tbody id="zone_data_a">
-              </tbody>
-              </form>
-              <tfoot id="total_a">
-              </tfoot>
-						</table>
-          </div>
+      <!-- Custom Tabs -->
+<div class="nav-tabs-custom">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab_1" data-toggle="tab">Data Cabang</a></li>
+    <li><a href="#tab_2" data-toggle="tab">Data PSKE</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab_1">
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <center><h4>Kelapa Bulat A</h4></center>
         </div>
-        <br>
-        <br>
-
-
-        <div class="row">
-          <div class="col-md-12">
-            <h4>Kelapa B</h4>
-          </div>
-          <div class="col-md-12 gelondong_b">
-            <table class="table table-bordered table-hover kb-gl-b">
-							<thead>
-								<tr>
-									<th>No.</th>
-									<th style="padding-right:100px;">Nama Supplier</th>
-									<th>BRUTO</th>
-									<th>POTONGAN</th>
-									<th>NETTO</th>
-									<th>@Rp/Kg</th>
-									<th>Rupiah KB</th>
-									<th></th>
-								</tr>
-							</thead>
-              <form action="javascript:download();" class="fData_GL_A" id="fData_GL_A" name="fData_GL_A">
-							<tbody id="dynamic_field">
-								<tr>
-                  <td>
-                  </td>
-                  <td>
-                    <input autocomplete="off" class="form-control NAMA_SUPPLIER_B" id="NAMA_SUPPLIER_B" name="NAMA_SUPPLIER_B" placeholder="" type="text">
-									</td>
-									<td>
-										<input autocomplete="off" class="form-control BRUTO_B"  type="text" onkeyup="input_proses_b()">
-									</td>
-                  <td>
-										<input class="form-control POTONGAN_B"  type="text" autocomplete="off" onkeyup="input_proses_b()">
-									</td>
-                  <td>
-										<input class="form-control NETTO_B"  type="text" autocomplete="off" onkeyup="input_proses_b()" readonly>
-									</td>
-									<td>
-										<input autocomplete="off" class="form-control RP_KG_B"  type="text" onkeyup="input_proses_b()">
-									</td>
-                  <td>
-										<input class="form-control RUPIAH_B"  type="text" autocomplete="off" onkeyup="input_proses_b()" readonly>
-									</td>
-                  <td>
-                    <button type="button" name="add" id="add_b" class="btn btn-primary add_b"><i class="fa fa-plus">
-                  </td>
-								</tr>
-							</tbody>
-              <tbody id="zone_data_b">
-              </tbody>
-              </form>
-              <tfoot id="total_b">
-              </tfoot>
-						</table>
-          </div>
+        <div class="col-md-12 gelondong_a">
+          <table class="table table-bordered table-hover kb-gl-a">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th style="padding-right:100px;">Nama Supplier</th>
+                <th>BRUTO</th>
+                <th>POTONGAN</th>
+                <th>NETTO</th>
+                <th>@Rp/Kg</th>
+                <th>Rupiah KB</th>
+                <th></th>
+              </tr>
+            </thead>
+            <form action="javascript:download();" class="fData_GL_A" id="fData_GL_A" name="fData_GL_A">
+            <tbody id="dynamic_field">
+              <tr>
+                <td>
+                </td>
+                <td>
+                  <input autocomplete="off" class="form-control NAMA_SUPPLIER_A" id="NAMA_SUPPLIER_A" name="NAMA_SUPPLIER_A" placeholder="" type="text">
+                </td>
+                <td>
+                  <input autocomplete="off" class="form-control BRUTO_A"  type="text" onkeyup="input_proses_a()">
+                </td>
+                <td>
+                  <input class="form-control POTONGAN_A"  type="text" autocomplete="off" onkeyup="input_proses_a()">
+                </td>
+                <td>
+                  <input class="form-control NETTO_A"  type="text" autocomplete="off" onkeyup="input_proses_a()" readonly>
+                </td>
+                <td>
+                  <input autocomplete="off" class="form-control RP_KG_A"  type="text" onkeyup="input_proses_a()">
+                </td>
+                <td>
+                  <input class="form-control RUPIAH_A"  type="text" autocomplete="off" onkeyup="input_proses_a()" readonly>
+                </td>
+                <td>
+                  <button type="button" name="add" id="add_a" class="btn btn-primary add_a"><i class="fa fa-plus">
+                </td>
+              </tr>
+            </tbody>
+            <tbody id="zone_data_a">
+            </tbody>
+            </form>
+            <tfoot id="total_a">
+            </tfoot>
+          </table>
         </div>
-        <br>
-        <br>
+      </div>
+      <hr>
 
-
-        <div class="row">
-          <div class="col-md-12">
-            <h4>Kelapa C</h4>
-          </div>
-          <div class="col-md-12 gelondong_b">
-            <table class="table table-bordered table-hover kb-gl-c">
-							<thead>
-								<tr>
-									<th>No.</th>
-									<th style="padding-right:100px;">Nama Supplier</th>
-									<th>BRUTO</th>
-									<th>POTONGAN</th>
-									<th>NETTO</th>
-									<th>@Rp/Kg</th>
-									<th>Rupiah KB</th>
-									<th></th>
-								</tr>
-							</thead>
-              <form action="javascript:download();" class="fData_GL_A" id="fData_GL_A" name="fData_GL_A">
-							<tbody id="dynamic_field">
-								<tr>
-                  <td>
-                  </td>
-                  <td>
-                    <input autocomplete="off" class="form-control NAMA_SUPPLIER_C" id="NAMA_SUPPLIER_C" name="NAMA_SUPPLIER_C" placeholder="" type="text">
-									</td>
-									<td>
-										<input autocomplete="off" class="form-control BRUTO_C" type="text" onkeyup="input_proses_c()">
-									</td>
-                  <td>
-										<input class="form-control POTONGAN_C"  type="text" autocomplete="off" onkeyup="input_proses_c()">
-									</td>
-                  <td>
-										<input class="form-control NETTO_C"  type="text" autocomplete="off" onkeyup="input_proses_c()" readonly>
-									</td>
-									<td>
-										<input autocomplete="off" class="form-control RP_KG_C"  type="text" onkeyup="input_proses_c()">
-									</td>
-                  <td>
-										<input class="form-control RUPIAH_C"  type="text" autocomplete="off" onkeyup="input_proses_c()" readonly>
-									</td>
-                  <td>
-                    <button type="button" name="add" id="add_c" class="btn btn-primary add_c"><i class="fa fa-plus">
-                  </td>
-								</tr>
-							</tbody>
-              <tbody id="zone_data_c">
-              </tbody>
-              </form>
-              <tfoot id="total_c">
-              </tfoot>
-						</table>
-          </div>
+      <div class="row">
+        <div class="col-md-12">
+          <center><h4>Kelapa Bulat B</h4></center>
         </div>
+        <div class="col-md-12 gelondong_b">
+          <table class="table table-bordered table-hover kb-gl-b">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th style="padding-right:100px;">Nama Supplier</th>
+                <th>BRUTO</th>
+                <th>POTONGAN</th>
+                <th>NETTO</th>
+                <th>@Rp/Kg</th>
+                <th>Rupiah KB</th>
+                <th></th>
+              </tr>
+            </thead>
+            <form action="javascript:download();" class="fData_GL_A" id="fData_GL_A" name="fData_GL_A">
+            <tbody id="dynamic_field">
+              <tr>
+                <td>
+                </td>
+                <td>
+                  <input autocomplete="off" class="form-control NAMA_SUPPLIER_B" id="NAMA_SUPPLIER_B" name="NAMA_SUPPLIER_B" placeholder="" type="text">
+                </td>
+                <td>
+                  <input autocomplete="off" class="form-control BRUTO_B"  type="text" onkeyup="input_proses_b()">
+                </td>
+                <td>
+                  <input class="form-control POTONGAN_B"  type="text" autocomplete="off" onkeyup="input_proses_b()">
+                </td>
+                <td>
+                  <input class="form-control NETTO_B"  type="text" autocomplete="off" onkeyup="input_proses_b()" readonly>
+                </td>
+                <td>
+                  <input autocomplete="off" class="form-control RP_KG_B"  type="text" onkeyup="input_proses_b()">
+                </td>
+                <td>
+                  <input class="form-control RUPIAH_B"  type="text" autocomplete="off" onkeyup="input_proses_b()" readonly>
+                </td>
+                <td>
+                  <button type="button" name="add" id="add_b" class="btn btn-primary add_b"><i class="fa fa-plus">
+                </td>
+              </tr>
+            </tbody>
+            <tbody id="zone_data_b">
+            </tbody>
+            </form>
+            <tfoot id="total_b">
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="col-md-12">
+          <center><h4>Kelapa Bulat C</h4></center>
+        </div>
+        <div class="col-md-12 gelondong_b">
+          <table class="table table-bordered table-hover kb-gl-c">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th style="padding-right:100px;">Nama Supplier</th>
+                <th>BRUTO</th>
+                <th>POTONGAN</th>
+                <th>NETTO</th>
+                <th>@Rp/Kg</th>
+                <th>Rupiah KB</th>
+                <th></th>
+              </tr>
+            </thead>
+            <form action="javascript:download();" class="fData_GL_A" id="fData_GL_A" name="fData_GL_A">
+            <tbody id="dynamic_field">
+              <tr>
+                <td>
+                </td>
+                <td>
+                  <input autocomplete="off" class="form-control NAMA_SUPPLIER_C" id="NAMA_SUPPLIER_C" name="NAMA_SUPPLIER_C" placeholder="" type="text">
+                </td>
+                <td>
+                  <input autocomplete="off" class="form-control BRUTO_C" type="text" onkeyup="input_proses_c()">
+                </td>
+                <td>
+                  <input class="form-control POTONGAN_C"  type="text" autocomplete="off" onkeyup="input_proses_c()">
+                </td>
+                <td>
+                  <input class="form-control NETTO_C"  type="text" autocomplete="off" onkeyup="input_proses_c()" readonly>
+                </td>
+                <td>
+                  <input autocomplete="off" class="form-control RP_KG_C"  type="text" onkeyup="input_proses_c()">
+                </td>
+                <td>
+                  <input class="form-control RUPIAH_C"  type="text" autocomplete="off" onkeyup="input_proses_c()" readonly>
+                </td>
+                <td>
+                  <button type="button" name="add" id="add_c" class="btn btn-primary add_c"><i class="fa fa-plus">
+                </td>
+              </tr>
+            </tbody>
+            <tbody id="zone_data_c">
+            </tbody>
+            </form>
+            <tfoot id="total_c">
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- /.tab-pane -->
+    <div class="tab-pane" id="tab_2">
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <center><h4>Kelapa Bulat A</h4></center>
+        </div>
+        <div class="col-md-12">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Nama Relasi</th>
+                <th>Bruto</th>
+                <th>Potongan</th>
+                <th>Netto</th>
+                <th>Rupiah KB</th>
+                <th>TGB</th>
+                <th>Biaya</th>
+                <th>TTL Rupiah</th>
+                <th>@Rp/Kg</th>
+              </tr>
+            </thead>
+            <tbody id="proses_data_a">
+              <tr>
+                <td colspan="10">
+                  <center>
+                    <div class="loader"></div>
+                  </center>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot id="proses_total_a">
+              <tr id="proses_total_a_tr" class="warning">
+                <td colspan="2" class="text-center">Total</td>
+                <td id="td_total_bruto_a"></td>
+                <td id="td_total_potongan_a"></td>
+                <td id="td_total_netto_a"></td>
+                <td id="td_total_rupiah_a"></td>
+                <td id="td_total_tambang_a"></td>
+                <td id="td_total_biaya_a"></td>
+                <td id="td_total_seluruh_a"></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <center><h4>Kelapa Bulat B</h4></center>
+        </div>
+        <div class="col-md-12">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Nama Relasi</th>
+                <th>Bruto</th>
+                <th>Potongan</th>
+                <th>Netto</th>
+                <th>Rupiah KB</th>
+                <th>TGB</th>
+                <th>Biaya</th>
+                <th>TTL Rupiah</th>
+                <th>@Rp/Kg</th>
+              </tr>
+            </thead>
+            <tbody id="proses_data_b">
+              <tr>
+                <td colspan="10">
+                  <center>
+                    <div class="loader"></div>
+                  </center>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot id="proses_total_b">
+              <tr id="proses_total_a_tr" class="warning">
+                <td colspan="2" class="text-center">Total</td>
+                <td id="td_total_bruto_a"></td>
+                <td id="td_total_potongan_a"></td>
+                <td id="td_total_netto_a"></td>
+                <td id="td_total_rupiah_a"></td>
+                <td id="td_total_tambang_a"></td>
+                <td id="td_total_biaya_a"></td>
+                <td id="td_total_seluruh_a"></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <center><h4>Kelapa Bulat C</h4></center>
+        </div>
+        <div class="col-md-12">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Nama Relasi</th>
+                <th>Bruto</th>
+                <th>Potongan</th>
+                <th>Netto</th>
+                <th>Rupiah KB</th>
+                <th>TGB</th>
+                <th>Biaya</th>
+                <th>TTL Rupiah</th>
+                <th>@Rp/Kg</th>
+              </tr>
+            </thead>
+            <tbody id="proses_data_c">
+              <tr>
+                <td colspan="10">
+                  <center>
+                    <div class="loader"></div>
+                  </center>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot id="proses_total_c">
+              <tr id="proses_total_a_tr" class="warning">
+                <td colspan="2" class="text-center">Total</td>
+                <td id="td_total_bruto_a"></td>
+                <td id="td_total_potongan_a"></td>
+                <td id="td_total_netto_a"></td>
+                <td id="td_total_rupiah_a"></td>
+                <td id="td_total_tambang_a"></td>
+                <td id="td_total_biaya_a"></td>
+                <td id="td_total_seluruh_a"></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- /.tab-pane -->
+  </div>
+  <!-- /.tab-content -->
+</div>
+<!-- nav-tabs-custom -->
+
+        <br>
+        <hr>
         <div class="row">
           <div class="col-md-6">
-            <a class="btn btn-primary SimpanFaktur">Simpan</a>
-            <a class="btn btn-warning" href="?show=rmp/faktur_cabang/review_faktur_cabang/<?php echo $id_faktur;  ?>">Review</a>
+            <a class="btn btn-success SimpanFaktur">Simpan</a>
+            <a class="btn btn-default proses_faktur_cabang">Proses Faktur Cabang</a>
+            <a class="btn btn-default" href="?show=rmp/faktur_cabang/review_faktur_cabang/<?php echo $id_faktur;  ?>" style="display:none;">Review</a>
+
           </div>
           <div class="col-md-6">
 
@@ -437,6 +604,91 @@ font-size: 12px;
   </div>
 </div>
 
+
+
+
+
+<!-- MODAL EDIT PROSES DATA -->
+<div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg modalEditDataProses" role="dialog" tabindex="-1">
+	<div class="modal-dialog modalMD" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Edit Data PSKE</h4>
+			</div>
+			<div class="modal-body">
+
+				<form action="javascript:download();" class="fDataProses form-horizontal" id="fDataProses" name="fDataProses">
+              <div class="form-group">
+                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Nama</label>
+                <div class="col-sm-8">
+                <input autocomplete="off" class="form-control PROSES_ID form-control" id="PROSES_ID" name="PROSES_ID" placeholder="" type="hidden" value="">
+                <input autocomplete="off" class="form-control PROSES_NAMA" id="PROSES_NAMA" name="PROSES_NAMA" placeholder="" type="text" value="">
+              </div>
+              </div>
+              <div class="form-group">
+                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Bruto</label>
+                <div class="col-sm-8">
+                <input autocomplete="off" class="form-control PROSES_BRUTO form-control" id="PROSES_BRUTO" name="PROSES_BRUTO" placeholder="" type="number" value="" onkeyup="kalkulasi_data_proses()">
+              </div>
+              </div>
+              <div class="form-group">
+                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Potongan</label>
+                <div class="col-sm-8">
+                <input autocomplete="off" class="form-control PROSES_POTONGAN" id="PROSES_POTONGAN" name="PROSES_POTONGAN" placeholder="" type="number" value="" onkeyup="kalkulasi_data_proses()">
+              </div>
+            </div>
+              <div class="form-group">
+                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Netto</label>
+                <div class="col-sm-8">
+                <input autocomplete="off" class="form-control PROSES_NETTO" id="PROSES_NETTO" name="PROSES_NETTO" placeholder="" type="number" value="" onkeyup="kalkulasi_data_proses()">
+              </div>
+            </div>
+              <div class="form-group">
+                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Rupiah KB</label>
+                <div class="col-sm-8">
+                <input autocomplete="off" class="form-control PROSES_RUPIAH_KB" id="PROSES_RUPIAH_KB" name="PROSES_RUPIAH_KB" placeholder="" type="number" value="" onkeyup="kalkulasi_data_proses()">
+              </div>
+            </div>
+              <div class="form-group">
+                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">TGB</label>
+                <div class="col-sm-8">
+                <input autocomplete="off" class="form-control PROSES_TAMBANG" id="PROSES_TAMBANG" name="PROSES_TAMBANG" placeholder="" type="number" value="" onkeyup="kalkulasi_data_proses()">
+              </div>
+            </div>
+              <div class="form-group">
+                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Biaya</label>
+                <div class="col-sm-8">
+                <input autocomplete="off" class="form-control PROSES_BIAYA" id="PROSES_BIAYA" name="PROSES_BIAYA" placeholder="" type="number" value="" onkeyup="kalkulasi_data_proses()">
+              </div>
+            </div>
+              <div class="form-group">
+                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">TTL Rupiah</label>
+                <div class="col-sm-8">
+                <input autocomplete="off" class="form-control PROSES_RUPIAH_TOTAL" id="PROSES_RUPIAH_TOTAL" name="PROSES_RUPIAH_TOTAL" placeholder="" type="number" value="" onkeyup="kalkulasi_data_proses()">
+              </div>
+            </div>
+              <div class="form-group">
+                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">@Rp/Kg</label>
+                <div class="col-sm-8">
+                <input autocomplete="off" class="form-control PROSES_RP_KG" id="PROSES_RP_KG" name="PROSES_RP_KG" placeholder="" type="number" value="" onkeyup="kalkulasi_data_proses()">
+              </div>
+            </div>
+              </form>
+
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <div class="form-group">
+    						<button class="btn btn-success btn-sm SIMPAN_EDIT_PROSES">Simpan</button>
+    					</div>
+            </div>
+          </div>
+
+		</div>
+	</div>
+</div>
+</div>
+<!-- MODAL EDIT PROSES DATA -->
 <script>
 
 
@@ -912,4 +1164,304 @@ function hapus_detail_rekap(id){
   });
 }
 
+
+
+//////////////////////////////////////////////////////////////////// DATA PSKE////////////
+//////////////////////////////////////////////////////////////////// DATA PSKE////////////
+//////////////////////////////////////////////////////////////////// DATA PSKE////////////
+//////////////////////////////////////////////////////////////////// DATA PSKE////////////
+//////////////////////////////////////////////////////////////////// DATA PSKE////////////
+function list_cabang_proses_a()
+{
+  var id_faktur ="<?php echo $id_faktur; ?>"
+  console.log(id_faktur)
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=list_cabang_proses_a&ID_FAKTUR=' + id_faktur + '&JENIS_KB='+$('.JENIS_KB').val()+'-A',
+    success: function(data) {
+      if (data.respon.pesan == "sukses") {
+        //$('.TEST').html(data.respon.text_msg)
+        //////////// GELODONG A
+        $("tbody#proses_data_a").empty();
+        for (i = 0; i < data.result_a.length; i++) {
+          $("tbody#proses_data_a").append("<tr id='edit_proses' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'>" +
+					"<td>" + data.result_a[i].NO + ".</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NETTO + "</td>" +
+          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_KB + "</td>" +
+          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_TAMBANG + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG + "</td>" +
+          "<td></td>" +
+          "</tr>");
+					}
+
+        $("tfoot#proses_total_a").empty();
+        for (i = 0; i < data.result_total_a.length; i++) {
+          console.log(data.result_total_a[i].BRUTO)
+          $("tfoot#proses_total_a").append("<tr class='warning'>" +
+					"<td colspan='2' class='text-center'><b>Total</b></td>" +
+					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].POTONGAN + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].NETTO + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].RUPIAH_KB + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].TAMBANG + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].BIAYA + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].TOTAL_RUPIAH + "</b></td>" +
+          "<td></td>" +
+          "</tr>");
+					}
+          //////////// end GELODONG A
+      } else if (data.respon.pesan == "gagal") {
+        $("tfoot#proses_total_a").empty();
+        $("tbody#proses_data_a").empty();
+      }
+    }, //end success
+    error: function(x, e) {
+      console.log("Error Ajax");
+    } //end error
+  });
+}
+
+function list_cabang_proses_b()
+{
+  var id_faktur ="<?php echo $id_faktur; ?>"
+  console.log(id_faktur)
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=list_cabang_proses_a&ID_FAKTUR=' + id_faktur + '&JENIS_KB='+$('.JENIS_KB').val()+'-B',
+    success: function(data) {
+      if (data.respon.pesan == "sukses") {
+        //$('.TEST').html(data.respon.text_msg)
+        //////////// GELODONG A
+        $("tbody#proses_data_b").empty();
+        for (i = 0; i < data.result_a.length; i++) {
+          $("tbody#proses_data_b").append("<tr id='edit_proses' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'>" +
+					"<td>" + data.result_a[i].NO + ".</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NETTO + "</td>" +
+          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_KB + "</td>" +
+          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_TAMBANG + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG + "</td>" +
+          "<td></td>" +
+          "</tr>");
+					}
+
+        $("tfoot#proses_total_b").empty();
+        for (i = 0; i < data.result_total_a.length; i++) {
+          console.log(data.result_total_a[i].BRUTO)
+          $("tfoot#proses_total_b").append("<tr class='warning'>" +
+					"<td colspan='2' class='text-center'><b>Total</b></td>" +
+					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].POTONGAN + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].NETTO + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].RUPIAH_KB + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].TAMBANG + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].BIAYA + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].TOTAL_RUPIAH + "</b></td>" +
+          "<td></td>" +
+          "</tr>");
+					}
+          //////////// end GELODONG A
+      } else if (data.respon.pesan == "gagal") {
+        $("tfoot#proses_total_b").empty();
+        $("tbody#proses_data_b").empty();
+      }
+    }, //end success
+    error: function(x, e) {
+      console.log("Error Ajax");
+    } //end error
+  });
+}
+
+function list_cabang_proses_c()
+{
+  var id_faktur ="<?php echo $id_faktur; ?>"
+  console.log(id_faktur)
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=list_cabang_proses_a&ID_FAKTUR=' + id_faktur + '&JENIS_KB='+$('.JENIS_KB').val()+'-C',
+    success: function(data) {
+      if (data.respon.pesan == "sukses") {
+        //$('.TEST').html(data.respon.text_msg)
+        //////////// GELODONG A
+        $("tbody#proses_data_c").empty();
+        for (i = 0; i < data.result_a.length; i++) {
+          $("tbody#proses_data_c").append("<tr id='edit_proses' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'>" +
+					"<td>" + data.result_a[i].NO + ".</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NETTO + "</td>" +
+          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_KB + "</td>" +
+          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_TAMBANG + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL + "</td>" +
+					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG + "</td>" +
+          "<td></td>" +
+          "</tr>");
+					}
+
+        $("tfoot#proses_total_c").empty();
+        for (i = 0; i < data.result_total_a.length; i++) {
+          console.log(data.result_total_a[i].BRUTO)
+          $("tfoot#proses_total_c").append("<tr class='warning'>" +
+					"<td colspan='2' class='text-center'><b>Total</b></td>" +
+					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].POTONGAN + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].NETTO + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].RUPIAH_KB + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].TAMBANG + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].BIAYA + "</b></td>" +
+					"<td ><b>" + data.result_total_a[i].TOTAL_RUPIAH + "</b></td>" +
+          "<td></td>" +
+          "</tr>");
+					}
+          //////////// end GELODONG A
+      } else if (data.respon.pesan == "gagal") {
+        $("tfoot#proses_total_c").empty();
+        $("tbody#proses_data_c").empty();
+      }
+    }, //end success
+    error: function(x, e) {
+      console.log("Error Ajax");
+    } //end error
+  });
+}
+
+$(function(){
+list_cabang_proses_a()
+list_cabang_proses_b()
+list_cabang_proses_c()
+})
+
+
+$('tbody#proses_data_a, tbody#proses_data_b, tbody#proses_data_c').on('click', 'tr#edit_proses', function(){
+  ambil_data_proses($(this).attr('ID_data'))
+})
+
+function kalkulasi_data_proses()
+{
+  var bruto = $(".PROSES_BRUTO").val()
+  var potongan = $(".PROSES_POTONGAN").val()
+  var netto = bruto - potongan
+  $(".PROSES_NETTO").val(netto)
+  var rp_kg = $(".PROSES_RP_KG").val()
+  var tambang = $(".PROSES_TAMBANG").val()
+  var biaya = $(".PROSES_BIAYA").val()
+  var rupiah_kb = $(".PROSES_RUPIAH_KB").val()
+  var total = parseInt(tambang) + parseInt(biaya) + parseInt(rupiah_kb)
+  $(".PROSES_RUPIAH_TOTAL").val(total)
+  //var rupiah_kb = (netto * rp_kg) - tambang - biaya
+  //$(".PROSES_RUPIAH_KB").val(rupiah_kb)
+}
+
+function ambil_data_proses(id)
+{
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=ambil_data_proses&ID=' + id,
+    success: function(data) {
+      if (data.respon.pesan == "sukses") {
+        for (i = 0; i < data.result.length; i++) {
+          $(".PROSES_ID").val(data.result[i].RMP_REKAP_FC_PROSES_ID)
+          $(".PROSES_NAMA").val(data.result[i].RMP_REKAP_FC_PROSES_NAMA)
+          $(".PROSES_BRUTO").val(data.result[i].RMP_REKAP_FC_PROSES_BRUTO)
+          $(".PROSES_POTONGAN").val(data.result[i].RMP_REKAP_FC_PROSES_POTONGAN)
+          $(".PROSES_NETTO").val(data.result[i].RMP_REKAP_FC_PROSES_NETTO)
+          $(".PROSES_RUPIAH_KB").val(data.result[i].RMP_REKAP_FC_PROSES_RUPIAH_KB)
+          $(".PROSES_TAMBANG").val(data.result[i].RMP_REKAP_FC_PROSES_TAMBANG)
+          $(".PROSES_BIAYA").val(data.result[i].RMP_REKAP_FC_PROSES_BIAYA)
+          $(".PROSES_RUPIAH_TOTAL").val(data.result[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL)
+          $(".PROSES_RP_KG").val(data.result[i].RMP_REKAP_FC_PROSES_RP_KG)
+					}
+          $('.modalEditDataProses').modal('show')
+      }
+    }, //end success
+    error: function(x, e) {
+      console.log("Error Ajax");
+    } //end error
+  });
+}
+
+$(".proses_faktur_cabang").on("click", function(){
+  $(this).html("Loading...")
+  proses_faktur_cabang('list_review_faktur_cabang_a')
+  proses_faktur_cabang('list_review_faktur_cabang_b')
+  proses_faktur_cabang('list_review_faktur_cabang_c')
+})
+
+function proses_faktur_cabang(url){
+  var id_faktur = "<?php echo $d3; ?>"
+  //alert(url)
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref='+url+'&ID_FAKTUR=' + id_faktur,
+    success: function(data) {
+      if (data.respon.pesan == "sukses")
+      {
+        list_cabang_proses_a()
+        list_cabang_proses_b()
+        list_cabang_proses_c()
+        if (url == 'list_review_faktur_cabang_c')
+        {
+        $(".proses_faktur_cabang").html("Proses Faktur Cabang")
+        }
+      } else if (data.respon.pesan == "gagal")
+      {
+        list_cabang_proses_a()
+        list_cabang_proses_b()
+        list_cabang_proses_c()
+      }
+    }, //end success
+    error: function(x, e) {
+      console.log("Error Ajax");
+    } //end error
+  });
+}
+
+$('.SIMPAN_EDIT_PROSES').on('click', function(){
+
+  var fData = $('.fDataProses').serialize();
+  $.ajax({
+  	type: 'POST',
+  	url: refseeAPI,
+  	dataType: 'json',
+  	data: 'ref=simpan_edit_proses&' + fData ,
+  	success: function(data) {
+  		if (data.respon.pesan == "sukses")
+  		{
+        list_cabang_proses_a()
+        list_cabang_proses_b()
+        list_cabang_proses_c()
+  			$('.modalEditDataProses').modal('hide')
+  		}
+  		else if (data.respon.pesan == "gagal")
+  		{
+  			console.log(data.respon.text_msg);
+  			alert("Gagal Menyimpan");
+  		}
+  	}, //end success
+  	error: function(x, e) {
+  		console.log("Error Ajax");
+  	} //end error
+  });
+})
 </script>

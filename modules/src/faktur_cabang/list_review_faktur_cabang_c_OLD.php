@@ -26,7 +26,7 @@ $jeniskb = $result_a[0]['RMP_REKAP_FC_JENIS_KB'];
 $total_qty_terima_pske = $qty_pske_a + $qty_pske_b + $qty_pske_c;
 $id_supplier = $result_a[0]['RMP_MASTER_PERSONAL_ID'];
 $material = $result_a[0]['RMP_REKAP_FC_JENIS_KB'];
-
+//AMBIL SUM TIMBANG DARI CABANG C
 $sqlc = "SELECT
             SUM(RMP_REKAP_FC_DETAIL_BRUTO) AS BRUTO,
             SUM(RMP_REKAP_FC_DETAIL_POTONGAN) AS POTONGAN,
@@ -86,10 +86,13 @@ foreach($data_c as $r)
     $this->MYSQL->queri = $sqly ;
     $result_acd = $this->MYSQL->data();
 
+
+    //$r['BRUTO_C_SUPPLIER'] = $RMP_CONFIG->pembulatan($qty_pske_c / $total_timbang_c_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO'])->callback['nomor'];
     $r['BRUTO_C_SUPPLIER'] = round($qty_pske_c / $total_timbang_c_cabang2 * $r['RMP_REKAP_FC_DETAIL_BRUTO']);
-    $r['NETTO_C_SUPPLIER'] = $r['BRUTO_C_SUPPLIER']-$r['RMP_REKAP_FC_DETAIL_POTONGAN'];
+    $r['NETTO_C_SUPPLIER'] = $r['BRUTO_C_SUPPLIER']-$r['RMP_REKAP_FC_DETAIL_POTONGAN'] ;
     $r['RP_KG_C'] = $result_acd[0]['RMP_PENYESUAIAN_HARGA_KB_C'];
     $r['RUPIAH_C'] = $r['RP_KG_C']*$r['NETTO_C_SUPPLIER'];
+    //$r['RUPIAH_C'] = number_format($r['RP_KG_C']*$r['NETTO_C_SUPPLIER'],0,",",".");
     $total_bruto += $r['BRUTO_C_SUPPLIER'];
     $total_potongan += $r['RMP_REKAP_FC_DETAIL_POTONGAN'];
     $total_netto += $r['NETTO_C_SUPPLIER'];

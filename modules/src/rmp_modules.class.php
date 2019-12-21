@@ -407,6 +407,21 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_simpanreview':
 			require_once ("faktur_cabang/simpanreview.php");
 		break;
+		case 'nonlogin_list_cabang_proses_a':
+			require_once ("faktur_cabang/list_cabang_proses_a.php");
+		break;
+		case 'nonlogin_list_cabang_proses_b':
+			require_once ("faktur_cabang/list_cabang_proses_b.php");
+		break;
+		case 'nonlogin_list_cabang_proses_c':
+			require_once ("faktur_cabang/list_cabang_proses_c.php");
+		break;
+		case 'nonlogin_ambil_data_proses':
+			require_once ("faktur_cabang/ambil_data_proses.php");
+		break;
+		case 'nonlogin_simpan_edit_proses':
+			require_once ("faktur_cabang/simpan_edit_proses.php");
+		break;
 
 
 

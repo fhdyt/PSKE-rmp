@@ -265,6 +265,22 @@ switch($ref){
 			case 'simpanreview':
 				require_once("ajax/faktur_cabang/simpanreview.php");
 			break;
+			case 'list_cabang_proses_a':
+				require_once("ajax/faktur_cabang/list_cabang_proses_a.php");
+			break;
+			case 'list_cabang_proses_b':
+				require_once("ajax/faktur_cabang/list_cabang_proses_b.php");
+			break;
+			case 'list_cabang_proses_c':
+				require_once("ajax/faktur_cabang/list_cabang_proses_c.php");
+			break;
+			case 'ambil_data_proses':
+				require_once("ajax/faktur_cabang/ambil_data_proses.php");
+			break;
+			case 'simpan_edit_proses':
+				require_once("ajax/faktur_cabang/simpan_edit_proses.php");
+			break;
+
 
 
 			case 'faktur_list_purchaser':
