@@ -321,6 +321,20 @@ switch($ref){
 			break;
 
 
+
+
+
+			case 'list_faktur_cabang_a':
+				require_once("ajax/faktur_cabang_adm/list_faktur_cabang_a.php");
+			break;
+			case 'list_faktur_cabang_b':
+				require_once("ajax/faktur_cabang_adm/list_faktur_cabang_b.php");
+			break;
+			case 'list_faktur_cabang_c':
+				require_once("ajax/faktur_cabang_adm/list_faktur_cabang_c.php");
+			break;
+
+
 //--------------Handle Error Page-----------------------------------
 	default:
 		$callback['pesan']="gagal";

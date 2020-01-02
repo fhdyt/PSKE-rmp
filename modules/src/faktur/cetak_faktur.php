@@ -47,7 +47,7 @@ $cek_biaya = $result_ab[0]['RMP_FAKTUR_PURCHASER_CEK_BIAYA'];
 $cek_rp_kg = $result_ab[0]['RMP_FAKTUR_PURCHASER_CEK_RP'];
 $tanggal_faktur = $result_ab[0]['RMP_FAKTUR_TANGGAL'];
 $lokasi = $result_ab[0]['RMP_FAKTUR_ALAMAT'];
-
+$rp_kelapa = $result_ab[0]['RMP_FAKTUR_PURCHASER_RP_KELAPA'];
 
 
 // DATA FAKTUR
@@ -197,6 +197,7 @@ if (empty($result_a))
     $this->callback['cek_rp_kg'] = $cek_rp_kg;
     $this->callback['tanggal_faktur'] = $tanggal_faktur;
     $this->callback['netto'] = $netto;
+    $this->callback['rp_kelapa'] = $rp_kelapa;
 
     }
 

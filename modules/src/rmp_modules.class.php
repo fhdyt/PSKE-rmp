@@ -467,6 +467,20 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_total_laporan':
 			require_once ("laporan/total_laporan.php");
 		break;
+
+
+
+
+
+		case 'nonlogin_list_faktur_cabang_a':
+			require_once ("faktur_cabang_adm/list_faktur_cabang_a.php");
+		break;
+		case 'nonlogin_list_faktur_cabang_b':
+			require_once ("faktur_cabang_adm/list_faktur_cabang_b.php");
+		break;
+		case 'nonlogin_list_faktur_cabang_c':
+			require_once ("faktur_cabang_adm/list_faktur_cabang_c.php");
+		break;
 			// ---------------------end case-----------------------------//
 
 		default:

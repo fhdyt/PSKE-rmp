@@ -208,7 +208,9 @@ font-size: 12px;
             <table class="table table-hover">
               <tr>
                 <td><b>Kelapa (Rp)</b></td>
-                <td align="right"><p class="KELAPA_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td align="right"><p class="KELAPA_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                  <input autocomplete="off" class="form-control KELAPA_RUPIAH" id="KELAPA_RUPIAH" name="KELAPA_RUPIAH" type="hidden">
+                </td>
               </tr>
               <tr>
                 <td><b>Tambang (Rp)</b></td>
@@ -380,6 +382,7 @@ $(function () {
   //Initialize Select2 Elements
   $('.select2').select2()
 })
+
 function faktur_detail_list(curPage)
 {
   $.ajax({
@@ -476,13 +479,18 @@ function detail_purchaser(curPage)
 
         for (i = 0; i < data.resultbc.length; i++) {
           //alert(data.respon.text_msg)
-
+          if(data.resultbc[i].RMP_FAKTUR_JENIS == "FAKTUR CABANG")
+          {
+            //alert(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA)
+            $('p.KELAPA_RP').html(number_format(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA));
+            $('.KELAPA_RUPIAH').val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA);
+          }
           $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $("p.NO_REKENING").html(data.resultbc[i].REKENING)
           //$("p.ALAMAT_SUPPLIER").html(data.resultbc[i].ALAMAT)
           $(".INPUT_RP_KG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $(".INPUT_TAMBANG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_TAMBANG)
-          $("p.NAMA_SUPPLIER_PURCHASER").html(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
+          //$("p.NAMA_SUPPLIER_PURCHASER").html(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
           $(".INPUT_BIAYA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_BIAYA)
           $(".ID_SUPPLIER").val(data.resultbc[i].RMP_MASTER_PERSONAL_ID)
           $(".JENIS_FAKTUR").val(data.resultbc[i].RMP_FAKTUR_JENIS)
@@ -636,12 +644,13 @@ $(".simpanHargaPurchaser").on('click', function(){
   var netto = "TOTAL_NETTO=" +$('.TOTAL_NETTO').text()+ ""
   var rekening = "NO_REKENING=" +$('.NO_REKENING').text()+ ""
   var total_seluruh = "TOTAL_SELURUH=" +$('.TOTAL_SELURUH').val()+ ""
+  var rp_kelapa = "RP_KELAPA=" +$('.KELAPA_RUPIAH').val()+ ""
   var jenis_faktur = "JENIS_FAKTUR=" +$('.JENIS_FAKTUR').val()+ ""
 
   var cek_tambang = "CEK_TAMBANG=" +$('.CEK_TAMBANG').is(":checked")+ ""
   var cek_biaya = "CEK_BIAYA=" +$('.CEK_BIAYA').is(":checked")+ ""
   var cek_rp = "CEK_RP_KG=" +$('.CEK_RP_KG').is(":checked")+ ""
-  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + rekening + "&" + total_seluruh + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
+  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + rekening + "&" + total_seluruh + "&" + rp_kelapa + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
   console.log(form)
   $.ajax({
     type: 'POST',
@@ -721,10 +730,23 @@ function kalkulasi_biaya()
   var potongan = $('.POTONGAN').text()
   var tambang = $('.INPUT_TAMBANG').val()
   var biaya = parseInt($('.INPUT_BIAYA').val())
-  var kelapa_total = parseInt(rp*netto);
-  var tambang_rp = parseInt(tambang*netto);
+
+  if ($(".JENIS_FAKTUR").val() == "FAKTUR CABANG")
+  {
+    var tambang_rp = parseInt(tambang);
+    var kelapa_total = parseInt($('.KELAPA_RUPIAH').val());
+    //$('p.KELAPA_RP').html(number_format(kelapa_total));
+  }
+  else
+  {
+    var kelapa_total = parseInt(rp*netto);
+    $('p.KELAPA_RP').html(number_format(kelapa_total));
+    $('.KELAPA_RUPIAH').val(kelapa_total);
+    var tambang_rp = parseInt(tambang*netto);
+  }
+
   var total_rp = parseInt(biaya+kelapa_total+tambang_rp);
-  $('p.KELAPA_RP').html(number_format(kelapa_total));
+  //$('p.KELAPA_RP').html(number_format(kelapa_total));
   $('p.TAMBANG_RP').html(number_format(tambang_rp));
   $('p.BIAYA_RP').html(number_format(biaya));
   $('p.TOTAL_RP').html(number_format(total_rp));

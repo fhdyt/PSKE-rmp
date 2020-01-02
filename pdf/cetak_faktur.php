@@ -53,7 +53,8 @@ $bruto =$respon['respon']['total_kg'];
 $potongan =$respon['respon']['potongan'];
 $total_potongan = $bruto * ($potongan / 100);
 $netto = $respon['netto'];
-$kelapa = round($netto)*round($rp_kg);
+$kelapa = $respon['rp_kelapa'];
+//$kelapa = round($netto)*round($rp_kg);
 $today = date("Y-m-d");
 $tanggal = tanggal_format(Date("Y-m-d",strtotime($respon['tanggal_faktur'])));
 
@@ -195,16 +196,6 @@ else if ($printed == "relasi")
 		$tambang = "0";
 
 		$cetak_catatan_purchaser = "";
-		$kelapa_title = "Kelapa";
-		$kelapa_rp = " : Rp.";
-		$kelapa_total = number_format($kelapa,0,",",".");
-		$total_jumlah = $kelapa+$tambang+$biaya;
-		$terbilang=terbilang($total_jumlah)." Rupiah";
-		$hr = "<hr>";
-
-		$total_jumlah_title = "Jumlah";
-		$total_jumlah_rp = " : Rp.";
-		$total_jumlah_total = number_format($total_jumlah,0,",",".");
 	}
 
 	if($cek_biaya == "Y")
@@ -220,18 +211,22 @@ else if ($printed == "relasi")
 		$biaya_total = " ";
 		$biaya = "0";
 
-		//$cetak_catatan_purchaser = $catatan_purchaser;
-		$kelapa_title = "Kelapa";
-		$kelapa_rp = " : Rp.";
-		$kelapa_total = number_format($kelapa,0,",",".");
-		$total_jumlah = $kelapa+$tambang+$biaya;
-		$terbilang=terbilang($total_jumlah)." Rupiah";
-		$hr = "<hr>";
+		$cetak_catatan_purchaser = "";
 
-		$total_jumlah_title = "Jumlah";
-		$total_jumlah_rp = " : Rp.";
-		$total_jumlah_total = number_format($total_jumlah,0,",",".");
+
 	}
+
+	$kelapa_title = "Kelapa";
+	$kelapa_rp = " : Rp.";
+	$kelapa_total = number_format($kelapa,0,",",".");
+
+	$total_jumlah = $kelapa+$tambang+$biaya;
+	$terbilang=terbilang($total_jumlah)." Rupiah";
+	$hr = "<hr>";
+
+	$total_jumlah_title = "Jumlah";
+	$total_jumlah_rp = " : Rp.";
+	$total_jumlah_total = number_format($total_jumlah,0,",",".");
 
 	if($cek_rp_kg == "Y")
 	{

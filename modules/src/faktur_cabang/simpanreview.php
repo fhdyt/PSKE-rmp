@@ -108,7 +108,7 @@ foreach($id_detail as $key => $value)
 		'RMP_FAKTUR_KAPAL' =>  $result_a[0]['RMP_REKAP_FC_KAPAL'],
 		'RMP_FAKTUR_ALAMAT' =>  $input['ALAMAT_FAKTUR_CABANG'],
 		'RMP_FAKTUR_TANGGAL' => date("Y-m-d H:i:s"),
-		'RMP_FAKTUR_POTONGAN' => str_replace(',', '', $input['potongan'][$key]),
+		'RMP_FAKTUR_POTONGAN' => "0",
 		'RMP_FAKTUR_OPERATOR_TIMBANG' => $input['OPERATOR_TIMBANG'],
 		'RMP_FAKTUR_JENIS_MATERIAL' => $jenis_kelapa,
 		'RMP_FAKTUR_QC' => $input['INSPEKTUR_MUTU'],
@@ -132,9 +132,14 @@ foreach($id_detail as $key => $value)
 		'RMP_FAKTUR_PURCHASER_ID'=> waktu_decimal(Date("Y-m-d H:i:s")),
 		'RMP_FAKTUR_NO_FAKTUR'=> $buat_nomor_faktur,
 		'RMP_MASTER_PERSONAL_ID'=> $nama_ps,
+		'RMP_FAKTUR_PURCHASER_BRUTO' => str_replace(',', '', $input['bruto'][$key]),
+		'RMP_FAKTUR_PURCHASER_NETTO' => str_replace(',', '', $input['netto'][$key]),
 		'RMP_FAKTUR_PURCHASER_RP_KG' => str_replace(',', '', $input['rp_kg'][$key]),
 		'RMP_FAKTUR_PURCHASER_TAMBANG' => str_replace(',', '', $input['tambang'][$key]),
+		'RMP_FAKTUR_PURCHASER_TOTAL_TAMBANG' => str_replace(',', '', $input['tambang'][$key]),
 		'RMP_FAKTUR_PURCHASER_BIAYA' => str_replace(',', '', $input['biaya'][$key]),
+		'RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR' => str_replace(',', '', $input['ttl_rupiah'][$key]),
+		'RMP_FAKTUR_PURCHASER_RP_KELAPA' => str_replace(',', '', $input['rupiah'][$key]),
 		'ENTRI_WAKTU' => date("Y-m-d H:i:s"),
 		'ENTRI_OPERATOR' => $user_login['PERSONAL_NIK'],
 		'RECORD_STATUS' => "N"
@@ -152,7 +157,7 @@ foreach($id_detail as $key => $value)
 		'RMP_FAKTUR_DETAIL_ID_TIMBANG' => $result_a[0]['RMP_REKAP_FC_TIMBANG'],
 		'RMP_FAKTUR_DETAIL_TANGGAL' => $result_a[0]['RMP_REKAP_FC_TANGGAL'],
 		'RMP_FAKTUR_DETAIL_GROSS' => str_replace(',', '', $input['bruto'][$key]),
-		'RMP_FAKTUR_DETAIL_TARA' => '',
+		'RMP_FAKTUR_DETAIL_TARA' => $input['potongan'][$key],
 		'RMP_FAKTUR_DETAIL_BRUTO' => str_replace(',', '', $input['bruto'][$key]),
 		'RMP_FAKTUR_DETAIL_POTONGAN' => str_replace(',', '', $input['potongan'][$key]),
 		'RMP_FAKTUR_DETAIL_NETTO' => str_replace(',', '', $input['netto'][$key]),
@@ -167,6 +172,16 @@ foreach($id_detail as $key => $value)
 
 	if ($this->MYSQL->simpan() == true)
 		{
+				$data_detail_edit = array(
+					'RMP_REKAP_FC_PROSES_ADM_PKB' => "Yes"
+				);
+				$this->MYSQL = new MYSQL;
+				$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+				$this->MYSQL->tabel = "RMP_REKAP_FC";
+				$this->MYSQL->record = $data_detail_edit;
+				$this->MYSQL->dimana = "where RMP_REKAP_FC_ID='" . $input['ID_FAKTUR_CABANG'] . "' AND RECORD_STATUS='A'";
+				$this->MYSQL->ubah();
+
 		$this->callback['respon']['pesan'] = "sukses";
 		$this->callback['respon']['text_msg'] = $result_a[0]['RMP_REKAP_FC_TIMBANG'];
 		}

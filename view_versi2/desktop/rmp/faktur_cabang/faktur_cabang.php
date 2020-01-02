@@ -63,6 +63,7 @@ font-size: 12px;
             <a class="btn btn-primary btn-sm" href="?show=rmp/faktur_cabang/tambah_faktur_cabang">Tambah Faktur Cabang</a>
           </div>
         </div>
+        <br>
         <div class="row">
           <div class="col-md-12">
             <table class="table table-hover">
@@ -131,7 +132,14 @@ function lisst_faktur_cabang(curPage)
           currentPage: curPage,
         });
         for (i = 0; i < data.result.length; i++) {
-          $("tbody#zone_data").append("<tr class='detailLogId'  >" +
+          if(data.result[i].RMP_REKAP_FC_PROSES_ADM_PKB == "Yes")
+          {
+            var tr = "success"
+          }
+          else {
+            var tr = "default"
+          }
+          $("tbody#zone_data").append("<tr class='"+tr+"'  >" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_REKAP_FC_ID + "</td>" +
 					"<td>" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +
