@@ -446,6 +446,7 @@ font-size: 12px;
           <center><h4>Kelapa Bulat A</h4></center>
         </div>
         <div class="col-md-12">
+          <a class="btn btn-primary btn-sm tambah_proses_baru" GRADE="A"><i class="fa fa-plus"></i></a>
           <table class="table table-hover table-bordered">
             <thead>
               <tr>
@@ -492,6 +493,7 @@ font-size: 12px;
           <center><h4>Kelapa Bulat B</h4></center>
         </div>
         <div class="col-md-12">
+          <a class="btn btn-primary btn-sm tambah_proses_baru" GRADE="B"><i class="fa fa-plus"></i></a>
           <table class="table table-hover table-bordered">
             <thead>
               <tr>
@@ -538,6 +540,7 @@ font-size: 12px;
           <center><h4>Kelapa Bulat C</h4></center>
         </div>
         <div class="col-md-12">
+          <a class="btn btn-primary btn-sm tambah_proses_baru" GRADE="C"><i class="fa fa-plus"></i></a>
           <table class="table table-hover table-bordered">
             <thead>
               <tr>
@@ -622,6 +625,9 @@ font-size: 12px;
               <div class="form-group">
                 <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Nama</label>
                 <div class="col-sm-8">
+                <input autocomplete="off" class="form-control PROSES_ID_FAKTUR_CABANG form-control" id="PROSES_ID_FAKTUR_CABANG" name="PROSES_ID_FAKTUR_CABANG" placeholder="" type="hidden" value="">
+                <input autocomplete="off" class="form-control PROSES_JENIS_KB form-control" id="PROSES_JENIS_KB" name="PROSES_JENIS_KB" placeholder="" type="hidden" value="">
+                <input autocomplete="off" class="form-control PROSES_TANGGAL form-control" id="PROSES_TANGGAL" name="PROSES_TANGGAL" placeholder="" type="hidden" value="">
                 <input autocomplete="off" class="form-control PROSES_ID form-control" id="PROSES_ID" name="PROSES_ID" placeholder="" type="hidden" value="">
                 <input autocomplete="off" class="form-control PROSES_NAMA" id="PROSES_NAMA" name="PROSES_NAMA" placeholder="" type="text" value="">
               </div>
@@ -1520,4 +1526,26 @@ function hapus_proses(id){
   	} //end error
   });
 }
+
+$(".tambah_proses_baru").on('click', function(){
+  $(".PROSES_ID").val("")
+  $(".PROSES_NAMA").val("")
+  $(".PROSES_BRUTO").val("")
+  $(".PROSES_POTONGAN").val("")
+  $(".PROSES_NETTO").val("")
+  $(".PROSES_RUPIAH_KB").val("")
+  $(".PROSES_TAMBANG").val("")
+  $(".PROSES_BIAYA").val("")
+  $(".PROSES_RUPIAH_TOTAL").val("")
+  $(".PROSES_RP_KG").val("")
+
+  $(".PROSES_ID_FAKTUR_CABANG").val("<?php echo $d3; ?>")
+  var grade = $(this).attr("GRADE")
+  var material = $(".JENIS_KB").val()
+  $(".PROSES_JENIS_KB").val(material+"-"+grade)
+  var tanggal = $(".TANGGAL_FAKTUR_CABANG").val()
+  $(".PROSES_TANGGAL").val(tanggal)
+  $('.modalEditDataProses').modal('show')
+
+})
 </script>
