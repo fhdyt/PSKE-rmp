@@ -280,6 +280,9 @@ switch($ref){
 			case 'simpan_edit_proses':
 				require_once("ajax/faktur_cabang/simpan_edit_proses.php");
 			break;
+			case 'hapus_proses':
+				require_once("ajax/faktur_cabang/hapus_proses.php");
+			break;
 
 
 

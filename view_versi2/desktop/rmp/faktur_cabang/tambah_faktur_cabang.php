@@ -1197,7 +1197,8 @@ function list_cabang_proses_a()
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA + "</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL + "</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG + "</td>" +
-          "<td></td>" +
+          "<td><a class='btn btn-success btn-sm edit_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-pencil'></i></a> " +
+          "<a class='btn btn-danger btn-sm hapus_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-trash'></i></a></td>" +
           "</tr>");
 					}
 
@@ -1254,7 +1255,8 @@ function list_cabang_proses_b()
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA + "</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL + "</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG + "</td>" +
-          "<td></td>" +
+          "<td><a class='btn btn-success btn-sm edit_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-pencil'></i></a> " +
+          "<a class='btn btn-danger btn-sm hapus_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-trash'></i></a></td>" +
           "</tr>");
 					}
 
@@ -1311,7 +1313,8 @@ function list_cabang_proses_c()
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA + "</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL + "</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG + "</td>" +
-          "<td></td>" +
+          "<td><a class='btn btn-success btn-sm edit_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-pencil'></i></a> " +
+          "<a class='btn btn-danger btn-sm hapus_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-trash'></i></a></td>" +
           "</tr>");
 					}
 
@@ -1349,9 +1352,22 @@ list_cabang_proses_c()
 })
 
 
-$('tbody#proses_data_a, tbody#proses_data_b, tbody#proses_data_c').on('click', 'tr#edit_proses', function(){
+$('tbody#proses_data_a').on('click', 'a.edit_proses_a', function(){
   ambil_data_proses($(this).attr('ID_data'))
+  //hapus_detail_rekap(id)
 })
+$('tbody#proses_data_b').on('click', 'a.edit_proses_a', function(){
+  ambil_data_proses($(this).attr('ID_data'))
+  //hapus_detail_rekap(id)
+})
+$('tbody#proses_data_c').on('click', 'a.edit_proses_a', function(){
+  ambil_data_proses($(this).attr('ID_data'))
+  //hapus_detail_rekap(id)
+})
+
+// $('tbody#proses_data_a, tbody#proses_data_b, tbody#proses_data_c').on('click', 'tr#edit_proses', function(){
+//   ambil_data_proses($(this).attr('ID_data'))
+// })
 
 function kalkulasi_data_proses()
 {
@@ -1464,4 +1480,44 @@ $('.SIMPAN_EDIT_PROSES').on('click', function(){
   	} //end error
   });
 })
+
+$('tbody#proses_data_a').on('click', 'a.hapus_proses_a', function(){
+  var id = $(this).attr('ID_data')
+  hapus_proses(id)
+})
+$('tbody#proses_data_b').on('click', 'a.hapus_proses_a', function(){
+  var id = $(this).attr('ID_data')
+  hapus_proses(id)
+})
+$('tbody#proses_data_c').on('click', 'a.hapus_proses_a', function(){
+  var id = $(this).attr('ID_data')
+  hapus_proses(id)
+})
+
+function hapus_proses(id){
+  $.ajax({
+  	type: 'POST',
+  	url: refseeAPI,
+  	dataType: 'json',
+  	data: 'ref=hapus_proses&ID=' + id,
+  	success: function(data) {
+  		if (data.respon.pesan == "sukses")
+  		{
+  			console.log(data.respon.text_msg);
+        list_cabang_proses_a()
+        list_cabang_proses_b()
+        list_cabang_proses_c()
+        alert("Berhasil dihapus")
+  		}
+  		else if (data.respon.pesan == "gagal")
+  		{
+  			console.log(data.respon.text_msg);
+  			alert("Gagal Menyimpan");
+  		}
+  	}, //end success
+  	error: function(x, e) {
+  		console.log("Error Ajax");
+  	} //end error
+  });
+}
 </script>
