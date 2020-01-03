@@ -196,6 +196,7 @@ else
 				'RMP_FAKTUR_CEK_DITERIMA' => $checkbox_diterima,
 				'RMP_FAKTUR_CEK_100_INSPEKSI' => $checkbox_100_inspeksi,
 				'RMP_FAKTUR_CEK_DIPISAH' => $checkbox_dipisah,
+				'RMP_FAKTUR_JENIS' => "FAKTUR",
 			  'ENTRI_WAKTU' => date("Y-m-d H:i:s"),
 			  'ENTRI_OPERATOR' => $user_login['PERSONAL_NIK'],
 			  'RECORD_STATUS' => "A"

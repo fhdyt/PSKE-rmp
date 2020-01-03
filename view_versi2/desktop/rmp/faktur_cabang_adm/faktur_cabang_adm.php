@@ -185,6 +185,7 @@
                         <thead>
                           <tr>
                             <th>No.</th>
+                            <th>No. Faktur</th>
                             <th>Nama Relasi</th>
                             <th>Bruto</th>
                             <th>Potongan</th>
@@ -209,7 +210,7 @@
                         </tbody>
                         <tfoot id="total_a">
                           <tr id="total_a_tr" class="warning">
-                            <td colspan="2" class="text-center">Total</td>
+                            <td colspan="3" class="text-center">Total</td>
                             <td id="td_total_bruto_a"></td>
                             <td id="td_total_potongan_a"></td>
                             <td id="td_total_netto_a"></td>
@@ -228,6 +229,7 @@
                         <thead>
                           <tr>
                             <th>No.</th>
+                            <th>No. Faktur</th>
                             <th>Nama Relasi</th>
                             <th>Bruto</th>
                             <th>Potongan</th>
@@ -252,7 +254,7 @@
                         </tbody>
                         <tfoot id="total_b">
                           <tr id="total_b_tr" class="warning">
-                            <td colspan="2" class="text-center">Total</td>
+                            <td colspan="3" class="text-center">Total</td>
                             <td id="td_total_bruto_b"></td>
                             <td id="td_total_potongan_b"></td>
                             <td id="td_total_netto_b"></td>
@@ -273,6 +275,7 @@
                         <thead>
                           <tr>
                             <th>No.</th>
+                            <th>No. Faktur</th>
                             <th>Nama Relasi</th>
                             <th>Bruto</th>
                             <th>Potongan</th>
@@ -297,7 +300,7 @@
                         </tbody>
                         <tfoot id="total_c">
                           <tr id="total_c_tr" class="warning">
-                            <td colspan="2" class="text-center">Total</td>
+                            <td colspan="3" class="text-center">Total</td>
                             <td id="td_total_bruto_c"></td>
                             <td id="td_total_potongan_c"></td>
                             <td id="td_total_netto_c"></td>
@@ -455,6 +458,7 @@ function list_review_faktur_cabang_c()
         for (i = 0; i < data.result_c.length; i++) {
           $("tbody#zone_data_c").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_c[i].NO + ".<input type='hidden' name='id_detail[]' value='" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "' id='id_detail_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "'><input type='hidden' name='jenis[]' value='C' id='jenis_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
+					"<td><input type='text' name='no_faktur[]' id='no_faktur_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "' class='form-control'></td>" +
 					"<td>" + data.result_c[i].RMP_REKAP_FC_PROSES_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_c[i].RMP_REKAP_FC_PROSES_NAMA  + "' id='supplier_name_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_c[i].RMP_REKAP_FC_PROSES_BRUTO  + "<input type='hidden' name='bruto[]' value='" + data.result_c[i].RMP_REKAP_FC_PROSES_BRUTO  + "' id='bruto_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_c[i].RMP_REKAP_FC_PROSES_POTONGAN  + "<input type='hidden' name='potongan[]' value='" + data.result_c[i].RMP_REKAP_FC_PROSES_POTONGAN  + "' id='potongan_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
@@ -502,7 +506,8 @@ function list_review_faktur_cabang_b()
         for (i = 0; i < data.result_b.length; i++) {
           $("tbody#zone_data_b").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_b[i].NO + ".<input type='hidden' name='id_detail[]' value='" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "' id='id_detail_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'><input type='hidden' name='jenis[]' value='B' id='jenis_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
-					"<td>" + data.result_b[i].RMP_REKAP_FC_PROSES_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_b[i].RMP_REKAP_FC_PROSES_NAMA  + "' id='supplier_name_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
+          "<td><input type='text' name='no_faktur[]' id='no_faktur_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "' class='form-control'></td>" +
+          "<td>" + data.result_b[i].RMP_REKAP_FC_PROSES_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_b[i].RMP_REKAP_FC_PROSES_NAMA  + "' id='supplier_name_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_b[i].RMP_REKAP_FC_PROSES_BRUTO  + "<input type='hidden' name='bruto[]' value='" + data.result_b[i].RMP_REKAP_FC_PROSES_BRUTO  + "' id='bruto_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_b[i].RMP_REKAP_FC_PROSES_POTONGAN  + "<input type='hidden' name='potongan[]' value='" + data.result_b[i].RMP_REKAP_FC_PROSES_POTONGAN  + "' id='potongan_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_b[i].RMP_REKAP_FC_PROSES_NETTO  + "<input type='hidden' name='netto[]' value='" + data.result_b[i].RMP_REKAP_FC_PROSES_NETTO  + "' id='netto_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
@@ -549,7 +554,8 @@ function list_review_faktur_cabang_a()
         for (i = 0; i < data.result_a.length; i++) {
           $("tbody#zone_data_a").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_a[i].NO + ".<input type='hidden' name='id_detail[]' value='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "' id='id_detail_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><input type='hidden' name='jenis[]' value='A' id='jenis_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA  + "' id='supplier_name_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
+          "<td><input type='text' name='no_faktur[]' id='no_faktur_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "' class='form-control'></td>" +
+          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA  + "' id='supplier_name_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO  + "<input type='hidden' name='bruto[]' value='" + data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO  + "' id='bruto_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN  + "<input type='hidden' name='potongan[]' value='" + data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN  + "' id='potongan_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NETTO  + "<input type='hidden' name='netto[]' value='" + data.result_a[i].RMP_REKAP_FC_PROSES_NETTO  + "' id='netto_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +

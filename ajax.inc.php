@@ -205,6 +205,9 @@ switch($ref){
 			case 'edit_faktur':
 				require_once("ajax/faktur/edit_faktur.php");
 			break;
+			case 'simpan_manual_nota':
+				require_once("ajax/faktur/simpan_manual_nota.php");
+			break;
 
 
 

@@ -42,16 +42,15 @@ foreach($id_detail as $key => $value)
 		$jenis_kelapa = "";
 	}
 	$ponton = $result_a[0]['RMP_REKAP_FC_TIMBANG'];
-	//$buat_nomor_faktur=$RMP_CONFIG->buat_nomor_faktur($jenis_kelapa,$ponton)->callback['nomor'];
 	$bulan = date("m",strtotime($input['TANGGAL_FAKTUR']));
 	$tahun = date("Y",strtotime($input['TANGGAL_FAKTUR']));
 	$tanggalnota = $bulan.$tahun;
-	$buat_nomor_faktur=$RMP_CONFIG->buat_nomor_faktur($jenis_kelapa,$ponton,$tanggalnota)->callback['nomor'];
+	//$buat_nomor_faktur=$RMP_CONFIG->buat_nomor_faktur($jenis_kelapa,$ponton,$tanggalnota)->callback['nomor'];
 	$data_detail2 = array(
 		'RMP_FAKTUR_CABANG_DETAIL_ID' => $input['id_detail'][$key],
 		'RMP_FAKTUR_CABANG_DETAIL_NAMA' => $input['supplier_name'][$key],
 		'RMP_REKAP_FC_ID' => $result_a[0]['RMP_REKAP_FC_ID'],
-		'RMP_FAKTUR_NO_FAKTUR'=> $buat_nomor_faktur,
+		'RMP_FAKTUR_NO_FAKTUR'=> $input['no_faktur'][$key],
 		'RMP_FAKTUR_CABANG_DETAIL_JENIS' => $jenis_kelapa,
 		'RMP_FAKTUR_CABANG_DETAIL_BRUTO' => str_replace(',', '', $input['bruto'][$key]),
 		'RMP_FAKTUR_CABANG_DETAIL_POTONGAN' => str_replace(',', '', $input['potongan'][$key]),
@@ -102,7 +101,7 @@ foreach($id_detail as $key => $value)
 
 	$data_detail4 = array(
 		'RMP_FAKTUR_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
-		'RMP_FAKTUR_NO_FAKTUR'=> $buat_nomor_faktur,
+		'RMP_FAKTUR_NO_FAKTUR'=> $input['no_faktur'][$key],
 		'RMP_MASTER_PERSONAL_ID'=> $nama_ps,
 		'RMP_FAKTUR_NAMA_SUB'=> $input['supplier_name'][$key],
 		'RMP_FAKTUR_KAPAL' =>  $result_a[0]['RMP_REKAP_FC_KAPAL'],
@@ -130,7 +129,7 @@ foreach($id_detail as $key => $value)
 
 	$data_detail22222 = array(
 		'RMP_FAKTUR_PURCHASER_ID'=> waktu_decimal(Date("Y-m-d H:i:s")),
-		'RMP_FAKTUR_NO_FAKTUR'=> $buat_nomor_faktur,
+		'RMP_FAKTUR_NO_FAKTUR'=> $input['no_faktur'][$key],
 		'RMP_MASTER_PERSONAL_ID'=> $nama_ps,
 		'RMP_FAKTUR_PURCHASER_BRUTO' => str_replace(',', '', $input['bruto'][$key]),
 		'RMP_FAKTUR_PURCHASER_NETTO' => str_replace(',', '', $input['netto'][$key]),
@@ -152,7 +151,7 @@ foreach($id_detail as $key => $value)
 
 	$data_detail3 = array(
 		'RMP_FAKTUR_DETAIL_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
-		'RMP_FAKTUR_NO_FAKTUR'=> $buat_nomor_faktur,
+		'RMP_FAKTUR_NO_FAKTUR'=> $input['no_faktur'][$key],
 		'RMP_FAKTUR_DETAIL_JENIS_MATERIAL' => $jenis_kelapa,
 		'RMP_FAKTUR_DETAIL_ID_TIMBANG' => $result_a[0]['RMP_REKAP_FC_TIMBANG'],
 		'RMP_FAKTUR_DETAIL_TANGGAL' => $result_a[0]['RMP_REKAP_FC_TANGGAL'],
