@@ -13,14 +13,14 @@ $batas = $params['batas'];
 $posisi = $this->PAGING->cariPosisi($batas, $halaman);
 $input = $params['input_option'];
 
-// if (empty($input['keyword']) or $input['keyword'] == "")
-//     {
-//     $filter_a = "";
-//     }
-//   else
-//     {
-//     $filter_a = "AND (RMP_MASTER_MATERIAL like '%" . $input['keyword'] . "%')";
-//     }
+if (empty($input['tanggal']) or $input['tanggal'] == "")
+    {
+    $filter_a = "";
+    }
+  else
+    {
+    $filter_a = "AND (FC.RMP_REKAP_FC_TANGGAL = '" . $input['tanggal'] . "')";
+    }
 
 $sql = "SELECT * FROM RMP_REKAP_FC AS FC
         LEFT JOIN RMP_MASTER_PERSONAL AS P
@@ -28,6 +28,8 @@ $sql = "SELECT * FROM RMP_REKAP_FC AS FC
           FC.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
         WHERE FC.RECORD_STATUS='A'
         AND P.RECORD_STATUS='A'
+        ".$filter_a."
+        ORDER BY FC.RMP_REKAP_FC_TANGGAL DESC
                         ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;

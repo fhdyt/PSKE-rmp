@@ -59,8 +59,18 @@ font-size: 12px;
 					<div class="col-md-4 text-right"></div>
 				</div><!--/.row-->
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <a class="btn btn-primary btn-sm" href="?show=rmp/faktur_cabang/tambah_faktur_cabang">Tambah Faktur Cabang</a>
+          </div>
+          <div class="col-md-6 text-right">
+            <form id="form_filter" class="form-inline" method="POST" action="javascript:filter();">
+					<div class="form-group">
+              <input type="text" id="FILTER_TANGGAL" class="form-control FILTER_TANGGAL datepicker" name="FILTER_TANGGAL" placeholder="Tanggal Faktur Cabang" autocomplete="off"/>
+          </div>
+					<div class="form-group">
+            <button type="submit" class="btn btn-success filter"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+          </div>
           </div>
         </div>
         <br>
@@ -105,6 +115,20 @@ font-size: 12px;
   </div>
 </div>
 <script>
+
+$(function()
+{
+	$(".datepicker").datepicker().on('changeDate', function(ev)
+	{
+		$('.datepicker').datepicker('hide');
+	});
+});
+
+function filter(){
+$("tbody#zone_data").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
+lisst_faktur_cabang('1')
+}
+
 function lisst_faktur_cabang(curPage)
 {
   var url = window.location.href;
@@ -121,7 +145,7 @@ function lisst_faktur_cabang(curPage)
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=list_faktur_cabang&batas=' + $('input#REC_PER_HALAMAN').val() + '&halaman=' + curPage + '&keyword=' + $("input#keyword").val(),
+    data: 'ref=list_faktur_cabang&batas=' + $('input#REC_PER_HALAMAN').val() + '&halaman=' + curPage + '&keyword=' + $("input#keyword").val() + '&tanggal=' + $(".FILTER_TANGGAL").val(),
     success: function(data) {
       if (data.respon.pesan == "sukses") {
 				console.log("Sukses");
