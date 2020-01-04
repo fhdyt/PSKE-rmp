@@ -193,8 +193,8 @@
                 <label for="exampleInputEmail1">Nama Nota</label>
                 <input autocomplete="off" class="form-control NAMA_NOTA" id="NAMA_NOTA" name="NAMA_NOTA" type="text" readonly>
                 <input autocomplete="off" class="form-control ID_FAKTUR" id="ID_FAKTUR" name="ID_FAKTUR" placeholder="ID_FAKTUR" type="hidden" >
-
                 <input autocomplete="off" class="form-control JENIS_KELAPA" id="JENIS_KELAPA" name="JENIS_KELAPA" placeholder="JENIS_KELAPA" type="hidden" >
+                <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="JENIS_FAKTUR" type="hidden" >
 
                 <p class="help-block">Nama Supplier Pada Nota Timbang.</p>
               </div>
@@ -1352,6 +1352,7 @@ function edit_faktur(d2)
         $(".TANGGAL_FAKTUR").val(data.result[0].RMP_FAKTUR_TANGGAL)
         $(".KAPAL_FAKTUR").val(data.result[0].RMP_FAKTUR_KAPAL)
         $(".JENIS_KELAPA").val(data.result[0].RMP_FAKTUR_DETAIL_JENIS_MATERIAL)
+        $(".JENIS_FAKTUR").val(data.result[0].RMP_FAKTUR_JENIS)
         $('select.NO_NOTA').append('<option value="'+data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA+'" selected="selected">'+data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA+'</option>').selectpicker('refresh');
         hasil_timbang(data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA)
         $('select.NO_NOTA').trigger('change');
