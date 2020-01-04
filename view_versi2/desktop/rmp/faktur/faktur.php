@@ -44,6 +44,10 @@
  {
    width:1000px;
  }
+ .modalFakturList
+ {
+   width:1100px;
+ }
 
 
 
@@ -95,7 +99,7 @@
       						<p>No. Faktur</p>
       					</div>
       					<div class="icon">
-      						<i class="fa fa-balance-scale"></i>
+      						<i class="fa fa-file-text"></i>
       					</div>
       				</div>
       			</div>
@@ -106,7 +110,7 @@
       						<p>No. Nota</p>
       					</div>
       					<div class="icon">
-      						<i class="fa fa-balance-scale"></i>
+      						<i class="fa fa-file-text-o"></i>
       					</div>
       				</div>
       			</div>
@@ -417,7 +421,7 @@
 
 
  <div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg modalLihatFaktur" role="dialog" tabindex="-1">
- 	<div class="modal-dialog modalMD" role="document">
+ 	<div class="modal-dialog modalFakturList" role="document">
  		<div class="modal-content">
  			<div class="modal-header">
  				<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
@@ -425,10 +429,45 @@
  			</div>
  			<div class="modal-body">
         <div class="row">
+          <div class="col-md-4">
+            <div class="small-box bg-aqua">
+              <div class="inner">
+                <p class="TOTAL_KELAPA_A" style="font-size:40px">-</p>
+                <p>Kelapa A</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-balance-scale"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="small-box bg-green">
+              <div class="inner">
+                <p class="TOTAL_KELAPA_B" style="font-size:40px">-</p>
+                <p>Kelapa B</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-balance-scale"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="small-box bg-yellow">
+              <div class="inner">
+                <p class="TOTAL_KELAPA_C" style="font-size:40px">-</p>
+                <p>Kelapa C</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-balance-scale"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-md-12 text-right">
             <form id="form_filter" class="form-inline" method="POST" action="javascript:filter();">
               <div class="form-group">
-            <select id="FILTER_MATERIAL" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_material()">
+            <select id="FILTER_MATERIAL" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_tanggal_list()">
             <option value="">--Semua--</option>
             <option value="GELONDONG">GELONDONG</option>
             <option value="JAMBUL">JAMBUL</option>
@@ -1277,7 +1316,7 @@ function lihat_faktur()
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=lihat_faktur&TANGGAL='+$(".FILTER_TANGGAL_LIST").val()+'',
+    data: 'ref=lihat_faktur&TANGGAL='+$(".FILTER_TANGGAL_LIST").val()+'&FILTER_MATERIAL='+$(".FILTER_MATERIAL").val()+'',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
 				//console.log(data.respon.text_msg);
@@ -1300,7 +1339,36 @@ function lihat_faktur()
           {
             var purchaser_status = "<p class='text-success'><small><i>Telah diproses oleh Purchaser</i></small></p>"
           }
+          if (data.result[i].TOTAL_A == null)
+          {
+            var total_a = "0"
+          }
+          else
+          {
+            var total_a = data.result[i].TOTAL_A
+          }
 
+          if (data.result[i].TOTAL_B == null)
+          {
+            var total_b = "0"
+          }
+          else
+          {
+            var total_b = data.result[i].TOTAL_B
+          }
+
+          if (data.result[i].TOTAL_C == null)
+          {
+            var total_c = "0"
+          }
+          else
+          {
+            var total_c = data.result[i].TOTAL_C
+          }
+
+          $("p.TOTAL_KELAPA_A").html(total_a+" Kg")
+          $("p.TOTAL_KELAPA_B").html(total_b+" Kg")
+          $("p.TOTAL_KELAPA_C").html(total_c+" Kg")
           $("tbody#zone_lihat_faktur").append("<tr class='detailLogId'>" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR +  " "+purchaser_status+"</td>" +
@@ -1312,6 +1380,9 @@ function lihat_faktur()
         }
       } else if (data.respon.pesan == "gagal") {
         $("tbody#zone_lihat_faktur").html("<tr><td colspan='9'><div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> " + data.respon.text_msg + "</div></td></tr>");
+        $("p.TOTAL_KELAPA_A").html("0 Kg")
+        $("p.TOTAL_KELAPA_B").html("0 Kg")
+        $("p.TOTAL_KELAPA_C").html("0 Kg")
       }
     }, //end success
     error: function(x, e) {
