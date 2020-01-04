@@ -27,6 +27,8 @@ $sql = "SELECT * FROM
             P.RECORD_STATUS='A'
           AND
             F.RMP_FAKTUR_TANGGAL LIKE '%".$input['TANGGAL']."%'
+          AND
+            F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['FILTER_MATERIAL']."%'
           GROUP BY
             F.RMP_FAKTUR_NO_FAKTUR
           ORDER BY

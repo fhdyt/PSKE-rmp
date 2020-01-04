@@ -193,7 +193,7 @@
                 <label for="exampleInputEmail1">Nama Nota</label>
                 <input autocomplete="off" class="form-control NAMA_NOTA" id="NAMA_NOTA" name="NAMA_NOTA" type="text" readonly>
                 <input autocomplete="off" class="form-control ID_FAKTUR" id="ID_FAKTUR" name="ID_FAKTUR" placeholder="ID_FAKTUR" type="hidden" >
-                <input autocomplete="off" class="form-control JENIS_KELAPA" id="JENIS_KELAPA" name="JENIS_KELAPA" placeholder="JENIS_KELAPA" type="hidden" >
+                <input autocomplete="off" class="form-control JENIS_KELAPA" id="JENIS_KELAPA" name="JENIS_KELAPA" placeholder="JENIS_KELAPA" type="text" >
                 <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="JENIS_FAKTUR" type="hidden" >
 
                 <p class="help-block">Nama Supplier Pada Nota Timbang.</p>
@@ -425,15 +425,22 @@
  			</div>
  			<div class="modal-body">
         <div class="row">
-          <div class="col-md-8">
-          </div>
-          <div class="col-md-4">
-            <form id="form_filter" method="POST">
+          <div class="col-md-12 text-right">
+            <form id="form_filter" class="form-inline" method="POST" action="javascript:filter();">
+              <div class="form-group">
+            <select id="FILTER_MATERIAL" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_material()">
+            <option value="">--Semua--</option>
+            <option value="GELONDONG">GELONDONG</option>
+            <option value="JAMBUL">JAMBUL</option>
+            <option value="LICIN">LICIN</option>
+                  </select>
+                </div>
+					<div class="form-group">
               <input type="date" id="FILTER_TANGGAL_LIST" class="form-control FILTER_TANGGAL_LIST" name="FILTER_TANGGAL" onchange="filter_tanggal_list()" value="<?php echo date("Y-m-d"); ?>"/>
-                  <p class="help-block">Tanggal.</p>
-              </form>
           </div>
-        </div>
+        </form>
+          </div>
+				</div>
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
@@ -1440,6 +1447,7 @@ $(".SIMPAN_MANUAL_PROSES").on("click", function(){
   		{
         var no_nota = "";
         faktur_list(no_nota)
+        $("input.JENIS_KELAPA").val($(".MANUAL_MATERIAL").val()+"-"+$(".MANUAL_GRADE").val())
         $(".modalManualNota").modal("hide")
   		}
 
