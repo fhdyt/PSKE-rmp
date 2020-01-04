@@ -559,7 +559,7 @@
                <div class="form-group">
                  <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Referensi</label>
                  <div class="col-sm-8">
-                 <input autocomplete="off" class="form-control MANUAL_REF" id="MANUAL_REF" name="MANUAL_REF" placeholder="" type="number" value="" onkeyup="kalkulasi_data_proses()">
+                 <input autocomplete="off" class="form-control MANUAL_REF" id="MANUAL_REF" name="MANUAL_REF" placeholder="" type="number" value="" >
                </div>
              </div>
                <div class="form-group">
@@ -568,37 +568,38 @@
                    <select class="form-control MANUAL_TIMBANG" name="MANUAL_TIMBANG" id="MANUAL_TIMBANG">
                      <option value="PTN-1">PTN-1</option>
                      <option value="PTN-2">PTN-2</option>
+                     <option value="PTN-2">PTN-3</option>
                    </select>
                </div>
              </div>
                <div class="form-group">
                  <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Gross</label>
                  <div class="col-sm-8">
-                 <input autocomplete="off" class="form-control MANUAL_GROSS" id="MANUAL_GROSS" name="MANUAL_GROSS" placeholder="" type="number">
+                 <input autocomplete="off" class="form-control MANUAL_GROSS" id="MANUAL_GROSS" name="MANUAL_GROSS" placeholder="" type="number" onkeyup="kalkulasi_manual()">
                </div>
              </div>
                <div class="form-group">
                  <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Tara</label>
                  <div class="col-sm-8">
-                 <input autocomplete="off" class="form-control MANUAL_TARA" id="MANUAL_TARA" name="MANUAL_TARA" placeholder="" type="number">
+                 <input autocomplete="off" class="form-control MANUAL_TARA" id="MANUAL_TARA" name="MANUAL_TARA" placeholder="" type="number" onkeyup="kalkulasi_manual()">
                </div>
              </div>
                <div class="form-group">
                  <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Bruto</label>
                  <div class="col-sm-8">
-                 <input autocomplete="off" class="form-control MANUAL_BRUTO" id="MANUAL_BRUTO" name="MANUAL_BRUTO" placeholder="" type="number">
+                 <input autocomplete="off" class="form-control MANUAL_BRUTO" id="MANUAL_BRUTO" name="MANUAL_BRUTO" placeholder="" type="number" onkeyup="kalkulasi_manual()">
                </div>
              </div>
                <div class="form-group">
                  <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Potongan</label>
                  <div class="col-sm-8">
-                 <input autocomplete="off" class="form-control MANUAL_POTONGAN" id="MANUAL_POTONGAN" name="MANUAL_POTONGAN" placeholder="" type="number">
+                 <input autocomplete="off" class="form-control MANUAL_POTONGAN" id="MANUAL_POTONGAN" name="MANUAL_POTONGAN" placeholder="" type="number" onkeyup="kalkulasi_manual()">
                </div>
              </div>
                <div class="form-group">
                  <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Netto</label>
                  <div class="col-sm-8">
-                 <input autocomplete="off" class="form-control MANUAL_NETTO" id="MANUAL_NETTO" name="MANUAL_NETTO" placeholder="" type="number">
+                 <input autocomplete="off" class="form-control MANUAL_NETTO" id="MANUAL_NETTO" name="MANUAL_NETTO" placeholder="" type="number" onkeyup="kalkulasi_manual()">
                </div>
              </div>
 
@@ -1533,4 +1534,17 @@ $(".SIMPAN_MANUAL_PROSES").on("click", function(){
   	} //end error
   });
 })
+
+function kalkulasi_manual()
+{
+
+  var gross = $("input.MANUAL_GROSS").val()
+  var tara = $("input.MANUAL_TARA").val()
+  var bruto = parseInt(gross) - parseInt(tara)
+  console.log(gross)
+  $("input.MANUAL_BRUTO").val(parseInt(bruto))
+  var potongan = $("input.MANUAL_POTONGAN").val()
+  var netto = parseInt(bruto)-parseInt(potongan)
+  $("input.MANUAL_NETTO").val(parseInt(netto))
+}
 </script>
