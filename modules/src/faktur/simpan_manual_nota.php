@@ -27,7 +27,7 @@ $data_detail2 = array(
 
 	'ENTRI_WAKTU' => date("Y-m-d H:i:s"),
 	'ENTRI_OPERATOR' => $user_login['PERSONAL_NIK'],
-	'RECORD_STATUS' => "A"
+	'RECORD_STATUS' => "N"
 );
 $this->MYSQL = new MYSQL;
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;

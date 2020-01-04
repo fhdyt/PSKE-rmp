@@ -9,6 +9,18 @@ if (empty($params['case']))
 	}
 
 $input = $params['input_option'];
+
+$data_detail777 = array(
+	'RECORD_STATUS' => "E"
+);
+
+$this->MYSQL = new MYSQL;
+$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+$this->MYSQL->tabel = "RMP_FAKTUR_PURCHASER";
+$this->MYSQL->record = $data_detail777;
+$this->MYSQL->dimana = "where RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."' AND RECORD_STATUS='A'";
+$this->MYSQL->ubah();
+
 	$data_detail2 = array(
 		'RMP_FAKTUR_PURCHASER_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
 	  'RMP_FAKTUR_NO_FAKTUR' => $input['NO_FAKTUR'],

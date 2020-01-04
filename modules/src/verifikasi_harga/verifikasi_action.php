@@ -8,6 +8,7 @@ if (empty($params['case']))
 	exit();
 	}
 
+	
 //AMBIL PURCHASER
 $input = $params['input_option'];
 $sql44 = "SELECT * FROM RMP_FAKTUR_PURCHASER WHERE RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."' AND RECORD_STATUS='V'";

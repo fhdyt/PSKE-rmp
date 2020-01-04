@@ -87,6 +87,7 @@ font-size: 12px;
                     <select class="NAMA_SUPPLIER form-control select2" style="width: 100%;" id="NAMA_SUPPLIER" name="NAMA_SUPPLIER">
                       <option value=""></option>
                       <input autocomplete="off" class="form-control NAMA_SUPPLIER_HIDDEN" id="NAMA_SUPPLIER_HIDDEN" name="NAMA_SUPPLIER_HIDDEN" type="hidden">
+                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_PURCHASER_HIDDEN" id="NAMA_SUPPLIER_PURCHASER_HIDDEN" name="NAMA_SUPPLIER_PURCHASER_HIDDEN" type="hidden">
                     </select>
                 </p></font>
                   <input autocomplete="off" class="form-control ID_SUPPLIER" id="ID_SUPPLIER" name="ID_SUPPLIER" type="hidden">
@@ -485,7 +486,8 @@ function detail_purchaser(curPage)
             $('p.KELAPA_RP').html(number_format(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA));
             $('.KELAPA_RUPIAH').val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA);
           }
-          $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
+        //  $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
+          $('p.RP_KG').html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
           $("p.NO_REKENING").html(data.resultbc[i].REKENING)
           //$("p.ALAMAT_SUPPLIER").html(data.resultbc[i].ALAMAT)
           $(".INPUT_RP_KG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
@@ -494,6 +496,7 @@ function detail_purchaser(curPage)
           $(".INPUT_BIAYA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_BIAYA)
           $(".ID_SUPPLIER").val(data.resultbc[i].RMP_MASTER_PERSONAL_ID)
           $(".JENIS_FAKTUR").val(data.resultbc[i].RMP_FAKTUR_JENIS)
+          $(".NAMA_SUPPLIER_PURCHASER_HIDDEN").val(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
           kalkulasi_biaya()
         //  $(".ID_FAKTUR_PURCHASER").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_ID)
           if(data.resultbc[i].FRRECORD_STATUS == 'A')
@@ -580,7 +583,18 @@ function sel_nama_supplier()
     success: function(data) {
       if (data.respon.pesan == "sukses") {
         for (i = 0; i < data.result.length; i++) {
-          if ($(".NAMA_SUPPLIER_HIDDEN").val() == data.result[i].RMP_MASTER_PERSONAL_NAMA)
+          if ($(".NAMA_SUPPLIER_PURCHASER_HIDDEN").val() == data.result[i].RMP_MASTER_PERSONAL_NAMA)
+          {
+            var sel = "selected"
+            $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
+            $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
+            //$('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
+            if($('.INPUT_RP_KG').val() == '')
+            {
+            $('p.RP_KG').html(data.result[i].HARGA + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
+            }
+          }
+          else if ($(".NAMA_SUPPLIER_HIDDEN").val() == data.result[i].RMP_MASTER_PERSONAL_NAMA)
           {
             var sel = "selected"
             $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
@@ -593,7 +607,7 @@ function sel_nama_supplier()
           }
           else
           {
-            var sel = "selected"
+            var sel = ""
           }
           $("select.NAMA_SUPPLIER").append("<option value='"+ data.result[i].RMP_MASTER_PERSONAL_ID +"' RP='"+data.result[i].HARGA+"' REKENING='"+data.result[i].RMP_REKENING_RELASI+"' ALAMAT='"+data.result[i].ALAMAT+"' "+sel+">"+ data.result[i].RMP_MASTER_PERSONAL_NAMA +"</option>");
 					}

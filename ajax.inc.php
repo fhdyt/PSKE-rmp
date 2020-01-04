@@ -168,7 +168,6 @@ switch($ref){
 
 
 
-
 			case 'pilih_no_nota':
 				require_once("ajax/faktur/pilih_no_nota.php");
 			break;
@@ -207,6 +206,9 @@ switch($ref){
 			break;
 			case 'simpan_manual_nota':
 				require_once("ajax/faktur/simpan_manual_nota.php");
+			break;
+			case 'cek_nomor_faktur':
+				require_once("ajax/faktur/cek_nomor_faktur.php");
 			break;
 
 

@@ -177,7 +177,7 @@
             <div class="form-group">
               <label for="exampleInputEmail1">No. Faktur</label>
               <input autocomplete="off" class="form-control NO_FAKTUR" id="NO_FAKTUR" name="NO_FAKTUR" placeholder="NO_FAKTUR" onkeyup="no_faktur_keyup()" type="text" >
-              <p class="help-block">Akan tampil secara otomatis.</p>
+              <p class="help-block ck_no_faktur">Jika kosong no faktur otomatis muncul.</p>
             </div>
             </div>
             <div class="col-md-3">
@@ -195,11 +195,19 @@
                 <input autocomplete="off" class="form-control ID_FAKTUR" id="ID_FAKTUR" name="ID_FAKTUR" placeholder="ID_FAKTUR" type="hidden" >
 
                 <input autocomplete="off" class="form-control JENIS_KELAPA" id="JENIS_KELAPA" name="JENIS_KELAPA" placeholder="JENIS_KELAPA" type="hidden" >
-                <input autocomplete="off" class="form-control KAPAL_FAKTUR" id="KAPAL_FAKTUR" name="KAPAL_FAKTUR" placeholder="KAPAL_FAKTUR" type="hidden" >
+
                 <p class="help-block">Nama Supplier Pada Nota Timbang.</p>
               </div>
 
           </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Kapal</label>
+              <input autocomplete="off" class="form-control KAPAL_FAKTUR" id="KAPAL_FAKTUR" name="KAPAL_FAKTUR" placeholder="KAPAL_FAKTUR" type="text" >
+              <p class="help-block">Nama Kapal.</p>
+            </div>
+          </div>
+
           <div class="col-md-3">
             <div class="form-group">
               <label for="exampleInputEmail1">Nama Supplier</label>
@@ -222,17 +230,17 @@
               <p class="help-block">Alamat Petani Untuk Faktur.</p>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Tanggal</label>
-              <input autocomplete="off" class="form-control TANGGAL_FAKTUR datepicker" id="TANGGAL_FAKTUR" name="TANGGAL_FAKTUR" placeholder="" type="text" value="<?php echo date("Y/m/d"); ?>">
-              <p class="help-block">Tanggal faktur.</p>
-            </div>
-          </div>
+
             </div>
       		</div>
           <div class="row">
-
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Tanggal</label>
+                <input autocomplete="off" class="form-control TANGGAL_FAKTUR datepicker" id="TANGGAL_FAKTUR" name="TANGGAL_FAKTUR" placeholder="" type="text" value="<?php echo date("Y/m/d"); ?>">
+                <p class="help-block">Tanggal faktur.</p>
+              </div>
+            </div>
             <div class="col-md-3">
               <div class="form-group">
                 <label for="exampleInputEmail1">Operator Timbang</label><select class="OPERATOR_TIMBANG with-ajax-personal form-control" data-live-search="true" id="OPERATOR_TIMBANG" name="OPERATOR_TIMBANG" onchange="sel_operator_timbang()">
@@ -367,7 +375,8 @@
       								<i class="fa fa-balance-scale"></i>
       							</div>
       						</div>
-                  <a class="btn btn-primary btn-sm tambah_manual_nota"><i class="fa fa-plus"></i></a>
+                  <a class="btn btn-primary btn-sm tambah_manual_nota"><i class="fa fa-plus"></i> Tambah Data Faktur</a>
+                </br>
                 </br>
       						<table id="faktur" class="table table-small table-bordered">
       							<thead>
@@ -458,7 +467,7 @@
  		<div class="modal-content">
  			<div class="modal-header">
  				<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
- 				<h4 class="modal-title" id="myModalLabel">Manual Nota Timbang</h4>
+ 				<h4 class="modal-title" id="myModalLabel">Tambah Data Faktur</h4>
  			</div>
  			<div class="modal-body">
 
@@ -563,13 +572,59 @@
  <!-- MODAL EDIT PROSES DATA -->
 
 <script>
+var delay = (function()
+  {
+    var timer = 0;
+    return function(callback, ms)
+    {
+      clearTimeout(timer);
+      timer = setTimeout(callback, ms);
+    };
+  })();
+
 function no_faktur_keyup()
 {
   var no_faktur = $("input.NO_FAKTUR").val()
-  console.log(no_faktur)
+    $(".simpan_faktur").attr("disabled", "disabled");
+      $(".ck_no_faktur").html("<span class='text-danger'>Proses...</span>");
+      delay(function()
+      {
+        //pad(NIKBH, 6);
+        cek_no_faktur(no_faktur);
+      }, 500);
+
   $("p.NO_FAKTUR").html(no_faktur)
   faktur_list()
 }
+
+function cek_no_faktur(no_faktur)
+  {
+    $.ajax({
+      type: 'POST',
+      url: refseeAPI,
+      dataType: 'json',
+      data: 'ref=cek_nomor_faktur&NO_FAKTUR=' + no_faktur,
+      success: function(data)
+      {
+        if (data.respon.pesan == "sukses")
+        {
+          for (i = 0; i < data.result.length; i++)
+          {
+            $(".simpan_faktur").attr("disabled", "disabled");
+            $(".ck_no_faktur").html("<span class='text-danger'><i class='fa fa-close' aria-hidden='true'></i> No Faktur Terdaftar, Coba Lagi</span>");
+            }
+        }
+        else
+        {
+          $(".simpan_faktur").removeAttr("disabled");
+          $(".ck_no_faktur").html("<span class='text-success'><i class='fa fa-check' aria-hidden='true'></i> No Faktur Dapat Digunakan</success>");
+        }
+      },
+      error: function(x, e) {
+        console.log("Error Ajax");
+      } //end error
+    });
+  }
 
 $(function () {
   //Initialize Select2 Elements
@@ -919,7 +974,7 @@ function hasil_timbang(no_nota)
           {
             // var a = "<a class='btn btn-default btn-sm kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_HASIL_TIMBANG_ID +  "' NO_NOTA='" + data.result[i].RMP_HASIL_TIMBANG_NO_NOTA +  "'><i aria-hidden='true' class='fa fa-external-link'></i></a>"
             // var tr = ""
-            var a = "<button class='btn btn-default btn-xs kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].id +  "' NO_NOTA='" + data.result[i].notr +  "'   BRUTO='" + data.result[i].gross + "' PONTON='" + data.result[i].id_timbang + "' JENIS_KELAPA='" + data.result[i].jenis_kelapa + "'><i aria-hidden='true' class='fa fa-angle-double-right'></i></button>"
+            var a = "<button class='btn btn-success btn-xs kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].id +  "' NO_NOTA='" + data.result[i].notr +  "'   BRUTO='" + data.result[i].gross + "' PONTON='" + data.result[i].id_timbang + "' JENIS_KELAPA='" + data.result[i].jenis_kelapa + "'><i aria-hidden='true' class='fa fa-plus'></i></button>"
             var tr= ""
           }
 
@@ -957,7 +1012,8 @@ $("tbody#zone_data").on('click','button.kirim_hasil_timbang', function()
   var id_timbang = $(this).attr('ID_HASIL_TIMBANG');
   var no_nota = $(this).attr('NO_NOTA');
   var jenis_kelapa = $(this).attr('JENIS_KELAPA');
-  var no_faktur = $(".NO_FAKTUR").val();
+  var no_faktur = $("input.NO_FAKTUR").val();
+
   var data = 'ID_TIMBANG='+id_timbang+'&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur+"&TANGGAL_NOTA="+$(".BULAN_NOTA").val()+""+$(".TAHUN_NOTA").val()+"";
   $(".JENIS_KELAPA").val(jenis_kelapa);
     kirim_hasil_timbang(data)
@@ -1005,7 +1061,7 @@ function kirim_hasil_timbang(data)
 
 function faktur_list(no_nota)
 {
-  var no_faktur = $(".NO_FAKTUR").val()
+  var no_faktur = $("input.NO_FAKTUR").val()
   //alert(no_nota)
   $.ajax({
     type: 'POST',
@@ -1025,12 +1081,12 @@ function faktur_list(no_nota)
           }
           else if(data.result[i].RECORD_STATUS=='A')
           {
-            var a = "<button class='btn btn-default btn-xs kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-angle-double-left'></i></button>"
+            var a = "<button class='btn btn-danger btn-xs kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-trash'></i></button>"
           }
           else
           {
             // var a = "<button class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_HASIL_TIMBANG_ID +  "' NO_NOTA='" + data.result[i].RMP_HASIL_TIMBANG_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-external-link'></i></button>"
-            var a = "<button class='btn btn-default btn-xs kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-angle-double-left'></i></button>"
+            var a = "<button class='btn btn-danger btn-xs kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-trash'></i></button>"
           }
           $("tbody#zone_data_faktur").append("<tr class='default'  detailLogId='" + data.result[i].ICD_BARANG_KODE_INVENTORI + "'>" +
             "<td >" + data.result[i].NO + ".</td>" +
@@ -1294,6 +1350,7 @@ function edit_faktur(d2)
         $(".ID_FAKTUR").val(data.result[0].RMP_FAKTUR_ID)
         $(".NO_FAKTUR").val(data.result[0].RMP_FAKTUR_NO_FAKTUR)
         $(".TANGGAL_FAKTUR").val(data.result[0].RMP_FAKTUR_TANGGAL)
+        $(".KAPAL_FAKTUR").val(data.result[0].RMP_FAKTUR_KAPAL)
         $(".JENIS_KELAPA").val(data.result[0].RMP_FAKTUR_DETAIL_JENIS_MATERIAL)
         $('select.NO_NOTA').append('<option value="'+data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA+'" selected="selected">'+data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA+'</option>').selectpicker('refresh');
         hasil_timbang(data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA)
