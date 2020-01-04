@@ -63,7 +63,7 @@ $sql_a = "SELECT SUM(FD.RMP_FAKTUR_DETAIL_NETTO) AS SUM FROM
           ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
           WHERE
             F.RMP_FAKTUR_TANGGAL LIKE '%".$input['TANGGAL']."%'
-            ".$filter_material_a."
+            AND F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['FILTER_MATERIAL']."-A%'
             AND  F.RECORD_STATUS='A'
           AND FD.RECORD_STATUS='A'
           ";
@@ -82,7 +82,7 @@ $sql_b = "SELECT SUM(FD.RMP_FAKTUR_DETAIL_NETTO) AS SUM FROM
           ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
           WHERE
             F.RMP_FAKTUR_TANGGAL LIKE '%".$input['TANGGAL']."%'
-            ".$filter_material_b."
+            AND F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['FILTER_MATERIAL']."-B%'
             AND  F.RECORD_STATUS='A'
           AND FD.RECORD_STATUS='A'
           ";
@@ -101,7 +101,7 @@ $sql_c = "SELECT SUM(FD.RMP_FAKTUR_DETAIL_NETTO) AS SUM FROM
           ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
           WHERE
             F.RMP_FAKTUR_TANGGAL LIKE '%".$input['TANGGAL']."%'
-            ".$filter_material_c."
+            AND F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['FILTER_MATERIAL']."-C%'
             AND  F.RECORD_STATUS='A'
           AND FD.RECORD_STATUS='A'
           ";

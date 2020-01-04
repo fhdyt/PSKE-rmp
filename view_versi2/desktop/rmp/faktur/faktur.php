@@ -468,9 +468,9 @@
             <form id="form_filter" class="form-inline" method="POST" action="javascript:filter();">
               <div class="form-group">
             <select id="FILTER_MATERIAL" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_tanggal_list()">
-            <option value="">--Semua--</option>
-            <option value="GELONDONG">GELONDONG</option>
+            <!-- <option value="">--Semua--</option> -->
             <option value="JAMBUL">JAMBUL</option>
+            <option value="GELONDONG">GELONDONG</option>
             <option value="LICIN">LICIN</option>
                   </select>
                 </div>
