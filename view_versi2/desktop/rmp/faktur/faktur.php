@@ -1392,6 +1392,7 @@ function lihat_faktur()
 }
 
 function filter_tanggal_list(){
+  $("tbody#zone_lihat_faktur").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
   lihat_faktur()
 }
 
