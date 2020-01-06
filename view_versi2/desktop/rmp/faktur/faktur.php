@@ -1328,6 +1328,8 @@ function lihat_faktur()
 				//console.log(data.respon.text_msg);
         $("tbody#zone_lihat_faktur").empty();
         $("p.TOTAL_KELAPA_A").html("0")
+        $("p.TOTAL_KELAPA_B").html("0")
+        $("p.TOTAL_KELAPA_C").html("0")
         for (i = 0; i < data.result.length; i++) {
 
           if (data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "JAMBUL-A" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "GELONDONG-A" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "LICIN-A")
