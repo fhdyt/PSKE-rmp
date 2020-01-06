@@ -400,7 +400,7 @@ function faktur_detail_list(curPage)
 
         var potongan = data.total_bruto*(data.potongan/100)
 
-        $('p.TOTAL_NETTO').html(customRound(data.total_bruto-potongan))
+        $('p.TOTAL_NETTO').html(Math.round(data.total_bruto-potongan))
         $('p.TOTAL_NETTO_SEBELUM').html(data.total_bruto-potongan)
 
         $("tbody#zone_data").empty();
