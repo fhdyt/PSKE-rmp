@@ -432,33 +432,33 @@
           <div class="col-md-4">
             <div class="small-box bg-aqua">
               <div class="inner">
-                <p class="TOTAL_KELAPA_A" style="font-size:40px">-</p>
+                <p class="TOTAL_KELAPA_A" style="font-size:40px">0</p>
                 <p>Kelapa A</p>
               </div>
               <div class="icon">
-                <i class="fa fa-balance-scale"></i>
+                <i>A</i>
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="small-box bg-green">
               <div class="inner">
-                <p class="TOTAL_KELAPA_B" style="font-size:40px">-</p>
+                <p class="TOTAL_KELAPA_B" style="font-size:40px">0</p>
                 <p>Kelapa B</p>
               </div>
               <div class="icon">
-                <i class="fa fa-balance-scale"></i>
+                <i>B</i>
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="small-box bg-yellow">
               <div class="inner">
-                <p class="TOTAL_KELAPA_C" style="font-size:40px">-</p>
+                <p class="TOTAL_KELAPA_C" style="font-size:40px">0</p>
                 <p>Kelapa C</p>
               </div>
               <div class="icon">
-                <i class="fa fa-balance-scale"></i>
+                <i>C</i>
               </div>
             </div>
           </div>
@@ -480,6 +480,7 @@
         </form>
           </div>
 				</div>
+        <br>
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
@@ -487,6 +488,10 @@
               <th>No. Faktur</th>
               <th>No. Nota</th>
               <th>Nama</th>
+              <th>Kelapa</th>
+              <th>Bruto</th>
+              <th>Potongan</th>
+              <th>Netto</th>
               <th>Tanggal</th>
               <th></th>
 
@@ -1322,7 +1327,35 @@ function lihat_faktur()
       if (data.respon.pesan == "sukses") {
 				//console.log(data.respon.text_msg);
         $("tbody#zone_lihat_faktur").empty();
+        $("p.TOTAL_KELAPA_A").html("0")
         for (i = 0; i < data.result.length; i++) {
+
+          if (data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "JAMBUL-A" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "GELONDONG-A" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "LICIN-A")
+          {
+            var kelapa =  $("p.TOTAL_KELAPA_A").text()
+            //console.log(kelapa_a)
+            var total_kelapa = parseInt(kelapa) + parseInt(data.result[i].NETTO)
+            //console.log(data.result[i].NETTO)
+            $("p.TOTAL_KELAPA_A").html(total_kelapa+" Kg")
+          }
+
+          else if (data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "JAMBUL-B" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "GELONDONG-B" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "LICIN-B")
+          {
+            var kelapa =  $("p.TOTAL_KELAPA_B").text()
+            //console.log(kelapa_a)
+            var total_kelapa = parseInt(kelapa) + parseInt(data.result[i].NETTO)
+            //console.log(data.result[i].NETTO)
+            $("p.TOTAL_KELAPA_B").html(total_kelapa+" Kg")
+          }
+          else if (data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "JAMBUL-C" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "GELONDONG-C" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "LICIN-C")
+          {
+            var kelapa =  $("p.TOTAL_KELAPA_C").text()
+            //console.log(kelapa_a)
+            var total_kelapa = parseInt(kelapa) + parseInt(data.result[i].NETTO)
+            //console.log(data.result[i].NETTO)
+            $("p.TOTAL_KELAPA_C").html(total_kelapa+" Kg")
+          }
+
           if(data.result[i].RMP_FAKTUR_NAMA_SUB == "")
           {
             var nama = data.result[i].RMP_MASTER_PERSONAL_NAMA
@@ -1367,14 +1400,15 @@ function lihat_faktur()
             var total_c = data.result[i].TOTAL_C
           }
 
-          $("p.TOTAL_KELAPA_A").html(total_a+" Kg")
-          $("p.TOTAL_KELAPA_B").html(total_b+" Kg")
-          $("p.TOTAL_KELAPA_C").html(total_c+" Kg")
           $("tbody#zone_lihat_faktur").append("<tr class='detailLogId'>" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR +  " "+purchaser_status+"</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "</td>" +
 					"<td>" + nama +  "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_JENIS_MATERIAL +  "</td>" +
+					"<td>" + data.result[i].BRUTO +  "</td>" +
+					"<td>" + data.result[i].TOTAL_POTONGAN +  "</td>" +
+					"<td>" + data.result[i].NETTO +  "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_TANGGAL +  "</td>" +
 					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Lihat</a></td>" +
 					"</tr>");

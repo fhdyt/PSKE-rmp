@@ -72,7 +72,6 @@ $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql_a ;
 $result_aa = $this->MYSQL->data();
-$total_a = $result_a[0]['SUM'];
 
 ///////////////// TOTAL KG B
 $sql_b = "SELECT SUM(FD.RMP_FAKTUR_DETAIL_NETTO) AS SUM FROM
@@ -119,6 +118,26 @@ $no = $posisi + 1;
 foreach($result_a as $r)
     {
     $r['NO'] = $no;
+    $sql_a = "SELECT *, SUM(FD.RMP_FAKTUR_DETAIL_NETTO)AS SUM FROM
+                RMP_FAKTUR AS F
+              LEFT JOIN
+                RMP_FAKTUR_DETAIL AS FD
+              ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
+              WHERE
+                F.RMP_FAKTUR_NO_FAKTUR = '".$r['RMP_FAKTUR_NO_FAKTUR']."'
+                AND  F.RECORD_STATUS='A'
+              AND FD.RECORD_STATUS='A'
+              ";
+
+    $this->MYSQL = new MYSQL();
+    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+    $this->MYSQL->queri = $sql_a ;
+    $result_aa = $this->MYSQL->data();
+    $r['BRUTO'] = $result_aa[0]['SUM'];
+    $r['POTONGAN'] = $r['BRUTO'] * ($result_aa[0]['RMP_FAKTUR_POTONGAN']/100);
+    $r['TOTAL_POTONGAN'] = number_format($r['POTONGAN'],0,",",".");
+    $r['NETTO'] = $r['BRUTO'] - round($r['POTONGAN']);
+
     $sql_purchaser = "SELECT * FROM
                 RMP_FAKTUR_PURCHASER
               WHERE
@@ -138,6 +157,7 @@ foreach($result_a as $r)
     {
       $r['PURCHASER_STATUS'] = "TELAH DIPROSES";
     }
+
     $r['TOTAL_A'] = $result_aa[0]['SUM'];
     $r['TOTAL_B'] = $result_ab[0]['SUM'];
     $r['TOTAL_C'] = $result_ac[0]['SUM'];
