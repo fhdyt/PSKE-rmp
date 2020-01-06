@@ -56,6 +56,8 @@ foreach($result_a as $r)
     $total_gross += $r['RMP_FAKTUR_DETAIL_BRUTO'];
     $total_tara += $r['RMP_FAKTUR_DETAIL_TARA'];
     $total_bruto += $r['RMP_FAKTUR_DETAIL_NETTO'];
+    $total_potongan = $total_bruto*($potongan/100);
+    $total_netto = $total_bruto - round($total_potongan);
     $result[] = $r;
     $no++;
     }
@@ -86,6 +88,7 @@ if (empty($result_a))
     $this->callback['total_tara'] = $total_tara;
     $this->callback['total_bruto'] = $total_bruto;
     $this->callback['potongan'] = $potongan;
+    $this->callback['total_netto'] = $total_netto;
     $this->callback['resultb'] = $resultb;
     }
 
