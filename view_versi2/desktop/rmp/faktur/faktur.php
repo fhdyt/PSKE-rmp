@@ -70,14 +70,6 @@
               <a class="btn btn-success buat_faktur_baru btn-sm" type="button" style="display:none;" href="?show=rmp/faktur"><i class="fa fa-plus" aria-hidden="true"></i> Buat Faktur Baru</a>
               <a class="btn btn-default cetak_faktur btn-sm" type="button" style="display:none;"><i class="fa fa-print" aria-hidden="true"></i> Cetak Faktur</a>
             </div>
-
-           <!-- <div class="col-md-4">
-             <select class="form-control CHANGE_JENIS_FAKTUR" onchange="change_jenis_faktur()">
-               <option value="faktur">Faktur</option>
-               <option value="faktur_cabang">Faktur Cabang</option>
-             </select>
-             <p class="help-block">Jenis Faktur yang akan diproses.</p>
-           </div> -->
           </div>
           <br>
           <div class="row">

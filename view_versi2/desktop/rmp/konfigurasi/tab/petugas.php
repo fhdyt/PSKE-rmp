@@ -34,9 +34,10 @@
   <thead>
     <tr>
       <th>No.</th>
-      <th>Petugas</th>
       <th>NIK</th>
       <th>Nama</th>
+      <th>Petugas</th>      
+      <th>Tanda Tangan</th>
 
     </tr>
   </thead>
@@ -191,9 +192,10 @@ function petugas_list(curPage)
         for (i = 0; i < data.result.length; i++) {
           $("tbody#zone_data").append("<tr class='detailLogId'  >" +
 					"<td >" + data.result[i].NO + ".</td>" +
-					"<td>" + data.result[i].RMP_KONFIGURASI_PETUGAS_TIPE + "</td>" +
-					"<td>" + data.result[i].RMP_KONFIGURASI_PETUGAS_NIK + "</td>" +
+          "<td>" + data.result[i].RMP_KONFIGURASI_PETUGAS_NIK + "</td>" +
 					"<td>" + data.result[i].RMP_KONFIGURASI_PETUGAS_NAMA + "</td>" +
+					"<td>" + data.result[i].RMP_KONFIGURASI_PETUGAS_TIPE + "</td>" +
+					"<td><img width='50' height='50' src='asset/platform/files/ttd/" + data.result[i].RMP_KONFIGURASI_PETUGAS_NIK + ".png'></td>" +
           "</tr>");
 					}
       } else if (data.respon.pesan == "gagal") {
