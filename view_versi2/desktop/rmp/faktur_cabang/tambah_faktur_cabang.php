@@ -147,6 +147,7 @@ font-size: 12px;
                   <option value="">--Pilih Ponton--</option>
                   <option <?php if ($faktur_cabang[0]['RMP_REKAP_FC_TIMBANG'] == "PTN-1" ) echo 'selected' ; ?> value="PTN-1">Ponton 1</option>
                   <option <?php if ($faktur_cabang[0]['RMP_REKAP_FC_TIMBANG'] == "PTN-2" ) echo 'selected' ; ?> value="PTN-2">Ponton 2</option>
+                  <option <?php if ($faktur_cabang[0]['RMP_REKAP_FC_TIMBANG'] == "PTN-3" ) echo 'selected' ; ?> value="PTN-2">Ponton 3</option>
                 </select>
                 <small class="help-block">Timbang Ponton</small>
               </div>
@@ -1061,9 +1062,38 @@ $('#add_c').click(function()
 /////////////////////////////////////////// END GELONDONG C //////////////////////////
 
 $('.SimpanFaktur').on('click', function(){
-  $(this).attr("disabled", true);
-  $(this).html('Loading...');
-  var fDataFaktuCabang = $('.fDataFaktur').serialize()
+  if($("select.CABANG").val() == "")
+  {
+    alert("Pilih Cabang")
+  }
+  else if($("input.KAPAL").val() == "")
+  {
+    alert("Nama Kapal Harus Diisi")
+  }
+  else if($("select.PONTON").val() == "")
+  {
+    alert("Pilih Ponton")
+  }
+  else if($("select.JENIS_KB").val() == "")
+  {
+    alert("Pilih Jenis Kelapa Bulat")
+  }
+  else if($("input.TANGGAL_FAKTUR_CABANG").val() == "")
+  {
+    alert("Tanggal Faktur Cabang Harus Disi")
+  }
+  else if($("input.TAMBANG").val() == "")
+  {
+    alert("Tambang Harus Disi")
+  }
+  else if($("input.BIAYA").val() == "")
+  {
+    alert("Biaya Harus Disi")
+  }
+  else {
+    $(this).attr("disabled", true);
+    $(this).html('Loading...');
+    var fDataFaktuCabang = $('.fDataFaktur').serialize()
   $.ajax({
   	type: 'POST',
   	url: refseeAPI,
@@ -1089,6 +1119,7 @@ $('.SimpanFaktur').on('click', function(){
   		console.log("Error Ajax");
   	} //end error
   });
+}
 })
 
 function input_proses_a(){
