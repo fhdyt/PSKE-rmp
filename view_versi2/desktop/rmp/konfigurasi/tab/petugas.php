@@ -36,7 +36,7 @@
       <th>No.</th>
       <th>NIK</th>
       <th>Nama</th>
-      <th>Petugas</th>      
+      <th>Petugas</th>
       <th>Tanda Tangan</th>
 
     </tr>
@@ -71,7 +71,7 @@
 			<div class="modal-body ">
 				<form action="javascript:download();" class="fDataPetugas" id="fDataPetugas" name="fDataPetugas">
 							<div class="form-group">
-								<label for="exampleInputEmail1">Kode Material</label>
+								<label for="exampleInputEmail1">Petugas</label>
                 <select class="PETUGAS form-control" id="PETUGAS" name="PETUGAS">
                   <option value="OPERATOR TIMBANG">Operator Timbang</option>
                   <option value="INSPEKTUR MUTU">Inspektur Mutu</option>
