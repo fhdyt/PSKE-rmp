@@ -565,7 +565,7 @@ function list_review_faktur_cabang_c()
         for (i = 0; i < data.result_c.length; i++) {
           $("tbody#zone_data_c").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_c[i].NO + ".<input type='hidden' name='id_detail[]' value='" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "' id='id_detail_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "'><input type='hidden' name='jenis[]' value='C' id='jenis_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
-					"<td><input type='text' name='no_faktur[]' id='no_faktur_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "' class='form-control'></td>" +
+					"<td><input type='text' name='no_faktur[]' id='no_faktur_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "' class='form-control' autocomplete='off'></td>" +
 					"<td>" + data.result_c[i].RMP_REKAP_FC_PROSES_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_c[i].RMP_REKAP_FC_PROSES_NAMA  + "' id='supplier_name_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_c[i].RMP_REKAP_FC_PROSES_BRUTO  + "<input type='hidden' name='bruto[]' value='" + data.result_c[i].RMP_REKAP_FC_PROSES_BRUTO  + "' id='bruto_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_c[i].RMP_REKAP_FC_PROSES_POTONGAN  + "<input type='hidden' name='potongan[]' value='" + data.result_c[i].RMP_REKAP_FC_PROSES_POTONGAN  + "' id='potongan_" + data.result_c[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
@@ -613,7 +613,7 @@ function list_review_faktur_cabang_b()
         for (i = 0; i < data.result_b.length; i++) {
           $("tbody#zone_data_b").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_b[i].NO + ".<input type='hidden' name='id_detail[]' value='" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "' id='id_detail_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'><input type='hidden' name='jenis[]' value='B' id='jenis_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
-          "<td><input type='text' name='no_faktur[]' id='no_faktur_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "' class='form-control'></td>" +
+          "<td><input type='text' name='no_faktur[]' id='no_faktur_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "' class='form-control' autocomplete='off'></td>" +
           "<td>" + data.result_b[i].RMP_REKAP_FC_PROSES_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_b[i].RMP_REKAP_FC_PROSES_NAMA  + "' id='supplier_name_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_b[i].RMP_REKAP_FC_PROSES_BRUTO  + "<input type='hidden' name='bruto[]' value='" + data.result_b[i].RMP_REKAP_FC_PROSES_BRUTO  + "' id='bruto_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_b[i].RMP_REKAP_FC_PROSES_POTONGAN  + "<input type='hidden' name='potongan[]' value='" + data.result_b[i].RMP_REKAP_FC_PROSES_POTONGAN  + "' id='potongan_" + data.result_b[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
@@ -661,7 +661,7 @@ function list_review_faktur_cabang_a()
         for (i = 0; i < data.result_a.length; i++) {
           $("tbody#zone_data_a").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_a[i].NO + ".<input type='hidden' name='id_detail[]' value='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "' id='id_detail_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><input type='hidden' name='jenis[]' value='A' id='jenis_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
-          "<td><input type='text' name='no_faktur[]' id='no_faktur_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "' class='form-control'></td>" +
+          "<td><input type='text' name='no_faktur[]' id='no_faktur_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "' class='form-control' autocomplete='off'></td>" +
           "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA  + "<input type='hidden' name='supplier_name[]' value='" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA  + "' id='supplier_name_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO  + "<input type='hidden' name='bruto[]' value='" + data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO  + "' id='bruto_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN  + "<input type='hidden' name='potongan[]' value='" + data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN  + "' id='potongan_" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'></td>" +
