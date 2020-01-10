@@ -81,6 +81,7 @@ foreach($result_sum_hari_b as $r)
 //////////////////// Bulan Ini
 $bulan = date("m",strtotime($input['tanggal']));
 $tahun = date("Y",strtotime($input['tanggal']));
+$mulai_bulan = $tahun.'-'.$bulan.'-01';
 $sqlsum_bulan = "SELECT
                   SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS TOTAL_BULAN_SUM_BRUTO,
                   SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS TOTAL_BULAN_SUM_NETTO,
@@ -90,9 +91,7 @@ $sqlsum_bulan = "SELECT
           ON
           FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
           WHERE
-          MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
-          AND
-          YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
+          (RMP_FAKTUR_TANGGAL BETWEEN '".$mulai_bulan."'AND '".$input['tanggal']."')
           AND
           F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-A'
           AND
@@ -100,6 +99,25 @@ $sqlsum_bulan = "SELECT
           AND
           F.RECORD_STATUS='A'
          ";
+// $sqlsum_bulan = "SELECT
+//                   SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS TOTAL_BULAN_SUM_BRUTO,
+//                   SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS TOTAL_BULAN_SUM_NETTO,
+//                   SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS TOTAL_BULAN_SUM_RP
+//           FROM
+//           RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
+//           ON
+//           FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
+//           WHERE
+//           MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
+//           AND
+//           YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
+//           AND
+//           F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-A'
+//           AND
+//           FP.RECORD_STATUS='A'
+//           AND
+//           F.RECORD_STATUS='A'
+//          ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sqlsum_bulan ;
@@ -126,9 +144,7 @@ $sqlsum_bulan_b = "SELECT
           ON
           FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
           WHERE
-          MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
-          AND
-          YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
+          (RMP_FAKTUR_TANGGAL BETWEEN '".$mulai_bulan."'AND '".$input['tanggal']."')
           AND
           F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-B'
           AND
@@ -136,6 +152,26 @@ $sqlsum_bulan_b = "SELECT
           AND
           F.RECORD_STATUS='A'
          ";
+
+// $sqlsum_bulan_b = "SELECT
+//                   SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS TOTAL_BULAN_SUM_BRUTO,
+//                   SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS TOTAL_BULAN_SUM_NETTO,
+//                   SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS TOTAL_BULAN_SUM_RP
+//           FROM
+//           RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
+//           ON
+//           FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
+//           WHERE
+//           MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
+//           AND
+//           YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
+//           AND
+//           F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-B'
+//           AND
+//           FP.RECORD_STATUS='A'
+//           AND
+//           F.RECORD_STATUS='A'
+//          ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sqlsum_bulan_b ;
@@ -168,7 +204,7 @@ if (empty($result_sum_hari))
   else
     {
     $this->callback['respon']['pesan'] = "sukses";
-    $this->callback['respon']['text_msg'] = "OK..";
+    $this->callback['respon']['text_msg'] = "OK..".$mulai_bulan;
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
     $this->callback['result_b'] = $result_b;

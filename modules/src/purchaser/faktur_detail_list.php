@@ -25,8 +25,7 @@ $input = $params['input_option'];
 $sql = "SELECT * FROM RMP_FAKTUR AS F
             LEFT JOIN RMP_FAKTUR_DETAIL AS FD
             ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
-            WHERE F.RECORD_STATUS='A' AND FD.RECORD_STATUS='A'
-            AND F.RMP_FAKTUR_ID='".$input['ID_FAKTUR']."'
+            WHERE F.RMP_FAKTUR_ID='".$input['ID_FAKTUR']."' AND F.RECORD_STATUS='A' AND FD.RECORD_STATUS='A'
                         ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -36,10 +35,7 @@ $result_a = $this->MYSQL->data();
 $sql44 = "SELECT * FROM RMP_FAKTUR AS F
             LEFT JOIN RMP_MASTER_PERSONAL AS P
             ON F.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-            LEFT JOIN RMP_FAKTUR_DETAIL AS FD
-            ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
-            WHERE F.RECORD_STATUS='A' AND P.RECORD_STATUS='A' AND FD.RECORD_STATUS='A'
-            AND F.RMP_FAKTUR_ID='".$input['ID_FAKTUR']."'
+            WHERE  F.RMP_FAKTUR_ID='".$input['ID_FAKTUR']."' AND F.RECORD_STATUS='A' AND P.RECORD_STATUS='A'
             GROUP BY F.RMP_FAKTUR_NO_FAKTUR ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -65,8 +61,8 @@ foreach($result_a as $r)
 foreach($result_ab as $rr)
     {
     $rr['TANGGAL']=tanggal_format(Date("Y-m-d",strtotime($r['RMP_FAKTUR_TANGGAL'])));
-    $rr['NAMA_MATERIAL']=substr($r['RMP_FAKTUR_DETAIL_JENIS_MATERIAL'],0,-2);
-    $rr['GRADE_MATERIAL']=substr($r['RMP_FAKTUR_DETAIL_JENIS_MATERIAL'],-1);
+    $rr['NAMA_MATERIAL']=substr($r['RMP_FAKTUR_JENIS_MATERIAL'],0,-2);
+    $rr['GRADE_MATERIAL']=substr($r['RMP_FAKTUR_JENIS_MATERIAL'],-1);
     $resultb[] = $rr;
     }
 

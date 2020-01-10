@@ -19,7 +19,7 @@ if (empty($input['material']) or $input['material'] == "")
     }
   else
     {
-    $filter_b = "AND FD.RMP_FAKTUR_DETAIL_JENIS_MATERIAL like '%" . $input['material'] . "%' ";
+    $filter_b = "AND F.RMP_FAKTUR_JENIS_MATERIAL like '%" . $input['material'] . "%' ";
     }
 
 if (empty($input['bulan']) or $input['bulan'] == "")
@@ -43,13 +43,10 @@ if (empty($input['bulan']) or $input['bulan'] == "")
 $sql = "SELECT * FROM RMP_FAKTUR AS F
             LEFT JOIN RMP_MASTER_PERSONAL AS P
             ON F.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-            LEFT JOIN RMP_FAKTUR_DETAIL AS FD
-            ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
             LEFT JOIN RMP_MASTER_WILAYAH AS W
             ON P.SUB_WILAYAH_ID=W.RMP_MASTER_WILAYAH_ID
-            WHERE F.RECORD_STATUS='A' AND P.RECORD_STATUS='A' AND FD.RECORD_STATUS='A'
-            AND
-            W.RECORD_STATUS='A' " . $filter_b . " " . $filter_c . "
+            WHERE F.RECORD_STATUS='A' AND P.RECORD_STATUS='A'
+            AND W.RECORD_STATUS='A' " . $filter_b . " " . $filter_c . "
              GROUP BY F.RMP_FAKTUR_NO_FAKTUR ORDER BY F.RMP_FAKTUR_INDEX DESC
                         ";
 $this->MYSQL = new MYSQL();

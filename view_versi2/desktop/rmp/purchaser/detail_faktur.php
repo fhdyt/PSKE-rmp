@@ -393,6 +393,7 @@ function faktur_detail_list(curPage)
     data: 'ref=faktur_detail_list&ID_FAKTUR=<?php echo $d3; ?>',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
+        console.log("faktur_detail_list")
         $('p.TOTAL_GROSS').html( data.total_gross)
         $('p.TOTAL_TARA').html( data.total_tara)
         $('p.TOTAL_BRUTO').html( data.total_bruto)
@@ -449,7 +450,7 @@ function faktur_detail_list(curPage)
           $("p.NAMA_SUPPLIER").html(supplier)
           $(".NAMA_SUPPLIER_HIDDEN").val(data.resultb[i].RMP_MASTER_PERSONAL_NAMA)
           $("p.TANGGAL_FAKTUR").html(data.resultb[i].TANGGAL)
-          $("p.MATERIAL").html(data.resultb[i].RMP_FAKTUR_DETAIL_JENIS_MATERIAL)
+          $("p.MATERIAL").html(data.resultb[i].RMP_FAKTUR_JENIS_MATERIAL)
           $(".NAMA_MATERIAL").val(data.resultb[i].NAMA_MATERIAL)
           $(".GRADE_MATERIAL").val(data.resultb[i].GRADE_MATERIAL)
           $(".CATATAN").html(data.resultb[i].RMP_FAKTUR_CATATAN_PURCHASER)
@@ -477,7 +478,7 @@ function detail_purchaser(curPage)
     data: 'ref=detail_purchaser&ID_FAKTUR=<?php echo$d3; ?>',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
-
+        console.log("detail_purchaser");
         for (i = 0; i < data.resultbc.length; i++) {
           //alert(data.respon.text_msg)
           if(data.resultbc[i].RMP_FAKTUR_JENIS == "FAKTUR CABANG")
@@ -566,9 +567,11 @@ function detail_purchaser(curPage)
 
 
 $(function() {
-  console.log("function");
-  faktur_detail_list();
   detail_purchaser();
+});
+
+$(function() {
+  faktur_detail_list();
 });
 
 function sel_nama_supplier()

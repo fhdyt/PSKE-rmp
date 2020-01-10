@@ -218,7 +218,7 @@ function faktur_list(curPage)
 					"<td>" + supplier + "</td>" +
 					"<td>" + nama_supplier + "" + verifikasi + "</td>" +
 					"<td>" + data.result[i].RMP_MASTER_WILAYAH + "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_JENIS_MATERIAL + "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_JENIS_MATERIAL + "</td>" +
 					"<td>" + data.result[i].TANGGAL + "</td>" +
           "<td><a class='btn btn-success btn-sm' href='?show=rmp/purchaser/detail_faktur/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
 

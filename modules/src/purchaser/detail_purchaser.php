@@ -14,19 +14,29 @@ $posisi = $this->PAGING->cariPosisi($batas, $halaman);
 $input = $params['input_option'];
 
 // AMBIL JENIS Material
+// $sql44 = "SELECT * FROM RMP_FAKTUR AS F
+//             LEFT JOIN RMP_MASTER_PERSONAL AS P
+//             ON F.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
+//             LEFT JOIN RMP_FAKTUR_DETAIL AS FD
+//             ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
+//             WHERE F.RECORD_STATUS='A' AND P.RECORD_STATUS='A' AND FD.RECORD_STATUS='A'
+//             AND F.RMP_FAKTUR_ID='".$input['ID_FAKTUR']."'
+//             GROUP BY F.RMP_FAKTUR_NO_FAKTUR ";
+// $this->MYSQL = new MYSQL();
+// $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+// $this->MYSQL->queri = $sql44;
+// $result_ab = $this->MYSQL->data();
+// $material=substr($result_ab[0]['RMP_FAKTUR_DETAIL_JENIS_MATERIAL'],0,-2);
 $sql44 = "SELECT * FROM RMP_FAKTUR AS F
             LEFT JOIN RMP_MASTER_PERSONAL AS P
             ON F.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-            LEFT JOIN RMP_FAKTUR_DETAIL AS FD
-            ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
-            WHERE F.RECORD_STATUS='A' AND P.RECORD_STATUS='A' AND FD.RECORD_STATUS='A'
-            AND F.RMP_FAKTUR_ID='".$input['ID_FAKTUR']."'
+            WHERE F.RMP_FAKTUR_ID='".$input['ID_FAKTUR']."' AND F.RECORD_STATUS='A' AND P.RECORD_STATUS='A' AND FD.RECORD_STATUS='A'
             GROUP BY F.RMP_FAKTUR_NO_FAKTUR ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql44;
 $result_ab = $this->MYSQL->data();
-$material=substr($result_ab[0]['RMP_FAKTUR_DETAIL_JENIS_MATERIAL'],0,-2);
+$material=substr($result_ab[0]['RMP_FAKTUR_JENIS_MATERIAL'],0,-2);
 /////////////////////////////////////////////////////////////////////////////////////////
 
 

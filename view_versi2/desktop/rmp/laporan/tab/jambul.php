@@ -389,7 +389,7 @@ font-size: 12px;
       </tr></tfooter>
 
       <tr class="success">
-        <td colspan="5" style="text-align:right">Bulan Ini</td>
+        <td colspan="5" id="BULAN_LAPORAN" style="text-align:right"></td>
         <td id="TOTAL_BULAN_SUM_BRUTO_A"></td>
         <td id="TOTAL_SUM_PERSEN_A"></td>
         <td id="TOTAL_BULAN_SUM_NETTO_A"></td>
@@ -501,9 +501,10 @@ function total_laporan()
       //alert(data.respon.pesan)
       if (data.respon.pesan == "sukses") {
         // KELAPA A
-        console.log(data.result_bulan)
+        //alert(data.respon.text_msg)
         for (i = 0; i < data.result.length; i++) {
           $("td#TANGGAL_LAPORAN").html("Hari Ini /  "+data.result[i].TANGGAL)
+          $("td#BULAN_LAPORAN").html("Tanggal 01 S/D " +data.result[i].TANGGAL)
           $("td#TOTAL_SUM_BRUTO_A").html(data.result[i].TOTAL_SUM_BRUTO_A)
           $("td#TOTAL_SUM_NETTO_A").html(data.result[i].TOTAL_SUM_NETTO_A)
           $("td#TOTAL_SUM_RP_A").html(data.result[i].TOTAL_SUM_RP_A)
