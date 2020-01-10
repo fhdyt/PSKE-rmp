@@ -501,8 +501,9 @@ function total_laporan()
       //alert(data.respon.pesan)
       if (data.respon.pesan == "sukses") {
         // KELAPA A
+        console.log(data.result_bulan)
         for (i = 0; i < data.result.length; i++) {
-          $("td#TANGGAL_LAPORAN").html("Tanggal "+data.result[i].TANGGAL)
+          $("td#TANGGAL_LAPORAN").html("Hari Ini /  "+data.result[i].TANGGAL)
           $("td#TOTAL_SUM_BRUTO_A").html(data.result[i].TOTAL_SUM_BRUTO_A)
           $("td#TOTAL_SUM_NETTO_A").html(data.result[i].TOTAL_SUM_NETTO_A)
           $("td#TOTAL_SUM_RP_A").html(data.result[i].TOTAL_SUM_RP_A)
@@ -553,7 +554,6 @@ function total_laporan()
   });
 }
 $(function() {
-  console.log("function");
   laporan_faktur_list('1','02');
   laporan_faktur_list('1','03');
   laporan_faktur_list('1','04');
@@ -572,6 +572,7 @@ function search() {
 }
 
 function filter_tanggal(){
+  total_laporan();
   $("tbody#zone_data_02").html("<tr><td colspan='11'><center><div class='loader'></div></center></td></tr>");
   $("tbody#zone_data_03").html("<tr><td colspan='11'><center><div class='loader'></div></center></td></tr>");
   $("tbody#zone_data_04").html("<tr><td colspan='11'><center><div class='loader'></div></center></td></tr>");
@@ -590,6 +591,6 @@ function filter_tanggal(){
   laporan_faktur_list('1','08');
   laporan_faktur_list('1','09');
   laporan_faktur_list('1','10');
-  total_laporan();
+
 }
 </script>

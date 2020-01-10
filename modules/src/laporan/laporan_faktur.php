@@ -98,6 +98,7 @@ foreach($result_a as $r)
     if($grade_kelapa =='A')
     {
       $bulan = date("m",strtotime($input['tanggal']));
+      $tahun = date("Y",strtotime($input['tanggal']));
       $sqlsum_bulan = "SELECT
                         SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO_BULAN,
                         SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS SUM_NETTO_BULAN,
@@ -111,11 +112,13 @@ foreach($result_a as $r)
                 ON
                 FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
                 WHERE
-                MONTH(F.RMP_FAKTUR_TANGGAL) LIKE '%".$bulan."%'
+                MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
                 AND
-                F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."_A%'
+                YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
                 AND
-                RR.RMP_REKENING_RELASI_MATERIAL LIKE '%".$input['material']."%'
+                F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."-A%'
+                AND
+                RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
                 AND
                 RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
                 AND
@@ -145,9 +148,9 @@ foreach($result_a as $r)
                 WHERE
                 F.RMP_FAKTUR_TANGGAL LIKE '%".$input['tanggal']."%'
                 AND
-                F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."_A%'
+                F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-A'
                 AND
-                RR.RMP_REKENING_RELASI_MATERIAL LIKE '%".$input['material']."%'
+                RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
                 AND
                 RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
                 AND
@@ -209,11 +212,13 @@ foreach($result_a as $r)
                 ON
                 FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
                 WHERE
-                MONTH(F.RMP_FAKTUR_TANGGAL) LIKE '%".$bulan."%'
+                MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
                 AND
-                F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."_B%'
+                YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
                 AND
-                RR.RMP_REKENING_RELASI_MATERIAL LIKE '%".$input['material']."%'
+                F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-B'
+                AND
+                RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
                 AND
                 RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
                 AND
@@ -243,9 +248,9 @@ foreach($result_a as $r)
                 WHERE
                 F.RMP_FAKTUR_TANGGAL LIKE '%".$input['tanggal']."%'
                 AND
-                F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."_B%'
+                F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-B'
                 AND
-                RR.RMP_REKENING_RELASI_MATERIAL LIKE '%".$input['material']."%'
+                RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
                 AND
                 RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
                 AND
@@ -291,31 +296,10 @@ foreach($result_a as $r)
         $r['RP_KG_C']="";
       }
     }
-    else if($grade_kelapa =='C')
-    {
-      foreach($result_b3 as $rb3)
-      {
-        $r['RP_C'] =number_format($rb3['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR'],0,",",".");
-        $r['RP_A'] ="";
-        $r['RP_B'] ="";
 
-        $r['BRUTO_C'] =number_format($rb3['RMP_FAKTUR_PURCHASER_BRUTO'],0,",",".");
-        $r['BRUTO_A'] ="";
-        $r['BRUTO_B'] ="";
 
-        $r['PERSEN_C'] =number_format($rb3['RMP_FAKTUR_POTONGAN'],0,",",".");
-        $r['PERSEN_A'] ="";
-        $r['PERSEN_B'] ="";
 
-        $r['NETTO_C'] =number_format($rb3['RMP_FAKTUR_PURCHASER_NETTO'],0,",",".");
-        $r['NETTO_A'] ="";
-        $r['NETTO_B'] ="";
 
-        $r['RP_KG_C']=number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG'],0,",",".");
-        $r['RP_KG_A']="";
-        $r['RP_KG_B']="";
-      }
-    }
     if (empty($r['RMP_FAKTUR_NAMA_SUB']))
     {
       $r['RMP_MASTER_PERSONAL_NAMA']=$r['RMP_MASTER_PERSONAL_NAMA'];

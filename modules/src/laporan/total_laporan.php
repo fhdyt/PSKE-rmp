@@ -24,7 +24,7 @@ $sqlsum_hari = "SELECT
           WHERE
           F.RMP_FAKTUR_TANGGAL LIKE '%".$input['tanggal']."%'
           AND
-          F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."_A%'
+          F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-A'
           AND
           FP.RECORD_STATUS='A'
           AND
@@ -58,7 +58,7 @@ $sqlsum_hari_b = "SELECT
           WHERE
           F.RMP_FAKTUR_TANGGAL LIKE '%".$input['tanggal']."%'
           AND
-          F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."_B%'
+          F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-B'
           AND
           FP.RECORD_STATUS='A'
           AND
@@ -71,7 +71,6 @@ $result_sum_hari_b = $this->MYSQL->data();
 
 foreach($result_sum_hari_b as $r)
     {
-    //$r['TANGGAL'] = tanggal_format(Date("Y-m-d",strtotime($input['tanggal'])));
     $r['TOTAL_SUM_BRUTO_B']=number_format($result_sum_hari_b[0]['TOTAL_SUM_BRUTO'],0,",",".");
     $r['TOTAL_SUM_NETTO_B']=number_format($result_sum_hari_b[0]['TOTAL_SUM_NETTO'],0,",",".");
     $r['TOTAL_SUM_RP_B']=number_format($result_sum_hari_b[0]['TOTAL_SUM_RP'],0,",",".");
@@ -79,10 +78,9 @@ foreach($result_sum_hari_b as $r)
     }
 
 
-
-
 //////////////////// Bulan Ini
 $bulan = date("m",strtotime($input['tanggal']));
+$tahun = date("Y",strtotime($input['tanggal']));
 $sqlsum_bulan = "SELECT
                   SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS TOTAL_BULAN_SUM_BRUTO,
                   SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS TOTAL_BULAN_SUM_NETTO,
@@ -92,9 +90,11 @@ $sqlsum_bulan = "SELECT
           ON
           FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
           WHERE
-          MONTH(F.RMP_FAKTUR_TANGGAL) LIKE '%".$bulan."%'
+          MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
           AND
-          F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."_A%'
+          YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
+          AND
+          F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-A'
           AND
           FP.RECORD_STATUS='A'
           AND
@@ -126,9 +126,11 @@ $sqlsum_bulan_b = "SELECT
           ON
           FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
           WHERE
-          MONTH(F.RMP_FAKTUR_TANGGAL) LIKE '%".$bulan."%'
+          MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
           AND
-          F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."_B%'
+          YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
+          AND
+          F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-B'
           AND
           FP.RECORD_STATUS='A'
           AND
