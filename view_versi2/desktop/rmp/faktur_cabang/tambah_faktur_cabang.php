@@ -33,6 +33,15 @@ $da=$SW->output();
 foreach($da['refs'] as $r)
 {
   $faktur_cabang[]=$r;
+  if ($faktur_cabang[0]['RMP_REKAP_FC_PROSES_ADM_PKB'] == "Yes")
+  {
+    $warning = "";
+    $buttonwaring = "YES";
+  }
+  else {
+    $warning = "";
+    $buttonwaring = "";
+  }
 }
  ?>
 <style>
@@ -97,6 +106,16 @@ font-size: 12px;
 					<div class="col-md-4 text-right">
           </div>
 				</div><!--/.row-->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="callout callout-warning warning_faktur" hidden>
+                <h4>Faktur telah diproses oleh Admin PKB!</h4>
+
+                <p>Anda tidak dapat melakukan perubahan.</p>
+              </div>
+          </div>
+        </div>
+
         <form action="javascript:download();" class="fDataFaktur" id="fDataFaktur" name="fDataFaktur">
         <div class="row">
             <div class="col-md-3">
@@ -592,7 +611,8 @@ font-size: 12px;
         <br>
         <hr>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
+            <?php echo $warning; ?>
             <a class="btn btn-success SimpanFaktur">Simpan</a>
             <a class="btn btn-default proses_faktur_cabang">Proses Faktur Cabang</a>
             <a class="btn btn-default" href="?show=rmp/faktur_cabang/review_faktur_cabang/<?php echo $id_faktur;  ?>" style="display:none;">Review</a>
@@ -702,6 +722,16 @@ font-size: 12px;
 
 $(function()
 {
+  if ("<?php echo $buttonwaring; ?>" == "YES")
+  {
+    $("div.warning_faktur").attr("hidden", false)
+    $("a").attr("disabled", true)
+    $("button").attr("disabled", true)
+    $("input").attr("disabled", true)
+    $("select").attr("disabled", true)
+    $("text").attr("disabled", true)
+  }
+
 	$(".datepicker").datepicker().on('changeDate', function(ev)
 	{
 		$('.datepicker').datepicker('hide');
