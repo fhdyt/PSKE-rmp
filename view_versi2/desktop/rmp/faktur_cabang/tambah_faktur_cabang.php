@@ -106,12 +106,21 @@ font-size: 12px;
 					<div class="col-md-4 text-right">
           </div>
 				</div><!--/.row-->
-        <div class="row">
+        <div class="row warning_faktur" hidden>
           <div class="col-md-12">
-            <div class="callout callout-warning warning_faktur" hidden>
+            <div class="callout callout-warning" >
                 <h4>Faktur telah diproses oleh Admin PKB!</h4>
 
                 <p>Anda tidak dapat melakukan perubahan.</p>
+              </div>
+          </div>
+        </div>
+
+        <div class="row warning_faktur_total" hidden>
+          <div class="col-md-12">
+            <div class="callout callout-danger" >
+                <h4>Data Faktur Cabang dan Faktur PSKE masih memiliki selisih</h4>
+                <p>Mohon periksa kembali Faktur PSKE.</p>
               </div>
           </div>
         </div>
@@ -607,7 +616,34 @@ font-size: 12px;
   <!-- /.tab-content -->
 </div>
 <!-- nav-tabs-custom -->
+        <div class="row">
+          <div class="col-md-4">
+            <table class="table">
+              <tr>
+                <td><b>Total Rupiah Faktur Cabang</b></td>
+                <td>:</td>
+                <td align="right"><p class="total_rp_faktur_cabang_p"></p></td>
+              </tr>
+              <tr>
+                <td><b>Total Rupiah Faktur PSKE</b></td>
+                <td>:</td>
+                <td align="right"><p class="total_rp_faktur_pske_p"></p></td>
+              </tr>
+              <hr>
+              <tr class="active" id="selisih">
+                <td><b>Selisih</b></td>
+                <td>:</td>
+                <td align="right"><p class="total_rp_faktur_selisih_p"></p></td>
+              </tr>
 
+            </table>
+          </div>
+          <div class="col-md-8">
+            <input type="hidden" class="total_rp_faktur_pske_input_a"/>
+            <input type="hidden" class="total_rp_faktur_pske_input_b"/>
+            <input type="hidden" class="total_rp_faktur_pske_input_c"/>
+          </div>
+        </div>
         <br>
         <hr>
         <div class="row">
@@ -787,7 +823,6 @@ $('.selectpicker').selectpicker().filter('.with-ajax-personal').ajaxSelectPicker
 function list_gl_a()
 {
   var id_faktur ="<?php echo $id_faktur; ?>"
-  console.log(id_faktur)
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -813,7 +848,6 @@ function list_gl_a()
 
         $("tfoot#total_a").empty();
         for (i = 0; i < data.result_total_a.length; i++) {
-          console.log(data.result_total_a[i].BRUTO)
           $("tfoot#total_a").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
 					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
@@ -843,7 +877,6 @@ list_gl_a()
 function list_gl_b()
 {
   var id_faktur ="<?php echo $id_faktur; ?>"
-  console.log(id_faktur)
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -869,7 +902,6 @@ function list_gl_b()
 
         $("tfoot#total_b").empty();
         for (i = 0; i < data.result_total_b.length; i++) {
-          console.log(data.result_total_b[i].BRUTO)
           $("tfoot#total_b").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
 					"<td ><b>" + data.result_total_b[i].BRUTO + "</b></td>" +
@@ -900,7 +932,6 @@ list_gl_b()
 function list_gl_c()
 {
   var id_faktur ="<?php echo $id_faktur; ?>"
-  console.log(id_faktur)
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -926,7 +957,6 @@ function list_gl_c()
 
         $("tfoot#total_c").empty();
         for (i = 0; i < data.result_total_c.length; i++) {
-          console.log(data.result_total_c[i].BRUTO)
           $("tfoot#total_c").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
 					"<td ><b>" + data.result_total_c[i].BRUTO + "</b></td>" +
@@ -976,7 +1006,6 @@ $('#add_a').click(function()
   	success: function(data) {
   		if (data.respon.pesan == "sukses")
   		{
-  			console.log(data.respon.text_msg);
           list_gl_a();
           $('.NO_FAKTUR_A').val('')
           $('.NAMA_SUPPLIER_A').val('')
@@ -988,7 +1017,6 @@ $('#add_a').click(function()
   		}
   		else if (data.respon.pesan == "gagal")
   		{
-  			console.log(data.respon.text_msg);
   			alert("Gagal Menyimpan");
   		}
   	}, //end success
@@ -1022,7 +1050,6 @@ $('#add_b').click(function()
   	success: function(data) {
   		if (data.respon.pesan == "sukses")
   		{
-  			console.log(data.respon.text_msg);
           list_gl_b();
           $('.NO_FAKTUR_B').val('')
           $('.NAMA_SUPPLIER_B').val('')
@@ -1034,7 +1061,6 @@ $('#add_b').click(function()
   		}
   		else if (data.respon.pesan == "gagal")
   		{
-  			console.log(data.respon.text_msg);
   			alert("Gagal Menyimpan");
   		}
   	}, //end success
@@ -1068,7 +1094,6 @@ $('#add_c').click(function()
   	success: function(data) {
   		if (data.respon.pesan == "sukses")
   		{
-  			console.log(data.respon.text_msg);
           list_gl_c();
           $('.NO_FAKTUR_C').val('')
           $('.NAMA_SUPPLIER_C').val('')
@@ -1080,7 +1105,6 @@ $('#add_c').click(function()
   		}
   		else if (data.respon.pesan == "gagal")
   		{
-  			console.log(data.respon.text_msg);
   			alert("Gagal Menyimpan");
   		}
   	}, //end success
@@ -1132,7 +1156,6 @@ $('.SimpanFaktur').on('click', function(){
   	success: function(data) {
   		if (data.respon.pesan == "sukses")
   		{
-  			console.log(data.respon.text_msg);
           list_gl_a();
           list_gl_b();
           list_gl_c();
@@ -1141,7 +1164,6 @@ $('.SimpanFaktur').on('click', function(){
   		}
   		else if (data.respon.pesan == "gagal")
   		{
-  			console.log(data.respon.text_msg);
   			alert("Gagal Menyimpan");
   		}
   	}, //end success
@@ -1213,7 +1235,6 @@ function hapus_detail_rekap(id){
   	success: function(data) {
   		if (data.respon.pesan == "sukses")
   		{
-  			console.log(data.respon.text_msg);
           list_gl_a();
           list_gl_b();
           list_gl_c();
@@ -1221,7 +1242,6 @@ function hapus_detail_rekap(id){
   		}
   		else if (data.respon.pesan == "gagal")
   		{
-  			console.log(data.respon.text_msg);
   			alert("Gagal Menyimpan");
   		}
   	}, //end success
@@ -1241,7 +1261,6 @@ function hapus_detail_rekap(id){
 function list_cabang_proses_a()
 {
   var id_faktur ="<?php echo $id_faktur; ?>"
-  console.log(id_faktur)
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -1271,7 +1290,6 @@ function list_cabang_proses_a()
 
         $("tfoot#proses_total_a").empty();
         for (i = 0; i < data.result_total_a.length; i++) {
-          console.log(data.result_total_a[i].BRUTO)
           $("tfoot#proses_total_a").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
 					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
@@ -1283,12 +1301,16 @@ function list_cabang_proses_a()
 					"<td ><b>" + data.result_total_a[i].TOTAL_RUPIAH + "</b></td>" +
           "<td></td>" +
           "</tr>");
+          $(".total_rp_faktur_pske_input_a").val(data.result_total_a[i].TOTAL_RUPIAH)
 					}
           //////////// end GELODONG A
       } else if (data.respon.pesan == "gagal") {
         $("tfoot#proses_total_a").empty();
         $("tbody#proses_data_a").empty();
+
+        $(".total_rp_faktur_pske_input_a").val("0")
       }
+      sum_total_seluruh_faktur_psk()
     }, //end success
     error: function(x, e) {
       console.log("Error Ajax");
@@ -1299,7 +1321,6 @@ function list_cabang_proses_a()
 function list_cabang_proses_b()
 {
   var id_faktur ="<?php echo $id_faktur; ?>"
-  console.log(id_faktur)
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -1329,7 +1350,6 @@ function list_cabang_proses_b()
 
         $("tfoot#proses_total_b").empty();
         for (i = 0; i < data.result_total_a.length; i++) {
-          console.log(data.result_total_a[i].BRUTO)
           $("tfoot#proses_total_b").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
 					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
@@ -1341,12 +1361,16 @@ function list_cabang_proses_b()
 					"<td ><b>" + data.result_total_a[i].TOTAL_RUPIAH + "</b></td>" +
           "<td></td>" +
           "</tr>");
-					}
+          $(".total_rp_faktur_pske_input_b").val(data.result_total_a[i].TOTAL_RUPIAH)
+          }
           //////////// end GELODONG A
       } else if (data.respon.pesan == "gagal") {
         $("tfoot#proses_total_b").empty();
         $("tbody#proses_data_b").empty();
+
+        $(".total_rp_faktur_pske_input_b").val("0")
       }
+      sum_total_seluruh_faktur_psk()
     }, //end success
     error: function(x, e) {
       console.log("Error Ajax");
@@ -1357,7 +1381,6 @@ function list_cabang_proses_b()
 function list_cabang_proses_c()
 {
   var id_faktur ="<?php echo $id_faktur; ?>"
-  console.log(id_faktur)
   $.ajax({
     type: 'POST',
     url: refseeAPI,
@@ -1387,7 +1410,6 @@ function list_cabang_proses_c()
 
         $("tfoot#proses_total_c").empty();
         for (i = 0; i < data.result_total_a.length; i++) {
-          console.log(data.result_total_a[i].BRUTO)
           $("tfoot#proses_total_c").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
 					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
@@ -1399,12 +1421,16 @@ function list_cabang_proses_c()
 					"<td ><b>" + data.result_total_a[i].TOTAL_RUPIAH + "</b></td>" +
           "<td></td>" +
           "</tr>");
-					}
+          $(".total_rp_faktur_pske_input_c").val(data.result_total_a[i].TOTAL_RUPIAH)
+          }
           //////////// end GELODONG A
       } else if (data.respon.pesan == "gagal") {
         $("tfoot#proses_total_c").empty();
         $("tbody#proses_data_c").empty();
+
+        $(".total_rp_faktur_pske_input_c").val("0")
       }
+      sum_total_seluruh_faktur_psk()
     }, //end success
     error: function(x, e) {
       console.log("Error Ajax");
@@ -1538,7 +1564,6 @@ $('.SIMPAN_EDIT_PROSES').on('click', function(){
   		}
   		else if (data.respon.pesan == "gagal")
   		{
-  			console.log(data.respon.text_msg);
   			alert("Gagal Menyimpan");
   		}
   	}, //end success
@@ -1570,7 +1595,6 @@ function hapus_proses(id){
   	success: function(data) {
   		if (data.respon.pesan == "sukses")
   		{
-  			console.log(data.respon.text_msg);
         list_cabang_proses_a()
         list_cabang_proses_b()
         list_cabang_proses_c()
@@ -1578,7 +1602,6 @@ function hapus_proses(id){
   		}
   		else if (data.respon.pesan == "gagal")
   		{
-  			console.log(data.respon.text_msg);
   			alert("Gagal Menyimpan");
   		}
   	}, //end success
@@ -1609,4 +1632,35 @@ $(".tambah_proses_baru").on('click', function(){
   $('.modalEditDataProses').modal('show')
 
 })
+
+function sum_total_seluruh_faktur_psk(){
+  var a = parseInt($(".total_rp_faktur_pske_input_a").val())
+  var b = parseInt($(".total_rp_faktur_pske_input_b").val())
+  var c = parseInt($(".total_rp_faktur_pske_input_c").val())
+  console.log(a)
+  console.log(b)
+  console.log(c)
+  var total = a+b+c
+
+  var tambang = $(".TAMBANG").val()
+  var biaya = $(".BIAYA").val()
+  var harga_kelapa = $(".HARGA_KELAPA_BULAT").val()
+  var total_cabang = parseInt(tambang) + parseInt(biaya) + parseInt(harga_kelapa)
+  var selisih = parseInt(total) - parseInt(total_cabang)
+  if (selisih != 0)
+  {
+    $("a.SimpanFaktur").attr("disabled", true)
+    $("div.warning_faktur_total").attr("hidden",false)
+    $("tr#selisih").attr("class","danger")
+  }
+  else
+  {
+    $("a.SimpanFaktur").attr("disabled", false)
+    $("div.warning_faktur_total").attr("hidden",true)
+    $("tr#selisih").attr("class","active")
+  }
+  $("p.total_rp_faktur_pske_p").html(total)
+  $("p.total_rp_faktur_cabang_p").html(total_cabang)
+  $("p.total_rp_faktur_selisih_p").html(selisih)
+}
 </script>
