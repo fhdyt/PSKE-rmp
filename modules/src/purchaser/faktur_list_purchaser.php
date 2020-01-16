@@ -31,15 +31,6 @@ if (empty($input['bulan']) or $input['bulan'] == "")
     $filter_c = "AND MONTH(F.RMP_FAKTUR_TANGGAL) = '" . $input['bulan'] . "' ";
     }
 
-// if (empty($input['tanggal']) or $input['tanggal'] == "")
-//     {
-//     $filter_c = "";
-//     }
-//   else
-//     {
-//     $filter_c = "AND F.RMP_FAKTUR_TANGGAL = '" . $input['tanggal'] . "' ";
-//     }
-
 $sql = "SELECT * FROM RMP_FAKTUR AS F
             LEFT JOIN RMP_MASTER_PERSONAL AS P
             ON F.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
@@ -85,6 +76,8 @@ foreach($result_a as $r)
     $result_abcd = $this->MYSQL->data();
 
     $r['STATUS_PURCHASAER'] = $result_abcd[0]['PCRECORD_STATUS'];
+    //$r['STATUS_PURCHASAER'] = $r['PCRECORD_STATUS'];
+    $r['STATUS_PURCHASAERs'] = $input['proses'];
     $r['NAMA_SUPPLIER_FAKTUR'] = $result_abcd[0]['RMP_MASTER_PERSONAL_NAMA'];
     $result[] = $r;
     $no++;

@@ -62,8 +62,14 @@ font-size: 12px;
           <div class="col-md-12 text-right">
             <form id="form_filter" class="form-inline" method="POST" action="javascript:filter();">
               <div class="form-group">
-            <select id="FILTER_MATERIAL" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_material()">
+            <!-- <select id="FILTER_PROSES" name="FILTER_PROSES" type="text" class=" form-control FILTER_PROSES"  autocomplete="off" onchange="filter_material()">
             <option value="">--Semua--</option>
+            <option value="BELUM_PROSES">Belum diproses</option>
+            <option value="TELAH_PROSES">Telah diproses</option>
+                  </select> -->
+
+            <select id="FILTER_MATERIAL" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_material()">
+            <option value="">--Semua Material--</option>
             <option value="GELONDONG">GELONDONG</option>
             <option value="JAMBUL">JAMBUL</option>
             <option value="LICIN">LICIN</option>
@@ -155,6 +161,7 @@ faktur_list('1')
 
 function faktur_list(curPage)
 {
+  console.log($(".FILTER_PROSES").val())
   var url = window.location.href;
   var pageA = url.split("#");
   if (pageA[1] == undefined) {} else {
@@ -220,6 +227,7 @@ function faktur_list(curPage)
 					"<td>" + data.result[i].RMP_MASTER_WILAYAH + "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_JENIS_MATERIAL + "</td>" +
 					"<td>" + data.result[i].TANGGAL + "</td>" +
+					//"<td>" + data.result[i].STATUS_PURCHASAERs + "</td>" +
           "<td><a class='btn btn-success btn-sm' href='?show=rmp/purchaser/detail_faktur/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
 
 

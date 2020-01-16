@@ -77,6 +77,36 @@ foreach($result_sum_hari_b as $r)
     $result_b[] = $r;
     }
 
+$sqlsum_hari_c = "SELECT
+                  SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS TOTAL_SUM_BRUTO,
+                  SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS TOTAL_SUM_NETTO,
+                  SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS TOTAL_SUM_RP
+          FROM
+          RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
+          ON
+          FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
+          WHERE
+          F.RMP_FAKTUR_TANGGAL LIKE '%".$input['tanggal']."%'
+          AND
+          F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-C'
+          AND
+          FP.RECORD_STATUS='A'
+          AND
+          F.RECORD_STATUS='A'
+         ";
+$this->MYSQL = new MYSQL();
+$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+$this->MYSQL->queri = $sqlsum_hari_c ;
+$result_sum_hari_c = $this->MYSQL->data();
+
+foreach($result_sum_hari_b as $r)
+    {
+    $r['TOTAL_SUM_BRUTO_C']=number_format($result_sum_hari_c[0]['TOTAL_SUM_BRUTO'],0,",",".");
+    $r['TOTAL_SUM_NETTO_C']=number_format($result_sum_hari_c[0]['TOTAL_SUM_NETTO'],0,",",".");
+    $r['TOTAL_SUM_RP_C']=number_format($result_sum_hari_c[0]['TOTAL_SUM_RP'],0,",",".");
+    $result_c[] = $r;
+    }
+
 
 //////////////////// Bulan Ini
 $bulan = date("m",strtotime($input['tanggal']));
@@ -152,26 +182,6 @@ $sqlsum_bulan_b = "SELECT
           AND
           F.RECORD_STATUS='A'
          ";
-
-// $sqlsum_bulan_b = "SELECT
-//                   SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS TOTAL_BULAN_SUM_BRUTO,
-//                   SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS TOTAL_BULAN_SUM_NETTO,
-//                   SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS TOTAL_BULAN_SUM_RP
-//           FROM
-//           RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
-//           ON
-//           FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
-//           WHERE
-//           MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
-//           AND
-//           YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
-//           AND
-//           F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-B'
-//           AND
-//           FP.RECORD_STATUS='A'
-//           AND
-//           F.RECORD_STATUS='A'
-//          ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sqlsum_bulan_b ;
@@ -189,6 +199,40 @@ foreach($result_sum_bulan_b as $r)
     $no++;
     }
 
+$sqlsum_bulan_c = "SELECT
+                  SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS TOTAL_BULAN_SUM_BRUTO,
+                  SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS TOTAL_BULAN_SUM_NETTO,
+                  SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS TOTAL_BULAN_SUM_RP
+          FROM
+          RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
+          ON
+          FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
+          WHERE
+          (RMP_FAKTUR_TANGGAL BETWEEN '".$mulai_bulan."'AND '".$input['tanggal']."')
+          AND
+          F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-C'
+          AND
+          FP.RECORD_STATUS='A'
+          AND
+          F.RECORD_STATUS='A'
+         ";
+$this->MYSQL = new MYSQL();
+$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+$this->MYSQL->queri = $sqlsum_bulan_c ;
+$result_sum_bulan_c = $this->MYSQL->data();
+
+$no = $posisi + 1;
+
+foreach($result_sum_bulan_c as $r)
+    {
+    $r['TANGGAL'] = tanggal_format(Date("Y-m-d",strtotime($input['tanggal'])));
+    $r['TOTAL_BULAN_SUM_BRUTO_C']=number_format($result_sum_bulan_c[0]['TOTAL_BULAN_SUM_BRUTO'],0,",",".");
+    $r['TOTAL_BULAN_SUM_NETTO_C']=number_format($result_sum_bulan_c[0]['TOTAL_BULAN_SUM_NETTO'],0,",",".");
+    $r['TOTAL_BULAN_SUM_RP_C']=number_format($result_sum_bulan_c[0]['TOTAL_BULAN_SUM_RP'],0,",",".");
+    $result_bulan_c[] = $r;
+    $no++;
+    }
+
 
 
 if (empty($result_sum_hari))
@@ -198,8 +242,10 @@ if (empty($result_sum_hari))
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
     $this->callback['result_b'] = $result_b;
+    $this->callback['result_c'] = $result_c;
     $this->callback['result_bulan'] = $result_bulan;
     $this->callback['result_bulan_b'] = $result_bulan_b;
+    $this->callback['result_bulan_c'] = $result_bulan_c;
     }
   else
     {
@@ -208,8 +254,10 @@ if (empty($result_sum_hari))
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
     $this->callback['result_b'] = $result_b;
+    $this->callback['result_c'] = $result_c;
     $this->callback['result_bulan'] = $result_bulan;
     $this->callback['result_bulan_b'] = $result_bulan_b;
+    $this->callback['result_bulan_c'] = $result_bulan_c;
     $this->callback['result_option']['jml_halaman'] = $this->pagging(array(
         'sql' => $sql,
         'batas' => $batas

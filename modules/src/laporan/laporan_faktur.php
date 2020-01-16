@@ -297,6 +297,107 @@ foreach($result_a as $r)
       }
     }
 
+    else if($grade_kelapa =='C')
+    {
+      $bulan = date("m",strtotime($input['tanggal']));
+      $sqlsum_bulan = "SELECT
+                        SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO_BULAN,
+                        SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS SUM_NETTO_BULAN,
+                        SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS SUM_RP_BULAN
+                FROM
+                RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
+                ON
+                FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
+                LEFT JOIN
+                RMP_REKENING_RELASI AS RR
+                ON
+                FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
+                WHERE
+                MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
+                AND
+                YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
+                AND
+                F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-C'
+                AND
+                RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
+                AND
+                RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
+                AND
+                FP.RECORD_STATUS='A'
+                AND
+                F.RECORD_STATUS='A'
+                AND
+                RR.RECORD_STATUS='A'
+               ";
+      $this->MYSQL = new MYSQL();
+      $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+      $this->MYSQL->queri = $sqlsum_bulan ;
+      $result_sum_bulan = $this->MYSQL->data();
+
+      $sqlsum = "SELECT
+                        SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO,
+                        SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS SUM_NETTO,
+                        SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS SUM_RP
+                FROM
+                RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
+                ON
+                FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
+                LEFT JOIN
+                RMP_REKENING_RELASI AS RR
+                ON
+                FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
+                WHERE
+                F.RMP_FAKTUR_TANGGAL LIKE '%".$input['tanggal']."%'
+                AND
+                F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-C'
+                AND
+                RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
+                AND
+                RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
+                AND
+                FP.RECORD_STATUS='A'
+                AND
+                F.RECORD_STATUS='A'
+                AND
+                RR.RECORD_STATUS='A'
+               ";
+      $this->MYSQL = new MYSQL();
+      $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+      $this->MYSQL->queri = $sqlsum ;
+      $result_sum = $this->MYSQL->data();
+
+      $r['SUM_BRUTO_C']=number_format($result_sum[0]['SUM_BRUTO'],0,",",".");
+      $r['SUM_NETTO_C']=number_format($result_sum[0]['SUM_NETTO'],0,",",".");
+      $r['SUM_RP_C']=number_format($result_sum[0]['SUM_RP'],0,",",".");
+
+      $r['SUM_BRUTO_C_BULAN']=number_format($result_sum_bulan[0]['SUM_BRUTO_BULAN'],0,",",".");
+      $r['SUM_NETTO_C_BULAN']=number_format($result_sum_bulan[0]['SUM_NETTO_BULAN'],0,",",".");
+      $r['SUM_RP_C_BULAN']=number_format($result_sum_bulan[0]['SUM_RP_BULAN'],0,",",".");
+
+      foreach($result_b3 as $rb3)
+      {
+        $r['RP_C'] =number_format($rb3['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR'],0,",",".");
+        $r['RP_A'] ="";
+        $r['RP_B'] ="";
+
+        $r['BRUTO_C'] =number_format($rb3['RMP_FAKTUR_PURCHASER_BRUTO'],0,",",".");
+        $r['BRUTO_A'] ="";
+        $r['BRUTO_B'] ="";
+
+        $r['PERSEN_C'] =number_format($rb3['RMP_FAKTUR_POTONGAN'],0,",",".");
+        $r['PERSEN_A'] ="";
+        $r['PERSEN_B'] ="";
+
+        $r['NETTO_C'] =number_format($rb3['RMP_FAKTUR_PURCHASER_NETTO'],0,",",".");
+        $r['NETTO_A'] ="";
+        $r['NETTO_B'] ="";
+
+        $r['RP_KG_C']=number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG'],0,",",".");
+        $r['RP_KG_A']="";
+        $r['RP_KG_B']="";
+      }
+    }
+
 
 
 
