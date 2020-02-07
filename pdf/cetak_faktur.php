@@ -561,7 +561,7 @@ tr {
 		<td colspan="3">'.$hr.'</td>
 		</tr>
 		<tr>
-		<td><img src="aplikasi/rmp/asset/'.$check_diterima.'" width="10" /> Berat Diterima</td>
+		<td><img src="aplikasi/rmp/asset/'.$check_diterima.'" width="10" /> Bisa Diterima</td>
 		<td></td>
 		<td></td>
 		<td></td>

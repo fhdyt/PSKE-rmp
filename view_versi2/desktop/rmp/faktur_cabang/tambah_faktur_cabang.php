@@ -205,7 +205,7 @@ font-size: 12px;
                 <label for="ICD_TRANSAKSI_INVENTORI_LOKASI">Tambang</label>
                 <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1">Rp.</span>
-                  <input autocomplete="off" class="form-control TAMBANG" id="TAMBANG" name="TAMBANG" placeholder="" type="text" value="<?php echo $faktur_cabang[0]['RMP_REKAP_FC_TAMBANG'] ?>">
+                  <input autocomplete="off" class="form-control TAMBANG" id="TAMBANG" name="TAMBANG" placeholder="" type="text" value="<?php echo $faktur_cabang[0]['RMP_REKAP_FC_TAMBANG'] ?>" onkeyup="sum_total_seluruh_faktur_psk()">
                 </div>
                  <small class="help-block">Biaya Tambang</small>
               </div>
@@ -215,7 +215,7 @@ font-size: 12px;
                 <label for="ICD_TRANSAKSI_INVENTORI_LOKASI">Biaya</label>
                 <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1">Rp.</span>
-                  <input autocomplete="off" class="form-control BIAYA" id="BIAYA" name="BIAYA" placeholder="" type="text" value="<?php echo $faktur_cabang[0]['RMP_REKAP_FC_BIAYA'] ?>">
+                  <input autocomplete="off" class="form-control BIAYA" id="BIAYA" name="BIAYA" placeholder="" type="text" value="<?php echo $faktur_cabang[0]['RMP_REKAP_FC_BIAYA'] ?>" onkeyup="sum_total_seluruh_faktur_psk()">
                 </div>
                  <small class="help-block">Biaya Lainnya</small>
               </div>
@@ -227,7 +227,7 @@ font-size: 12px;
                   <label for="ICD_TRANSAKSI_INVENTORI_LOKASI">Harga Kelapa Bulat</label>
                 <div class="input-group">
                   <span class="input-group-addon" id="basic-addon2">Rp.</span>
-                  <input autocomplete="off" class="form-control HARGA_KELAPA_BULAT" id="HARGA_KELAPA_BULAT" name="HARGA_KELAPA_BULAT" placeholder="" type="text" value="<?php echo $faktur_cabang[0]['RMP_REKAP_FC_KELAPA'] ?>">
+                  <input autocomplete="off" class="form-control HARGA_KELAPA_BULAT" id="HARGA_KELAPA_BULAT" name="HARGA_KELAPA_BULAT" placeholder="" type="text" value="<?php echo $faktur_cabang[0]['RMP_REKAP_FC_KELAPA'] ?>" onkeyup="sum_total_seluruh_faktur_psk()">
                 </div>
                   <small class="help-block">Quantity Terima A PSKE</small>
               </div>
