@@ -62,7 +62,7 @@ font-size: 12px;
 					<div class="col-md-4 text-right"></div>
 				</div><!--/.row-->
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
               <table class="table">
                 <tr>
                   <td><b>No Faktur</b></td>
@@ -162,7 +162,7 @@ font-size: 12px;
               </tr>
             </table>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-3">
             <div class="checkbox">
               <label>
                 <input type="checkbox" name="CEK_DITERIMA" class="CEK_DITERIMA" disabled> Bisa Diterima
@@ -178,6 +178,31 @@ font-size: 12px;
                 <input type="checkbox" name="CEK_DIPISAH" class="CEK_DIPISAH" disabled> Dipisah
               </label>
             </div>
+            <br>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="CEK_KONTAN" class="CEK_KONTAN"> Kontan
+              </label>
+            </div>
+            <!-- <div class="checkbox">
+              <label>
+                <input type="checkbox" name="CEK_PPH" class="CEK_PPH">
+              </label>
+            </div> -->
+            <table class="table">
+              <tr>
+                <td><b>PPH</b></td>
+                <td>
+                  <input autocomplete="off" class="form-control INPUT_PPH" id="INPUT_PPH" name="INPUT_PPH" placeholder="" type="text"/>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Uang Muka</b></td>
+                <td>
+                  <input autocomplete="off" class="form-control INPUT_UANG_MUKA" id="INPUT_UANG_MUKA" name="INPUT_UANG_MUKA" placeholder="" type="text"/>
+                </td>
+              </tr>
+            </table>
           </div>
       		</div>
           <hr>
@@ -495,6 +520,8 @@ function detail_purchaser(curPage)
           $(".INPUT_TAMBANG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_TAMBANG)
           //$("p.NAMA_SUPPLIER_PURCHASER").html(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
           $(".INPUT_BIAYA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_BIAYA)
+          $(".INPUT_PPH").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_PPH)
+          $(".INPUT_UANG_MUKA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_UANG_MUKA)
           $(".ID_SUPPLIER").val(data.resultbc[i].RMP_MASTER_PERSONAL_ID)
           $(".JENIS_FAKTUR").val(data.resultbc[i].RMP_FAKTUR_JENIS)
           $(".NAMA_SUPPLIER_PURCHASER_HIDDEN").val(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
@@ -529,6 +556,17 @@ function detail_purchaser(curPage)
             {
               $('.CEK_RP_KG').prop('checked', false);
             }
+
+            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_KONTAN == "Y")
+            {
+              $('.CEK_KONTAN').prop('checked', true);
+            }
+            else
+            {
+              $('.CEK_KONTAN').prop('checked', false);
+            }
+
+
 
             $('.cetak_relasi_dropdown').removeAttr('style');
           }
@@ -667,7 +705,11 @@ $(".simpanHargaPurchaser").on('click', function(){
   var cek_tambang = "CEK_TAMBANG=" +$('.CEK_TAMBANG').is(":checked")+ ""
   var cek_biaya = "CEK_BIAYA=" +$('.CEK_BIAYA').is(":checked")+ ""
   var cek_rp = "CEK_RP_KG=" +$('.CEK_RP_KG').is(":checked")+ ""
-  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + rekening + "&" + total_seluruh + "&" + rp_kelapa + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
+
+  var cek_kontan = "CEK_KONTAN=" +$('.CEK_KONTAN').is(":checked")+ ""
+  var input_pph = "INPUT_PPH=" +$('.INPUT_PPH').val()+ ""
+  var input_uang_muka = "INPUT_UANG_MUKA=" +$('.INPUT_UANG_MUKA').val()+ ""
+  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + rekening + "&" + total_seluruh + "&" + rp_kelapa + "&" + cek_kontan + "&" + input_pph + "&" + input_uang_muka + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
   console.log(form)
   $.ajax({
     type: 'POST',

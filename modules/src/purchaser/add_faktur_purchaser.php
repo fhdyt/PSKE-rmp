@@ -39,6 +39,27 @@ else
 	$cek_rp = "N";
 }
 
+if($input['CEK_KONTAN'] == "true")
+{
+	$cek_kontan = "Y";
+}
+else
+{
+	$cek_kontan = "N";
+}
+
+if($input['CEK_PPH'] == "true")
+{
+	$cek_pph = "Y";
+}
+else
+{
+	$cek_pph = "N";
+}
+
+
+
+
 if($input['JENIS_FAKTUR'] == "FAKTUR")
 {
 	$total_tambang = $input['TOTAL_NETTO']*$input['TAMBANG'];
@@ -92,6 +113,9 @@ $data_detail2 = array(
 		'RMP_FAKTUR_PURCHASER_CEK_TAMBANG' => $cek_tambang,
 		'RMP_FAKTUR_PURCHASER_CEK_BIAYA' => $cek_biaya,
 		'RMP_FAKTUR_PURCHASER_CEK_RP' => $cek_rp,
+		'RMP_FAKTUR_PURCHASER_KONTAN' => $cek_kontan,
+		'RMP_FAKTUR_PURCHASER_PPH' => $input['INPUT_PPH'],
+		'RMP_FAKTUR_PURCHASER_UANG_MUKA' => $input['INPUT_UANG_MUKA'],
 
 	  'ENTRI_WAKTU' => date("Y-m-d H:i:s") ,
 	  'ENTRI_OPERATOR' => $user_login['PERSONAL_NIK'],
