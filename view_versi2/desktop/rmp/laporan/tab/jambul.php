@@ -75,33 +75,33 @@ font-size: 12px;
   <tbody id="zone_data_02"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_02">
     <tr class="warning">
-      <td colspan="5" style="text-align:right"># (02)</td>
-      <td id="02_SUM_BRUTO_A"></td>
-      <td id="02_SUM_PERSEN_A"></td>
-      <td id="02_SUM_NETTO_A"></td>
-      <td id="02_SUM_RP_KG_A"></td>
-      <td id="02_SUM_RP_A"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;"># (02)</td>
+      <td id="02_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="02_SUM_BRUTO_B"></td>
-      <td id="02_SUM_PERSEN_B"></td>
-      <td id="02_SUM_NETTO_B"></td>
-      <td id="02_SUM_RP_KG_B"></td>
-      <td id="02_SUM_RP_B"></td>
+      <td id="02_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right">AKUM</td>
-      <td id="02_SUM_BRUTO_A_BULAN"></td>
-      <td id="02_SUM_PERSEN_A_BULAN"></td>
-      <td id="02_SUM_NETTO_A_BULAN"></td>
-      <td id="02_SUM_RP_KG_A_BULAN"></td>
-      <td id="02_SUM_RP_A_BULAN"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td id="02_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_RP_KG_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_RP_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="02_SUM_BRUTO_B_BULAN"></td>
-      <td id="02_SUM_PERSEN_B_BULAN"></td>
-      <td id="02_SUM_NETTO_B_BULAN"></td>
-      <td id="02_SUM_RP_KG_B_BULAN"></td>
-      <td id="02_SUM_RP_B_BULAN"></td>
+      <td id="02_SUM_BRUTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_PERSEN_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_NETTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_RP_KG_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="02_SUM_RP_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
     </tr>
 
   </tfooter>
@@ -109,264 +109,264 @@ font-size: 12px;
   <tbody id="zone_data_03"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_03">
     <tr class="warning">
-      <td colspan="5" style="text-align:right"># (03)</td>
-      <td id="03_SUM_BRUTO_A"></td>
-      <td id="03_SUM_PERSEN_A"></td>
-      <td id="03_SUM_NETTO_A"></td>
-      <td id="03_SUM_RP_KG_A"></td>
-      <td id="03_SUM_RP_A"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;"># (03)</td>
+      <td id="03_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="03_SUM_BRUTO_B"></td>
-      <td id="03_SUM_PERSEN_B"></td>
-      <td id="03_SUM_NETTO_B"></td>
-      <td id="03_SUM_RP_KG_B"></td>
-      <td id="03_SUM_RP_B"></td>
+      <td id="03_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right">AKUM</td>
-      <td id="03_SUM_BRUTO_A_BULAN"></td>
-      <td id="03_SUM_PERSEN_A_BULAN"></td>
-      <td id="03_SUM_NETTO_A_BULAN"></td>
-      <td id="03_SUM_RP_KG_A_BULAN"></td>
-      <td id="03_SUM_RP_A_BULAN"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td id="03_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_RP_KG_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_RP_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="03_SUM_BRUTO_B_BULAN"></td>
-      <td id="03_SUM_PERSEN_B_BULAN"></td>
-      <td id="03_SUM_NETTO_B_BULAN"></td>
-      <td id="03_SUM_RP_KG_B_BULAN"></td>
-      <td id="03_SUM_RP_B_BULAN"></td>
+      <td id="03_SUM_BRUTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_PERSEN_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_NETTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_RP_KG_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="03_SUM_RP_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
     </tr>
   </tfooter>
 
   <tbody id="zone_data_04"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_04">
     <tr class="warning">
-      <td colspan="5" style="text-align:right"># (04)</td>
-      <td id="04_SUM_BRUTO_A"></td>
-      <td id="04_SUM_PERSEN_A"></td>
-      <td id="04_SUM_NETTO_A"></td>
-      <td id="04_SUM_RP_KG_A"></td>
-      <td id="04_SUM_RP_A"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;"># (04)</td>
+      <td id="04_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="04_SUM_BRUTO_B"></td>
-      <td id="04_SUM_PERSEN_B"></td>
-      <td id="04_SUM_NETTO_B"></td>
-      <td id="04_SUM_RP_KG_B"></td>
-      <td id="04_SUM_RP_B"></td>
+      <td id="04_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right">AKUM</td>
-      <td id="04_SUM_BRUTO_A_BULAN"></td>
-      <td id="04_SUM_PERSEN_A_BULAN"></td>
-      <td id="04_SUM_NETTO_A_BULAN"></td>
-      <td id="04_SUM_RP_KG_A_BULAN"></td>
-      <td id="04_SUM_RP_A_BULAN"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td id="04_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_RP_KG_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_RP_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="04_SUM_BRUTO_B_BULAN"></td>
-      <td id="04_SUM_PERSEN_B_BULAN"></td>
-      <td id="04_SUM_NETTO_B_BULAN"></td>
-      <td id="04_SUM_RP_KG_B_BULAN"></td>
-      <td id="04_SUM_RP_B_BULAN"></td>
+      <td id="04_SUM_BRUTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_PERSEN_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_NETTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_RP_KG_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="04_SUM_RP_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
     </tr>
   </tfooter>
 
   <tbody id="zone_data_05"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_05">
     <tr class="warning">
-      <td colspan="5" style="text-align:right"># (05)</td>
-      <td id="05_SUM_BRUTO_A"></td>
-      <td id="05_SUM_PERSEN_A"></td>
-      <td id="05_SUM_NETTO_A"></td>
-      <td id="05_SUM_RP_KG_A"></td>
-      <td id="05_SUM_RP_A"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;"># (05)</td>
+      <td id="05_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="05_SUM_BRUTO_B"></td>
-      <td id="05_SUM_PERSEN_B"></td>
-      <td id="05_SUM_NETTO_B"></td>
-      <td id="05_SUM_RP_KG_B"></td>
-      <td id="05_SUM_RP_B"></td>
+      <td id="05_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right">AKUM</td>
-      <td id="05_SUM_BRUTO_A_BULAN"></td>
-      <td id="05_SUM_PERSEN_A_BULAN"></td>
-      <td id="05_SUM_NETTO_A_BULAN"></td>
-      <td id="05_SUM_RP_KG_A_BULAN"></td>
-      <td id="05_SUM_RP_A_BULAN"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td id="05_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_RP_KG_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_RP_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="05_SUM_BRUTO_B_BULAN"></td>
-      <td id="05_SUM_PERSEN_B_BULAN"></td>
-      <td id="05_SUM_NETTO_B_BULAN"></td>
-      <td id="05_SUM_RP_KG_B_BULAN"></td>
-      <td id="05_SUM_RP_B_BULAN"></td>
+      <td id="05_SUM_BRUTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_PERSEN_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_NETTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_RP_KG_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="05_SUM_RP_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
     </tr>
   </tfooter>
 
   <tbody id="zone_data_06"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_06">
     <tr class="warning">
-      <td colspan="5" style="text-align:right"># (06)</td>
-      <td id="06_SUM_BRUTO_A"></td>
-      <td id="06_SUM_PERSEN_A"></td>
-      <td id="06_SUM_NETTO_A"></td>
-      <td id="06_SUM_RP_KG_A"></td>
-      <td id="06_SUM_RP_A"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;"># (06)</td>
+      <td id="06_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="06_SUM_BRUTO_B"></td>
-      <td id="06_SUM_PERSEN_B"></td>
-      <td id="06_SUM_NETTO_B"></td>
-      <td id="06_SUM_RP_KG_B"></td>
-      <td id="06_SUM_RP_B"></td>
+      <td id="06_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right">AKUM</td>
-      <td id="06_SUM_BRUTO_A_BULAN"></td>
-      <td id="06_SUM_PERSEN_A_BULAN"></td>
-      <td id="06_SUM_NETTO_A_BULAN"></td>
-      <td id="06_SUM_RP_KG_A_BULAN"></td>
-      <td id="06_SUM_RP_A_BULAN"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td id="06_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_RP_KG_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_RP_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="06_SUM_BRUTO_B_BULAN"></td>
-      <td id="06_SUM_PERSEN_B_BULAN"></td>
-      <td id="06_SUM_NETTO_B_BULAN"></td>
-      <td id="06_SUM_RP_KG_B_BULAN"></td>
-      <td id="06_SUM_RP_B_BULAN"></td>
+      <td id="06_SUM_BRUTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_PERSEN_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_NETTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_RP_KG_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="06_SUM_RP_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
     </tr>
   </tfooter>
 
   <tbody id="zone_data_07"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_07">
     <tr class="warning">
-      <td colspan="5" style="text-align:right"># (07)</td>
-      <td id="07_SUM_BRUTO_A"></td>
-      <td id="07_SUM_PERSEN_A"></td>
-      <td id="07_SUM_NETTO_A"></td>
-      <td id="07_SUM_RP_KG_A"></td>
-      <td id="07_SUM_RP_A"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;"># (07)</td>
+      <td id="07_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="07_SUM_BRUTO_B"></td>
-      <td id="07_SUM_PERSEN_B"></td>
-      <td id="07_SUM_NETTO_B"></td>
-      <td id="07_SUM_RP_KG_B"></td>
-      <td id="07_SUM_RP_B"></td>
+      <td id="07_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right">AKUM</td>
-      <td id="07_SUM_BRUTO_A_BULAN"></td>
-      <td id="07_SUM_PERSEN_A_BULAN"></td>
-      <td id="07_SUM_NETTO_A_BULAN"></td>
-      <td id="07_SUM_RP_KG_A_BULAN"></td>
-      <td id="07_SUM_RP_A_BULAN"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td id="07_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_RP_KG_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_RP_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="07_SUM_BRUTO_B_BULAN"></td>
-      <td id="07_SUM_PERSEN_B_BULAN"></td>
-      <td id="07_SUM_NETTO_B_BULAN"></td>
-      <td id="07_SUM_RP_KG_B_BULAN"></td>
-      <td id="07_SUM_RP_B_BULAN"></td>
+      <td id="07_SUM_BRUTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_PERSEN_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_NETTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_RP_KG_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="07_SUM_RP_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
     </tr>
   </tfooter>
 
   <tbody id="zone_data_08"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_08">
     <tr class="warning">
-      <td colspan="5" style="text-align:right"># (08)</td>
-      <td id="08_SUM_BRUTO_A"></td>
-      <td id="08_SUM_PERSEN_A"></td>
-      <td id="08_SUM_NETTO_A"></td>
-      <td id="08_SUM_RP_KG_A"></td>
-      <td id="08_SUM_RP_A"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;"># (08)</td>
+      <td id="08_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="08_SUM_BRUTO_B"></td>
-      <td id="08_SUM_PERSEN_B"></td>
-      <td id="08_SUM_NETTO_B"></td>
-      <td id="08_SUM_RP_KG_B"></td>
-      <td id="08_SUM_RP_B"></td>
+      <td id="08_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right">AKUM</td>
-      <td id="08_SUM_BRUTO_A_BULAN"></td>
-      <td id="08_SUM_PERSEN_A_BULAN"></td>
-      <td id="08_SUM_NETTO_A_BULAN"></td>
-      <td id="08_SUM_RP_KG_A_BULAN"></td>
-      <td id="08_SUM_RP_A_BULAN"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td id="08_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_RP_KG_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_RP_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="08_SUM_BRUTO_B_BULAN"></td>
-      <td id="08_SUM_PERSEN_B_BULAN"></td>
-      <td id="08_SUM_NETTO_B_BULAN"></td>
-      <td id="08_SUM_RP_KG_B_BULAN"></td>
-      <td id="08_SUM_RP_B_BULAN"></td>
+      <td id="08_SUM_BRUTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_PERSEN_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_NETTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_RP_KG_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="08_SUM_RP_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
     </tr>
   </tfooter>
 
   <tbody id="zone_data_09"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_09">
     <tr class="warning">
-      <td colspan="5" style="text-align:right"># (09)</td>
-      <td id="09_SUM_BRUTO_A"></td>
-      <td id="09_SUM_PERSEN_A"></td>
-      <td id="09_SUM_NETTO_A"></td>
-      <td id="09_SUM_RP_KG_A"></td>
-      <td id="09_SUM_RP_A"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;"># (09)</td>
+      <td id="09_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="09_SUM_BRUTO_B"></td>
-      <td id="09_SUM_PERSEN_B"></td>
-      <td id="09_SUM_NETTO_B"></td>
-      <td id="09_SUM_RP_KG_B"></td>
-      <td id="09_SUM_RP_B"></td>
+      <td id="09_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right">AKUM</td>
-      <td id="09_SUM_BRUTO_A_BULAN"></td>
-      <td id="09_SUM_PERSEN_A_BULAN"></td>
-      <td id="09_SUM_NETTO_A_BULAN"></td>
-      <td id="09_SUM_RP_KG_A_BULAN"></td>
-      <td id="09_SUM_RP_A_BULAN"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td id="09_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_RP_KG_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_RP_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="09_SUM_BRUTO_B_BULAN"></td>
-      <td id="09_SUM_PERSEN_B_BULAN"></td>
-      <td id="09_SUM_NETTO_B_BULAN"></td>
-      <td id="09_SUM_RP_KG_B_BULAN"></td>
-      <td id="09_SUM_RP_B_BULAN"></td>
+      <td id="09_SUM_BRUTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_PERSEN_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_NETTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_RP_KG_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="09_SUM_RP_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
     </tr>
   </tfooter>
 
   <tbody id="zone_data_10"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_10">
     <tr class="warning">
-      <td colspan="5" style="text-align:right"># (10)</td>
-      <td id="10_SUM_BRUTO_A"></td>
-      <td id="10_SUM_PERSEN_A"></td>
-      <td id="10_SUM_NETTO_A"></td>
-      <td id="10_SUM_RP_KG_A"></td>
-      <td id="10_SUM_RP_A"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;"># (10)</td>
+      <td id="10_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="10_SUM_BRUTO_B"></td>
-      <td id="10_SUM_PERSEN_B"></td>
-      <td id="10_SUM_NETTO_B"></td>
-      <td id="10_SUM_RP_KG_B"></td>
-      <td id="10_SUM_RP_B"></td>
+      <td id="10_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right">AKUM</td>
-      <td id="10_SUM_BRUTO_A_BULAN"></td>
-      <td id="10_SUM_PERSEN_A_BULAN"></td>
-      <td id="10_SUM_NETTO_A_BULAN"></td>
-      <td id="10_SUM_RP_KG_A_BULAN"></td>
-      <td id="10_SUM_RP_A_BULAN"></td>
+      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td id="10_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_RP_KG_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_RP_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
 
-      <td id="10_SUM_BRUTO_B_BULAN"></td>
-      <td id="10_SUM_PERSEN_B_BULAN"></td>
-      <td id="10_SUM_NETTO_B_BULAN"></td>
-      <td id="10_SUM_RP_KG_B_BULAN"></td>
-      <td id="10_SUM_RP_B_BULAN"></td>
+      <td id="10_SUM_BRUTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_PERSEN_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_NETTO_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_RP_KG_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
+      <td id="10_SUM_RP_B_BULAN" style="text-align:right ;font-weight: bold;"></td>
     </tr>
   </tfooter>
 
@@ -374,33 +374,33 @@ font-size: 12px;
 
     <tbody id="zone_data_10"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
       <tr class="success">
-        <td colspan="5" id="TANGGAL_LAPORAN" style="text-align:right"></td>
-        <td id="TOTAL_SUM_BRUTO_A"></td>
-        <td id="TOTAL_SUM_PERSEN_A"></td>
-        <td id="TOTAL_SUM_NETTO_A"></td>
-        <td id="TOTAL_SUM_RP_KG_A"></td>
-        <td id="TOTAL_SUM_RP_A"></td>
+        <td colspan="5" id="TANGGAL_LAPORAN" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
-        <td id="TOTAL_SUM_BRUTO_B"></td>
-        <td id="TOTAL_SUM_PERSEN_B"></td>
-        <td id="TOTAL_SUM_NETTO_B"></td>
-        <td id="TOTAL_SUM_RP_KG_B"></td>
-        <td id="TOTAL_SUM_RP_B"></td>
+        <td id="TOTAL_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
       </tr></tfooter>
 
       <tr class="success">
-        <td colspan="5" id="BULAN_LAPORAN" style="text-align:right"></td>
-        <td id="TOTAL_BULAN_SUM_BRUTO_A"></td>
-        <td id="TOTAL_SUM_PERSEN_A"></td>
-        <td id="TOTAL_BULAN_SUM_NETTO_A"></td>
-        <td id="TOTAL_SUM_RP_KG_A"></td>
-        <td id="TOTAL_BULAN_SUM_RP_A"></td>
+        <td colspan="5" id="BULAN_LAPORAN" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_BULAN_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_BULAN_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_BULAN_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
-        <td id="TOTAL_BULAN_SUM_BRUTO_B"></td>
-        <td id="TOTAL_SUM_PERSEN_B"></td>
-        <td id="TOTAL_BULAN_SUM_NETTO_B"></td>
-        <td id="TOTAL_SUM_RP_KG_B"></td>
-        <td id="TOTAL_BULAN_SUM_RP_B"></td>
+        <td id="TOTAL_BULAN_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_BULAN_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_BULAN_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
       </tr></tbody>
 
 </table>
@@ -433,17 +433,17 @@ function laporan_faktur_list(curPage,wilayah)
 					"<td>" + data.result[i].MASTER_WILAYAH + "</td>" +
 					"<td>" + data.result[i].RMP_REKENING_RELASI + "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR + "</td>" +
-					"<td>" + data.result[i].BRUTO_A + "</td>" +
-					"<td>" + data.result[i].PERSEN_A + "</td>" +
-					"<td>" + data.result[i].NETTO_A + "</td>" +
-          "<td>" + data.result[i].RP_KG_A + "</td>" +
-          "<td>" + data.result[i].RP_A + "</td>" +
+					"<td align='right'>" + data.result[i].BRUTO_A + "</td>" +
+					"<td align='right'>" + data.result[i].PERSEN_A + "</td>" +
+					"<td align='right'>" + data.result[i].NETTO_A + "</td>" +
+          "<td align='right'>" + data.result[i].RP_KG_A + "</td>" +
+          "<td align='right'>" + data.result[i].RP_A + "</td>" +
 
-          "<td>" + data.result[i].BRUTO_B + "</td>" +
-          "<td>" + data.result[i].PERSEN_B + "</td>" +
-					"<td>" + data.result[i].NETTO_B + "</td>" +
-          "<td>" + data.result[i].RP_KG_B + "</td>" +
-          "<td>" + data.result[i].RP_B + "</td>" +
+          "<td align='right'>" + data.result[i].BRUTO_B + "</td>" +
+          "<td align='right'>" + data.result[i].PERSEN_B + "</td>" +
+					"<td align='right'>" + data.result[i].NETTO_B + "</td>" +
+          "<td align='right'>" + data.result[i].RP_KG_B + "</td>" +
+          "<td align='right'>" + data.result[i].RP_B + "</td>" +
 
           "<td><a class='btn btn-success btn-xs' href='?show=rmp/purchaser/detail_faktur/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
           "</tr>");

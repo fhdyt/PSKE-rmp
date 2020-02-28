@@ -133,7 +133,7 @@ font-size: 12px;
             </div>
             </div>
             <div class="col-md-3 text-right">
-            <label>Jumlah Baris Per Halaman</label> <input class="form-control" id="REC_PER_HALAMAN" max='1000' min="1" name="REC_PER_HALAMAN" required="" type="number" value="10">
+            <label>Jumlah Baris Per Halaman</label> <input class="form-control" id="REC_PER_HALAMAN" max='1000' min="1" name="REC_PER_HALAMAN" required="" type="number" value="150">
             </div>
             </div><!--/row-->
           </div>
