@@ -149,6 +149,7 @@ font-size: 12px;
                 <td><input type="checkbox" name="CEK_TAMBANG" class="CEK_TAMBANG"> <font color="white"><b>Tambang</b></font></td>
                 <td><input autocomplete="off" class="form-control INPUT_TAMBANG" id="INPUT_TAMBANG" name="INPUT_TAMBANG" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
                     <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="" type="hidden">
+                    <input type="checkbox" name="TOTAL_TAMBANG_RUPIAH" onchange="total_tambang_rupiah()" class="TOTAL_TAMBANG_RUPIAH"><font color="white"> Total Rupiah Tambang</font>
                 </td>
               </tr>
               <tr bgcolor="#239B56">
@@ -511,6 +512,7 @@ function detail_purchaser(curPage)
             //alert(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA)
             $('p.KELAPA_RP').html(number_format(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA));
             $('.KELAPA_RUPIAH').val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA);
+            $('.TOTAL_TAMBANG_RUPIAH').prop('checked', true);
           }
         //  $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $('p.RP_KG').html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
@@ -796,6 +798,12 @@ function kalkulasi_biaya()
     var kelapa_total = parseInt($('.KELAPA_RUPIAH').val());
     //$('p.KELAPA_RP').html(number_format(kelapa_total));
   }
+  else if ($(".JENIS_FAKTUR").val() == "FAKTUR 2")
+  {
+    var tambang_rp = parseInt(tambang);
+    var kelapa_total = parseInt($('.KELAPA_RUPIAH').val());
+    //$('p.KELAPA_RP').html(number_format(kelapa_total));
+  }
   else
   {
     var kelapa_total = parseInt(rp*netto);
@@ -810,5 +818,18 @@ function kalkulasi_biaya()
   $('p.BIAYA_RP').html(number_format(biaya));
   $('p.TOTAL_RP').html(number_format(total_rp));
   $('.TOTAL_SELURUH').val(total_rp);
+}
+
+function total_tambang_rupiah()
+{
+  if ($('.TOTAL_TAMBANG_RUPIAH').is(':checked'))
+  {
+    $(".JENIS_FAKTUR").val("FAKTUR CABANG")
+    kalkulasi_biaya()
+  }
+  else {
+    $(".JENIS_FAKTUR").val("FAKTUR")
+    kalkulasi_biaya()
+  }
 }
 </script>

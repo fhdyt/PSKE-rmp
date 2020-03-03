@@ -128,6 +128,16 @@ $this->MYSQL->record = $data_detail2;
 
 if ($this->MYSQL->simpan() == true)
 	{
+		$data_detail33 = array(
+			'RMP_FAKTUR_JENIS' => $input['JENIS_FAKTUR']
+		);
+		$this->MYSQL = new MYSQL;
+		$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+		$this->MYSQL->tabel = "RMP_FAKTUR";
+		$this->MYSQL->record = $data_detail33;
+		$this->MYSQL->dimana = "where RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."' AND RECORD_STATUS='A'";
+		$this->MYSQL->ubah();
+
 	$this->callback['respon']['pesan'] = "sukses";
 	$this->callback['respon']['text_msg'] = "Berhasil";
 	}

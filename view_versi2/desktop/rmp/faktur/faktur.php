@@ -181,7 +181,7 @@
               <label for="exampleInputEmail1">Nomor Nota</label>
               <select class="NO_NOTA form-control select2" style="width: 100%;" id="NO_NOTA" name="NO_NOTA" onchange="no_nota()">
               </select>
-              <p class="help-block">Pilih Nomor Nota.</p>
+              <p class="help-block"><a href="https://isea-trial.sambu.co.id/cron/timbangan_pkb.php">Ambil data Timbang</a></p>
             </div>
             </div>
             <div class="col-md-3">

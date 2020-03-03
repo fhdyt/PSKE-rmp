@@ -340,17 +340,20 @@ tr {
 		<tr>
 		<td>Berat Bruto</td>
 		<td>: </td>
-		<td>'.number_format($bruto,0,",",".").' Kg</td>
+		<td style="text-align:right">'.number_format($bruto,0,",",".").' </td>
+		<td>Kg</td>
 		</tr>
 		<tr>
 		<td>Potongan ('.$potongan.' %)</td>
 		<td>: </td>
-		<td>'.number_format($total_potongan,0,",",".").' Kg</td>
+		<td style="text-align:right">'.number_format($total_potongan,0,",",".").' </td>
+		<td>Kg</td>
 		</tr>
 		<tr>
 		<td>Berat Netto</td>
 		<td>: </td>
-		<td>'.number_format(round($netto),0,",",".").' Kg</td>
+		<td style="text-align:right">'.number_format(round($netto),0,",",".").' </td>
+		<td>Kg</td>
 		</tr>
 		<tr>
 		<td>&nbsp;</td>
@@ -400,7 +403,8 @@ tr {
 			<td><img width="50" height="54" src="asset/platform/files/ttd/'.$operator.'.png"><br><br>'.$operatornama.'<hr>Opr Timbang </td>
 			<td><img width="50" height="54" src="asset/platform/files/ttd/'.$qc.'.png"><br><br>'.$qcnama.'<hr>Inspektur Mutu</td>
 			<td><img width="50" height="54" src="asset/platform/files/ttd/'.$adm.'.png"><br><br>'.$admnama.'<hr>ADM RMPr-KB</td>
-			<td><img width="50" height="54" src="asset/platform/files/ttd/'.$purchaser.'.png"><br><br>'.$purchasernama.'<hr>Purchaser</td>
+
+			<td><br><br><br><br>&nbsp;<hr>Purchaser</td>
 			<td><br><br><br><br>&nbsp;<hr>Dept. Head PCH</td>
 		</tr>
 	</table>

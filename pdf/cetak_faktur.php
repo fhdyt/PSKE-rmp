@@ -65,8 +65,16 @@ $admnama =$respon['respon']['admnama'];
 $operator =$respon['respon']['operator'];
 $operatornama =$respon['respon']['operatornama'];
 
+
 $purchaser =$respon['respon']['purchaser'];
-$purchasernama =$respon['respon']['purchasernama'];
+//$purchasernama =$respon['respon']['purchasernama'];
+if($respon['respon']['purchasernama']=="MEIKO ELI SUHESTI LUBIS")
+{
+	$purchasernama = "MEIKO";
+}
+else {
+	$purchasernama =$respon['respon']['purchasernama'];
+}
 
 $qc =$respon['respon']['qc'];
 $qcnama =$respon['respon']['qcnama'];
@@ -160,8 +168,9 @@ else if ($printed == "beacukai")
 	$cetak_catatan_purchaser = $catatan_purchaser;
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
-	$kelapa_total = number_format($kelapa,0,",",".");
-	$terbilang=terbilang($kelapa_total)." Rupiah";
+
+	$kelapa_total = number_format(($kelapa+$tambang+$biaya),0,",",".");
+	$terbilang=terbilang($kelapa+$tambang+$biaya)." Rupiah";
 
 	$tambang_title = " ";
 	$tambang_rp = " ";
@@ -497,21 +506,21 @@ tr {
 		<tr>
 		<td>Berat Bruto</td>
 		<td>: </td>
-		<td>'.number_format($bruto,0,",",".").' Kg</td>
-		<td></td>
+		<td style="text-align:right">'.number_format($bruto,0,",",".").' </td>
+		<td>Kg</td>
 		</tr>
 		<tr>
 		<td>Potongan ('.$potongan.' %)</td>
 		<td>: </td>
-		<td>'.number_format($total_potongan,0,",",".").' Kg</td>
-		<td></td>
+		<td style="text-align:right">'.number_format($total_potongan,0,",",".").' </td>
+		<td>Kg</td>
 		</tr>
 		<tr>
 		<td>Berat Netto</td>
 		<td>: </td>
-		<td>'.number_format(round($netto),0,",",".").' Kg</td>
+		<td style="text-align:right">'.number_format(round($netto),0,",",".").' </td>
+		<td>Kg</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$rp_kg_cetak.'</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>'.$kelapa_title.'</td>
