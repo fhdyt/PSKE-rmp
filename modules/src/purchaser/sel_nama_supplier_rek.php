@@ -19,13 +19,25 @@ $this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
 // 					  RECORD_STATUS='A' GROUP BY RMP_HASIL_TIMBANG_NO_NOTA";
 
 $tanggal = date("Y-m-d");
+$sqlc = "SELECT
+            RMP_FAKTUR_TANGGAL
+        FROM
+              RMP_FAKTUR
+              WHERE RECORD_STATUS='A'
+							AND RMP_FAKTUR_ID='".$input['id_faktur']."'
+          ";
+$this->MYSQL = new MYSQL();
+$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+$this->MYSQL->queri = $sqlc ;
+$tanggal_faktur = $this->MYSQL->data();
+$tanggal_faktur2 = $tanggal_faktur[0]['RMP_FAKTUR_TANGGAL'];
 
 $this->MYSQL->queri="SELECT *, PH.RMP_PENYESUAIAN_HARGA_KB_".$input['grade']." AS HARGA FROM RMP_MASTER_PERSONAL AS P LEFT JOIN RMP_REKENING_RELASI AS R
 												ON P.RMP_MASTER_PERSONAL_ID=R.RMP_MASTER_PERSONAL_ID
 												LEFT JOIN RMP_PENYESUAIAN_HARGA_KB AS PH ON P.RMP_MASTER_PERSONAL_ID=PH.RMP_MASTER_PERSONAL_ID
 												WHERE R.RMP_REKENING_RELASI_MATERIAL='".$input['material']."'
-												AND (PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal."' AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR>='".$tanggal."')
-												OR (PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal."' AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR='0000-00-00')
+												AND (PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal_faktur2."' AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR>='".$tanggal_faktur2."')
+												OR (PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal_faktur2."' AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR='0000-00-00')
 												AND PH.RMP_PENYESUAIAN_HARGA_KB_JENIS_MATERIAL='".$input['material']."'
 												AND R.RMP_REKENING_RELASI_MATERIAL='".$input['material']."'
 												AND P.RECORD_STATUS='A'

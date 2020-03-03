@@ -618,11 +618,12 @@ function sel_nama_supplier()
 {
   var nama_material = "material="+$(".NAMA_MATERIAL").val()
   var grade_material = "grade="+$(".GRADE_MATERIAL").val()
+  var id_faktur = "id_faktur=<?php echo $d3; ?>"
   $.ajax({
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=sel_nama_supplier_rek&'+nama_material+'&'+grade_material+'',
+    data: 'ref=sel_nama_supplier_rek&'+nama_material+'&'+grade_material+'&'+id_faktur+'',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
         for (i = 0; i < data.result.length; i++) {
