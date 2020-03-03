@@ -303,6 +303,9 @@ switch($ref){
 			case 'add_faktur_purchaser':
 				require_once("ajax/purchaser/add_faktur_purchaser.php");
 			break;
+			case 'batalkan_kalkulasi':
+				require_once("ajax/purchaser/batalkan_kalkulasi.php");
+			break;
 			case 'add_verifikasi_harga':
 				require_once("ajax/purchaser/add_verifikasi_harga.php");
 			break;

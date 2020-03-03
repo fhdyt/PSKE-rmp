@@ -257,6 +257,7 @@ font-size: 12px;
             </table>
             <p class="help-block">Mohon periksa kembali kesesuaian data faktur dan data yang anda masukkan.</p>
             <button class="btn btn-success simpanHargaPurchaser">Simpan</button>
+            <button class="btn btn-danger batalkankalkulasi" style="display:none;">Batalkan Kalkulasi</button>
             <div class="btn-group" hidden>
               <button type="button" class="btn btn-default dropdown-toggle cetak_relasi_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display:none;">
                 <i class="fa fa-print" aria-hidden="true"></i> Cetak <span class="caret"></span>
@@ -571,6 +572,7 @@ function detail_purchaser(curPage)
 
 
             $('.cetak_relasi_dropdown').removeAttr('style');
+            $('.batalkankalkulasi').removeAttr('style');
           }
           else if(data.resultbc[i].FRRECORD_STATUS == "V")
           {
@@ -833,4 +835,37 @@ function total_tambang_rupiah()
     kalkulasi_biaya()
   }
 }
+
+$(".batalkankalkulasi").on('click', function(){
+  var no_faktur = "NO_FAKTUR=" +$('.NO_FAKTUR').text()+ ""
+  if(confirm('Apakah anda sudah yakin ?')) {
+
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=batalkan_kalkulasi&' + no_faktur ,
+    success: function(data) {
+      if (data.respon.pesan == "sukses")
+      {
+        alert(data.respon.text_msg)
+        faktur_detail_list();
+        detail_purchaser();
+        $('.cetak_relasi_dropdown').attr('style','display:none');
+        $('.batalkankalkulasi').attr('style','display:none');
+        //$('.modalCetakFaktur').modal('show')
+      }
+      else if (data.respon.pesan == "gagal")
+      {
+        alert (data.respon.text_msg);
+        alert("Gagal Menyimpan");
+      }
+    }, //end success
+    error: function(x, e)
+    {
+      console.log("Error Ajax BATALKAN KALKULASI");
+    } //end error
+  });
+}
+})
 </script>

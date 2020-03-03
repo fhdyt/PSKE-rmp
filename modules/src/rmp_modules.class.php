@@ -451,6 +451,9 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_add_faktur_purchaser':
 			require_once ("purchaser/add_faktur_purchaser.php");
 		break;
+		case 'nonlogin_batalkan_kalkulasi':
+			require_once ("purchaser/batalkan_kalkulasi.php");
+		break;
 		case 'nonlogin_add_verifikasi_harga':
 			require_once ("purchaser/add_verifikasi_harga.php");
 		break;
