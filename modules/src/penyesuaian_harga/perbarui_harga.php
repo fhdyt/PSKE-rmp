@@ -56,7 +56,7 @@ foreach($result_a as $key => $value)
   else
   {
   	$data_detail3 = array(
-    	'RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR' => $input['QUALITED_HARGA_TANGGAL_BERLAKU'],
+    	'RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR' => date('Y-m-d', strtotime($input['QUALITED_HARGA_TANGGAL_BERLAKU'] .' -1 day')),
     );
     $this->MYSQL = new MYSQL;
     $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
