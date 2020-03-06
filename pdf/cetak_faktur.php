@@ -6,7 +6,7 @@
 include("../../main.config.php");
 
 $tanggalsekarang=date('d F Y');
-$mpdf=new mPDF('c','A4','','',10,10,30,10,5,5);
+$mpdf=new mPDF('c','A4','','',10,10,30,40,5,5);
 
 //==============================================================
 
@@ -312,7 +312,6 @@ foreach($respon['result'] as $r){
 	<td>
 	'.number_format($r['RMP_FAKTUR_DETAIL_BRUTO'],0,",",".").' Kg
 	</td>
-
 	</tr>
 	';
 }
@@ -462,7 +461,6 @@ tr {
 			</td>
 		</tr>
 	</table>
-	<br>
 
 	<table class="table">
 		<tr>
@@ -501,7 +499,6 @@ tr {
 
 
 	</table >
-	<br>
 	<table boder="1">
 		<tr>
 		<td>Berat Bruto</td>
@@ -593,9 +590,7 @@ tr {
 		<td></td>
 		<td></td>
 		</tr>
-		<tr>
-		<td><br></td>
-		</tr>
+
 		<tr>
 		<td>Catatan : </td>
 		<td colspan="3">'.$catatan_supplier.'</td>
@@ -605,10 +600,8 @@ tr {
 		<td colspan="3">'.$cetak_catatan_purchaser.'</td>
 		</tr>
 	</table>
-	<br>
 <p align="right"><i><b>Terbilang :</b> '.ucwords($terbilang).'</i></p>
 
-	<br>
 	<table class="table2">
 		<tr>
 			<td>Ditimbang Oleh</td>

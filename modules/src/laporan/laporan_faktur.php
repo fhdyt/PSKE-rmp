@@ -45,7 +45,7 @@ $sql = "SELECT * FROM
         P.RECORD_STATUS='A'
         AND
         RR.RECORD_STATUS='A'
-        ORDER BY F.RMP_FAKTUR_NO_FAKTUR ASC
+        ORDER BY FP.RMP_FAKTUR_PURCHASER_NO_REKENING ASC
         ";
 
 $this->MYSQL = new MYSQL();
@@ -68,7 +68,7 @@ foreach($result_a as $r)
     $sql2 = "SELECT * FROM
              RMP_MASTER_WILAYAH
              WHERE
-             RMP_MASTER_WILAYAH_ID='".$r['RMP_MASTER_WILAYAH_PREV_LINK']."' AND RECORD_STATUS='A'";
+             RMP_MASTER_WILAYAH_ID='".$r['SUB_WILAYAH_ID']."' AND RECORD_STATUS='A'";
     $this->MYSQL = new MYSQL();
     $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
     $this->MYSQL->queri = $sql2 ;
