@@ -330,6 +330,9 @@ switch($ref){
 			case 'total_laporan':
 				require_once("ajax/laporan/total_laporan.php");
 			break;
+			case 'kirim_pembukuan':
+				require_once("ajax/laporan/kirim_pembukuan.php");
+			break;
 
 
 

@@ -46,6 +46,7 @@ font-size: 12px;
 <table class="table table-hover table-bordered">
   <thead>
     <tr>
+      <th rowspan="2"></th>
       <th rowspan="2">No.</th>
       <th rowspan="2">Nama</th>
       <th rowspan="2">Alamat</th>
@@ -426,8 +427,15 @@ function laporan_faktur_list(curPage,wilayah)
         for (i = 0; i < data.result.length; i++) {
           var jumlah_data = data.result.length;
           var nomor = i;
+          if(data.result[i].RMP_FAKTUR_STATUS == "NOT"){
+            var btn_kirim = "<a class='btn btn-link btn-xs kirim_pembukuan' no_faktur='" + data.result[i].RMP_FAKTUR_NO_FAKTUR + "'><span class='fa fa-book icon_kirim_pembukuan' aria-hidden='true'></span></a>"
+          }
+          else{
+            var btn_kirim = ""
+          }
           // console.log(nomor);
           $("tbody#zone_data_"+wilayah+"").append("<tr class='detailLogId' id='list_laporan' >" +
+					"<td>"+btn_kirim+"</td>" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +
 					"<td>" + data.result[i].MASTER_WILAYAH + "</td>" +
@@ -595,4 +603,43 @@ function filter_tanggal(){
   laporan_faktur_list('1','10');
 
 }
+
+function kirim_pembukuan(no_faktur){
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=kirim_pembukuan&NO_FAKTUR=' + no_faktur ,
+    success: function(data) {
+      if (data.respon.pesan == "sukses")
+      {
+        console.log("sukses")
+        laporan_faktur_list('1','02');
+        laporan_faktur_list('1','03');
+        laporan_faktur_list('1','04');
+        laporan_faktur_list('1','05');
+        laporan_faktur_list('1','06');
+        laporan_faktur_list('1','07');
+        laporan_faktur_list('1','08');
+        laporan_faktur_list('1','09');
+        laporan_faktur_list('1','10');
+      }
+      else if (data.respon.pesan == "gagal")
+      {
+      //  alert (data.respon.text_msg);
+        alert("Gagal Menyimpan");
+      }
+    }, //end success
+    error: function(x, e)
+    {
+      console.log("Error Ajax");
+    } //end error
+  });
+}
+$("tbody#zone_data_02,tbody#zone_data_03,tbody#zone_data_04,tbody#zone_data_05,tbody#zone_data_06,tbody#zone_data_07,tbody#zone_data_08,tbody#zone_data_09,tbody#zone_data_10").on("click", "a.kirim_pembukuan", function(){
+  $(this).find('span').removeClass('fa fa-book');
+  $(this).find('span').addClass('fa fa-spinner fa-pulse fa-fw');
+  var no_faktur = $(this).attr("no_faktur")
+  kirim_pembukuan(no_faktur)
+})
 </script>

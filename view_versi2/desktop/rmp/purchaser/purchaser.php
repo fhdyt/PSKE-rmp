@@ -110,7 +110,7 @@ font-size: 12px;
                   <th>Nomor Faktur</th>
                   <th>Nama Supplier <small><i>(Admin)</i></small></th>
                   <th>Nama Supplier <small><i>(Purchaser)</i></small></th>
-                  <th>Lokasi</th>
+                  <th>Alamat</th>
                   <th>Material</th>
                   <th>Tanggal</th>
                   <th></th>
@@ -224,7 +224,7 @@ function faktur_list(curPage)
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR + "</td>" +
 					"<td>" + supplier + "</td>" +
 					"<td>" + nama_supplier + "" + verifikasi + "</td>" +
-					"<td>" + data.result[i].RMP_MASTER_WILAYAH + "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_ALAMAT + "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_JENIS_MATERIAL + "</td>" +
 					"<td>" + data.result[i].TANGGAL + "</td>" +
 					//"<td>" + data.result[i].STATUS_PURCHASAERs + "</td>" +

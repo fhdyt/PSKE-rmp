@@ -53,6 +53,16 @@ $bruto =$respon['respon']['total_kg'];
 $potongan =$respon['respon']['potongan'];
 $total_potongan = $bruto * ($potongan / 100);
 $netto = $respon['netto'];
+if ($total_potongan == 0)
+{
+	$total_potongan = $bruto - $netto;
+	$potongan = round(($total_potongan/$bruto)*100);
+}
+else {
+	$total_potongan=$total_potongan;
+	$potongan=$potongan;
+}
+
 $kelapa = $respon['rp_kelapa'];
 //$kelapa = round($netto)*round($rp_kg);
 $today = date("Y-m-d");

@@ -61,6 +61,15 @@ font-size: 12px;
 					</div>
 					<div class="col-md-4 text-right"></div>
 				</div><!--/.row-->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="callout callout-warning warning_faktur" hidden>
+                <h4>Tidak dapat melakukan edit.</h4>
+
+                <p>Faktur telah dijurnalkan oleh Accounting.</p>
+              </div>
+          </div>
+        </div>
           <div class="row">
             <div class="col-md-5">
               <table class="table">
@@ -514,6 +523,12 @@ function detail_purchaser(curPage)
             $('p.KELAPA_RP').html(number_format(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA));
             $('.KELAPA_RUPIAH').val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA);
             $('.TOTAL_TAMBANG_RUPIAH').prop('checked', true);
+          }
+          if(data.resultbc[i].MYGL_STATUS == "1")
+          {
+            $("div.warning_faktur").attr("hidden", false)
+            $(".simpanHargaPurchaser").attr("disabled", true)
+            $(".batalkankalkulasi").attr("disabled", true)
           }
         //  $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $('p.RP_KG').html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");

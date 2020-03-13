@@ -62,6 +62,7 @@ foreach($result_a as $r)
     $r['NO'] = $no;
     $r['TOTAL_BRUTO'] += $r['RMP_FAKTUR_PURCHASER_BRUTO'];
     $r['RMP_MASTER_WILAYAH_KODE']=$r['RMP_MASTER_WILAYAH_KODE'];
+    $r['MASTER_WILAYAH']=$r['RMP_FAKTUR_ALAMAT'];
     $grade_kelapa = substr($r['RMP_FAKTUR_JENIS_MATERIAL'],-1);
     $potongan = $r['RMP_FAKTUR_POTONGAN'];
 
@@ -76,7 +77,7 @@ foreach($result_a as $r)
 
     foreach($result_b as $rb)
     {
-      $r['MASTER_WILAYAH']=$rb['RMP_MASTER_WILAYAH'];
+      //$r['MASTER_WILAYAH']=$rb['RMP_MASTER_WILAYAH'];
     }
 
     $sql23 = "SELECT * FROM
