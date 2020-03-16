@@ -453,7 +453,7 @@ function laporan_faktur_list(curPage,wilayah)
           "<td align='right'>" + data.result[i].RP_KG_B + "</td>" +
           "<td align='right'>" + data.result[i].RP_B + "</td>" +
 
-          "<td><a class='btn btn-success btn-xs' href='?show=rmp/purchaser/detail_faktur/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
+          "<td><a class='btn btn-success btn-xs' target='_blank' href='?show=rmp/purchaser/detail_faktur/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
           "</tr>");
 
           $("td#"+wilayah+"_SUM_BRUTO_A").html(data.result[i].SUM_BRUTO_A)
