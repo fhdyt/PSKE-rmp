@@ -385,7 +385,7 @@ tr {
 		</tr>
 		<tr>
 		<td></td>
-		<td colspan="3">'.$cetak_catatan_purchaser.'</td>
+		<td colspan="3">'.$catatan_purchaser.'</td>
 		</tr>
 	</table>
 	<br>

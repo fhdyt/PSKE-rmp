@@ -84,7 +84,7 @@ font-size: 10px;
   <tbody id="zone_data_02"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_02">
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;"># (02)</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;"># (02)</td>
       <td id="02_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="02_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="02_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
@@ -105,7 +105,7 @@ font-size: 10px;
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;">AKUM</td>
       <td id="02_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="02_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="02_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
@@ -130,7 +130,7 @@ font-size: 10px;
   <tbody id="zone_data_03"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_03">
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;"># (03)</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;"># (03)</td>
       <td id="03_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="03_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="03_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
@@ -151,7 +151,7 @@ font-size: 10px;
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;">AKUM</td>
       <td id="03_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="03_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="03_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
@@ -175,7 +175,7 @@ font-size: 10px;
   <tbody id="zone_data_04"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_04">
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;"># (04)</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;"># (04)</td>
       <td id="04_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="04_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="04_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
@@ -196,7 +196,7 @@ font-size: 10px;
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;">AKUM</td>
       <td id="04_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="04_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="04_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
@@ -220,7 +220,7 @@ font-size: 10px;
   <tbody id="zone_data_05"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_05">
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;"># (05)</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;"># (05)</td>
       <td id="05_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="05_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="05_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
@@ -241,7 +241,7 @@ font-size: 10px;
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;">AKUM</td>
       <td id="05_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="05_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="05_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
@@ -265,7 +265,7 @@ font-size: 10px;
   <tbody id="zone_data_06"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_06">
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;"># (06)</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;"># (06)</td>
       <td id="06_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="06_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="06_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
@@ -286,7 +286,7 @@ font-size: 10px;
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;">AKUM</td>
       <td id="06_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="06_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="06_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
@@ -310,7 +310,7 @@ font-size: 10px;
   <tbody id="zone_data_07"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_07">
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;"># (07)</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;"># (07)</td>
       <td id="07_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="07_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="07_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
@@ -331,7 +331,7 @@ font-size: 10px;
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;">AKUM</td>
       <td id="07_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="07_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="07_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
@@ -355,7 +355,7 @@ font-size: 10px;
   <tbody id="zone_data_08"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_08">
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;"># (08)</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;"># (08)</td>
       <td id="08_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="08_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="08_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
@@ -376,7 +376,7 @@ font-size: 10px;
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;">AKUM</td>
       <td id="08_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="08_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="08_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
@@ -400,7 +400,7 @@ font-size: 10px;
   <tbody id="zone_data_09"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_09">
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;"># (09)</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;"># (09)</td>
       <td id="09_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="09_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="09_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
@@ -421,7 +421,7 @@ font-size: 10px;
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;">AKUM</td>
       <td id="09_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="09_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="09_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
@@ -445,7 +445,7 @@ font-size: 10px;
   <tbody id="zone_data_10"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
   <tfooter id="foot_data_10">
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;"># (10)</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;"># (10)</td>
       <td id="10_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="10_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
       <td id="10_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
@@ -466,7 +466,7 @@ font-size: 10px;
     </tr>
 
     <tr class="warning">
-      <td colspan="5" style="text-align:right ;font-weight: bold;">AKUM</td>
+      <td colspan="6" style="text-align:right ;font-weight: bold;">AKUM</td>
       <td id="10_SUM_BRUTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="10_SUM_PERSEN_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
       <td id="10_SUM_NETTO_A_BULAN" style="text-align:right ;font-weight: bold;"></td>
@@ -491,7 +491,7 @@ font-size: 10px;
 
     <tbody id="zone_data_10"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
       <tr class="success">
-        <td colspan="5" id="TANGGAL_LAPORAN" style="text-align:right ;font-weight: bold;"></td>
+        <td colspan="6" id="TANGGAL_LAPORAN" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
@@ -512,7 +512,7 @@ font-size: 10px;
       </tr></tfooter>
 
       <tr class="success">
-        <td colspan="5" id="BULAN_LAPORAN" style="text-align:right ;font-weight: bold;"></td>
+        <td colspan="6" id="BULAN_LAPORAN" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_BULAN_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_BULAN_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>

@@ -531,10 +531,8 @@ tr {
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>'.$kelapa_title.'</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$kelapa_rp.'</td>
+		<td>'.$kelapa_rp.'</td>
 		<td align="right">'.$kelapa_total.'</td>
-
-
 		</tr>
 		<tr>
 		<td>
@@ -547,7 +545,7 @@ tr {
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>'.$tambang_title.'</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$tambang_rp.'</td>
+		<td>'.$tambang_rp.'</td>
 		<td align="right">'.$tambang_total.'</td>
 		</tr>
 		<tr>
@@ -561,7 +559,7 @@ tr {
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>'.$biaya_title.'</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$biaya_rp.'</td>
+		<td>'.$biaya_rp.'</td>
 		<td align="right">'.$biaya_total.'</td>
 		</tr>
 		<tr>
@@ -585,7 +583,7 @@ tr {
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td><b>'.$total_jumlah_title.'</b></td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'.$total_jumlah_rp.'</b></td>
+		<td><b>'.$total_jumlah_rp.'</b></td>
 		<td align="right"><b>'.$total_jumlah_total.'</b></td>
 		</tr>
 		<tr>
