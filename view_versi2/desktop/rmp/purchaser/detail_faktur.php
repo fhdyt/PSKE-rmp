@@ -117,8 +117,12 @@ font-size: 12px;
                   </td>
                 </tr>
                 <tr>
-                  <td><b>Catatan</b></td>
+                  <td><b>Catatan Purchaser</b></td>
                   <td><p class="CATATAN"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                </tr>
+                <tr>
+                  <td><b>Catatan Supplier</b></td>
+                  <td><p class="CATATAN_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
                 </tr>
               </table>
           </div>
@@ -490,6 +494,7 @@ function faktur_detail_list(curPage)
           $(".NAMA_MATERIAL").val(data.resultb[i].NAMA_MATERIAL)
           $(".GRADE_MATERIAL").val(data.resultb[i].GRADE_MATERIAL)
           $(".CATATAN").html(data.resultb[i].RMP_FAKTUR_CATATAN_PURCHASER)
+          $(".CATATAN_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_CATATAN_SUPPLIER)
           $(".JENIS_FAKTUR").val(data.resultb[i].RMP_FAKTUR_JENIS)
 					}
           sel_nama_supplier();

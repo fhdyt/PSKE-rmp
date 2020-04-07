@@ -43,9 +43,9 @@
     transform: rotate(360deg);
   }
 }
-/* table{
+table{
 font-size: 12px;
-} */
+}
 </style>
 <div class="row">
 	<div class="col-lg-12 col-md-12">

@@ -81,7 +81,7 @@ if (empty($result_abx))
 else
 {
 	$this->callback['respon']['pesan'] = "gagal_purchaser";
-	$this->callback['respon']['text_msg'] = "OK..";
+	$this->callback['respon']['text_msg'] = $input['NO_FAKTUR'];
 	$this->callback['filter'] = $params;
 	$this->callback['result'] = $result;
 }

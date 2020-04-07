@@ -1093,7 +1093,7 @@ function kirim_hasil_timbang(data)
       }
       else if (data.respon.pesan == "gagal_purchaser")
       {
-        //console.log(data.respon.text_msg);
+        console.log(data.respon.text_msg);
         alert("Faktur Telah Diproses oleh Purchaser");
       }
     }, //end success
