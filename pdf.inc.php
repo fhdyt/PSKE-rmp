@@ -7,6 +7,9 @@ switch($d2){
 	case 'cetak_faktur_adm':
 		require("pdf/cetak_faktur_adm.php");
 		break;
+	case 'cetak_laporan_harian':
+		require("pdf/cetak_laporan_harian.php");
+		break;
 	//--------------Handle Error Page-----------------------------------
 	default:
 		$callback['pesan']="gagal";

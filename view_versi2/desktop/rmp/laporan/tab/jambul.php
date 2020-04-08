@@ -41,6 +41,7 @@ font-size: 12px;
       <input type="date" id="FILTER_TANGGAL" class="form-control FILTER_TANGGAL" name="FILTER_TANGGAL" onchange="filter_tanggal()" value="<?php echo date("Y-m-d"); ?>"/>
           <p class="help-block">Tanggal.</p>
         </form>
+        <!-- <a class="cetak_laporan btn btn-sm btn-primary">Cetak</a> -->
   </div>
 </div><!--/.row-->
 <table class="table table-hover table-bordered">
@@ -641,5 +642,11 @@ $("tbody#zone_data_02,tbody#zone_data_03,tbody#zone_data_04,tbody#zone_data_05,t
   $(this).find('span').addClass('fa fa-spinner fa-pulse fa-fw');
   var no_faktur = $(this).attr("no_faktur")
   kirim_pembukuan(no_faktur)
+})
+
+$(".cetak_laporan").on("click", function(){
+  var material = btoa("JAMBUL")
+  var tanggal = btoa($(".FILTER_TANGGAL").val())
+  window.open("?show=rmp/pdf/cetak_laporan_harian/"+ material +"/"+ tanggal , '_blank');
 })
 </script>

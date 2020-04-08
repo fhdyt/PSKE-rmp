@@ -320,6 +320,7 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_cetak_faktur_adm':
 			require_once ("faktur/cetak_faktur_adm.php");
 		break;
+
 		case 'nonlogin_sel_nama_supplier':
 			require_once ("faktur/sel_nama_supplier.php");
 		break;
@@ -495,6 +496,17 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		break;
 		case 'nonlogin_list_faktur_cabang_c':
 			require_once ("faktur_cabang_adm/list_faktur_cabang_c.php");
+		break;
+
+
+
+
+
+		case 'nonlogin_cetak_laporan_harian_02':
+			require_once ("laporan/cetak_laporan_harian_02.php");
+		break;
+		case 'nonlogin_cetak_laporan_harian_03':
+			require_once ("laporan/cetak_laporan_harian_03.php");
 		break;
 			// ---------------------end case-----------------------------//
 
