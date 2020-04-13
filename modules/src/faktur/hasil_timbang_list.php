@@ -79,7 +79,6 @@ if (empty($result_a))
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
     $this->callback['kapal'] = $kapal;
-
     }
 
 ?>
