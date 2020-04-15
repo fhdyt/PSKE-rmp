@@ -374,7 +374,7 @@ font-size: 12px;
 
 <!-- ---------------------TOTAL SELURUH FAKTUR-------------------------------------------------------------------- -->
 
-    <tbody id="zone_data_10"><tr><td colspan="11"><center><div class="loader"></div></center></td></tr></tbody>
+    <tbody id="zone_data_101"><tr><td colspan="11"></tbody>
       <tr class="success">
         <td colspan="6" id="TANGGAL_LAPORAN" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
