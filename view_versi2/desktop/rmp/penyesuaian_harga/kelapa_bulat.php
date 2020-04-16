@@ -532,7 +532,7 @@ $("tbody#zone_data").on('click', '.simpan_harga', function(){
  console.log(form);
 })
 
-$("tbody#zone_data").on('click', '.hapus_harga', function(){
+$("tbody#zone_data, tbody#data_qualited_harga").on('click', '.hapus_harga', function(){
  var id = $(this).attr("ID_KUALITET_HARGA")
  console.log(id)
  if(confirm('Apakah anda sudah yakin menghapus data ?')) {
@@ -550,7 +550,9 @@ function hapus_penyesuaian_harga(id)
    success: function(data) {
      if (data.respon.pesan == "sukses")
      {
+       alert("Sukses")
        supplier_list('1');
+       $('.modalQualitedHarga').modal('hide')
      }
      else if (data.respon.pesan == "gagal")
      {
@@ -595,6 +597,7 @@ function qualited_harga_list(id)
          "<td>" + data.result[i].RMP_PENYESUAIAN_HARGA_KB_B +  "</td>" +
          "<td>" + data.result[i].TANGGAL_BERLAKU +  "</td>" +
          "<td>" + data.result[i].TANGGAL_BERAKHIR +  "</td>" +
+         "<td><button class='btn btn-danger hapus_harga btn-sm' ID_KUALITET_HARGA='" + data.result[i].RMP_PENYESUAIAN_HARGA_KB_ID + "'><i class='fa fa-trash' aria-hidden='true'></i></button></td>" +
          "</tr>");
        }
      } else if (data.respon.pesan == "gagal") {
