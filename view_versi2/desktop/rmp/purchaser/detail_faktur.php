@@ -819,7 +819,8 @@ function kalkulasi_biaya()
   {
     var tambang_rp = parseInt(tambang);
     var kelapa_total = parseInt($('.KELAPA_RUPIAH').val());
-    //$('p.KELAPA_RP').html(number_format(kelapa_total));
+
+    $('p.KELAPA_RP').html(number_format(kelapa_total));
   }
   else if ($(".JENIS_FAKTUR").val() == "FAKTUR 2")
   {

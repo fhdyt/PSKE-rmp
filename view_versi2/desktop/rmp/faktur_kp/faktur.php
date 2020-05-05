@@ -64,7 +64,7 @@
       	<div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
-              <h2>Kepala Bulat</h2>
+              <h2>Kopra</h2>
               <hr>
             </div>
           </div>
@@ -193,7 +193,7 @@
                 <label for="exampleInputEmail1">Nama Nota</label>
                 <input autocomplete="off" class="form-control NAMA_NOTA" id="NAMA_NOTA" name="NAMA_NOTA" type="text" readonly>
                 <input autocomplete="off" class="form-control ID_FAKTUR" id="ID_FAKTUR" name="ID_FAKTUR" placeholder="ID_FAKTUR" type="hidden" >
-                <input autocomplete="off" class="form-control JENIS_KELAPA" id="JENIS_KELAPA" name="JENIS_KELAPA" placeholder="JENIS_KELAPA" type="hidden" >
+                <input autocomplete="off" class="form-control JENIS_KELAPA" id="JENIS_KELAPA" name="JENIS_KELAPA" placeholder="JENIS_KELAPA" type="hidden" value="KOPRA" >
                 <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="JENIS_FAKTUR" type="hidden" >
 
                 <p class="help-block">Nama Supplier Pada Nota Timbang.</p>
@@ -258,7 +258,7 @@
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <label for="exampleInputEmail1">Potongan</label> <input autocomplete="off" class="form-control POTONGAN" id="POTONGAN" name="POTONGAN" placeholder="POTONGAN" value="0" type="number">
+                <label for="exampleInputEmail1">Kualitet</label> <input autocomplete="off" class="form-control KUALITET" id="KUALITET" name="KUALITET" placeholder="POTONGAN" value="0" type="number">
                 <p class="help-block">Gunakan "." untuk bilangan desimal</p>
               </div>
             </div>
@@ -742,13 +742,13 @@ function onchange_pilih_nota()
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=pilih_no_nota&TANGGAL_NOTA='+$(".BULAN_NOTA").val()+''+$(".TAHUN_NOTA").val()+'',
+    data: 'ref=pilih_no_nota_kp&TANGGAL_NOTA='+$(".BULAN_NOTA").val()+''+$(".TAHUN_NOTA").val()+'',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
           $("select.NO_NOTA").empty()
           $("select.NO_NOTA").append("<option value='' >Pilih No Nota</option>");
         for (i = 0; i < data.result.length; i++) {
-          $("select.NO_NOTA").append("<option value='"+ data.result[i].notr +"' >"+ data.result[i].notr +"</option>");
+          $("select.NO_NOTA").append("<option value='"+ data.result[i].no_nota +"' >"+ data.result[i].no_nota +"</option>");
 					}
       } else if (data.respon.pesan == "gagal") {
       }
@@ -989,24 +989,21 @@ function hasil_timbang(no_nota)
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=hasil_timbang_list&'+data,
+    data: 'ref=hasil_timbang_list_kp&'+data,
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {
         $("tbody#zone_data").empty();
-        $('.KAPAL_FAKTUR').val(data.kapal)
-        console.log(data.respon.text_msg2)
         for (i = 0; i < data.result.length; i++)
         {
           //console.log(data.result[i].nama_relasi)
-          $('.NAMA_NOTA').val(data.result[i].nama_relasi)
+          $('.NAMA_NOTA').val(data.result[i].nama)
           // $('p.TANGGAL').html(data.result[i].RMP_HASIL_TIMBANG_TANGGAL)
           $('p.TANGGAL').html(data.result[i].tgl)
           // $('p.KAPAL').html(data.result[i].RMP_HASIL_TIMBANG_KAPAL)
-          $('p.KAPAL').html(data.result[i].RMP_FAKTUR_KAPAL)
+          // $('p.KAPAL').html(data.result[i].RMP_FAKTUR_KAPAL)
           // $('p.NO_NOTA_INPUT').html(data.result[i].RMP_HASIL_TIMBANG_NO_NOTA)
-          $('p.NO_NOTA_INPUT').html(data.result[i].notr)
-          $('p.ALAMAT').html(data.result[i].alamat)
+          $('p.NO_NOTA_INPUT').html(data.result[i].relasi)
           $('input.idnota').html(data.result[i].id)
 
           if(data.result[i].RECORD_STATUS=='N')
@@ -1023,7 +1020,7 @@ function hasil_timbang(no_nota)
           {
             // var a = "<a class='btn btn-default btn-sm kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_HASIL_TIMBANG_ID +  "' NO_NOTA='" + data.result[i].RMP_HASIL_TIMBANG_NO_NOTA +  "'><i aria-hidden='true' class='fa fa-external-link'></i></a>"
             // var tr = ""
-            var a = "<button class='btn btn-success btn-xs kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].id +  "' NO_NOTA='" + data.result[i].notr +  "'   BRUTO='" + data.result[i].gross + "' PONTON='" + data.result[i].id_timbang + "' JENIS_KELAPA='" + data.result[i].jenis_kelapa + "'><i aria-hidden='true' class='fa fa-plus'></i></button>"
+            var a = "<button class='btn btn-success btn-xs kirim_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].recno +  "' NO_NOTA='" + data.result[i].relasi +  "'   BRUTO='" + data.result[i].gross + "' PONTON='" + data.result[i].id + "' JENIS_KELAPA='" + data.result[i].jenis_kelapa + "'><i aria-hidden='true' class='fa fa-plus'></i></button>"
             var tr= ""
           }
 
@@ -1034,8 +1031,8 @@ function hasil_timbang(no_nota)
             "<td>" + data.result[i].tgl + "</td>"+
             // "<td>" + data.result[i].RMP_HASIL_TIMBANG_KG + "</td>" +
             "<td>" + data.result[i].gross + "</td>"+
-            "<td>" + data.result[i].jenis_kelapa + "</td>"+
-            "<td>" + data.result[i].id_timbang + "</td>"+
+            "<td>KOPRA</td>"+
+            "<td>" + data.result[i].id + "</td>"+
             "<td>"+ a +"</td>" +
             "</tr>");
         }
@@ -1064,7 +1061,7 @@ $("tbody#zone_data").on('click','button.kirim_hasil_timbang', function()
   var no_faktur = $("input.NO_FAKTUR").val();
 
   var data = 'ID_TIMBANG='+id_timbang+'&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur+"&TANGGAL_NOTA="+$(".BULAN_NOTA").val()+""+$(".TAHUN_NOTA").val()+"";
-  $(".JENIS_KELAPA").val(jenis_kelapa);
+  $(".JENIS_KELAPA").val("KOPRA");
     kirim_hasil_timbang(data)
     var no_faktur = $('.NO_FAKTUR').val()
     //console.log("NOMOR FAKTUR::::::::::::::::::"+no_faktur)
@@ -1077,7 +1074,7 @@ function kirim_hasil_timbang(data)
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=kirim_hasil_timbang&' + data ,
+    data: 'ref=kirim_hasil_timbang_kp&' + data ,
     success: function(data)
     {
       if (data.respon.pesan == "sukses")
@@ -1116,7 +1113,7 @@ function faktur_list(no_nota)
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=faktur_list&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur+'&D2=<?php echo $d2; ?>',
+    data: 'ref=faktur_list_kp&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur+'&D2=<?php echo $d2; ?>',
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {
@@ -1173,7 +1170,7 @@ function simpan_faktur()
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=simpan_faktur&' + fData,
+    data: 'ref=simpan_faktur_kp&' + fData,
     success: function(data)
     {
       if (data.respon.pesan == "sukses")
@@ -1266,7 +1263,7 @@ function kembali_hasil_timbang(data)
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=kembali_hasil_timbang&' + data ,
+    data: 'ref=kembali_hasil_timbang_kp&' + data ,
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {
@@ -1572,7 +1569,6 @@ $(".SIMPAN_MANUAL_PROSES").on("click", function(){
 
 function kalkulasi_manual()
 {
-
   var gross = $("input.MANUAL_GROSS").val()
   var tara = $("input.MANUAL_TARA").val()
   var bruto = parseInt(gross) - parseInt(tara)

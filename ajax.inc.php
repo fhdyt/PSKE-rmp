@@ -213,6 +213,51 @@ switch($ref){
 
 
 
+			case 'pilih_no_nota_kp':
+				require_once("ajax/faktur_kp/pilih_no_nota_kp.php");
+			break;
+			case 'hasil_timbang_list_kp':
+				require_once("ajax/faktur_kp/hasil_timbang_list_kp.php");
+			break;
+			case 'kirim_hasil_timbang_kp':
+				require_once("ajax/faktur_kp/kirim_hasil_timbang_kp.php");
+			break;
+			case 'kembali_hasil_timbang_kp':
+				require_once("ajax/faktur_kp/kembali_hasil_timbang_kp.php");
+			break;
+			case 'faktur_list_kp':
+				require_once("ajax/faktur_kp/faktur_list_kp.php");
+			break;
+			case 'simpan_faktur_kp':
+				require_once("ajax/faktur_kp/simpan_faktur_kp.php");
+			break;
+			// case 'sel_nama_supplier':
+			// 	require_once("ajax/faktur/sel_nama_supplier.php");
+			// break;
+			// case 'sel_operator_timbang':
+			// 	require_once("ajax/faktur/sel_operator_timbang.php");
+			// break;
+			// case 'sel_inspektur_mutu':
+			// 	require_once("ajax/faktur/sel_inspektur_mutu.php");
+			// break;
+			// case 'sel_id_faktur_cabang':
+			// 	require_once("ajax/faktur/sel_id_faktur_cabang.php");
+			// break;
+			// case 'lihat_faktur':
+			// 	require_once("ajax/faktur/lihat_faktur.php");
+			// break;
+			// case 'edit_faktur':
+			// 	require_once("ajax/faktur/edit_faktur.php");
+			// break;
+			// case 'simpan_manual_nota':
+			// 	require_once("ajax/faktur/simpan_manual_nota.php");
+			// break;
+			// case 'cek_nomor_faktur':
+			// 	require_once("ajax/faktur/cek_nomor_faktur.php");
+			// break;
+
+
+
 
 
 

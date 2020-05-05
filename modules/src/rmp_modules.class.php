@@ -347,6 +347,57 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		break;
 
 
+		case 'nonlogin_pilih_no_nota_kp':
+			require_once ("faktur_kp/pilih_no_nota_kp.php");
+		break;
+		case 'nonlogin_hasil_timbang_list_kp':
+			require_once ("faktur_kp/hasil_timbang_list_kp.php");
+		break;
+		case 'nonlogin_kirim_hasil_timbang_kp':
+			require_once ("faktur_kp/kirim_hasil_timbang_kp.php");
+		break;
+		case 'nonlogin_kembali_hasil_timbang_kp':
+			require_once ("faktur_kp/kembali_hasil_timbang_kp.php");
+		break;
+		case 'nonlogin_faktur_list_kp':
+			require_once ("faktur_kp/faktur_list_kp.php");
+		break;
+		case 'nonlogin_simpan_faktur_kp':
+			require_once ("faktur_kp/simpan_faktur_kp.php");
+		break;
+		// case 'nonlogin_cetak_faktur':
+		// 	require_once ("faktur/cetak_faktur.php");
+		// break;
+		// case 'nonlogin_cetak_faktur_adm':
+		// 	require_once ("faktur/cetak_faktur_adm.php");
+		// break;
+		//
+		// case 'nonlogin_sel_nama_supplier':
+		// 	require_once ("faktur/sel_nama_supplier.php");
+		// break;
+		// case 'nonlogin_sel_operator_timbang':
+		// 	require_once ("faktur/sel_operator_timbang.php");
+		// break;
+		// case 'nonlogin_sel_inspektur_mutu':
+		// 	require_once ("faktur/sel_inspektur_mutu.php");
+		// break;
+		// case 'nonlogin_sel_id_faktur_cabang':
+		// 	require_once ("faktur/sel_id_faktur_cabang.php");
+		// break;
+		// case 'nonlogin_lihat_faktur':
+		// 	require_once ("faktur/lihat_faktur.php");
+		// break;
+		// case 'nonlogin_edit_faktur':
+		// 	require_once ("faktur/edit_faktur.php");
+		// break;
+		// case 'nonlogin_simpan_manual_nota':
+		// 	require_once ("faktur/simpan_manual_nota.php");
+		// break;
+		// case 'nonlogin_cek_nomor_faktur':
+		// 	require_once ("faktur/cek_nomor_faktur.php");
+		// break;
+
+
 
 		case 'nonlogin_sel_material':
 			require_once ("penyesuaian_harga/sel_material.php");

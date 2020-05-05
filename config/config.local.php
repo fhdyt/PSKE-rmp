@@ -314,6 +314,38 @@ CLASS RMP_CONFIG extends CONFIG
 				return $this;
 			}//end presensi_proposal_nomor_create()
 
+			public function buat_nomor_faktur_kopra($tanggalnota){
+				$kelapa = "KP";
+				$ptn_kelapa =$kelapa;
+				$tanggal_bulan = substr($tanggalnota,0,2);
+				$tanggal_tahun = substr($tanggalnota,2,4);
+				$tanggal=$tanggal_bulan.'/'.$tanggal_tahun;
+					$this->MYSQL=new MYSQL();
+					$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
+					$this->MYSQL->queri="select RMP_FAKTUR_NO_FAKTUR from RMP_FAKTUR where (RMP_FAKTUR_NO_FAKTUR like'%".$tanggal."%' and RMP_FAKTUR_NO_FAKTUR like'%".$kelapa."%') and RECORD_STATUS='A' order by RMP_FAKTUR_NO_FAKTUR desc";
+					$cek_nomor=$this->MYSQL->data();
+					if(empty($cek_nomor))
+					{
+						$nomor='0001/'.$ptn_kelapa.'/'.$tanggal;
+					}
+					else
+					{
+						//CEK NOMOR TERAKHIR DI TAHUN YANG SAMA
+						$this->MYSQL=new MYSQL();
+						$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
+						$this->MYSQL->queri="select RMP_FAKTUR_NO_FAKTUR from RMP_FAKTUR where (RMP_FAKTUR_NO_FAKTUR like'%".$tanggal."%' and RMP_FAKTUR_NO_FAKTUR like'%".$kelapa."%') and RECORD_STATUS='A' order by RMP_FAKTUR_NO_FAKTUR desc LIMIT 1";
+						$cek_nomor2=$this->MYSQL->data();
+						$nomorBaru=explode("/",$cek_nomor2[0]['RMP_FAKTUR_NO_FAKTUR']);
+						$nomorBaruNya=($nomorBaru[0])+1;
+						$nomor=$this->auto_increatement_number(array('aktif'=>$nomorBaruNya)).'/'.$ptn_kelapa.'/'.$tanggal;
+					}
+				/*
+				}
+				*/
+				$this->callback['nomor']=$nomor;
+				return $this;
+			}//end presensi_proposal_nomor_create()
+
 			public function pembulatan($bilangan){
 
 				if (strpos($bilangan, ".") == true)
