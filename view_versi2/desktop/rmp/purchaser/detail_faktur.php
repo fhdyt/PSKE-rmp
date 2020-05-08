@@ -818,8 +818,8 @@ function kalkulasi_biaya()
   if ($(".JENIS_FAKTUR").val() == "FAKTUR CABANG")
   {
     var tambang_rp = parseInt(tambang);
-    var kelapa_total = parseInt(rp*netto);
-    //var kelapa_total = parseInt($('.KELAPA_RUPIAH').val());
+    // var kelapa_total = parseInt(rp*netto);
+    var kelapa_total = parseInt($('.KELAPA_RUPIAH').val());
     $('.KELAPA_RUPIAH').val(kelapa_total);
     $('p.KELAPA_RP').html(number_format(kelapa_total));
   }
