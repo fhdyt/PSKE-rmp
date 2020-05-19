@@ -56,7 +56,7 @@ font-size: 12px;
 			<div class="list-group-item">
 				<div class="row">
 					<div class="col-md-8">
-						<h3><i class="fa fa-calculator"></i> Pemberian Harga Faktur <b>Kelapa Bulat</b></h3>
+						<h3><i class="fa fa-calculator"></i> Pemberian Harga Faktur <b>Kopra</b></h3>
 						<hr>
 					</div>
 					<div class="col-md-4 text-right"></div>
@@ -95,11 +95,11 @@ font-size: 12px;
                   <td bgcolor="#239B56"><font color="white"><p class="NAMA_SUPPLIER_PURCHASER">
                     <select class="NAMA_SUPPLIER form-control select2" style="width: 100%;" id="NAMA_SUPPLIER" name="NAMA_SUPPLIER">
                       <option value=""></option>
-                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_HIDDEN" id="NAMA_SUPPLIER_HIDDEN" name="NAMA_SUPPLIER_HIDDEN" type="hidden">
-                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_PURCHASER_HIDDEN" id="NAMA_SUPPLIER_PURCHASER_HIDDEN" name="NAMA_SUPPLIER_PURCHASER_HIDDEN" type="hidden">
+                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_HIDDEN" id="NAMA_SUPPLIER_HIDDEN" name="NAMA_SUPPLIER_HIDDEN" type="text">
+                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_PURCHASER_HIDDEN" id="NAMA_SUPPLIER_PURCHASER_HIDDEN" name="NAMA_SUPPLIER_PURCHASER_HIDDEN" type="text">
                     </select>
                 </p></font>
-                  <input autocomplete="off" class="form-control ID_SUPPLIER" id="ID_SUPPLIER" name="ID_SUPPLIER" type="hidden">
+                  <input autocomplete="off" class="form-control ID_SUPPLIER" id="ID_SUPPLIER" name="ID_SUPPLIER" type="text">
                 </td>
                 </tr>
                 <tr>
@@ -141,8 +141,8 @@ font-size: 12px;
                 <td><p class="TOTAL_BRUTO"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
               <tr>
-                <td><b>Potongan</b></td>
-                <td><p class="POTONGAN"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td><b>Kualitet</b></td>
+                <td><p class="KUALITET"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
               <tr>
                 <td><b>Berat Netto (Kg)</b></td>
@@ -153,25 +153,25 @@ font-size: 12px;
               </tr>
               <tr bgcolor="#239B56">
                 <td><input type="checkbox" name="CEK_RP_KG" class="CEK_RP_KG"> <font color="white"><b>@Rp</b></font></td>
-                <td><font color="white"><p class="RP_KG"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></font>
+                <td><input autocomplete="off" class="form-control INPUT_RP_KG" id="INPUT_RP_KG" name="INPUT_RP_KG" type="text">
                   <p class="VERIFIKASI_HARGA_NOTE text-danger loading"></p>
-                  <input autocomplete="off" class="form-control INPUT_RP_KG" id="INPUT_RP_KG" name="INPUT_RP_KG" type="hidden">
+
                 </td>
               </tr>
               <tr bgcolor="#239B56">
                 <td><input type="checkbox" name="CEK_TAMBANG" class="CEK_TAMBANG"> <font color="white"><b>Tambang</b></font></td>
                 <td><input autocomplete="off" class="form-control INPUT_TAMBANG" id="INPUT_TAMBANG" name="INPUT_TAMBANG" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
-                    <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="" type="hidden">
+                    <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="" type="text">
                     <input type="checkbox" name="TOTAL_TAMBANG_RUPIAH" onchange="total_tambang_rupiah()" class="TOTAL_TAMBANG_RUPIAH"><font color="white"> Total Rupiah Tambang</font>
                 </td>
               </tr>
               <tr bgcolor="#239B56">
                 <td><input type="checkbox" name="CEK_BIAYA" class="CEK_BIAYA"> <font color="white"><b>Biaya</b></font></td>
                 <td><input autocomplete="off" class="form-control INPUT_BIAYA" id="INPUT_BIAYA" name="INPUT_BIAYA" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
-                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="hidden">
-                  <input autocomplete="off" class="form-control GRADE_MATERIAL" id="GRADE_MATERIAL" name="GRADE_MATERIAL" type="hidden">
-                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="hidden">
-                  <input autocomplete="off" class="form-control ID_FAKTUR_PURCHASER" id="ID_FAKTUR_PURCHASER" name="ID_FAKTUR_PURCHASER" type="hidden">
+                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="text">
+                  <input autocomplete="off" class="form-control GRADE_MATERIAL" id="GRADE_MATERIAL" name="GRADE_MATERIAL" type="text">
+                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="text">
+                  <input autocomplete="off" class="form-control ID_FAKTUR_PURCHASER" id="ID_FAKTUR_PURCHASER" name="ID_FAKTUR_PURCHASER" type="text">
                 </td>
               </tr>
             </table>
@@ -249,7 +249,7 @@ font-size: 12px;
               <tr>
                 <td><b>Kelapa (Rp)</b></td>
                 <td align="right"><p class="KELAPA_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
-                  <input autocomplete="off" class="form-control KELAPA_RUPIAH" id="KELAPA_RUPIAH" name="KELAPA_RUPIAH" type="hidden">
+                  <input autocomplete="off" class="form-control KELAPA_RUPIAH" id="KELAPA_RUPIAH" name="KELAPA_RUPIAH" type="text">
                 </td>
               </tr>
               <tr>
@@ -264,7 +264,7 @@ font-size: 12px;
                 <td bgcolor="#239B56"><font color="white"><h4><b>Total (Rp)</b></h4></font></td>
                 <td align="right" bgcolor="#239B56"><font color="white"><h4><b>
                   <p class="TOTAL_RP" id="TOTAL_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
-                  <input autocomplete="off" class="form-control TOTAL_SELURUH" id="TOTAL_SELURUH" name="TOTAL_SELURUH" type="hidden">
+                  <input autocomplete="off" class="form-control TOTAL_SELURUH" id="TOTAL_SELURUH" name="TOTAL_SELURUH" type="text">
                 </b></h4></font></td>
               </tr>
             </table>
@@ -437,7 +437,7 @@ function faktur_detail_list(curPage)
         $('p.TOTAL_GROSS').html( data.total_gross)
         $('p.TOTAL_TARA').html( data.total_tara)
         $('p.TOTAL_BRUTO').html( data.total_bruto)
-        $('p.POTONGAN').html( data.potongan + " %")
+        $('p.KUALITET').html( data.kualitet + " %")
 
         var potongan = data.total_bruto*(data.potongan/100)
 
@@ -491,7 +491,7 @@ function faktur_detail_list(curPage)
           $(".NAMA_SUPPLIER_HIDDEN").val(data.resultb[i].RMP_MASTER_PERSONAL_NAMA)
           $("p.TANGGAL_FAKTUR").html(data.resultb[i].TANGGAL)
           $("p.MATERIAL").html(data.resultb[i].RMP_FAKTUR_JENIS_MATERIAL)
-          $(".NAMA_MATERIAL").val(data.resultb[i].NAMA_MATERIAL)
+          $(".NAMA_MATERIAL").val(data.resultb[i].RMP_FAKTUR_JENIS_MATERIAL)
           $(".GRADE_MATERIAL").val(data.resultb[i].GRADE_MATERIAL)
           $(".CATATAN").html(data.resultb[i].RMP_FAKTUR_CATATAN_PURCHASER)
           $(".CATATAN_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_CATATAN_SUPPLIER)
@@ -645,7 +645,7 @@ function sel_nama_supplier()
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=sel_nama_supplier_rek&'+nama_material+'&'+grade_material+'&'+id_faktur+'',
+    data: 'ref=sel_nama_supplier_rek_kp&'+nama_material+'&'+grade_material+'&'+id_faktur+'',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
         for (i = 0; i < data.result.length; i++) {
@@ -721,6 +721,7 @@ $(".simpanHargaPurchaser").on('click', function(){
   var id_faktur_purchaser = "ID_FAKTUR_PURCHASER=" +$('.ID_FAKTUR_PURCHASER').val()+ ""
   var bruto = "TOTAL_BRUTO=" +$('.TOTAL_BRUTO').text()+ ""
   var potongan = "POTONGAN=" +$('.POTONGAN').text()+ ""
+  var kualitet = "KUALITET=" +$('.KUALITET').text()+ ""
   var netto = "TOTAL_NETTO=" +$('.TOTAL_NETTO').text()+ ""
   var rekening = "NO_REKENING=" +$('.NO_REKENING').text()+ ""
   var total_seluruh = "TOTAL_SELURUH=" +$('.TOTAL_SELURUH').val()+ ""
@@ -734,7 +735,7 @@ $(".simpanHargaPurchaser").on('click', function(){
   var cek_kontan = "CEK_KONTAN=" +$('.CEK_KONTAN').is(":checked")+ ""
   var input_pph = "INPUT_PPH=" +$('.INPUT_PPH').val()+ ""
   var input_uang_muka = "INPUT_UANG_MUKA=" +$('.INPUT_UANG_MUKA').val()+ ""
-  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto +"&" + potongan +"&" + netto + "&" + rekening + "&" + total_seluruh + "&" + rp_kelapa + "&" + cek_kontan + "&" + input_pph + "&" + input_uang_muka + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
+  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto + "&" + potongan + "&" + kualitet + "&" + netto + "&" + rekening + "&" + total_seluruh + "&" + rp_kelapa + "&" + cek_kontan + "&" + input_pph + "&" + input_uang_muka + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
   console.log(form)
   $.ajax({
     type: 'POST',

@@ -500,6 +500,9 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_sel_nama_supplier_rek':
 			require_once ("purchaser/sel_nama_supplier_rek.php");
 		break;
+		case 'nonlogin_sel_nama_supplier_rek_kp':
+			require_once ("purchaser/sel_nama_supplier_rek_kp.php");
+		break;
 		case 'nonlogin_add_faktur_purchaser':
 			require_once ("purchaser/add_faktur_purchaser.php");
 		break;

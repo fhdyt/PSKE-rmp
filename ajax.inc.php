@@ -345,6 +345,9 @@ switch($ref){
 			case 'sel_nama_supplier_rek':
 				require_once("ajax/purchaser/sel_nama_supplier_rek.php");
 			break;
+			case 'sel_nama_supplier_rek_kp':
+				require_once("ajax/purchaser/sel_nama_supplier_rek_kp.php");
+			break;
 			case 'add_faktur_purchaser':
 				require_once("ajax/purchaser/add_faktur_purchaser.php");
 			break;

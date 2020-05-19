@@ -221,6 +221,13 @@ function faktur_list(curPage)
           {
             var supplier = data.result[i].RMP_MASTER_PERSONAL_NAMA +" / <b>"+ data.result[i].RMP_FAKTUR_NAMA_SUB +"</b>"
           }
+          if (data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "KOPRA")
+          {
+            var detail_faktur = "detail_faktur_kp"
+          }
+          else {
+            var detail_faktur = "detail_faktur"
+          }
           $("tbody#zone_data").append("<tr class='"+tr+"'  >" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR + "</td>" +
@@ -230,7 +237,7 @@ function faktur_list(curPage)
 					"<td>" + data.result[i].RMP_FAKTUR_JENIS_MATERIAL + "</td>" +
 					"<td>" + data.result[i].TANGGAL + "</td>" +
 					//"<td>" + data.result[i].STATUS_PURCHASAERs + "</td>" +
-          "<td><a class='btn btn-success btn-sm' href='?show=rmp/purchaser/detail_faktur/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
+          "<td><a class='btn btn-success btn-sm' href='?show=rmp/purchaser/"+detail_faktur+"/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
 
 
           "</tr>");

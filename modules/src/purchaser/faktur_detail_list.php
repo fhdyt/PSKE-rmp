@@ -45,6 +45,7 @@ $result_ab = $this->MYSQL->data();
 $no = $posisi + 1;
 
 $potongan = $result_a[0]['RMP_FAKTUR_POTONGAN'];
+$kualitet = $result_a[0]['RMP_FAKTUR_KUALITET'];
 foreach($result_a as $r)
     {
     $r['NO'] = $no;
@@ -84,6 +85,7 @@ if (empty($result_a))
     $this->callback['total_tara'] = $total_tara;
     $this->callback['total_bruto'] = $total_bruto;
     $this->callback['potongan'] = $potongan;
+    $this->callback['kualitet'] = $kualitet;
     $this->callback['total_netto'] = $total_netto;
     $this->callback['resultb'] = $resultb;
     }

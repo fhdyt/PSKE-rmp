@@ -40,6 +40,9 @@ require_once('menu_sidebar.php');
 					case 'DETAIL_FAKTUR':
 						require_once ("rmp/purchaser/detail_faktur.php");
 						break;
+					case 'DETAIL_FAKTUR_KP':
+						require_once ("rmp/purchaser/detail_faktur_kp.php");
+						break;
 
 					default:
 						require_once ("rmp/purchaser/purchaser.php");
