@@ -398,12 +398,12 @@ switch($ref){
 
 
 //--------------Handle Error Page-----------------------------------
-	default:
-		$callback['pesan']="gagal";
-		$callback['text_msg']="Case ajax not found {$ref}";
-		echo json_encode($callback);
-		exit;
-	break;
+	// default:
+	// 	$callback['pesan']="gagal";
+	// 	$callback['text_msg']="CCCCase ajax not found {$ref}";
+	// 	echo json_encode($callback);
+	// 	exit;
+	// break;
 
 }
 ?>

@@ -185,7 +185,7 @@
               <label for="exampleInputEmail1">Nomor Nota</label>
               <select class="NO_NOTA form-control select2" style="width: 100%;" id="NO_NOTA" name="NO_NOTA" onchange="no_nota()">
               </select>
-              <p class="help-block"><a href="https://isea-trial.sambu.co.id/cron/timbangan_pkb.php">Ambil data Timbang</a></p>
+              <p class="help-block"><a href="https://isea.sambu.co.id/cron/timbangan_pkb.php">Ambil data Timbang</a></p>
             </div>
             </div>
             <div class="col-md-3">
@@ -670,7 +670,7 @@ function cek_no_faktur(no_faktur)
         }
       },
       error: function(x, e) {
-        console.log("Error Ajax");
+        //console.log("Error Ajax");
       } //end error
     });
   }
@@ -744,13 +744,17 @@ function onchange_pilih_nota()
     dataType: 'json',
     data: 'ref=pilih_no_nota&TANGGAL_NOTA='+$(".BULAN_NOTA").val()+''+$(".TAHUN_NOTA").val()+'',
     success: function(data) {
+		alert(data.respon.pesan);
+		console.log(data.respon.text_msg);
       if (data.respon.pesan == "sukses") {
+        console.log(data.result.text_msg)
           $("select.NO_NOTA").empty()
           $("select.NO_NOTA").append("<option value='' >Pilih No Nota</option>");
         for (i = 0; i < data.result.length; i++) {
           $("select.NO_NOTA").append("<option value='"+ data.result[i].notr +"' >"+ data.result[i].notr +"</option>");
 					}
       } else if (data.respon.pesan == "gagal") {
+
       }
     }, //end success
     error: function(x, e) {
@@ -995,7 +999,7 @@ function hasil_timbang(no_nota)
       {
         $("tbody#zone_data").empty();
         $('.KAPAL_FAKTUR').val(data.kapal)
-        console.log(data.respon.text_msg2)
+        //console.log(data.respon.text_msg2)
         for (i = 0; i < data.result.length; i++)
         {
           //console.log(data.result[i].nama_relasi)
@@ -1097,13 +1101,13 @@ function kirim_hasil_timbang(data)
       }
       else if (data.respon.pesan == "gagal_purchaser")
       {
-        console.log(data.respon.text_msg);
+        //console.log(data.respon.text_msg);
         alert("Faktur Telah Diproses oleh Purchaser");
       }
     }, //end success
     error: function(x, e)
     {
-      console.log("Error Ajaxxxxxxxxxxxxx");
+      //console.log("Error Ajaxxxxxxxxxxxxx");
     } //end error
   });
 }
@@ -1154,7 +1158,7 @@ function faktur_list(no_nota)
     }, //end success
     error: function(x, e)
     {
-      console.log("Gagal Ajax")
+      //console.log("Gagal Ajax")
     } //end error
   });
 }
@@ -1201,7 +1205,7 @@ function simpan_faktur()
     }, //end success
     error: function(x, e)
     {
-      console.log("Error Ajax");
+      //console.log("Error Ajax");
     } //end error
   });
 }
@@ -1288,7 +1292,7 @@ function kembali_hasil_timbang(data)
     }, //end success
     error: function(x, e)
     {
-      console.log("Error Ajax");
+      //console.log("Error Ajax");
     } //end error
   });
 }
@@ -1560,12 +1564,12 @@ $(".SIMPAN_MANUAL_PROSES").on("click", function(){
 
   		else if (data.respon.pesan == "gagal")
   		{
-  			console.log(data.respon.text_msg);
+  			//console.log(data.respon.text_msg);
   			alert("Gagal Menyimpan");
   		}
   	}, //end success
   	error: function(x, e) {
-  		console.log("Error Ajax");
+  		//console.log("Error Ajax");
   	} //end error
   });
 })
@@ -1576,10 +1580,14 @@ function kalkulasi_manual()
   var gross = $("input.MANUAL_GROSS").val()
   var tara = $("input.MANUAL_TARA").val()
   var bruto = parseInt(gross) - parseInt(tara)
-  console.log(gross)
+  //console.log(gross)
   $("input.MANUAL_BRUTO").val(parseInt(bruto))
   var potongan = $("input.MANUAL_POTONGAN").val()
   var netto = parseInt(bruto)-parseInt(potongan)
   $("input.MANUAL_NETTO").val(parseInt(netto))
 }
+$(function(){
+	//onchange_pilih_notas();
+});
+
 </script>
