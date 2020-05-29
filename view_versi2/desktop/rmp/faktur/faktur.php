@@ -744,7 +744,7 @@ function onchange_pilih_nota()
     dataType: 'json',
     data: 'ref=pilih_no_nota&TANGGAL_NOTA='+$(".BULAN_NOTA").val()+''+$(".TAHUN_NOTA").val()+'',
     success: function(data) {
-		alert(data.respon.pesan);
+		//alert(data.respon.pesan);
 		console.log(data.respon.text_msg);
       if (data.respon.pesan == "sukses") {
         console.log(data.result.text_msg)
