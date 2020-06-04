@@ -174,13 +174,16 @@ if ($printed == "admin")
 
 else if ($printed == "beacukai")
 {
-	$rp_kg_cetak = "@Rp ".number_format(round($rp_kg),0,",",".")."";
+
 	$cetak_catatan_purchaser = $catatan_purchaser;
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
 
 	$kelapa_total = number_format(($kelapa+$tambang+$biaya),0,",",".");
 	$terbilang=terbilang($kelapa+$tambang+$biaya)." Rupiah";
+
+	$rp_kgs = ($kelapa+$tambang+$biaya) / $netto;
+	$rp_kg_cetak = "@Rp ".number_format(round($rp_kgs),0,",",".")."";
 
 	$tambang_title = " ";
 	$tambang_rp = " ";
