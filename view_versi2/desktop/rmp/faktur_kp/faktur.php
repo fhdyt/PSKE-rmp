@@ -234,7 +234,7 @@
             </div>
       		</div>
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Tanggal</label>
                 <input autocomplete="off" class="form-control TANGGAL_FAKTUR datepicker" id="TANGGAL_FAKTUR" name="TANGGAL_FAKTUR" placeholder="" type="text" value="<?php echo date("Y/m/d"); ?>">
@@ -256,10 +256,16 @@
                 <p class="help-block">Nama Inspektur Mutu.</p>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Kualitet</label> <input autocomplete="off" class="form-control KUALITET" id="KUALITET" name="KUALITET" placeholder="POTONGAN" value="0" type="number">
-                <p class="help-block">Gunakan "." untuk bilangan desimal</p>
+                <p class="help-block">Kualitet %</p>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Goni</label> <input autocomplete="off" class="form-control GONI" id="GONI" name="GONI" placeholder="GONI" value="0" type="number">
+                <p class="help-block">Total Goni</p>
               </div>
             </div>
           </div>

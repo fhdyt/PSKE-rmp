@@ -61,6 +61,7 @@ if(empty($input['ID_FAKTUR']))
 				'RMP_FAKTUR_TANGGAL' => $input['TANGGAL_FAKTUR'],
 				'RMP_FAKTUR_POTONGAN' => $input['POTONGAN'],
 				'RMP_FAKTUR_KUALITET' => $input['KUALITET'],
+				'RMP_FAKTUR_GONI' => $input['GONI'],
 				'RMP_FAKTUR_JENIS_MATERIAL' => $input['JENIS_KELAPA'],
 				'RMP_FAKTUR_OPERATOR_TIMBANG' => $input['OPERATOR_TIMBANG'],
 				'RMP_FAKTUR_QC' => $input['INSPEKTUR_MUTU'],

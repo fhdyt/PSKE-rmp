@@ -46,6 +46,7 @@ $no = $posisi + 1;
 
 $potongan = $result_a[0]['RMP_FAKTUR_POTONGAN'];
 $kualitet = $result_a[0]['RMP_FAKTUR_KUALITET'];
+$goni = $result_a[0]['RMP_FAKTUR_GONI'];
 foreach($result_a as $r)
     {
     $r['NO'] = $no;
@@ -86,6 +87,7 @@ if (empty($result_a))
     $this->callback['total_bruto'] = $total_bruto;
     $this->callback['potongan'] = $potongan;
     $this->callback['kualitet'] = $kualitet;
+    $this->callback['goni'] = $goni;
     $this->callback['total_netto'] = $total_netto;
     $this->callback['resultb'] = $resultb;
     }

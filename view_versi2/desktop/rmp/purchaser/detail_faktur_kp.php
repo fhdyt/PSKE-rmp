@@ -140,10 +140,7 @@ font-size: 12px;
                 <td><b>Berat Bruto (Kg)</b></td>
                 <td><p class="TOTAL_BRUTO"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
-              <tr>
-                <td><b>Kualitet</b></td>
-                <td><p class="KUALITET"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
-              </tr>
+
               <tr>
                 <td><b>Berat Netto (Kg)</b></td>
                 <td>
@@ -151,9 +148,22 @@ font-size: 12px;
                   <p class="TOTAL_NETTO_SEBELUM" style="font-size:10px;color:grey;"></i></p>
                 </td>
               </tr>
+              <tr>
+                <td><b>Kualitet</b></td>
+                <td><p class="KUALITET"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+              </tr>
+              <tr>
+                <td><b>Goni</b></td>
+                <td><p class="GONI_TEXT"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+              </tr>
+              <tr bgcolor="#239B56">
+                <td><font color="white"><b>Kualitet Faktur</b></font></td>
+                <td><input autocomplete="off" class="form-control KUALITET_FAKTUR" id="KUALITET_FAKTUR" name="KUALITET_FAKTUR" type="text">
+                </td>
+              </tr>
               <tr bgcolor="#239B56">
                 <td><input type="checkbox" name="CEK_RP_KG" class="CEK_RP_KG"> <font color="white"><b>@Rp</b></font></td>
-                <td><input autocomplete="off" class="form-control INPUT_RP_KG" id="INPUT_RP_KG" name="INPUT_RP_KG" type="text">
+                <td><input autocomplete="off" class="form-control INPUT_RP_KG" id="INPUT_RP_KG" name="INPUT_RP_KG" type="text" onkeyup="kalkulasi_biaya()">
                   <p class="VERIFIKASI_HARGA_NOTE text-danger loading"></p>
 
                 </td>
@@ -166,11 +176,15 @@ font-size: 12px;
                 </td>
               </tr>
               <tr bgcolor="#239B56">
-                <td><input type="checkbox" name="CEK_BIAYA" class="CEK_BIAYA"> <font color="white"><b>Biaya</b></font></td>
-                <td><input autocomplete="off" class="form-control INPUT_BIAYA" id="INPUT_BIAYA" name="INPUT_BIAYA" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
+                <td><input type="checkbox" name="CEK_GONI" class="CEK_GONI"> <font color="white"><b>Goni</b></font></td>
+                <td><input autocomplete="off" class="form-control INPUT_GONI" id="INPUT_GONI" name="INPUT_GONI" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
+                </td>
+              </tr>
+              <tr bgcolor="#239B56">
+                <td><input type="checkbox" name="CEK_CADANGAN" class="CEK_CADANGAN"> <font color="white"><b>Cadangan</b></font></td>
+                <td><input autocomplete="off" class="form-control INPUT_CADANGAN" id="INPUT_CADANGAN" name="INPUT_CADANGAN" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
                   <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="text">
                   <input autocomplete="off" class="form-control GRADE_MATERIAL" id="GRADE_MATERIAL" name="GRADE_MATERIAL" type="text">
-                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="text">
                   <input autocomplete="off" class="form-control ID_FAKTUR_PURCHASER" id="ID_FAKTUR_PURCHASER" name="ID_FAKTUR_PURCHASER" type="text">
                 </td>
               </tr>
@@ -257,8 +271,12 @@ font-size: 12px;
                 <td align="right"><p class="TAMBANG_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
               <tr>
-                <td><b>Biaya (Rp)</b></td>
-                <td align="right"><p class="BIAYA_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td><b>Goni (Rp)</b></td>
+                <td align="right"><p class="GONI_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+              </tr>
+              <tr>
+                <td><b>Cadangan (Rp)</b></td>
+                <td align="right"><p class="CADANGAN_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
               </tr>
               <tr>
                 <td bgcolor="#239B56"><font color="white"><h4><b>Total (Rp)</b></h4></font></td>
@@ -438,6 +456,7 @@ function faktur_detail_list(curPage)
         $('p.TOTAL_TARA').html( data.total_tara)
         $('p.TOTAL_BRUTO').html( data.total_bruto)
         $('p.KUALITET').html( data.kualitet + " %")
+        $('p.GONI_TEXT').html( data.goni)
 
         var potongan = data.total_bruto*(data.potongan/100)
 
@@ -541,6 +560,9 @@ function detail_purchaser(curPage)
           //$("p.ALAMAT_SUPPLIER").html(data.resultbc[i].ALAMAT)
           $(".INPUT_RP_KG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $(".INPUT_TAMBANG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_TAMBANG)
+          $(".KUALITET_FAKTUR").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_KUALITET_FAKTUR)
+          $(".INPUT_GONI").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_GONI)
+          $(".INPUT_CADANGAN").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_CADANGAN)
           //$("p.NAMA_SUPPLIER_PURCHASER").html(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
           $(".INPUT_BIAYA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_BIAYA)
           $(".INPUT_PPH").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_PPH)
@@ -578,6 +600,24 @@ function detail_purchaser(curPage)
             else
             {
               $('.CEK_RP_KG').prop('checked', false);
+            }
+
+            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_GONI == "Y")
+            {
+              $('.CEK_GONI').prop('checked', true);
+            }
+            else
+            {
+              $('.CEK_GONI').prop('checked', false);
+            }
+
+            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_CADANGAN == "Y")
+            {
+              $('.CEK_CADANGAN').prop('checked', true);
+            }
+            else
+            {
+              $('.CEK_CADANGAN').prop('checked', false);
             }
 
             if(data.resultbc[i].RMP_FAKTUR_PURCHASER_KONTAN == "Y")
@@ -715,13 +755,14 @@ $('.RP_KG_EDIT_HARGA_LAMA').val(harga_lama)
 $(".simpanHargaPurchaser").on('click', function(){
   var no_faktur = "NO_FAKTUR=" +$('.NO_FAKTUR').text()+ ""
   var personal_id = "PERSONAL_ID=" +$('.ID_SUPPLIER').val()+ ""
-  var rp_kg = "RP_KG=" +$('.RP_KG').text()+ ""
+  var rp_kg = "RP_KG=" +$('.INPUT_RP_KG').val()+ ""
   var tambang = "TAMBANG=" +$('.INPUT_TAMBANG').val()+ ""
-  var biaya = "BIAYA=" +$('.INPUT_BIAYA').val()+ ""
+  var goni = "GONI=" +$('.INPUT_GONI').val()+ ""
+  var cadangan = "CADANGAN=" +$('.INPUT_CADANGAN').val()+ ""
   var id_faktur_purchaser = "ID_FAKTUR_PURCHASER=" +$('.ID_FAKTUR_PURCHASER').val()+ ""
   var bruto = "TOTAL_BRUTO=" +$('.TOTAL_BRUTO').text()+ ""
-  var potongan = "POTONGAN=" +$('.POTONGAN').text()+ ""
   var kualitet = "KUALITET=" +$('.KUALITET').text()+ ""
+  var kualitet_faktur = "KUALITET_FAKTUR=" +$('.KUALITET_FAKTUR').val()+ ""
   var netto = "TOTAL_NETTO=" +$('.TOTAL_NETTO').text()+ ""
   var rekening = "NO_REKENING=" +$('.NO_REKENING').text()+ ""
   var total_seluruh = "TOTAL_SELURUH=" +$('.TOTAL_SELURUH').val()+ ""
@@ -729,19 +770,20 @@ $(".simpanHargaPurchaser").on('click', function(){
   var jenis_faktur = "JENIS_FAKTUR=" +$('.JENIS_FAKTUR').val()+ ""
 
   var cek_tambang = "CEK_TAMBANG=" +$('.CEK_TAMBANG').is(":checked")+ ""
-  var cek_biaya = "CEK_BIAYA=" +$('.CEK_BIAYA').is(":checked")+ ""
+  var cek_goni = "CEK_GONI=" +$('.CEK_GONI').is(":checked")+ ""
+  var cek_cadangan = "CEK_CADANGAN=" +$('.CEK_CADANGAN').is(":checked")+ ""
   var cek_rp = "CEK_RP_KG=" +$('.CEK_RP_KG').is(":checked")+ ""
 
   var cek_kontan = "CEK_KONTAN=" +$('.CEK_KONTAN').is(":checked")+ ""
   var input_pph = "INPUT_PPH=" +$('.INPUT_PPH').val()+ ""
   var input_uang_muka = "INPUT_UANG_MUKA=" +$('.INPUT_UANG_MUKA').val()+ ""
-  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + biaya + "&" + bruto + "&" + potongan + "&" + kualitet + "&" + netto + "&" + rekening + "&" + total_seluruh + "&" + rp_kelapa + "&" + cek_kontan + "&" + input_pph + "&" + input_uang_muka + "&" + cek_tambang + "&" + cek_biaya + "&" + cek_rp + "&" + jenis_faktur + ""
+  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + goni + "&" + cadangan + "&" + bruto + "&" + kualitet + "&" + kualitet_faktur + "&" + netto + "&" + rekening + "&" + total_seluruh + "&" + rp_kelapa + "&" + cek_kontan + "&" + input_pph + "&" + input_uang_muka + "&" + cek_tambang + "&" + cek_goni + "&" + cek_cadangan + "&" + cek_rp + "&" + jenis_faktur + ""
   console.log(form)
   $.ajax({
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=add_faktur_purchaser&' + form ,
+    data: 'ref=add_faktur_purchaser_kp&' + form ,
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {
@@ -811,37 +853,25 @@ $(".cetak_faktur").on("click", function(){
 function kalkulasi_biaya()
 {
   var netto = $('.TOTAL_NETTO').text()
-  var rp = $('.RP_KG').text()
-  var potongan = $('.POTONGAN').text()
+  var rp = $('.INPUT_RP_KG').val()
   var tambang = $('.INPUT_TAMBANG').val()
-  var biaya = parseInt($('.INPUT_BIAYA').val())
+  var goni = $('.INPUT_GONI').val()
+  var cadangan = $('.INPUT_CADANGAN').val()
+  console.log(netto)
+  console.log(netto*rp)
+  var kelapa_rp = parseInt(netto*rp);
+  var tambang_rp = parseInt(netto*tambang);
+  var goni_rp = parseInt(1500*goni);
+  var cadangan_rp = parseInt(netto*cadangan);
 
-  if ($(".JENIS_FAKTUR").val() == "FAKTUR CABANG")
-  {
-    var tambang_rp = parseInt(tambang);
-    // var kelapa_total = parseInt(rp*netto);
-    var kelapa_total = parseInt($('.KELAPA_RUPIAH').val());
-    $('.KELAPA_RUPIAH').val(kelapa_total);
-    $('p.KELAPA_RP').html(number_format(kelapa_total));
-  }
-  else if ($(".JENIS_FAKTUR").val() == "FAKTUR 2")
-  {
-    var tambang_rp = parseInt(tambang);
-    var kelapa_total = parseInt($('.KELAPA_RUPIAH').val());
-    //$('p.KELAPA_RP').html(number_format(kelapa_total));
-  }
-  else
-  {
-    var kelapa_total = parseInt(rp*netto);
-    $('p.KELAPA_RP').html(number_format(kelapa_total));
-    $('.KELAPA_RUPIAH').val(kelapa_total);
-    var tambang_rp = parseInt(tambang*netto);
-  }
+  var total_rp = kelapa_rp+tambang_rp+goni_rp+cadangan_rp
 
-  var total_rp = parseInt(biaya+kelapa_total+tambang_rp);
-  //$('p.KELAPA_RP').html(number_format(kelapa_total));
-  $('p.TAMBANG_RP').html(number_format(tambang_rp));
-  $('p.BIAYA_RP').html(number_format(biaya));
+  $('p.KELAPA_RP').html(number_format(kelapa_rp));
+  $('.KELAPA_RUPIAH').val(kelapa_rp);
+
+  $('p.TAMBANG_RP').html(number_format(tambang*netto));
+  $('p.GONI_RP').html(number_format(goni_rp));
+  $('p.CADANGAN_RP').html(number_format(cadangan_rp));
   $('p.TOTAL_RP').html(number_format(total_rp));
   $('.TOTAL_SELURUH').val(total_rp);
 }
