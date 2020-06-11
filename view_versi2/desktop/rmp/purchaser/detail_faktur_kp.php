@@ -297,6 +297,7 @@ font-size: 12px;
                 <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="relasi">Relasi</a></li>
                 <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="admin">Admin</a></li>
                 <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="beacukai">Beacukai</a></li>
+                <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="pembukuan">Pembukuan</a></li>
               </ul>
             </div>
           </div>
@@ -469,7 +470,9 @@ function faktur_detail_list(curPage)
           {
             $('.CEK_DITERIMA').prop('checked', true)
           }
-          else{}
+          else
+          {
+          }
 
           if(data.result[i].RMP_FAKTUR_CEK_100_INSPEKSI == 'Y')
           {
@@ -846,7 +849,7 @@ $(".cetak_faktur").on("click", function(){
   var rp_kg = btoa($('.RP_KG').text())
   var material = btoa($('.NAMA_MATERIAL').val())
   var printed = btoa($(this).attr("PRINTED"))
-  window.open("?show=rmp/pdf/cetak_faktur/<?php echo $d3; ?>/"+ rp_kg +"/"+ material +"/"+ printed +"", "_blank");
+  window.open("?show=rmp/pdf/cetak_faktur_kp/<?php echo $d3; ?>/"+ rp_kg +"/"+ material +"/"+ printed +"", "_blank");
 })
 
 

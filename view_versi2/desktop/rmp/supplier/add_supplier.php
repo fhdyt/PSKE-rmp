@@ -133,6 +133,9 @@ foreach($da['refs'] as $r)
 						<li>
 							<a data-toggle="tab" href="#dokumen">Dokumen</a>
 						</li>
+						<li>
+							<a data-toggle="tab" href="#relasi_cabang">Relasi Cabang</a>
+						</li>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="personal">
@@ -143,7 +146,7 @@ foreach($da['refs'] as $r)
 										<div class="form-group">
 											<label for="exampleInputEmail1">Nama Lengkap</label>
                       <input autocomplete="off" class="form-control ID_SUPPLIER" id="ID_SUPPLIER" name="ID_SUPPLIER" placeholder="ID_SUPPLIER LENGKAP" type="hidden" value="<?php echo $id; ?>">
-                        <input autocomplete="off" class="form-control FOTO_SUPPLIER" id="FOTO_SUPPLIER" name="FOTO_SUPPLIER" placeholder="FOTO_SUPPLIER LENGKAP" type="hidden" value="<?php echo $id_supplier[0]['RMP_MASTER_PERSONAL_FOTO'] ?>">
+                      <input autocomplete="off" class="form-control FOTO_SUPPLIER" id="FOTO_SUPPLIER" name="FOTO_SUPPLIER" placeholder="FOTO_SUPPLIER LENGKAP" type="hidden" value="<?php echo $id_supplier[0]['RMP_MASTER_PERSONAL_FOTO'] ?>">
                       <input autocomplete="off" class="form-control NAMA" id="NAMA" name="NAMA" placeholder="NAMA LENGKAP" value="<?php echo $id_supplier[0]['RMP_MASTER_PERSONAL_NAMA'] ?>" type="text">
 											<p class="help-block">Isi sesuai kartu identitas anda.</p>
 										</div>
@@ -602,6 +605,29 @@ foreach($da['refs'] as $r)
 									<tr>
 										<th>No.</th>
 										<th>Dokumen</th>
+										<th>Jenis Dokumen</th>
+										<th>Status Berlaku</th>
+										<th>Tanggal Expired</th>
+									</tr>
+								</thead>
+								<tbody id="data_dokumen">
+									<tr>
+										<td colspan="9">
+											<center>
+												<div class="loader"></div>
+											</center>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div><!-- /.tab-pane -->
+            <div class="tab-pane" id="relasi_cabang">
+							<button class="btn btn-primary btn-sm tambah_dokumen" type="button"><i aria-hidden="true" class="fa fa-plus-square"></i> Tambah Rekening</button><br>
+							<table class="table table-bordered table-hover">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>Nama</th>
 										<th>Jenis Dokumen</th>
 										<th>Status Berlaku</th>
 										<th>Tanggal Expired</th>

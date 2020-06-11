@@ -40,14 +40,22 @@ $supplier = $result_ab[0]['RMP_MASTER_PERSONAL_NAMA'];
 $supplier_sub = $result_ab[0]['RMP_FAKTUR_NAMA_SUB'];
 $supplier_id = $result_ab[0]['RMP_MASTER_PERSONAL_ID'];
 $rekening = $result_ab[0]['RMP_REKENING_RELASI'];
+$rp_kg= $result_ab[0]['RMP_FAKTUR_PURCHASER_RP_KG'];
 $tambang= $result_ab[0]['RMP_FAKTUR_PURCHASER_TOTAL_TAMBANG'];
 $biaya = $result_ab[0]['RMP_FAKTUR_PURCHASER_BIAYA'];
+$goni = $result_ab[0]['RMP_FAKTUR_PURCHASER_GONI'];
+$goni_total = $result_ab[0]['RMP_FAKTUR_PURCHASER_TOTAL_GONI'];
+$cadangan = $result_ab[0]['RMP_FAKTUR_PURCHASER_TOTAL_CADANGAN'];
 $cek_tambang= $result_ab[0]['RMP_FAKTUR_PURCHASER_CEK_TAMBANG'];
 $cek_biaya = $result_ab[0]['RMP_FAKTUR_PURCHASER_CEK_BIAYA'];
+$cek_goni = $result_ab[0]['RMP_FAKTUR_PURCHASER_CEK_GONI'];
+$cek_cadangan = $result_ab[0]['RMP_FAKTUR_PURCHASER_CEK_CADANGAN'];
 $cek_rp_kg = $result_ab[0]['RMP_FAKTUR_PURCHASER_CEK_RP'];
 $tanggal_faktur = $result_ab[0]['RMP_FAKTUR_TANGGAL'];
 $lokasi = $result_ab[0]['RMP_FAKTUR_ALAMAT'];
 $rp_kelapa = $result_ab[0]['RMP_FAKTUR_PURCHASER_RP_KELAPA'];
+$kualitet = $result_ab[0]['RMP_FAKTUR_PURCHASER_KUALITET_QC'];
+$kualitet_faktur = $result_ab[0]['RMP_FAKTUR_PURCHASER_KUALITET_FAKTUR'];
 
 
 // DATA FAKTUR
@@ -190,14 +198,22 @@ if (empty($result_a))
     $this->callback['supplier'] = $supplier;
     $this->callback['supplier_sub'] = $supplier_sub;
     $this->callback['rekening'] = $rekening;
+    $this->callback['rp_kg'] = $rp_kg;
     $this->callback['tambang'] = $tambang;
     $this->callback['biaya'] = $biaya;
+    $this->callback['goni'] = $goni;
+    $this->callback['goni_total'] = $goni_total;
+    $this->callback['cadangan'] = $cadangan;
     $this->callback['cek_tambang'] = $cek_tambang;
     $this->callback['cek_biaya'] = $cek_biaya;
+    $this->callback['cek_goni'] = $cek_goni;
+    $this->callback['cek_cadangan'] = $cek_cadangan;
     $this->callback['cek_rp_kg'] = $cek_rp_kg;
     $this->callback['tanggal_faktur'] = $tanggal_faktur;
     $this->callback['netto'] = $netto;
     $this->callback['rp_kelapa'] = $rp_kelapa;
+    $this->callback['kualitet'] = $kualitet;
+    $this->callback['kualitet_faktur'] = $kualitet_faktur;
 
     }
 

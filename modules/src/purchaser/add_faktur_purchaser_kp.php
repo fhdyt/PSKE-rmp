@@ -74,7 +74,7 @@ else
 
 
 $total_tambang = $input['TOTAL_NETTO']*$input['TAMBANG'];
-$total_goni = $input['TOTAL_NETTO']*1500;
+$total_goni = $input['GONI']*1500;
 $total_cadangan = $input['TOTAL_NETTO']*$input['CADANGAN'];
 
 

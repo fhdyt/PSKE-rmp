@@ -320,6 +320,9 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_cetak_faktur_adm':
 			require_once ("faktur/cetak_faktur_adm.php");
 		break;
+		case 'nonlogin_cetak_faktur_kp':
+			require_once ("faktur_kp/cetak_faktur_kp.php");
+		break;
 
 		case 'nonlogin_sel_nama_supplier':
 			require_once ("faktur/sel_nama_supplier.php");
