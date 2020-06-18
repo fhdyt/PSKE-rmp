@@ -69,31 +69,32 @@ else if($input['JENIS_FAKTUR'] == "FAKTUR CABANG")
 	$total_tambang = $input['TAMBANG'];
 }
 
-if($input['ID_FAKTUR_PURCHASER'] != "")
-{
-	$data_detail3 = array(
-		'RECORD_STATUS' => "E"
-	);
-	$this->MYSQL = new MYSQL;
-	$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-	$this->MYSQL->tabel = "RMP_FAKTUR_PURCHASER";
-	$this->MYSQL->record = $data_detail3;
-	$this->MYSQL->dimana = "where RMP_FAKTUR_PURCHASER_ID='".$input['ID_FAKTUR_PURCHASER']."'";
-	$this->MYSQL->ubah();
-}
-else
-{
-}
+$data_detail3 = array(
+	'RECORD_STATUS' => "E"
+);
+$this->MYSQL = new MYSQL;
+$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+$this->MYSQL->tabel = "RMP_FAKTUR_PURCHASER";
+$this->MYSQL->record = $data_detail3;
+$this->MYSQL->dimana = "where RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."'";
+$this->MYSQL->ubah();
 
-	// $data_detail3V = array(
-	//
-	// );
-	// $this->MYSQL = new MYSQL;
-	// $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-	// $this->MYSQL->tabel = "RMP_FAKTUR";
-	// $this->MYSQL->record = $data_detail3V;
-	// $this->MYSQL->dimana = "where RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."' AND RECORD_STATUS='A'";
-	// $this->MYSQL->ubah();
+// if($input['ID_FAKTUR_PURCHASER'] != "")
+// {
+// 	$data_detail3 = array(
+// 		'RECORD_STATUS' => "E"
+// 	);
+// 	$this->MYSQL = new MYSQL;
+// 	$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+// 	$this->MYSQL->tabel = "RMP_FAKTUR_PURCHASER";
+// 	$this->MYSQL->record = $data_detail3;
+// 	$this->MYSQL->dimana = "where RMP_FAKTUR_PURCHASER_ID='".$input['ID_FAKTUR_PURCHASER']."'";
+// 	$this->MYSQL->ubah();
+// }
+// else
+// {
+// }
+
 
 $data_detail2 = array(
 		'RMP_FAKTUR_PURCHASER_ID' => waktu_decimal(Date("Y-m-d H:i:s")),

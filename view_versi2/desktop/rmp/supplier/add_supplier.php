@@ -622,18 +622,18 @@ foreach($da['refs'] as $r)
 							</table>
 						</div><!-- /.tab-pane -->
             <div class="tab-pane" id="relasi_cabang">
-							<button class="btn btn-primary btn-sm tambah_dokumen" type="button"><i aria-hidden="true" class="fa fa-plus-square"></i> Tambah Rekening</button><br>
+							<button class="btn btn-primary btn-sm tambah_relasi_cabang" type="button"><i aria-hidden="true" class="fa fa-plus-square"></i> Tambah Relasi Cabang</button><br>
 							<table class="table table-bordered table-hover">
 								<thead>
 									<tr>
 										<th>No.</th>
 										<th>Nama</th>
-										<th>Jenis Dokumen</th>
-										<th>Status Berlaku</th>
-										<th>Tanggal Expired</th>
+										<th>No. Relasi</th>
+										<th>Alamat</th>
+										<th>No. HP</th>
 									</tr>
 								</thead>
-								<tbody id="data_dokumen">
+								<tbody id="data_relasi_cabang">
 									<tr>
 										<td colspan="9">
 											<center>
@@ -1417,6 +1417,81 @@ foreach($da['refs'] as $r)
 </div>
 <!-- -------------------------------------------------------- END MODAL TAMBAH ASISTEN -->
 
+<!-- -------------------------------------------------------- MODAL TAMBAH RELASI CABANG -->
+<div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg modalrelasicabang" role="dialog" tabindex="-1">
+	<div class="modal-dialog modalMD" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Relasi Cabang</h4>
+			</div>
+			<div class="modal-body">
+        <form action="javascript:download();" class="formRelasiCabang" id="formPersonalAsisten" name="formPersonalAsisten">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Nama Lengkap</label>
+                <input autocomplete="off" class="form-control NAMA_RELASI_CABANG" id="NAMA_RELASI_CABANG" name="NAMA_RELASI_CABANG" placeholder="NAMA LENGKAP" type="text">
+                <p class="help-block">Isi sesuai kartu identitas anda.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="exampleInputEmail1">No. Relasi</label> <input autocomplete="off" class="form-control NO_RELASI_CABANG" id="NO_RELASI_CABANG" name="NO_RELASI_CABANG" placeholder="Nomor Relasi" type="text">
+                <p class="help-block">Isi sesuai kartu identitas anda.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="exampleInputEmail1">No. KTP</label> <input autocomplete="off" class="form-control KTP_RELASI_CABANG" id="KTP_RELASI_CABANG" name="KTP_RELASI_CABANG" placeholder="Nomor KTP" type="text">
+                <p class="help-block">Isi sesuai kartu identitas anda.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="exampleInputEmail1">No. Handphone</label>
+                <input autocomplete="off" class="form-control HP_RELASI_CABANG" id="HP_RELASI_CABANG" name="HP_RELASI_CABANG" placeholder="HP" type="text">
+                <p class="help-block"></p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Alamat</label>
+                <input autocomplete="off" class="form-control ALAMAT_RELASI_CABANG" id="ALAMAT_RELASI_CABANG" name="ALAMAT_RELASI_CABANG" placeholder="ALAMAT" type="text">
+                <p class="help-block"></p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Relasi Master</label>
+                <select class="form-control RELASI_MASTER_RELASI_CABANG" id="RELASI_MASTER_RELASI_CABANG" name="RELASI_MASTER_RELASI_CABANG">
+                </option>
+                <option value="">--Pilih Relasi Master--</option>
+                <?php  $data = $RMP_CONFIG->relasi_master($d3); foreach ($data['rasult'] as $key => $value) {   foreach ($value as $data => $isi)       { ?>
+                <option value="<?php echo $isi['RMP_RELASI_CABANG_ID']; ?>">
+                  <?php  echo $isi['RMP_RELASI_CABANG_NAMA'];?>
+                </option><?php   }}      ?>
+                </select>
+                <p class="help-block">Isi sesuai kartu identitas anda.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+    						<button class="btn btn-success btn-sm FormKirimRelasiCabang">Simpan</button> <button class="btn btn-default btn-sm BatalAsisten">Batal</button>
+    					</div>
+            </div>
+          </div>
+        </form>
+		</div>
+	</div>
+</div>
+</div>
+<!-- -------------------------------------------------------- END MODAL TAMBAH RELASI CABANG -->
+
 <div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg uploadFotoModal" role="dialog" tabindex="-1">
 	<div class="modal-dialog " role="document">
 		<div class="modal-content">
@@ -1606,6 +1681,15 @@ $('.BatalWilayah').on('click', function()
 $('.tambah_asisten').on('click', function()
 {
 	$(".modalAsisten").modal('show');
+});
+$('.tambah_relasi_cabang').on('click', function()
+{
+  $(".NAMA_RELASI_CABANG").val("")
+  $(".NO_RELASI_CABANG").val("")
+  $(".KTP_RELASI_CABANG").val("")
+  $(".HP_RELASI_CABANG").val("")
+  $(".ALAMAT_RELASI_CABANG").val("")
+	$(".modalrelasicabang").modal('show');
 });
 $('.BatalAsisten').on('click', function()
 {
@@ -3149,6 +3233,7 @@ $.ajax({
 			//window.location.href = "?show=rmp/supplier/MASTER_PERSONAL";
       	$(".modalKeluarga").modal('hide');
         keluarga_list();
+
 		}
 		else if (data.respon.pesan == "gagal")
 		{
@@ -3449,6 +3534,123 @@ $(".BARIS_WILAYAH, .NAIK_WILAYAH").keyup(function()
   });
 
 
+  ////////////////////////////////////// TAMBAH RELASI CABANG /////////////////////////////////////
+  $('.FormKirimRelasiCabang').on('click',function(){
+  var id_supplier = "ID_SUPPLIER="+$('.ID_SUPPLIER').val();
+  var formrelasicabang = $('form.formRelasiCabang').serialize();
+  var fDataRelasiCabang = id_supplier +"&"+formrelasicabang;
+  console.log(fDataRelasiCabang);
 
+  // if ($('.JENIS_KONTAK').val() == "")
+  // {
+  //   alert ("Jenis kontak harus dipilih.");
+  // }
+  // else if ($('.KONTAK').val() == "")
+  // {
+  //   alert ("Kontak boleh kosong.");
+  // }
+  // else if ($('.STATUS_KONTAK').val() == "")
+  // {
+  //   alert ("Status kontak harus dipilih.");
+  // }
+  //
+  // else
+  // {
+    $.ajax({
+    	type: 'POST',
+    	url: refseeAPI,
+    	dataType: 'json',
+    	data: 'ref=add_relasi_cabang&' + fDataRelasiCabang ,
+    	success: function(data) {
+    		if (data.respon.pesan == "sukses")
+    		{
+    			console.log(data.respon.text_msg);
+    			//window.location.href = "?show=rmp/supplier/MASTER_PERSONAL";
+          	$(".modalrelasicabang").modal('hide');
+            relasi_cabang_list();
+    		}
+    		else if (data.respon.pesan == "gagal")
+    		{
+    			console.log(data.respon.text_msg);
+    			alert("Gagal Menyimpan");
+    		}
+    	}, //end success
+    	error: function(x, e) {
+    		console.log("Error Ajax");
+    	} //end error
+    });
+  // }
 
+  })
+
+  function relasi_cabang_list(curPage)
+  {
+
+    $.ajax({
+      type: 'POST',
+      url: refseeAPI,
+      dataType: 'json',
+      data: 'ref=relasi_cabang_list&ID_SUPPLIER=' + $('input#ID_SUPPLIER').val(),
+      success: function(data) {
+        if (data.respon.pesan == "sukses") {
+  				console.log(data.respon.text_msg);
+          $("tbody#data_relasi_cabang").empty();
+          for (i = 0; i < data.result.length; i++) {
+            $("tbody#data_relasi_cabang").append("<tr class='detailLogId'>" +
+  					"<td >" + data.result[i].NO + ".</td>" +
+  					"<td>" + data.result[i].RMP_RELASI_CABANG_NAMA +  "</td>" +
+  					"<td>" + data.result[i].RMP_RELASI_CABANG_NO +  "</td>" +
+  					"<td>" + data.result[i].RMP_RELASI_CABANG_ALAMAT +  "</td>" +
+  					"<td>" + data.result[i].RMP_RELASI_CABANG_HP +  "</td>" +
+            "<td><a class='btn btn-danger btn-sm hapus_relasi_cabang' ID_RELASI_CABANG='" + data.result[i].RMP_RELASI_CABANG_ID +  "'><i aria-hidden='true' class='fa fa-trash'></i></a></td>" +
+  					"</tr>");
+          }
+        } else if (data.respon.pesan == "gagal") {
+          $("tbody#data_relasi_cabang").html("<tr><td colspan='9'><div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> " + data.respon.text_msg + "</div></td></tr>");
+        }
+      }, //end success
+      error: function(x, e) {
+        //error_handler_json(x, e, '=> barang_kamus_list()');
+      } //end error
+    });
+  }
+
+  $(function() {
+    relasi_cabang_list();
+  });
+
+  $("tbody#data_relasi_cabang").on('click','a.hapus_relasi_cabang', function()
+  {
+    var id = $(this).attr('ID_RELASI_CABANG');
+    console.log(id);
+    if(confirm('Apakah anda sudah yakin menghapus data ?')) {
+  		hapus_relasi_cabang(id)
+  	}
+  })
+
+  function hapus_relasi_cabang(id)
+  {
+    $.ajax({
+      type: 'POST',
+      url: refseeAPI,
+      dataType: 'json',
+      data: 'ref=hapus_relasi_cabang&ID=' + id ,
+      success: function(data) {
+        if (data.respon.pesan == "sukses")
+        {
+          console.log(data.respon.text_msg);
+            relasi_cabang_list();
+        }
+        else if (data.respon.pesan == "gagal")
+        {
+          console.log(data.respon.text_msg);
+          alert("Gagal Menghapus");
+        }
+      }, //end success
+      error: function(x, e) {
+        console.log("Error Ajax");
+      } //end error
+    });
+  }
+  ////////////////////////////////////// END TAMBAH RELASI CABANG /////////////////////////////////////
 </script>

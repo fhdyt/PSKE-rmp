@@ -111,6 +111,21 @@ CLASS RMP_CONFIG extends CONFIG
 				);
 			return $callback;
 			}
+
+		public function relasi_master($params){
+				$this->MYSQL=new MYSQL();
+				$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
+				$this->MYSQL->queri="SELECT * FROM RMP_RELASI_CABANG WHERE RMP_MASTER_PERSONAL_ID='".$params."' AND RECORD_STATUS='A' ";
+				$hasil=$this->MYSQL->data();
+				foreach($hasil as $r){
+
+				}
+				$callback['rasult']=array(
+					$hasil,
+
+				);
+			return $callback;
+			}
 		public function wilayah($params){
 				$this->MYSQL=new MYSQL();
 				$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;

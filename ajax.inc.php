@@ -65,6 +65,9 @@ switch($ref){
 			case 'hapus_kontak':
 				require_once("ajax/supplier/hapus_kontak.php");
 			break;
+			case 'hapus_relasi_cabang':
+				require_once("ajax/supplier/hapus_relasi_cabang.php");
+			break;
 			case 'hapus_keluarga':
 				require_once("ajax/supplier/hapus_keluarga.php");
 			break;
@@ -86,8 +89,14 @@ switch($ref){
 			case 'add_kontak':
 				require_once("ajax/supplier/add_kontak.php");
 			break;
+			case 'add_relasi_cabang':
+				require_once("ajax/supplier/add_relasi_cabang.php");
+			break;
 			case 'kontak_list':
 				require_once("ajax/supplier/kontak_list.php");
+			break;
+			case 'relasi_cabang_list':
+				require_once("ajax/supplier/relasi_cabang_list.php");
 			break;
 			case 'asisten_list':
 				require_once("ajax/supplier/asisten_list.php");
@@ -115,6 +124,9 @@ switch($ref){
 			break;
 			case 'add_dokumen':
 				require_once("ajax/supplier/add_dokumen.php");
+			break;
+			case 'relasi_master':
+				require_once("ajax/supplier/relasi_master.php");
 			break;
 
 

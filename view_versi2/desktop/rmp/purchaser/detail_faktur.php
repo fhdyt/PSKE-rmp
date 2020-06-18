@@ -713,6 +713,7 @@ $('.RP_KG_EDIT_HARGA_LAMA').val(harga_lama)
 
 
 $(".simpanHargaPurchaser").on('click', function(){
+  //$(this).attr('disabled', 'disabled');
   var no_faktur = "NO_FAKTUR=" +$('.NO_FAKTUR').text()+ ""
   var personal_id = "PERSONAL_ID=" +$('.ID_SUPPLIER').val()+ ""
   var rp_kg = "RP_KG=" +$('.RP_KG').text()+ ""

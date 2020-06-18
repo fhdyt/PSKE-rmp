@@ -187,6 +187,9 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_hapus_kontak':
 			require_once ("supplier/hapus_kontak.php");
 		break;
+		case 'nonlogin_hapus_relasi_cabang':
+			require_once ("supplier/hapus_relasi_cabang.php");
+		break;
 		case 'nonlogin_hapus_keluarga':
 			require_once ("supplier/hapus_keluarga.php");
 		break;
@@ -199,8 +202,14 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_add_kontak':
 			require_once ("supplier/add_kontak.php");
 		break;
+		case 'nonlogin_add_relasi_cabang':
+			require_once ("supplier/add_relasi_cabang.php");
+		break;
 		case 'nonlogin_kontak_list':
 			require_once ("supplier/kontak_list.php");
+		break;
+		case 'nonlogin_relasi_cabang_list':
+			require_once ("supplier/relasi_cabang_list.php");
 		break;
 		case 'nonlogin_add_keluarga':
 			require_once ("supplier/add_keluarga.php");
@@ -240,6 +249,9 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		break;
 		case 'nonlogin_add_dokumen':
 			require_once ("supplier/add_dokumen.php");
+		break;
+		case 'nonlogin_relasi_master':
+			require_once ("supplier/relasi_master.php");
 		break;
 
 
