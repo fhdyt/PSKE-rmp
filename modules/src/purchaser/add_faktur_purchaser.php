@@ -95,9 +95,16 @@ $this->MYSQL->ubah();
 // {
 // }
 
+if($input['ID_FAKTUR_PURCHASER'] == "")
+{
+	$faktur_id = waktu_decimal(Date("Y-m-d H:i:s"));
+}
+else {
+	$faktur_id = $input['ID_FAKTUR_PURCHASER'];
+}
 
 $data_detail2 = array(
-		'RMP_FAKTUR_PURCHASER_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
+		'RMP_FAKTUR_PURCHASER_ID' => $faktur_id,
 	  'RMP_FAKTUR_NO_FAKTUR' => $input['NO_FAKTUR'],
 	  'RMP_MASTER_PERSONAL_ID' => $input['PERSONAL_ID'],
 	  'RMP_FAKTUR_PURCHASER_BRUTO' => $input['TOTAL_BRUTO'],

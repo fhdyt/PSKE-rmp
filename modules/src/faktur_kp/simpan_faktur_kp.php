@@ -51,6 +51,24 @@ if(empty($input['ID_FAKTUR']))
 				$checkbox_dipisah = "N";
 			}
 
+			if($input['CEK_KOTORAN'] == 'on')
+			{
+				$checkbox_kototan = "Y";
+			}
+			else
+			{
+				$checkbox_kototan = "N";
+			}
+
+			if($input['CEK_LANGSUNG_PROSES'] == 'on')
+			{
+				$checkbox_langsung_proses = "Y";
+			}
+			else
+			{
+				$checkbox_langsung_proses = "N";
+			}
+
 			$data_master = array(
 				'RMP_FAKTUR_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
 				'RMP_FAKTUR_NO_FAKTUR' => $input['NO_FAKTUR'],
@@ -70,6 +88,8 @@ if(empty($input['ID_FAKTUR']))
 				'RMP_FAKTUR_CEK_DITERIMA' => $checkbox_diterima,
 				'RMP_FAKTUR_CEK_100_INSPEKSI' => $checkbox_100_inspeksi,
 				'RMP_FAKTUR_CEK_DIPISAH' => $checkbox_dipisah,
+				'RMP_FAKTUR_CEK_KOTORAN' => $checkbox_kototan,
+				'RMP_FAKTUR_CEK_LANGSUNG_PROSES' => $checkbox_langsung_proses,
 				'RMP_FAKTUR_JENIS' => "FAKTUR",
 			  'ENTRI_WAKTU' => date("Y-m-d H:i:s"),
 			  'ENTRI_OPERATOR' => $user_login['PERSONAL_NIK'],
@@ -179,7 +199,23 @@ else
 				$checkbox_dipisah = "N";
 			}
 
+			if($input['CEK_KOTORAN'] == 'on')
+			{
+				$checkbox_kototan = "Y";
+			}
+			else
+			{
+				$checkbox_kototan = "N";
+			}
 
+			if($input['CEK_LANGSUNG_PROSES'] == 'on')
+			{
+				$checkbox_langsung_proses = "Y";
+			}
+			else
+			{
+				$checkbox_langsung_proses = "N";
+			}
 
 			$data_master = array(
 				'RMP_FAKTUR_ID' => $input['ID_FAKTUR'],
@@ -198,6 +234,8 @@ else
 				'RMP_FAKTUR_CEK_DITERIMA' => $checkbox_diterima,
 				'RMP_FAKTUR_CEK_100_INSPEKSI' => $checkbox_100_inspeksi,
 				'RMP_FAKTUR_CEK_DIPISAH' => $checkbox_dipisah,
+				'RMP_FAKTUR_CEK_KOTORAN' => $checkbox_kototan,
+				'RMP_FAKTUR_CEK_LANGSUNG_PROSES' => $checkbox_langsung_proses,
 				'RMP_FAKTUR_JENIS' => $input['JENIS_FAKTUR'],
 			  'ENTRI_WAKTU' => date("Y-m-d H:i:s"),
 			  'ENTRI_OPERATOR' => $user_login['PERSONAL_NIK'],

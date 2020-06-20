@@ -198,7 +198,17 @@ font-size: 12px;
             </div>
             <div class="checkbox">
               <label>
+                <input type="checkbox" name="CEK_KOTORAN" class="CEK_KOTORAN" disabled> Kotoran KG/Goni
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
                 <input type="checkbox" name="CEK_100_INSPEKSI" class="CEK_100_INSPEKSI" disabled> 100 % Inspeksi
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="CEK_LANGSUNG_PROSES" class="CEK_LANGSUNG_PROSES" disabled> Langsung Proses
               </label>
             </div>
             <div class="checkbox">
@@ -474,6 +484,12 @@ function faktur_detail_list(curPage)
           {
           }
 
+          if(data.result[i].RMP_FAKTUR_CEK_KOTORAN == 'Y')
+          {
+            $('.CEK_KOTORAN').prop('checked', true)
+          }
+          else{}
+
           if(data.result[i].RMP_FAKTUR_CEK_100_INSPEKSI == 'Y')
           {
             $('.CEK_100_INSPEKSI').prop('checked', true)
@@ -485,6 +501,13 @@ function faktur_detail_list(curPage)
             $('.CEK_DIPISAH').prop('checked', true)
           }
           else{}
+
+          if(data.result[i].RMP_FAKTUR_CEK_LANGSUNG_PROSES == 'Y')
+          {
+            $('.CEK_LANGSUNG_PROSES').prop('checked', true)
+          }
+          else{}
+          
           $("tbody#zone_data").append("<tr class='detailLogId'  >" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_TANGGAL + "</td>" +

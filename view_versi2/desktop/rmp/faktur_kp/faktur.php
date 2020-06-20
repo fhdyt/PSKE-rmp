@@ -282,7 +282,17 @@
               </div>
               <div class="checkbox">
                 <label>
+                  <input type="checkbox" name="CEK_KOTORAN" class="CEK_KOTORAN"> Kotoran KG/Goni
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
                   <input type="checkbox" name="CEK_100_INSPEKSI" class="CEK_100_INSPEKSI"> 100 % Inspeksi
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="CEK_LANGSUNG_PROSES" class="CEK_LANGSUNG_PROSES"> Langsung Proses
                 </label>
               </div>
               <div class="checkbox">

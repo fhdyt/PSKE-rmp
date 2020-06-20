@@ -394,7 +394,7 @@ $html = '
 	<html>
 	<head>
 
-		<title>Cetak Faktur</title>
+		<title>Cetak Faktur ('.$printed.')</title>
 	</head>
 <style>
 

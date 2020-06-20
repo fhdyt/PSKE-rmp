@@ -91,6 +91,8 @@ $lokasi =$respon['respon']['lokasi'];
 $diterima =$respon['diterima'];
 $inspeksi =$respon['inspeksi'];
 $dipisah =$respon['dipisah'];
+$kotoran =$respon['kotoran'];
+$langsung_proses =$respon['langsung_proses'];
 $supplier =$respon['supplier'];
 $supplier_sub =$respon['supplier_sub'];
 
@@ -148,6 +150,24 @@ else
 	$check_dipisah = 'check.png';
 }
 
+if($kotoran == 'Y')
+{
+	$check_kotoran = 'checked.png';
+}
+else
+{
+	$check_kotoran = 'check.png';
+}
+
+if($langsung_proses == 'Y')
+{
+	$check_langsung_proses = 'checked.png';
+}
+else
+{
+	$check_langsung_proses = 'check.png';
+}
+
 if ($printed == "admin")
 {
 	$rp_kg_cetak = "@Rp ".number_format(round($rp_kg),0,",",".")."";
@@ -173,7 +193,7 @@ if ($printed == "admin")
 	$kualitet_total = ": ".$kualitet." %";
 
 	$hr = "<hr>";
-	$total_jumlah = $kelapa+$tambang+$biaya;
+	$total_jumlah = $kelapa+$tambang+$cadangan+$goni;
 	$total_jumlah_title = "Jumlah";
 	$total_jumlah_rp = " : Rp.";
 	$total_jumlah_total = number_format($total_jumlah,0,",",".");
@@ -199,10 +219,13 @@ else if ($printed == "beacukai")
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
 
-	$kelapa_total = number_format(($kelapa+$tambang+$biaya),0,",",".");
-	$terbilang=terbilang($kelapa+$tambang+$biaya)." Rupiah";
+	$kualitet_title = "KUALITET";
+	$kualitet_total = ": ".$kualitet." %";
 
-	$rp_kgs = ($kelapa+$tambang+$biaya) / $netto;
+	$kelapa_total = number_format(($kelapa+$tambang+$cadangan+$goni),0,",",".");
+	$terbilang=terbilang($kelapa+$tambang+$cadangan+$goni)." Rupiah";
+
+	$rp_kgs = ($kelapa+$tambang+$cadangan+$goni) / $netto;
 	$rp_kg_cetak = "@Rp ".number_format(round($rp_kgs),0,",",".")."";
 
 	$tambang_title = " ";
@@ -439,7 +462,7 @@ $html = '
 	<html>
 	<head>
 
-		<title>Cetak Faktur</title>
+		<title>Cetak Faktur ('.$printed.')</title>
 	</head>
 <style>
 
@@ -661,7 +684,19 @@ tr {
 		<td align="right"><b>'.$total_jumlah_total.'</b></td>
 		</tr>
 		<tr>
+		<td><img src="aplikasi/rmp/asset/'.$check_kotoran.'" width="10" /> Kotoran KG/Goni</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		</tr>
+		<tr>
 		<td><img src="aplikasi/rmp/asset/'.$check_inspeksi.'" width="10" /> 100 % Inspeksi</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		</tr>
+		<tr>
+		<td><img src="aplikasi/rmp/asset/'.$check_langsung_proses.'" width="10" /> Langsung Proses</td>
 		<td></td>
 		<td></td>
 		<td></td>

@@ -35,6 +35,8 @@ $netto = $result_ab[0]['RMP_FAKTUR_PURCHASER_NETTO'];
 $diterima = $result_ab[0]['RMP_FAKTUR_CEK_DITERIMA'];
 $inspeksi = $result_ab[0]['RMP_FAKTUR_CEK_100_INSPEKSI'];
 $dipisah = $result_ab[0]['RMP_FAKTUR_CEK_DIPISAH'];
+$kotoran = $result_ab[0]['RMP_FAKTUR_CEK_KOTORAN'];
+$langsung_proses = $result_ab[0]['RMP_FAKTUR_CEK_LANGSUNG_PROSES'];
 
 $supplier = $result_ab[0]['RMP_MASTER_PERSONAL_NAMA'];
 $supplier_sub = $result_ab[0]['RMP_FAKTUR_NAMA_SUB'];
@@ -195,6 +197,8 @@ if (empty($result_a))
     $this->callback['diterima'] = $diterima;
     $this->callback['inspeksi'] = $inspeksi;
     $this->callback['dipisah'] = $dipisah;
+    $this->callback['kotoran'] = $kotoran;
+    $this->callback['langsung_proses'] = $langsung_proses;
     $this->callback['supplier'] = $supplier;
     $this->callback['supplier_sub'] = $supplier_sub;
     $this->callback['rekening'] = $rekening;
