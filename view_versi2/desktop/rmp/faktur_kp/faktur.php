@@ -241,7 +241,7 @@
                 <p class="help-block">Tanggal faktur.</p>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Operator Timbang</label><select class="OPERATOR_TIMBANG with-ajax-personal form-control" data-live-search="true" id="OPERATOR_TIMBANG" name="OPERATOR_TIMBANG" onchange="sel_operator_timbang()">
                 </select>
@@ -249,11 +249,20 @@
               </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Inspektur Mutu</label><select class="INSPEKTUR_MUTU with-ajax-personal form-control" data-live-search="true" id="INSPEKTUR_MUTU" name="INSPEKTUR_MUTU" onchange="sel_inspektur_mutu()">
                 </select>
                 <p class="help-block">Nama Inspektur Mutu.</p>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Ponton</label><select class="PONTON_TIMBANG form-control"  id="PONTON_TIMBANG" name="PONTON_TIMBANG" >
+                  <option value="PTN-1">Ponton 1</option>
+                  <option value="PTN-2">Ponton 2</option>
+                </select>
+                <p class="help-block">Kode Ponton.</p>
               </div>
             </div>
             <div class="col-md-2">
@@ -441,36 +450,14 @@
  			</div>
  			<div class="modal-body">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-12">
             <div class="small-box bg-aqua">
               <div class="inner">
                 <p class="TOTAL_KELAPA_A" style="font-size:40px">0</p>
-                <p>Kelapa A</p>
+                <p>Kelapa Kopra</p>
               </div>
               <div class="icon">
-                <i>A</i>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="small-box bg-green">
-              <div class="inner">
-                <p class="TOTAL_KELAPA_B" style="font-size:40px">0</p>
-                <p>Kelapa B</p>
-              </div>
-              <div class="icon">
-                <i>B</i>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="small-box bg-yellow">
-              <div class="inner">
-                <p class="TOTAL_KELAPA_C" style="font-size:40px">0</p>
-                <p>Kelapa C</p>
-              </div>
-              <div class="icon">
-                <i>C</i>
+                <i>KP</i>
               </div>
             </div>
           </div>
@@ -478,14 +465,6 @@
         <div class="row">
           <div class="col-md-12 text-right">
             <form id="form_filter" class="form-inline" method="POST" action="javascript:filter();">
-              <div class="form-group">
-            <select id="FILTER_MATERIAL" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_tanggal_list()">
-            <option value="ITD">--Pilih Material--</option>
-            <option value="JAMBUL">JAMBUL</option>
-            <option value="GELONDONG">GELONDONG</option>
-            <option value="LICIN">LICIN</option>
-                  </select>
-                </div>
 					<div class="form-group">
               <input type="date" id="FILTER_TANGGAL_LIST" class="form-control FILTER_TANGGAL_LIST" name="FILTER_TANGGAL" onchange="filter_tanggal_list()" value="<?php echo date("Y-m-d"); ?>"/>
           </div>
@@ -502,7 +481,7 @@
               <th>Nama</th>
               <th>Kelapa</th>
               <th>Bruto</th>
-              <th>Potongan</th>
+              <th>Kualitet</th>
               <th>Netto</th>
               <th>Tanggal</th>
               <th></th>
@@ -1075,12 +1054,13 @@ $("tbody#zone_data").on('click','button.kirim_hasil_timbang', function()
   var no_nota = $(this).attr('NO_NOTA');
   var jenis_kelapa = $(this).attr('JENIS_KELAPA');
   var no_faktur = $("input.NO_FAKTUR").val();
+  var ponton_timbang = $(".PONTON_TIMBANG").val();
 
-  var data = 'ID_TIMBANG='+id_timbang+'&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur+"&TANGGAL_NOTA="+$(".BULAN_NOTA").val()+""+$(".TAHUN_NOTA").val()+"";
+  var data = 'ID_TIMBANG='+id_timbang+'&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur+"&PONTON_TIMBANG="+ponton_timbang+"&TANGGAL_NOTA="+$(".BULAN_NOTA").val()+""+$(".TAHUN_NOTA").val()+"";
+  //alert(data)
   $(".JENIS_KELAPA").val("KOPRA");
     kirim_hasil_timbang(data)
     var no_faktur = $('.NO_FAKTUR').val()
-    //console.log("NOMOR FAKTUR::::::::::::::::::"+no_faktur)
 
 })
 
@@ -1332,7 +1312,7 @@ function lihat_faktur()
     type: 'POST',
     url: refseeAPI,
     dataType: 'json',
-    data: 'ref=lihat_faktur&TANGGAL='+$(".FILTER_TANGGAL_LIST").val()+'&FILTER_MATERIAL='+$(".FILTER_MATERIAL").val()+'',
+    data: 'ref=lihat_faktur_kp&TANGGAL='+$(".FILTER_TANGGAL_LIST").val()+'&FILTER_MATERIAL='+$(".FILTER_MATERIAL").val()+'',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
 				//console.log(data.respon.text_msg);
@@ -1342,31 +1322,12 @@ function lihat_faktur()
         $("p.TOTAL_KELAPA_C").html("0")
         for (i = 0; i < data.result.length; i++) {
 
-          if (data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "JAMBUL-A" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "GELONDONG-A" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "LICIN-A")
-          {
             var kelapa =  $("p.TOTAL_KELAPA_A").text()
             //console.log(kelapa_a)
             var total_kelapa = parseInt(kelapa) + parseInt(data.result[i].NETTO)
             //console.log(data.result[i].NETTO)
-            $("p.TOTAL_KELAPA_A").html(total_kelapa+" Kg")
-          }
+            $("p.TOTAL_KELAPA_A").html(data.result[i].TOTAL_A+" Kg")
 
-          else if (data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "JAMBUL-B" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "GELONDONG-B" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "LICIN-B")
-          {
-            var kelapa =  $("p.TOTAL_KELAPA_B").text()
-            //console.log(kelapa_a)
-            var total_kelapa = parseInt(kelapa) + parseInt(data.result[i].NETTO)
-            //console.log(data.result[i].NETTO)
-            $("p.TOTAL_KELAPA_B").html(total_kelapa+" Kg")
-          }
-          else if (data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "JAMBUL-C" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "GELONDONG-C" || data.result[i].RMP_FAKTUR_JENIS_MATERIAL == "LICIN-C")
-          {
-            var kelapa =  $("p.TOTAL_KELAPA_C").text()
-            //console.log(kelapa_a)
-            var total_kelapa = parseInt(kelapa) + parseInt(data.result[i].NETTO)
-            //console.log(data.result[i].NETTO)
-            $("p.TOTAL_KELAPA_C").html(total_kelapa+" Kg")
-          }
 
           if(data.result[i].RMP_FAKTUR_NAMA_SUB == "")
           {
@@ -1419,7 +1380,7 @@ function lihat_faktur()
 					"<td>" + nama +  "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_JENIS_MATERIAL +  "</td>" +
 					"<td>" + data.result[i].BRUTO +  "</td>" +
-					"<td>" + data.result[i].TOTAL_POTONGAN +  "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_KUALITET +  " %</td>" +
 					"<td>" + data.result[i].NETTO +  "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_TANGGAL +  "</td>" +
 					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Lihat</a></td>"+

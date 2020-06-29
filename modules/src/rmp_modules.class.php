@@ -351,6 +351,9 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_lihat_faktur':
 			require_once ("faktur/lihat_faktur.php");
 		break;
+		case 'nonlogin_lihat_faktur_kp':
+			require_once ("faktur_kp/lihat_faktur_kp.php");
+		break;
 		case 'nonlogin_edit_faktur':
 			require_once ("faktur/edit_faktur.php");
 		break;

@@ -33,10 +33,10 @@ if (empty($result_abx))
 				$result_a = $this->MYSQL->data();
 
 				$jenis_kelapa = $result_a[0]['jenis_kelapa'];
-				$ponton = $result_a[0]['id_timbang'];
+				$ponton = $input['PONTON_TIMBANG'];
 				if(empty($input['NO_FAKTUR']))
 				{
-					$buat_nomor_faktur=$RMP_CONFIG->buat_nomor_faktur_kopra($tanggalnota)->callback['nomor'];
+					$buat_nomor_faktur=$RMP_CONFIG->buat_nomor_faktur_kopra($tanggalnota,$ponton)->callback['nomor'];
 				}
 				else {
 					$buat_nomor_faktur = $input['NO_FAKTUR'];

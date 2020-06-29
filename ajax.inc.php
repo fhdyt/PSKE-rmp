@@ -213,6 +213,9 @@ switch($ref){
 			case 'lihat_faktur':
 				require_once("ajax/faktur/lihat_faktur.php");
 			break;
+			case 'lihat_faktur_kp':
+				require_once("ajax/faktur_kp/lihat_faktur_kp.php");
+			break;
 			case 'edit_faktur':
 				require_once("ajax/faktur/edit_faktur.php");
 			break;

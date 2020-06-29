@@ -13,7 +13,7 @@ foreach($_POST as $key => $val)
 	}
 
 $params = array(
-	'case' => "nonlogin_lihat_faktur",
+	'case' => "nonlogin_lihat_faktur_kp",
 	'batas' => $_POST['batas'],
 	'halaman' => $_POST['halaman'],
 	'data_http' => $_COOKIE['data_http'],

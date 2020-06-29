@@ -193,7 +193,7 @@ if ($printed == "admin")
 	$kualitet_total = ": ".$kualitet." %";
 
 	$hr = "<hr>";
-	$total_jumlah = $kelapa+$tambang+$cadangan+$goni;
+	$total_jumlah = $kelapa+$tambang+$cadangan+$goni_total;
 	$total_jumlah_title = "Jumlah";
 	$total_jumlah_rp = " : Rp.";
 	$total_jumlah_total = number_format($total_jumlah,0,",",".");
@@ -214,18 +214,26 @@ if ($printed == "admin")
 
 else if ($printed == "beacukai")
 {
-
 	$cetak_catatan_purchaser = $catatan_purchaser;
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
 
+	if ($kualitet <= 75)
+	{
+		$kualitet = $kualitet - 2;
+	}
+	else
+	{
+		$kualitet = $kualitet;
+	}
+
 	$kualitet_title = "KUALITET";
 	$kualitet_total = ": ".$kualitet." %";
 
-	$kelapa_total = number_format(($kelapa+$tambang+$cadangan+$goni),0,",",".");
-	$terbilang=terbilang($kelapa+$tambang+$cadangan+$goni)." Rupiah";
+	$kelapa_total = number_format(($kelapa+$tambang+$cadangan+$goni_total),0,",",".");
+	$terbilang=terbilang($kelapa+$tambang+$cadangan+$goni_total)." Rupiah";
 
-	$rp_kgs = ($kelapa+$tambang+$cadangan+$goni) / $netto;
+	$rp_kgs = ($kelapa+$tambang+$cadangan+$goni_total) / $netto;
 	$rp_kg_cetak = "@Rp ".number_format(round($rp_kgs),0,",",".")."";
 
 	$tambang_title = " ";
@@ -349,19 +357,50 @@ else if ($printed == "relasi")
 	}
 
 
-	// $cetak_catatan_purchaser = $catatan_purchaser;
-	// $kelapa_title = "Kelapa";
-	// $kelapa_rp = " : Rp.";
-	// $kelapa_total = number_format($kelapa,0,",",".");
-	// $total_jumlah = $kelapa+$tambang+$biaya;
-	// $terbilang=terbilang($total_jumlah);
-	// $hr = "<hr>";
-	//
-	// $total_jumlah_title = "Jumlah";
-	// $total_jumlah_rp = " : Rp.";
-	// $total_jumlah_total = number_format($total_jumlah,0,",",".");
+}
 
+else if ($printed == "accounting")
+{
+	$rp_kg_cetak = "@Rp ".number_format(round($rp_kg),0,",",".")."";
+	$cetak_catatan_purchaser = $catatan_purchaser;
+	$kelapa_title = "Kelapa";
+	$kelapa_rp = " : Rp.";
+	$kelapa_total = number_format($kelapa,0,",",".");
 
+	$tambang_title = "Tambang";
+	$tambang_rp = " : Rp.";
+	$tambang_total = number_format($tambang,0,",",".");
+
+	$cadangan_title = "Cadangan";
+	$cadangan_rp = " : Rp.";
+	$cadangan_total = number_format($cadangan,0,",",".");
+
+	$goni_title = "Goni";
+	$goni_rp = " : Rp.";
+	$goni_total_rp = number_format($goni_total,0,",",".");
+	$goni_total = $goni_total;
+
+	$kualitet_title = "KUALITET";
+	$kualitet_total = ": ".$kualitet." %";
+
+	$hr = "<hr>";
+	$total_jumlah = $kelapa+$tambang+$cadangan+$goni_total;
+	$total_jumlah_title = "Jumlah";
+	$total_jumlah_rp = " : Rp.";
+	$total_jumlah_total = number_format($total_jumlah,0,",",".");
+	$terbilang=terbilang($total_jumlah)." Rupiah";
+
+	if ($kualitet <= 75)
+	{
+		$kualitet = $kualitet - 2;
+	}
+	else
+	{
+		$kualitet = $kualitet;
+	}
+
+	$kualitet_title = "KUALITET";
+	$kualitet_total = ": ".$kualitet." %";
 
 }
 else

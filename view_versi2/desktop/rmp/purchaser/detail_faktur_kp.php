@@ -95,11 +95,11 @@ font-size: 12px;
                   <td bgcolor="#239B56"><font color="white"><p class="NAMA_SUPPLIER_PURCHASER">
                     <select class="NAMA_SUPPLIER form-control select2" style="width: 100%;" id="NAMA_SUPPLIER" name="NAMA_SUPPLIER">
                       <option value=""></option>
-                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_HIDDEN" id="NAMA_SUPPLIER_HIDDEN" name="NAMA_SUPPLIER_HIDDEN" type="text">
-                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_PURCHASER_HIDDEN" id="NAMA_SUPPLIER_PURCHASER_HIDDEN" name="NAMA_SUPPLIER_PURCHASER_HIDDEN" type="text">
+                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_HIDDEN" id="NAMA_SUPPLIER_HIDDEN" name="NAMA_SUPPLIER_HIDDEN" type="hidden">
+                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_PURCHASER_HIDDEN" id="NAMA_SUPPLIER_PURCHASER_HIDDEN" name="NAMA_SUPPLIER_PURCHASER_HIDDEN" type="hidden">
                     </select>
                 </p></font>
-                  <input autocomplete="off" class="form-control ID_SUPPLIER" id="ID_SUPPLIER" name="ID_SUPPLIER" type="text">
+                  <input autocomplete="off" class="form-control ID_SUPPLIER" id="ID_SUPPLIER" name="ID_SUPPLIER" type="hidden">
                 </td>
                 </tr>
                 <tr>
@@ -171,8 +171,8 @@ font-size: 12px;
               <tr bgcolor="#239B56">
                 <td><input type="checkbox" name="CEK_TAMBANG" class="CEK_TAMBANG"> <font color="white"><b>Tambang</b></font></td>
                 <td><input autocomplete="off" class="form-control INPUT_TAMBANG" id="INPUT_TAMBANG" name="INPUT_TAMBANG" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
-                    <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="" type="text">
-                    <input type="checkbox" name="TOTAL_TAMBANG_RUPIAH" onchange="total_tambang_rupiah()" class="TOTAL_TAMBANG_RUPIAH"><font color="white"> Total Rupiah Tambang</font>
+                    <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="" type="hidden">
+                    <!-- <input type="checkbox" name="TOTAL_TAMBANG_RUPIAH" onchange="total_tambang_rupiah()" class="TOTAL_TAMBANG_RUPIAH"><font color="white"> Total Rupiah Tambang</font> -->
                 </td>
               </tr>
               <tr bgcolor="#239B56">
@@ -183,9 +183,9 @@ font-size: 12px;
               <tr bgcolor="#239B56">
                 <td><input type="checkbox" name="CEK_CADANGAN" class="CEK_CADANGAN"> <font color="white"><b>Cadangan</b></font></td>
                 <td><input autocomplete="off" class="form-control INPUT_CADANGAN" id="INPUT_CADANGAN" name="INPUT_CADANGAN" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
-                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="text">
-                  <input autocomplete="off" class="form-control GRADE_MATERIAL" id="GRADE_MATERIAL" name="GRADE_MATERIAL" type="text">
-                  <input autocomplete="off" class="form-control ID_FAKTUR_PURCHASER" id="ID_FAKTUR_PURCHASER" name="ID_FAKTUR_PURCHASER" type="text">
+                  <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="hidden">
+                  <input autocomplete="off" class="form-control GRADE_MATERIAL" id="GRADE_MATERIAL" name="GRADE_MATERIAL" type="hidden">
+                  <input autocomplete="off" class="form-control ID_FAKTUR_PURCHASER" id="ID_FAKTUR_PURCHASER" name="ID_FAKTUR_PURCHASER" type="hidden">
                 </td>
               </tr>
             </table>
@@ -273,7 +273,7 @@ font-size: 12px;
               <tr>
                 <td><b>Kelapa (Rp)</b></td>
                 <td align="right"><p class="KELAPA_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
-                  <input autocomplete="off" class="form-control KELAPA_RUPIAH" id="KELAPA_RUPIAH" name="KELAPA_RUPIAH" type="text">
+                  <input autocomplete="off" class="form-control KELAPA_RUPIAH" id="KELAPA_RUPIAH" name="KELAPA_RUPIAH" type="hidden">
                 </td>
               </tr>
               <tr>
@@ -292,7 +292,7 @@ font-size: 12px;
                 <td bgcolor="#239B56"><font color="white"><h4><b>Total (Rp)</b></h4></font></td>
                 <td align="right" bgcolor="#239B56"><font color="white"><h4><b>
                   <p class="TOTAL_RP" id="TOTAL_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
-                  <input autocomplete="off" class="form-control TOTAL_SELURUH" id="TOTAL_SELURUH" name="TOTAL_SELURUH" type="text">
+                  <input autocomplete="off" class="form-control TOTAL_SELURUH" id="TOTAL_SELURUH" name="TOTAL_SELURUH" type="hidden">
                 </b></h4></font></td>
               </tr>
             </table>
@@ -307,7 +307,7 @@ font-size: 12px;
                 <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="relasi">Relasi</a></li>
                 <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="admin">Admin</a></li>
                 <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="beacukai">Beacukai</a></li>
-                <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="pembukuan">Pembukuan</a></li>
+                <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="accounting">Pembukuan</a></li>
               </ul>
             </div>
           </div>
@@ -389,6 +389,14 @@ font-size: 12px;
                  </td>
                  <td>
                    <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success" PRINTED="beacukai"><i class="fa fa-print" aria-hidden="true"></i></a>
+                 </td>
+               </tr>
+               <tr>
+                 <td>
+                   Cetak Untuk Accounting
+                 </td>
+                 <td>
+                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success" PRINTED="accounting"><i class="fa fa-print" aria-hidden="true"></i></a>
                  </td>
                </tr>
              </table>
@@ -507,7 +515,7 @@ function faktur_detail_list(curPage)
             $('.CEK_LANGSUNG_PROSES').prop('checked', true)
           }
           else{}
-          
+
           $("tbody#zone_data").append("<tr class='detailLogId'  >" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_TANGGAL + "</td>" +
