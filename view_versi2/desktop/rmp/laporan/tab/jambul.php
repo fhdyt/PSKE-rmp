@@ -446,12 +446,14 @@ function laporan_faktur_list(curPage,wilayah)
 					"<td align='right'>" + data.result[i].PERSEN_A + "</td>" +
 					"<td align='right'>" + data.result[i].NETTO_A + "</td>" +
           "<td align='right'>" + data.result[i].RP_KG_A + "</td>" +
+          //"<td align='right'>" + data.result[i].RP_KG_A + "</td>" +
           "<td align='right'>" + data.result[i].RP_A + "</td>" +
 
           "<td align='right'>" + data.result[i].BRUTO_B + "</td>" +
           "<td align='right'>" + data.result[i].PERSEN_B + "</td>" +
 					"<td align='right'>" + data.result[i].NETTO_B + "</td>" +
           "<td align='right'>" + data.result[i].RP_KG_B + "</td>" +
+          //"<td align='right'>" + data.result[i].RP_KG_B + "</td>" +
           "<td align='right'>" + data.result[i].RP_B + "</td>" +
 
           "<td><a class='btn btn-success btn-xs' target='_blank' href='?show=rmp/purchaser/detail_faktur/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +

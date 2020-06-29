@@ -176,6 +176,7 @@ foreach($result_a as $r)
 
       foreach($result_b3 as $rb3)
       {
+        $r['PURCHASER_RP_KG'] = $rb3['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR']/$rb3['RMP_FAKTUR_PURCHASER_NETTO'];
         $r['RP_A'] =number_format($rb3['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR'],0,",",".");
         $r['RP_B'] ="";
         $r['RP_C'] ="";
@@ -192,7 +193,7 @@ foreach($result_a as $r)
         $r['NETTO_B'] ="";
         $r['NETTO_C'] ="";
 
-        $r['RP_KG_A']=number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG'],0,",",".");
+        $r['RP_KG_A']=number_format($r['PURCHASER_RP_KG'],0,",",".");
         $r['RP_KG_B']="";
         $r['RP_KG_C']="";
       }
@@ -276,6 +277,7 @@ foreach($result_a as $r)
 
       foreach($result_b3 as $rb3)
       {
+        $r['PURCHASER_RP_KG'] = $rb3['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR']/$rb3['RMP_FAKTUR_PURCHASER_NETTO'];
         $r['RP_B'] =number_format($rb3['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR'],0,",",".");
         $r['RP_A'] ="";
         $r['RP_C'] ="";
@@ -292,7 +294,8 @@ foreach($result_a as $r)
         $r['NETTO_A'] ="";
         $r['NETTO_C'] ="";
 
-        $r['RP_KG_B']=number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG'],0,",",".");
+        $r['RP_KG_B']=number_format($r['PURCHASER_RP_KG'],0,",",".");
+        //$r['RP_KG_B']=number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG'],0,",",".");
         $r['RP_KG_A']="";
         $r['RP_KG_C']="";
       }
@@ -377,6 +380,7 @@ foreach($result_a as $r)
 
       foreach($result_b3 as $rb3)
       {
+        $r['PURCHASER_RP_KG'] = $rb3['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR']/$rb3['RMP_FAKTUR_PURCHASER_NETTO'];
         $r['RP_C'] =number_format($rb3['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR'],0,",",".");
         $r['RP_A'] ="";
         $r['RP_B'] ="";
@@ -393,7 +397,7 @@ foreach($result_a as $r)
         $r['NETTO_A'] ="";
         $r['NETTO_B'] ="";
 
-        $r['RP_KG_C']=number_format($rb3['RMP_FAKTUR_PURCHASER_RP_KG'],0,",",".");
+        $r['RP_KG_C']=number_format($r['PURCHASER_RP_KG'],0,",",".");
         $r['RP_KG_A']="";
         $r['RP_KG_B']="";
       }
