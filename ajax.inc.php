@@ -222,6 +222,12 @@ switch($ref){
 			case 'simpan_manual_nota':
 				require_once("ajax/faktur/simpan_manual_nota.php");
 			break;
+			case 'simpan_manual_nota_kp':
+				require_once("ajax/faktur_kp/simpan_manual_nota_kp.php");
+			break;
+			case 'simpan_edit_nota':
+				require_once("ajax/faktur_kp/simpan_edit_nota.php");
+			break;
 			case 'cek_nomor_faktur':
 				require_once("ajax/faktur/cek_nomor_faktur.php");
 			break;

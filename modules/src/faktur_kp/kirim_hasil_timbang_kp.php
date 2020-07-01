@@ -28,12 +28,12 @@ if (empty($result_abx))
 				$tanggalnota = $input['TANGGAL_NOTA'];
 				$sql33 = "SELECT * FROM relasi.kopra_".$tanggalnota." WHERE recno='".$input['ID_TIMBANG']."' LIMIT 1";
 				$this->MYSQL = new MYSQL();
-				$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+				$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama_relasi_isea;
 				$this->MYSQL->queri = $sql33 ;
 				$result_a = $this->MYSQL->data();
 
 				$jenis_kelapa = $result_a[0]['jenis_kelapa'];
-				$ponton = $input['PONTON_TIMBANG'];
+				$ponton = $result_a[0]['jenis_kelapa'];
 				if(empty($input['NO_FAKTUR']))
 				{
 					$buat_nomor_faktur=$RMP_CONFIG->buat_nomor_faktur_kopra($tanggalnota,$ponton)->callback['nomor'];
@@ -52,9 +52,9 @@ if (empty($result_abx))
 					'RMP_FAKTUR_DETAIL_NO_NOTA' => $result_a[0]['relasi'],
 					'RMP_FAKTUR_DETAIL_GROSS' => $result_a[0]['gross'],
 					'RMP_FAKTUR_DETAIL_TARA' => $result_a[0]['tar'],
-					'RMP_FAKTUR_DETAIL_BRUTO' => $result_a[0]['gross'],
+					'RMP_FAKTUR_DETAIL_BRUTO' => $result_a[0]['gross']-$result_a[0]['tar'],
 					'RMP_FAKTUR_DETAIL_POTONGAN' => '0',
-					'RMP_FAKTUR_DETAIL_NETTO' => $result_a[0]['gross'],
+					'RMP_FAKTUR_DETAIL_NETTO' => $result_a[0]['gross']-$result_a[0]['tar'],
 					'RMP_FAKTUR_DETAIL_TANGGAL' => $result_a[0]['tgl'],
 				  'ENTRI_WAKTU' => date("Y-m-d H:i:s") ,
 				  'ENTRI_OPERATOR' => $user_login['PERSONAL_NIK'],

@@ -360,6 +360,12 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_simpan_manual_nota':
 			require_once ("faktur/simpan_manual_nota.php");
 		break;
+		case 'nonlogin_simpan_manual_nota_kp':
+			require_once ("faktur_kp/simpan_manual_nota_kp.php");
+		break;
+		case 'nonlogin_simpan_edit_nota':
+			require_once ("faktur_kp/simpan_edit_nota.php");
+		break;
 		case 'nonlogin_cek_nomor_faktur':
 			require_once ("faktur/cek_nomor_faktur.php");
 		break;

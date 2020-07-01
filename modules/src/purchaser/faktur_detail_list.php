@@ -52,6 +52,7 @@ foreach($result_a as $r)
     $r['NO'] = $no;
     $r['TANGGAL']=tanggal_format(Date("Y-m-d",strtotime($r['RMP_FAKTUR_TANGGAL'])));
     $total_gross += $r['RMP_FAKTUR_DETAIL_BRUTO'];
+    $total_gross_kp += $r['RMP_FAKTUR_DETAIL_GROSS'];
     $total_tara += $r['RMP_FAKTUR_DETAIL_TARA'];
     $total_bruto += $r['RMP_FAKTUR_DETAIL_NETTO'];
     $total_potongan = $total_bruto*($potongan/100);
@@ -83,6 +84,7 @@ if (empty($result_a))
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
     $this->callback['total_gross'] = $total_gross;
+    $this->callback['total_gross_kp'] = $total_gross_kp;
     $this->callback['total_tara'] = $total_tara;
     $this->callback['total_bruto'] = $total_bruto;
     $this->callback['potongan'] = $potongan;

@@ -71,7 +71,7 @@
           <div class="row">
             <div class="col-md-12">
               <a class="btn btn-warning lihat_faktur btn-sm" type="button"><i class="fa fa-list-ol" aria-hidden="true"></i> Faktur</a>
-              <a class="btn btn-success buat_faktur_baru btn-sm" type="button" style="display:none;" href="?show=rmp/faktur"><i class="fa fa-plus" aria-hidden="true"></i> Buat Faktur Baru</a>
+              <a class="btn btn-success buat_faktur_baru btn-sm" type="button" style="display:none;" href="?show=rmp/faktur_kp"><i class="fa fa-plus" aria-hidden="true"></i> Buat Faktur Baru</a>
               <a class="btn btn-default cetak_faktur btn-sm" type="button" style="display:none;"><i class="fa fa-print" aria-hidden="true"></i> Cetak Faktur</a>
             </div>
           </div>
@@ -185,7 +185,7 @@
               <label for="exampleInputEmail1">Nomor Nota</label>
               <select class="NO_NOTA form-control select2" style="width: 100%;" id="NO_NOTA" name="NO_NOTA" onchange="no_nota()">
               </select>
-              <p class="help-block"><a href="https://isea-trial.sambu.co.id/cron/timbangan_pkb.php">Ambil data Timbang</a></p>
+              <p class="help-block">Pilih Nota Timbang</p>
             </div>
             </div>
             <div class="col-md-3">
@@ -241,7 +241,7 @@
                 <p class="help-block">Tanggal faktur.</p>
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
               <div class="form-group">
                 <label for="exampleInputEmail1">Operator Timbang</label><select class="OPERATOR_TIMBANG with-ajax-personal form-control" data-live-search="true" id="OPERATOR_TIMBANG" name="OPERATOR_TIMBANG" onchange="sel_operator_timbang()">
                 </select>
@@ -249,14 +249,14 @@
               </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-3">
               <div class="form-group">
                 <label for="exampleInputEmail1">Inspektur Mutu</label><select class="INSPEKTUR_MUTU with-ajax-personal form-control" data-live-search="true" id="INSPEKTUR_MUTU" name="INSPEKTUR_MUTU" onchange="sel_inspektur_mutu()">
                 </select>
                 <p class="help-block">Nama Inspektur Mutu.</p>
               </div>
             </div>
-            <div class="col-md-2">
+            <!-- <div class="col-md-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Ponton</label><select class="PONTON_TIMBANG form-control"  id="PONTON_TIMBANG" name="PONTON_TIMBANG" >
                   <option value="PTN-1">Ponton 1</option>
@@ -264,7 +264,7 @@
                 </select>
                 <p class="help-block">Kode Ponton.</p>
               </div>
-            </div>
+            </div> -->
             <div class="col-md-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Kualitet</label> <input autocomplete="off" class="form-control KUALITET" id="KUALITET" name="KUALITET" placeholder="POTONGAN" value="0" type="number">
@@ -334,7 +334,7 @@
 
 
       <div class="row form_faktur_hasil_timbang">
-      	<div class="col-md-6">
+      	<div class="col-md-5">
       		<div class="box box-solid">
       			<div class="box-body">
       				<div class="box box-default">
@@ -361,8 +361,8 @@
       										<th>No.</th>
       										<th>Tanggal / Jam</th>
       										<th>Gross</th>
-      										<th>Jenis Kelapa</th>
-      										<th>Ponton</th>
+      										<th>Tara</th>
+      										<th>Bruto</th>
       									</tr>
       								</thead>
       								<tbody id="zone_data">
@@ -383,7 +383,7 @@
       			</div>
       		</div>
       	</div>
-      	<div class="col-md-6">
+      	<div class="col-md-7">
       		<div class="box box-solid">
       			<div class="box-body">
       				<div class="box box-default">
@@ -409,7 +409,10 @@
       									<th>No.</th>
       									<th>Tanggal / Jam</th>
       									<th>Gross</th>
-      									<th>Jenis Kelapa</th>
+      									<th>Tara</th>
+      									<th>Tempurung</th>
+      									<th>Kopra Basah</th>
+      									<th>Netto</th>
       									<th></th>
       								</tr>
       							</thead>
@@ -537,20 +540,8 @@
                  <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Material</label>
                  <div class="col-sm-8">
                  <select class="form-control MANUAL_MATERIAL" name="MANUAL_MATERIAL" id="MANUAL_MATERIAL">
-                   <option value="JAMBUL">JAMBUL</option>
-                   <option value="GELONDONG">GELONDONG</option>
-                   <option value="LICIN">LICIN</option>
+                   <option value="KOPRA">KOPRA</option>
                  </select>
-               </div>
-             </div>
-               <div class="form-group">
-                 <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Grade</label>
-                 <div class="col-sm-8">
-                   <select class="form-control MANUAL_GRADE" name="MANUAL_GRADE" id="MANUAL_GRADE">
-                     <option value="A">A</option>
-                     <option value="B">B</option>
-                     <option value="C">C</option>
-                   </select>
                </div>
              </div>
                <div class="form-group">
@@ -563,9 +554,8 @@
                  <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Timbang</label>
                  <div class="col-sm-8">
                    <select class="form-control MANUAL_TIMBANG" name="MANUAL_TIMBANG" id="MANUAL_TIMBANG">
-                     <option value="PTN-1">PTN-1</option>
-                     <option value="PTN-2">PTN-2</option>
-                     <option value="PTN-2">PTN-3</option>
+                     <option value="PTN-1">KP-1</option>
+                     <option value="PTN-2">KP-2</option>
                    </select>
                </div>
              </div>
@@ -581,18 +571,25 @@
                  <input autocomplete="off" class="form-control MANUAL_TARA" id="MANUAL_TARA" name="MANUAL_TARA" placeholder="" type="number" onkeyup="kalkulasi_manual()">
                </div>
              </div>
+             <div class="form-group">
+               <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Tempurung</label>
+               <div class="col-sm-8">
+               <input autocomplete="off" class="form-control MANUAL_TEMPURUNG" id="MANUAL_TEMPURUNG" name="MANUAL_TEMPURUNG" placeholder="" type="number" onkeyup="kalkulasi_manual()">
+             </div>
+           </div>
+             <div class="form-group">
+               <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Kopra Basah</label>
+               <div class="col-sm-8">
+               <input autocomplete="off" class="form-control MANUAL_KOPRA_BASAAH" id="MANUAL_KOPRA_BASAAH" name="MANUAL_KOPRA_BASAAH" placeholder="" type="number" onkeyup="kalkulasi_manual()">
+             </div>
+           </div>
                <div class="form-group">
                  <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Bruto</label>
                  <div class="col-sm-8">
                  <input autocomplete="off" class="form-control MANUAL_BRUTO" id="MANUAL_BRUTO" name="MANUAL_BRUTO" placeholder="" type="number" onkeyup="kalkulasi_manual()">
                </div>
              </div>
-               <div class="form-group">
-                 <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Potongan</label>
-                 <div class="col-sm-8">
-                 <input autocomplete="off" class="form-control MANUAL_POTONGAN" id="MANUAL_POTONGAN" name="MANUAL_POTONGAN" placeholder="" type="number" onkeyup="kalkulasi_manual()">
-               </div>
-             </div>
+
                <div class="form-group">
                  <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Netto</label>
                  <div class="col-sm-8">
@@ -606,6 +603,64 @@
              <div class="col-md-12 text-right">
                <div class="form-group">
      						<button class="btn btn-success btn-sm SIMPAN_MANUAL_PROSES">Simpan</button>
+     					</div>
+             </div>
+           </div>
+ 		</div>
+ 	</div>
+ </div>
+ </div>
+ <!-- MODAL EDIT PROSES DATA -->
+
+ <!-- MODAL EDIT PROSES DATA -->
+ <div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg modalEditFaktur" role="dialog" tabindex="-1">
+ 	<div class="modal-dialog" role="document">
+ 		<div class="modal-content">
+ 			<div class="modal-header">
+ 				<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+ 				<h4 class="modal-title" id="myModalLabel">Edit Nota Timbang</h4>
+ 			</div>
+ 			<div class="modal-body">
+
+ 				<form action="javascript:download();" class="fDataEditFaktur form-horizontal" id="fDataEditFaktur" name="fDataEditFaktur">
+               <div class="form-group">
+                 <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Gross</label>
+                 <div class="col-sm-8">
+                 <input autocomplete="off" class="form-control ID_TIMBANG_NOTA" id="ID_TIMBANG_NOTA" name="ID_TIMBANG_NOTA" placeholder="" type="hidden" value="" >
+                 <input autocomplete="off" class="form-control GROSS_NOTA" id="GROSS_NOTA" name="GROSS_NOTA" placeholder="" type="number" value="" onkeyup="kalkulasi_edit_faktur()" >
+               </div>
+             </div>
+               <div class="form-group">
+                 <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Tara</label>
+                 <div class="col-sm-8">
+                 <input autocomplete="off" class="form-control TARA_NOTA" id="TARA_NOTA" name="TARA_NOTA" placeholder="" type="number" value="" onkeyup="kalkulasi_edit_faktur()" >
+               </div>
+             </div>
+               <div class="form-group">
+                 <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Tempurung</label>
+                 <div class="col-sm-8">
+                 <input autocomplete="off" class="form-control POTONGAN_TEMPURUNG_NOTA" id="POTONGAN_TEMPURUNG_NOTA" name="POTONGAN_TEMPURUNG_NOTA" placeholder="" type="number" value="0" onkeyup="kalkulasi_edit_faktur()">
+               </div>
+             </div>
+               <div class="form-group">
+                 <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Kopra Basah</label>
+                 <div class="col-sm-8">
+                 <input autocomplete="off" class="form-control POTONGAN_KOPRA_BASAH_NOTA" id="POTONGAN_KOPRA_BASAH_NOTA" name="POTONGAN_KOPRA_BASAH_NOTA" placeholder="" type="number" value="0" onkeyup="kalkulasi_edit_faktur()">
+               </div>
+             </div>
+               <div class="form-group">
+                 <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Netto</label>
+                 <div class="col-sm-8">
+                 <input autocomplete="off" class="form-control NETTO_NOTA" id="NETTO_NOTA" name="NETTO_NOTA" placeholder="" value="0" type="number">
+               </div>
+             </div>
+
+               </form>
+
+           <div class="row">
+             <div class="col-md-12 text-right">
+               <div class="form-group">
+     						<button class="btn btn-success btn-sm SIMPAN_EDIT_NOTA">Simpan</button>
      					</div>
              </div>
            </div>
@@ -988,6 +1043,7 @@ function hasil_timbang(no_nota)
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {
+        //alert(data.database);
         $("tbody#zone_data").empty();
         for (i = 0; i < data.result.length; i++)
         {
@@ -1026,13 +1082,13 @@ function hasil_timbang(no_nota)
             "<td>" + data.result[i].tgl + "</td>"+
             // "<td>" + data.result[i].RMP_HASIL_TIMBANG_KG + "</td>" +
             "<td>" + data.result[i].gross + "</td>"+
-            "<td>KOPRA</td>"+
-            "<td>" + data.result[i].id + "</td>"+
+            "<td>" + data.result[i].tar + "</td>"+
             "<td>"+ a +"</td>" +
             "</tr>");
         }
       }
       else if (data.respon.pesan == "gagal") {
+        //alert(data.database);
         $("tbody#zone_data").html("<tr><td colspan='10'><div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> " + data.respon.text_msg + "</div></td></tr>");
       }
     }, //end success
@@ -1124,18 +1180,23 @@ function faktur_list(no_nota)
           else if(data.result[i].RECORD_STATUS=='A')
           {
             var a = "<button class='btn btn-danger btn-xs kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-trash'></i></button>"
+            var edit = "<button class='btn btn-warning btn-xs edit_faktur_list' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' GROSS='" + data.result[i].RMP_FAKTUR_DETAIL_GROSS +  "' TARA='" + data.result[i].RMP_FAKTUR_DETAIL_TARA +  "' TEMPURUNG='" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_TEMPURUNG +  "' KOPRA_BASAH='" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_KOPRA_BASAH +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-pencil'></i></button>"
           }
           else
           {
             // var a = "<button class='btn btn-default btn-sm kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_HASIL_TIMBANG_ID +  "' NO_NOTA='" + data.result[i].RMP_HASIL_TIMBANG_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-external-link'></i></button>"
             var a = "<button class='btn btn-danger btn-xs kembali_hasil_timbang' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-trash'></i></button>"
+            var edit = "<button class='btn btn-warning btn-xs edit_faktur_list' ID_HASIL_TIMBANG='" + data.result[i].RMP_FAKTUR_DETAIL_ID +  "' GROSS='" + data.result[i].RMP_FAKTUR_DETAIL_GROSS +  "' TARA='" + data.result[i].RMP_FAKTUR_DETAIL_TARA +  "' TEMPURUNG='" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_TEMPURUNG +  "' KOPRA_BASAH='" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_KOPRA_BASAH +  "' NO_NOTA='" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "' ><i aria-hidden='true' class='fa fa-pencil'></i></button>"
           }
           $("tbody#zone_data_faktur").append("<tr class='default'  detailLogId='" + data.result[i].ICD_BARANG_KODE_INVENTORI + "'>" +
             "<td >" + data.result[i].NO + ".</td>" +
             "<td>" + data.result[i].RMP_FAKTUR_DETAIL_TANGGAL + "</td>" +
+            "<td>" + data.result[i].RMP_FAKTUR_DETAIL_GROSS + "</td>" +
+            "<td>" + data.result[i].RMP_FAKTUR_DETAIL_TARA + "</td>" +
+            "<td>" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_TEMPURUNG + "</td>" +
+            "<td>" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_KOPRA_BASAH + "</td>" +
             "<td>" + data.result[i].RMP_FAKTUR_DETAIL_NETTO + "</td>" +
-            "<td>" + data.result[i].RMP_FAKTUR_DETAIL_JENIS_MATERIAL + "</td>" +
-            "<td>"+ a +"</td>" +
+            "<td>"+ a +" "+ edit +"</td>" +
             "</tr>");
         }
       }
@@ -1249,7 +1310,7 @@ $('.btn_cetak_faktur').on('click', function()
 $('.btn_lihat_faktur').on('click', function()
 {
   var id_faktur = $('.ID_FAKTUR').val();
-  window.open('?show=rmp/html/faktur/' + id_faktur + '', '_blank');
+  window.open('?show=rmp/html/faktur_kp/' + id_faktur + '', '_blank');
 })
 
 function kembali_hasil_timbang(data)
@@ -1305,6 +1366,27 @@ $("tbody#zone_data_faktur").on('click','button.kembali_hasil_timbang', function(
   }
 })
 
+$("tbody#zone_data_faktur").on('click','button.edit_faktur_list', function()
+{
+
+  var id_timbang = $(this).attr('ID_HASIL_TIMBANG');
+  var gross = $(this).attr('GROSS');
+  var tara = $(this).attr('TARA');
+  var tempurung = $(this).attr('TEMPURUNG');
+  var kopra_basah = $(this).attr('KOPRA_BASAH');
+  var no_nota = $(this).attr('NO_NOTA');
+  var no_faktur = $('.NO_FAKTUR').text();
+  $(".ID_TIMBANG_NOTA").val(id_timbang);
+  $(".GROSS_NOTA").val(gross);
+  $(".TARA_NOTA").val(tara);
+  $(".POTONGAN_TEMPURUNG_NOTA").val(tempurung);
+  $(".POTONGAN_KOPRA_BASAH_NOTA").val(kopra_basah);
+  $(".NETTO_NOTA").val(gross-tara-tempurung-kopra_basah);
+  var data = 'ID_TIMBANG='+id_timbang+'&NO_NOTA='+no_nota+'&NO_FAKTUR='+no_faktur;;
+  $(".modalEditFaktur").modal('show');
+
+})
+
 
 function lihat_faktur()
 {
@@ -1322,12 +1404,11 @@ function lihat_faktur()
         $("p.TOTAL_KELAPA_C").html("0")
         for (i = 0; i < data.result.length; i++) {
 
-            var kelapa =  $("p.TOTAL_KELAPA_A").text()
-            //console.log(kelapa_a)
-            var total_kelapa = parseInt(kelapa) + parseInt(data.result[i].NETTO)
-            //console.log(data.result[i].NETTO)
-            $("p.TOTAL_KELAPA_A").html(data.result[i].TOTAL_A+" Kg")
-
+          var kelapa =  $("p.TOTAL_KELAPA_A").text()
+          //console.log(kelapa_a)
+          var total_kelapa = parseInt(kelapa) + parseInt(data.result[i].NETTO)
+          //console.log(data.result[i].NETTO)
+          $("p.TOTAL_KELAPA_A").html(total_kelapa+" Kg")
 
           if(data.result[i].RMP_FAKTUR_NAMA_SUB == "")
           {
@@ -1355,23 +1436,7 @@ function lihat_faktur()
             var total_a = data.result[i].TOTAL_A
           }
 
-          if (data.result[i].TOTAL_B == null)
-          {
-            var total_b = "0"
-          }
-          else
-          {
-            var total_b = data.result[i].TOTAL_B
-          }
 
-          if (data.result[i].TOTAL_C == null)
-          {
-            var total_c = "0"
-          }
-          else
-          {
-            var total_c = data.result[i].TOTAL_C
-          }
 
           $("tbody#zone_lihat_faktur").append("<tr class='detailLogId'>" +
 					"<td >" + data.result[i].NO + ".</td>" +
@@ -1383,15 +1448,13 @@ function lihat_faktur()
 					"<td>" + data.result[i].RMP_FAKTUR_KUALITET +  " %</td>" +
 					"<td>" + data.result[i].NETTO +  "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_TANGGAL +  "</td>" +
-					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Lihat</a></td>"+
-          "<td><a class='btn btn-warning btn-xs' href='?show=rmp/pdf/cetak_faktur_adm/" + data.result[i].RMP_FAKTUR_ID +  "/' target='_blank'><i aria-hidden='true' class='fa fa-print'></i> Cetak</a></td>" +
+					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur_kp/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Lihat</a></td>"+
+        //  "<td><a class='btn btn-warning btn-xs' href='?show=rmp/pdf/cetak_faktur_adm/" + data.result[i].RMP_FAKTUR_ID +  "/' target='_blank'><i aria-hidden='true' class='fa fa-print'></i> Cetak</a></td>" +
 					"</tr>");
         }
       } else if (data.respon.pesan == "gagal") {
         $("tbody#zone_lihat_faktur").html("<tr><td colspan='9'><div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> " + data.respon.text_msg + "</div></td></tr>");
         $("p.TOTAL_KELAPA_A").html("0 Kg")
-        $("p.TOTAL_KELAPA_B").html("0 Kg")
-        $("p.TOTAL_KELAPA_C").html("0 Kg")
       }
     }, //end success
     error: function(x, e) {
@@ -1454,6 +1517,8 @@ function edit_faktur(d2)
         $(".CATATAN_PURCHASER").val(data.result[0].RMP_FAKTUR_CATATAN_PURCHASER)
         $(".CATATAN_SUPPLIER").val(data.result[0].RMP_FAKTUR_CATATAN_SUPPLIER)
         $(".NAMA_PETANI").val(data.result[0].RMP_FAKTUR_NAMA_SUB)
+        $(".KUALITET").val(data.result[0].RMP_FAKTUR_KUALITET)
+        $(".GONI").val(data.result[0].RMP_FAKTUR_GONI)
 
         if(data.result[0].RMP_FAKTUR_CEK_DITERIMA =='Y')
         {
@@ -1477,6 +1542,22 @@ function edit_faktur(d2)
         }
         else {
           $('.CEK_DIPISAH').attr('checked', false);
+        }
+
+        if(data.result[0].RMP_FAKTUR_CEK_KOTORAN =='Y')
+        {
+          $('.CEK_KOTORAN').attr('checked', true);
+        }
+        else {
+          $('.CEK_KOTORAN').attr('checked', false);
+        }
+
+        if(data.result[0].RMP_FAKTUR_CEK_LANGSUNG_PROSES =='Y')
+        {
+          $('.CEK_LANGSUNG_PROSES').attr('checked', true);
+        }
+        else {
+          $('.CEK_LANGSUNG_PROSES').attr('checked', false);
         }
 
         hasil_timbang(data.result[0].RMP_FAKTUR_DETAIL_NO_NOTA)
@@ -1522,14 +1603,41 @@ $(".SIMPAN_MANUAL_PROSES").on("click", function(){
   	type: 'POST',
   	url: refseeAPI,
   	dataType: 'json',
-  	data: 'ref=simpan_manual_nota&' + fData ,
+  	data: 'ref=simpan_manual_nota_kp&' + fData ,
   	success: function(data) {
   		if (data.respon.pesan == "sukses")
   		{
         var no_nota = "";
         faktur_list(no_nota)
-        $("input.JENIS_KELAPA").val($(".MANUAL_MATERIAL").val()+"-"+$(".MANUAL_GRADE").val())
+        $("input.JENIS_KELAPA").val($(".MANUAL_MATERIAL").val())
         $(".modalManualNota").modal("hide")
+  		}
+
+  		else if (data.respon.pesan == "gagal")
+  		{
+  			console.log(data.respon.text_msg);
+  			alert("Gagal Menyimpan");
+  		}
+  	}, //end success
+  	error: function(x, e) {
+  		console.log("Error Ajax");
+  	} //end error
+  });
+})
+
+$(".SIMPAN_EDIT_NOTA").on("click", function(){
+  var fData = $('.fDataEditFaktur').serialize();
+  $.ajax({
+  	type: 'POST',
+  	url: refseeAPI,
+  	dataType: 'json',
+  	data: 'ref=simpan_edit_nota&' + fData ,
+  	success: function(data) {
+  		if (data.respon.pesan == "sukses")
+  		{
+        var no_nota = "";
+        faktur_list(no_nota)
+        $(".modalEditFaktur").modal("hide")
   		}
 
   		else if (data.respon.pesan == "gagal")
@@ -1548,11 +1656,22 @@ function kalkulasi_manual()
 {
   var gross = $("input.MANUAL_GROSS").val()
   var tara = $("input.MANUAL_TARA").val()
-  var bruto = parseInt(gross) - parseInt(tara)
-  console.log(gross)
+  var tempurung = $("input.MANUAL_TEMPURUNG").val()
+  var kopra_basah = $("input.MANUAL_KOPRA_BASAAH").val()
+  var bruto = parseInt(gross) - parseInt(tara) - parseInt(tempurung) - parseInt(kopra_basah)
   $("input.MANUAL_BRUTO").val(parseInt(bruto))
-  var potongan = $("input.MANUAL_POTONGAN").val()
-  var netto = parseInt(bruto)-parseInt(potongan)
-  $("input.MANUAL_NETTO").val(parseInt(netto))
+  $("input.MANUAL_NETTO").val(parseInt(bruto))
+}
+
+function kalkulasi_edit_faktur()
+{
+  var gross = $("input.GROSS_NOTA").val()
+  var tara = $("input.TARA_NOTA").val()
+  var tempurung = $("input.POTONGAN_TEMPURUNG_NOTA").val()
+  var kopra_basah = $("input.POTONGAN_KOPRA_BASAH_NOTA").val()
+  var netto = parseInt(gross) - parseInt(tara) - parseInt(tempurung) - parseInt(kopra_basah)
+  console.log(netto)
+  $("input.NETTO_NOTA").val(parseInt(netto))
+
 }
 </script>

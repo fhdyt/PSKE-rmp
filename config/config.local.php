@@ -246,11 +246,11 @@ CLASS RMP_CONFIG extends CONFIG
 	 	 }
 
 			public function buat_nomor_faktur($jenis_kelapa,$ponton,$tanggalnota){
-				if($ponton == 'PTN-1')
+				if($ponton == 'KP-1')
 				{
 					$ptn = "A";
 				}
-				elseif($ponton == 'PTN-2')
+				elseif($ponton == 'KP-2')
 				{
 					$ptn = "B";
 				}

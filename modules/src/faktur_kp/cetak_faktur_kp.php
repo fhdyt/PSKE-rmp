@@ -153,6 +153,8 @@ foreach($result_avccb as $rrrxvvvvvv)
 foreach($result_a as $rr)
     {
         $rr['NO'] = $no;
+        $rr['GROSS'] = $rr['RMP_FAKTUR_DETAIL_GROSS']-$rr['RMP_FAKTUR_DETAIL_POTONGAN_TEMPURUNG']-$rr['RMP_FAKTUR_DETAIL_POTONGAN_KOPRA_BASAH'];
+
         $total_kg +=$rr['RMP_FAKTUR_DETAIL_BRUTO'];
         $jenis = $rr['jenis_kelapa'];
         $relasi = $rr['RMP_MASTER_PERSONAL_NAMA'];

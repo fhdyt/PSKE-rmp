@@ -18,7 +18,8 @@ $sql = "SELECT * FROM
 relasi.kopra_".$input['TANGGAL_NOTA']." WHERE relasi='".$input['NO_NOTA']."' GROUP BY recno";
 
 $this->MYSQL = new MYSQL();
-$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama_relasi_isea;
+$database = $this->CONFIG->mysql_koneksi()->db_nama_relasi_isea;
 $this->MYSQL->queri = $sql ;
 $result_a = $this->MYSQL->data();
 
@@ -51,6 +52,7 @@ if (empty($result_a))
     $this->callback['respon']['text_msg'] = "Data tidak ada";
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
+    $this->callback['database'] = $database;
     }
   else
     {
@@ -60,6 +62,7 @@ if (empty($result_a))
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
     $this->callback['kapal'] = $kapal;
+    $this->callback['database'] = $database;
     }
 
 ?>

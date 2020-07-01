@@ -65,7 +65,7 @@ if(empty($params['case'])){
 $input=$params['input_option'];
 
 $this->MYSQL=new MYSQL();
-$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama;
+$this->MYSQL->database=$this->CONFIG->mysql_koneksi()->db_nama_relasi_isea;
 // $this->MYSQL->queri="select * from RMP_HASIL_TIMBANG
 // 													WHERE
 // 					 RMP_HASIL_TIMBANG_NO_NOTA LIKE '%".$input['q']."%'  AND

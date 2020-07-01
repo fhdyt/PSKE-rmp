@@ -424,7 +424,7 @@ foreach($respon['result'] as $r){
 	'.$r['RMP_FAKTUR_DETAIL_REF'].'
 	</td>
 	<td>
-	'.$r['RMP_FAKTUR_DETAIL_BRUTO'].' Kg
+	'.$r['GROSS'].' Kg
 	</td>
 	<td>
 	'.$r['RMP_FAKTUR_DETAIL_TARA'].' Kg

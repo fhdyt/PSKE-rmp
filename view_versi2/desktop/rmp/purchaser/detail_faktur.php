@@ -107,6 +107,10 @@ font-size: 12px;
                   <td><p class="NO_REKENING">-</p></td>
                 </tr>
                 <tr>
+                  <td><b>NPWP</b></td>
+                  <td><p class="NPWP">-</p></td>
+                </tr>
+                <tr>
                   <td><b>Alamat</b></td>
                   <td><p class="ALAMAT_SUPPLIER">-</p></td>
                 </tr>
@@ -538,6 +542,7 @@ function detail_purchaser(curPage)
         //  $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $('p.RP_KG').html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
           $("p.NO_REKENING").html(data.resultbc[i].REKENING)
+          $("p.NPWP").html(data.resultbc[i].RMP_MASTER_PERSONAL_NPWP)
           //$("p.ALAMAT_SUPPLIER").html(data.resultbc[i].ALAMAT)
           $(".INPUT_RP_KG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $(".INPUT_TAMBANG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_TAMBANG)
@@ -654,6 +659,7 @@ function sel_nama_supplier()
             var sel = "selected"
             $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
             $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
+            $('p.NPWP').html(data.result[i].RMP_MASTER_PERSONAL_NPWP);
             //$('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
             if($('.INPUT_RP_KG').val() == '')
             {
@@ -665,6 +671,7 @@ function sel_nama_supplier()
             var sel = "selected"
             $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
             $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
+            $('p.NPWP').html(data.result[i].RMP_MASTER_PERSONAL_NPWP);
             //$('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
             if($('.INPUT_RP_KG').val() == '')
             {
@@ -675,7 +682,7 @@ function sel_nama_supplier()
           {
             var sel = ""
           }
-          $("select.NAMA_SUPPLIER").append("<option value='"+ data.result[i].RMP_MASTER_PERSONAL_ID +"' RP='"+data.result[i].HARGA+"' REKENING='"+data.result[i].RMP_REKENING_RELASI+"' ALAMAT='"+data.result[i].ALAMAT+"' "+sel+">"+ data.result[i].RMP_MASTER_PERSONAL_NAMA +"</option>");
+          $("select.NAMA_SUPPLIER").append("<option value='"+ data.result[i].RMP_MASTER_PERSONAL_ID +"' RP='"+data.result[i].HARGA+"' REKENING='"+data.result[i].RMP_REKENING_RELASI+"' NPWP='"+data.result[i].RMP_MASTER_PERSONAL_NPWP+"' ALAMAT='"+data.result[i].ALAMAT+"' "+sel+">"+ data.result[i].RMP_MASTER_PERSONAL_NAMA +"</option>");
 					}
           kalkulasi_biaya()
 
@@ -692,7 +699,9 @@ function sel_nama_supplier()
     var id_supplier = $(this).val();
     $('.ID_SUPPLIER').val(id_supplier)
     var rekening = $('.NAMA_SUPPLIER option:selected').attr('REKENING');
+    var npwp = $('.NAMA_SUPPLIER option:selected').attr('NPWP');
     $('p.NO_REKENING').html(rekening);
+    $('p.NPWP').html(npwp);
     // var alamat = $('.NAMA_SUPPLIER option:selected').attr('ALAMAT');
     // $('p.ALAMAT_SUPPLIER').html(alamat);
     if($('.INPUT_RP_KG').val() == '')

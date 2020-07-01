@@ -107,6 +107,10 @@ font-size: 12px;
                   <td><p class="NO_REKENING">-</p></td>
                 </tr>
                 <tr>
+                  <td><b>NPWP</b></td>
+                  <td><p class="NPWP">-</p></td>
+                </tr>
+                <tr>
                   <td><b>Alamat</b></td>
                   <td><p class="ALAMAT_SUPPLIER">-</p></td>
                 </tr>
@@ -245,14 +249,16 @@ font-size: 12px;
       		</div>
           <hr>
         <div class="row">
-          <div class="col-md-7">
+          <div class="col-md-8">
             <table class="table table-hover table-bordered">
               <thead>
                 <tr>
                   <th>No.</th>
                   <th>Tanggal</th>
-                  <th>Referensi</th>
+                  <th>Ref</th>
                   <th>Gross</th>
+                  <th>Tempurung</th>
+                  <th>Kopra Basah</th>
                   <th>Tara</th>
                   <th>Bruto</th>
                 </tr>
@@ -268,7 +274,7 @@ font-size: 12px;
               </tbody>
             </table>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-4">
             <table class="table table-hover">
               <tr>
                 <td><b>Kelapa (Rp)</b></td>
@@ -471,7 +477,7 @@ function faktur_detail_list(curPage)
     success: function(data) {
       if (data.respon.pesan == "sukses") {
         console.log("faktur_detail_list")
-        $('p.TOTAL_GROSS').html( data.total_gross)
+        $('p.TOTAL_GROSS').html( data.total_gross_kp)
         $('p.TOTAL_TARA').html( data.total_tara)
         $('p.TOTAL_BRUTO').html( data.total_bruto)
         $('p.KUALITET').html( data.kualitet + " %")
@@ -520,9 +526,11 @@ function faktur_detail_list(curPage)
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_TANGGAL + "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_REF + "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_BRUTO + "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_GROSS + "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_TEMPURUNG + "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_KOPRA_BASAH + "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_TARA + "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_NETTO + "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_BRUTO + "</td>" +
           "</tr>");
 					}
 
@@ -591,6 +599,7 @@ function detail_purchaser(curPage)
         //  $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $('p.RP_KG').html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
           $("p.NO_REKENING").html(data.resultbc[i].REKENING)
+          $("p.NPWP").html(data.resultbc[i].RMP_MASTER_PERSONAL_NPWP)
           //$("p.ALAMAT_SUPPLIER").html(data.resultbc[i].ALAMAT)
           $(".INPUT_RP_KG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
           $(".INPUT_TAMBANG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_TAMBANG)
@@ -728,6 +737,7 @@ function sel_nama_supplier()
             var sel = "selected"
             $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
             $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
+            $('p.NPWP').html(data.result[i].RMP_MASTER_PERSONAL_NPWP);
             //$('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
             if($('.INPUT_RP_KG').val() == '')
             {
@@ -739,6 +749,7 @@ function sel_nama_supplier()
             var sel = "selected"
             $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
             $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
+            $('p.NPWP').html(data.result[i].RMP_MASTER_PERSONAL_NPWP);
             //$('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
             if($('.INPUT_RP_KG').val() == '')
             {
@@ -749,7 +760,7 @@ function sel_nama_supplier()
           {
             var sel = ""
           }
-          $("select.NAMA_SUPPLIER").append("<option value='"+ data.result[i].RMP_MASTER_PERSONAL_ID +"' RP='"+data.result[i].HARGA+"' REKENING='"+data.result[i].RMP_REKENING_RELASI+"' ALAMAT='"+data.result[i].ALAMAT+"' "+sel+">"+ data.result[i].RMP_MASTER_PERSONAL_NAMA +"</option>");
+          $("select.NAMA_SUPPLIER").append("<option value='"+ data.result[i].RMP_MASTER_PERSONAL_ID +"' RP='"+data.result[i].HARGA+"' REKENING='"+data.result[i].RMP_REKENING_RELASI+"' NPWP='"+data.result[i].RMP_MASTER_PERSONAL_NPWP+"' ALAMAT='"+data.result[i].ALAMAT+"' "+sel+">"+ data.result[i].RMP_MASTER_PERSONAL_NAMA +"</option>");
 					}
           kalkulasi_biaya()
 
@@ -766,7 +777,9 @@ function sel_nama_supplier()
     var id_supplier = $(this).val();
     $('.ID_SUPPLIER').val(id_supplier)
     var rekening = $('.NAMA_SUPPLIER option:selected').attr('REKENING');
+    var npwp = $('.NAMA_SUPPLIER option:selected').attr('NPWP');
     $('p.NO_REKENING').html(rekening);
+    $('p.NPWP').html(npwp);
     // var alamat = $('.NAMA_SUPPLIER option:selected').attr('ALAMAT');
     // $('p.ALAMAT_SUPPLIER').html(alamat);
     if($('.INPUT_RP_KG').val() == '')
