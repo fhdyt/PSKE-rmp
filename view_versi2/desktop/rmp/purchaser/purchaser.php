@@ -75,6 +75,7 @@ font-size: 12px;
             <option value="GELONDONG">GELONDONG</option>
             <option value="JAMBUL">JAMBUL</option>
             <option value="LICIN">LICIN</option>
+            <option value="KOPRA">KOPRA</option>
                   </select>
 
             <select id="FILTER_BULAN" name="FILTER_BULAN" type="text" class=" form-control FILTER_BULAN"  autocomplete="off" onchange="filter_material()">
@@ -163,6 +164,7 @@ faktur_list('1')
 
 function faktur_list(curPage)
 {
+  console.log("run")
   console.log($(".FILTER_PROSES").val())
   var url = window.location.href;
   var pageA = url.split("#");
@@ -252,6 +254,10 @@ function faktur_list(curPage)
     } //end error
   });
 }
+
+setInterval(function(){
+    faktur_list('1')
+}, 9000);
 
 $(function() {
   console.log("function");
