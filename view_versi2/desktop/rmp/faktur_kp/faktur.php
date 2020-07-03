@@ -1495,8 +1495,8 @@ function lihat_faktur()
 					"<td>" + nama +  "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_GONI +  "</td>" +
 					"<td>" + data.result[i].BRUTO +  "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_KUALITET +  " %</td>" +
 					"<td>" + data.result[i].NETTO +  "</td>" +
+          "<td>" + data.result[i].RMP_FAKTUR_KUALITET +  " %</td>" +
 					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur_kp/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Lihat</a></td>"+
           "<td><a class='btn btn-warning btn-xs' href='?show=rmp/pdf/cetak_faktur_adm_kp/" + data.result[i].RMP_FAKTUR_ID +  "/' target='_blank'><i aria-hidden='true' class='fa fa-print'></i> Cetak</a></td>" +
 					"</tr>");
