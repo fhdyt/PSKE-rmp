@@ -37,7 +37,7 @@ pkb.nota_".$input['TANGGAL_NOTA']." WHERE notr='".$input['NO_NOTA']."'".$filter_
 // LEFT JOIN
 // RMP_FAKTUR_DETAIL AS F ON N.id=F.id_nota AND NOT F.RECORD_STATUS='D' WHERE N.notr='".$input['NO_NOTA']."'".$filter_a." GROUP BY N.id";
 $this->MYSQL = new MYSQL();
-$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama_relasi_isea;
 $this->MYSQL->queri = $sql ;
 $result_a = $this->MYSQL->data();
 
@@ -48,7 +48,7 @@ $sql_kapal = "select * from pkb.master_".$input['TANGGAL_NOTA']." AS M
 													M.notr=N.notr
 													WHERE N.notr='".$input['NO_NOTA']."' GROUP BY N.notr";
 $this->MYSQL = new MYSQL();
-$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama_relasi_isea;
 $this->MYSQL->queri = $sql_kapal ;
 $result_kapal = $this->MYSQL->data();
 $kapal = $result_kapal[0]['kapal'];

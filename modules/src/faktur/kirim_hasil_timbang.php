@@ -28,7 +28,7 @@ if (empty($result_abx))
 				$tanggalnota = $input['TANGGAL_NOTA'];
 				$sql33 = "SELECT * FROM pkb.nota_".$tanggalnota." WHERE id='".$input['ID_TIMBANG']."' LIMIT 1";
 				$this->MYSQL = new MYSQL();
-				$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+				$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama_relasi_isea;
 				$this->MYSQL->queri = $sql33 ;
 				$result_a = $this->MYSQL->data();
 
