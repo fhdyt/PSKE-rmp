@@ -179,7 +179,7 @@
               <div class="input-group">
                 <input autocomplete="off" class="form-control NO_FAKTUR" id="NO_FAKTUR" name="NO_FAKTUR" placeholder="NO_FAKTUR" onkeyup="no_faktur_keyup()" type="text" >
                 <span class="input-group-btn">
-                  <button class="btn btn-success NEW_NO_FAKTUR" id="NEW_NO_FAKTUR" type="button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+                  <button class="btn btn-success NEW_NO_FAKTUR" id="NEW_NO_FAKTUR" type="button">Baru</button>
                 </span>
               </div>
               <p class="help-block ck_no_faktur">Jika kosong no faktur otomatis muncul.</p>

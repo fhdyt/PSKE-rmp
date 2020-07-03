@@ -305,7 +305,8 @@ font-size: 12px;
             <p class="help-block">Mohon periksa kembali kesesuaian data faktur dan data yang anda masukkan.</p>
             <button class="btn btn-success simpanHargaPurchaser">Simpan</button>
             <button class="btn btn-danger batalkankalkulasi" style="display:none;">Batalkan Kalkulasi</button>
-            <div class="btn-group" hidden>
+            <button class="btn btn-default cetak_relasi_dropdown" style="display:none;"><i class="fa fa-print" aria-hidden="true"></i> Cetak</button>
+            <!-- <div class="btn-group" hidden>
               <button type="button" class="btn btn-default dropdown-toggle cetak_relasi_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display:none;">
                 <i class="fa fa-print" aria-hidden="true"></i> Cetak <span class="caret"></span>
               </button>
@@ -315,7 +316,7 @@ font-size: 12px;
                 <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="beacukai">Beacukai</a></li>
                 <li><a onclick="cetak_faktur()" class="cetak_faktur" PRINTED="accounting">Pembukuan</a></li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -367,7 +368,7 @@ font-size: 12px;
    <div class="modal-content">
      <div class="modal-header">
        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-       <h4 class="modal-title" id="myModalLabel"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Berhasil Disimpan</h4>
+       <!-- <h4 class="modal-title" id="myModalLabel"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Berhasil Disimpan</h4> -->
      </div>
      <div class="modal-body">
        <div class="row">
@@ -850,6 +851,10 @@ $(".simpanHargaPurchaser").on('click', function(){
       console.log("Error Ajax QUALITED");
     } //end error
   });
+})
+
+$(".cetak_relasi_dropdown").on("click", function(){
+  $('.modalCetakFaktur').modal('show')
 })
 
 $(".verifikasiHargaPurchaser").on('click', function(){
