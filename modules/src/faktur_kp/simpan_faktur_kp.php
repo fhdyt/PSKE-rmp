@@ -11,6 +11,21 @@ if (empty($params['case']))
 
 if(empty($input['ID_FAKTUR']))
 {
+			$data_detail7778v = array(
+				'RECORD_STATUS' => "E"
+			);
+
+			$this->MYSQL = new MYSQL;
+			$this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+			$this->MYSQL->tabel = "RMP_FAKTUR";
+			$this->MYSQL->record = $data_detail7778v;
+			$this->MYSQL->dimana = "where RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."' AND RECORD_STATUS='N'";
+			$this->MYSQL->ubah()	;
+
+			$data_detail777 = array(
+				'RECORD_STATUS' => "A"
+			);
+
 
 			$input = $params['input_option'];
 			$data_detail777 = array(
@@ -270,6 +285,7 @@ else
 						$this->callback['result']=$result;
 					}else{
 						$this->callback['respon']['pesan']="sukses";
+						$this->callback['respon']['id_faktur']=$input['ID_FAKTUR'];
 						$this->callback['respon']['text_msg']="OK".print_r($result,true);
 						$this->callback['result']=$result;
 					}

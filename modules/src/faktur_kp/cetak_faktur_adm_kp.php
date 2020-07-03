@@ -28,6 +28,8 @@ $result_ab = $this->MYSQL->data();
 $diterima = $result_ab[0]['RMP_FAKTUR_CEK_DITERIMA'];
 $inspeksi = $result_ab[0]['RMP_FAKTUR_CEK_100_INSPEKSI'];
 $dipisah = $result_ab[0]['RMP_FAKTUR_CEK_DIPISAH'];
+$kotoran = $result_ab[0]['RMP_FAKTUR_CEK_KOTORAN'];
+$langsung_proses = $result_ab[0]['RMP_FAKTUR_CEK_LANGSUNG_PROSES'];
 
 $supplier = $result_ab[0]['RMP_MASTER_PERSONAL_NAMA'];
 $supplier_sub = $result_ab[0]['RMP_FAKTUR_NAMA_SUB'];
@@ -39,6 +41,7 @@ $cek_tambang= $result_ab[0]['RMP_FAKTUR_CEK_TAMBANG'];
 $cek_biaya = $result_ab[0]['RMP_FAKTUR_CEK_BIAYA'];
 $tanggal_faktur = $result_ab[0]['RMP_FAKTUR_TANGGAL'];
 $lokasi = $result_ab[0]['RMP_FAKTUR_ALAMAT'];
+$goni = $result_ab[0]['RMP_FAKTUR_GONI'];
 
 // DATA FAKTUR
 $sql = "SELECT *, F.ENTRI_OPERATOR AS FENTRI_OPERATOR
@@ -133,6 +136,7 @@ foreach($result_avccb as $rrrxvvvvvv)
 foreach($result_a as $rr)
     {
         $rr['NO'] = $no;
+        $rr['GROSS'] = $rr['RMP_FAKTUR_DETAIL_GROSS']-$rr['RMP_FAKTUR_DETAIL_POTONGAN_TEMPURUNG']-$rr['RMP_FAKTUR_DETAIL_POTONGAN_KOPRA_BASAH'];
         $total_kg +=$rr['RMP_FAKTUR_DETAIL_BRUTO'];
         $jenis = $rr['jenis_kelapa'];
         $relasi = $rr['RMP_MASTER_PERSONAL_NAMA'];
@@ -177,6 +181,8 @@ if (empty($result_a))
     $this->callback['diterima'] = $diterima;
     $this->callback['inspeksi'] = $inspeksi;
     $this->callback['dipisah'] = $dipisah;
+    $this->callback['kotoran'] = $kotoran;
+    $this->callback['langsung_proses'] = $langsung_proses;
     $this->callback['supplier'] = $supplier;
     $this->callback['supplier_sub'] = $supplier_sub;
     $this->callback['rekening'] = $rekening;
@@ -185,6 +191,7 @@ if (empty($result_a))
     $this->callback['cek_tambang'] = $cek_tambang;
     $this->callback['cek_biaya'] = $cek_biaya;
     $this->callback['tanggal_faktur'] = $tanggal_faktur;
+    $this->callback['goni'] = $goni;
 
     }
 

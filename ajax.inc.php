@@ -252,6 +252,9 @@ switch($ref){
 			case 'simpan_faktur_kp':
 				require_once("ajax/faktur_kp/simpan_faktur_kp.php");
 			break;
+			case 'new_no_faktur_kp':
+				require_once("ajax/faktur_kp/new_no_faktur_kp.php");
+			break;
 			// case 'sel_nama_supplier':
 			// 	require_once("ajax/faktur/sel_nama_supplier.php");
 			// break;

@@ -332,6 +332,9 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_cetak_faktur_adm':
 			require_once ("faktur/cetak_faktur_adm.php");
 		break;
+		case 'nonlogin_cetak_faktur_adm_kp':
+			require_once ("faktur_kp/cetak_faktur_adm_kp.php");
+		break;
 		case 'nonlogin_cetak_faktur_kp':
 			require_once ("faktur_kp/cetak_faktur_kp.php");
 		break;
@@ -379,6 +382,9 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		break;
 		case 'nonlogin_kirim_hasil_timbang_kp':
 			require_once ("faktur_kp/kirim_hasil_timbang_kp.php");
+		break;
+		case 'nonlogin_new_no_faktur_kp':
+			require_once ("faktur_kp/new_no_faktur_kp.php");
 		break;
 		case 'nonlogin_kembali_hasil_timbang_kp':
 			require_once ("faktur_kp/kembali_hasil_timbang_kp.php");

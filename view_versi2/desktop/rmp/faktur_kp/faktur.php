@@ -176,7 +176,12 @@
             <div class="col-md-3">
             <div class="form-group">
               <label for="exampleInputEmail1">No. Faktur</label>
-              <input autocomplete="off" class="form-control NO_FAKTUR" id="NO_FAKTUR" name="NO_FAKTUR" placeholder="NO_FAKTUR" onkeyup="no_faktur_keyup()" type="text" >
+              <div class="input-group">
+                <input autocomplete="off" class="form-control NO_FAKTUR" id="NO_FAKTUR" name="NO_FAKTUR" placeholder="NO_FAKTUR" onkeyup="no_faktur_keyup()" type="text" >
+                <span class="input-group-btn">
+                  <button class="btn btn-success NEW_NO_FAKTUR" id="NEW_NO_FAKTUR" type="button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+                </span>
+              </div>
               <p class="help-block ck_no_faktur">Jika kosong no faktur otomatis muncul.</p>
             </div>
             </div>
@@ -202,14 +207,6 @@
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <label for="exampleInputEmail1">Kapal</label>
-              <input autocomplete="off" class="form-control KAPAL_FAKTUR" id="KAPAL_FAKTUR" name="KAPAL_FAKTUR" placeholder="KAPAL_FAKTUR" type="text" >
-              <p class="help-block">Nama Kapal.</p>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <div class="form-group">
               <label for="exampleInputEmail1">Nama Supplier</label>
               <select class="NAMA_SUPPLIER with-ajax-personal form-control" data-live-search="true" id="NAMA_SUPPLIER" name="NAMA_SUPPLIER" onchange="sel_nama_supplier()">
               </select>
@@ -230,57 +227,20 @@
               <p class="help-block">Alamat Petani Untuk Faktur.</p>
             </div>
           </div>
-
-            </div>
-      		</div>
-          <div class="row">
-            <div class="col-md-2">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Tanggal</label>
-                <input autocomplete="off" class="form-control TANGGAL_FAKTUR datepicker" id="TANGGAL_FAKTUR" name="TANGGAL_FAKTUR" placeholder="" type="text" value="<?php echo date("Y/m/d"); ?>">
-                <p class="help-block">Tanggal faktur.</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Operator Timbang</label><select class="OPERATOR_TIMBANG with-ajax-personal form-control" data-live-search="true" id="OPERATOR_TIMBANG" name="OPERATOR_TIMBANG" onchange="sel_operator_timbang()">
-                </select>
-                <p class="help-block">Nama Operator Timbang.</p>
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Inspektur Mutu</label><select class="INSPEKTUR_MUTU with-ajax-personal form-control" data-live-search="true" id="INSPEKTUR_MUTU" name="INSPEKTUR_MUTU" onchange="sel_inspektur_mutu()">
-                </select>
-                <p class="help-block">Nama Inspektur Mutu.</p>
-              </div>
-            </div>
-            <!-- <div class="col-md-2">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Ponton</label><select class="PONTON_TIMBANG form-control"  id="PONTON_TIMBANG" name="PONTON_TIMBANG" >
-                  <option value="PTN-1">Ponton 1</option>
-                  <option value="PTN-2">Ponton 2</option>
-                </select>
-                <p class="help-block">Kode Ponton.</p>
-              </div>
-            </div> -->
-            <div class="col-md-2">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Kualitet</label> <input autocomplete="off" class="form-control KUALITET" id="KUALITET" name="KUALITET" placeholder="POTONGAN" value="0" type="number">
-                <p class="help-block">Kualitet %</p>
-              </div>
-            </div>
-            <div class="col-md-2">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Goni</label> <input autocomplete="off" class="form-control GONI" id="GONI" name="GONI" placeholder="GONI" value="0" type="number">
-                <p class="help-block">Total Goni</p>
-              </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Kapal</label>
+              <input autocomplete="off" class="form-control KAPAL_FAKTUR" id="KAPAL_FAKTUR" name="KAPAL_FAKTUR" placeholder="KAPAL_FAKTUR" type="text" >
+              <p class="help-block">Nama Kapal.</p>
             </div>
           </div>
+            </div>
+      		</div>
+
 
           <div class="row">
-            <div class="col-md-2">
+
+            <div class="col-md-3">
               <!-- <input type="checkbox" name="CEK_DITERIMA"> Bisa Diterima
               <input type="checkbox" name="CEK_100_INSPEKSI"> 100 % Inspeksi
               <input type="checkbox" name="CEK_DIPISAH"> Dipisah -->
@@ -310,22 +270,29 @@
                 </label>
               </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-3">
               <div class="form-group">
                 <label for="exampleInputEmail1">Catatan Purchaser</label>
                 <textarea class="CATATAN_PURCHASER form-control" id="CATATAN_PURCHASER" rows="3" name="CATATAN_PURCHASER"></textarea>
                 <p class="help-block">Catatan untuk Purchaser.</p>
               </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-3">
               <div class="form-group">
                 <label for="exampleInputEmail1">Catatan Supplier</label>
                 <textarea class="CATATAN_SUPPLIER form-control" id="CATATAN_SUPPLIER" rows="3" name="CATATAN_SUPPLIER"></textarea>
                 <p class="help-block">Catatan untuk Supplier.</p>
               </div>
             </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Tanggal</label>
+                <input autocomplete="off" class="form-control TANGGAL_FAKTUR datepicker" id="TANGGAL_FAKTUR" name="TANGGAL_FAKTUR" placeholder="" type="text" value="<?php echo date("Y/m/d"); ?>">
+                <p class="help-block">Tanggal faktur.</p>
+              </div>
+            </div>
           </div>
-        </form>
+
       	</div>
       </div>
       </div>
@@ -334,7 +301,7 @@
 
 
       <div class="row form_faktur_hasil_timbang">
-      	<div class="col-md-5">
+      	<div class="col-md-6">
       		<div class="box box-solid">
       			<div class="box-body">
       				<div class="box box-default">
@@ -360,9 +327,11 @@
       									<tr>
       										<th>No.</th>
       										<th>Tanggal / Jam</th>
+      										<th>Nama</th>
       										<th>Gross</th>
       										<th>Tara</th>
-      										<th>Bruto</th>
+      										<th>Ref</th>
+      										<th></th>
       									</tr>
       								</thead>
       								<tbody id="zone_data">
@@ -383,7 +352,7 @@
       			</div>
       		</div>
       	</div>
-      	<div class="col-md-7">
+      	<div class="col-md-6">
       		<div class="box box-solid">
       			<div class="box-body">
       				<div class="box box-default">
@@ -413,6 +382,7 @@
       									<th>Tempurung</th>
       									<th>Kopra Basah</th>
       									<th>Netto</th>
+      									<th>Ref</th>
       									<th></th>
       								</tr>
       							</thead>
@@ -426,18 +396,60 @@
       								</tr>
       							</tbody>
       						</table>
-                  <br>
-      						<div class="text-left">
-      							 <button class="btn btn-success simpan_faktur" type="button">Simpan Faktur</button>
-                     <!-- <a class="btn btn-default btn_lihat_faktur" style="display:none;"><i class="fa fa-eye" aria-hidden="true"></i> Lihat</a> -->
-                     <a class="btn btn-default btn_cetak_faktur" style="display:none;"><i class="fa fa-print" aria-hidden="true"></i> Cetak</a>
-      						</div>
+
       					</div>
       				</div>
       			</div>
       		</div>
       	</div>
       </div>
+
+      <div class="col-lg-12 col-md-12">
+     		<div class="list-group">
+          <div class="box box-solid form_faktur">
+            <div class="box-body">
+              <div class="row">
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Kualitet</label> <input autocomplete="off" class="form-control KUALITET" id="KUALITET" name="KUALITET" placeholder="KUALITET"  type="number">
+                    <p class="help-block">Kualitet %</p>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Goni</label> <input autocomplete="off" class="form-control GONI" id="GONI" name="GONI" placeholder="GONI"  type="number">
+                    <p class="help-block">Total Goni</p>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Operator Timbang</label><select class="OPERATOR_TIMBANG with-ajax-personal form-control" data-live-search="true" id="OPERATOR_TIMBANG" name="OPERATOR_TIMBANG" onchange="sel_operator_timbang()">
+                    </select>
+                    <p class="help-block">Nama Operator Timbang.</p>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Inspektur Mutu</label><select class="INSPEKTUR_MUTU with-ajax-personal form-control" data-live-search="true" id="INSPEKTUR_MUTU" name="INSPEKTUR_MUTU" onchange="sel_inspektur_mutu()">
+                    </select>
+                    <p class="help-block">Nama Inspektur Mutu.</p>
+                  </div>
+                </div>
+                </form>
+              </div>
+              <br>
+              <div class="text-right">
+                 <button class="btn btn-success simpan_faktur" type="button">Simpan Faktur</button>
+                 <!-- <a class="btn btn-default btn_lihat_faktur" style="display:none;"><i class="fa fa-eye" aria-hidden="true"></i> Lihat</a> -->
+                 <a class="btn btn-default btn_cetak_faktur" style="display:none;"><i class="fa fa-print" aria-hidden="true"></i> Cetak</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
  		</div>
  	</div>
  </div>
@@ -481,12 +493,13 @@
               <th>No.</th>
               <th>No. Faktur</th>
               <th>No. Nota</th>
-              <th>Nama</th>
-              <th>Kelapa</th>
-              <th>Bruto</th>
-              <th>Kualitet</th>
-              <th>Netto</th>
               <th>Tanggal</th>
+              <th>Nama</th>
+              <th>Goni</th>
+              <th>Bruto</th>
+              <th>Netto</th>
+              <th>Kualitet</th>
+
               <th></th>
               <th></th>
 
@@ -670,7 +683,39 @@
  </div>
  <!-- MODAL EDIT PROSES DATA -->
 
+ <!-- MODAL NEW NO FAKTUR -->
+ <div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg modalNewNoFAktur" role="dialog" tabindex="-1">
+ 	<div class="modal-dialog" role="document">
+ 		<div class="modal-content">
+
+ 			<div class="modal-body">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default NEW_NO_FAKTUR_KP" onclick="new_no_faktur()" PONTON="KP-1">Ponton 1</button>
+          </div>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default NEW_NO_FAKTUR_KP" onclick="new_no_faktur()" PONTON="KP-2">Ponton 2</button>
+          </div>
+        </div>
+           <!-- <div class="row">
+             <div class="col-md-12 text-right">
+               <div class="form-group">
+     						<button class="btn btn-success btn-sm SIMPAN_EDIT_NOTA">Simpan</button>
+     					</div>
+             </div>
+           </div> -->
+ 		</div>
+ 	</div>
+ </div>
+ </div>
+ <!-- MODAL NO FAKTUR-->
+
 <script>
+$('.NEW_NO_FAKTUR').on('click', function()
+{
+	$(".modalNewNoFAktur").modal('show');
+});
+
 var delay = (function()
   {
     var timer = 0;
@@ -1080,9 +1125,11 @@ function hasil_timbang(no_nota)
             // "<td>" + data.result[i].RMP_HASIL_TIMBANG_TANGGAL + "</td>" +
             //"<td>" + data.result[i].id + "</td>"+
             "<td>" + data.result[i].tgl + "</td>"+
+            "<td>" + data.result[i].nama + "</td>"+
             // "<td>" + data.result[i].RMP_HASIL_TIMBANG_KG + "</td>" +
             "<td>" + data.result[i].gross + "</td>"+
             "<td>" + data.result[i].tar + "</td>"+
+            "<td>" + data.result[i].ref + "</td>"+
             "<td>"+ a +"</td>" +
             "</tr>");
         }
@@ -1196,6 +1243,7 @@ function faktur_list(no_nota)
             "<td>" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_TEMPURUNG + "</td>" +
             "<td>" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_KOPRA_BASAH + "</td>" +
             "<td>" + data.result[i].RMP_FAKTUR_DETAIL_NETTO + "</td>" +
+            "<td>" + data.result[i].RMP_FAKTUR_DETAIL_REF + "</td>" +
             "<td>"+ a +" "+ edit +"</td>" +
             "</tr>");
         }
@@ -1244,6 +1292,7 @@ function simpan_faktur()
           $('.ID_FAKTUR').val(id_faktur);
 
         }
+        window.open("?show=rmp/pdf/cetak_faktur_adm_kp/"+data.result[0].RMP_FAKTUR_ID+"/", "_blank");
         location.reload()
 
       }
@@ -1304,7 +1353,7 @@ $('.simpan_faktur').on('click', function()
 $('.btn_cetak_faktur').on('click', function()
 {
   var id_faktur = $('.ID_FAKTUR').val();
-  window.open('?show=rmp/pdf/cetak_faktur/' + id_faktur + '', '_blank');
+  window.open('?show=rmp/pdf/cetak_faktur_kp/' + id_faktur + '', '_blank');
 })
 
 $('.btn_lihat_faktur').on('click', function()
@@ -1442,14 +1491,14 @@ function lihat_faktur()
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR +  " "+purchaser_status+"</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "</td>" +
+          "<td>" + data.result[i].RMP_FAKTUR_TANGGAL +  "</td>" +
 					"<td>" + nama +  "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_JENIS_MATERIAL +  "</td>" +
+					"<td>" + data.result[i].RMP_FAKTUR_GONI +  "</td>" +
 					"<td>" + data.result[i].BRUTO +  "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_KUALITET +  " %</td>" +
 					"<td>" + data.result[i].NETTO +  "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_TANGGAL +  "</td>" +
 					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur_kp/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Lihat</a></td>"+
-        //  "<td><a class='btn btn-warning btn-xs' href='?show=rmp/pdf/cetak_faktur_adm/" + data.result[i].RMP_FAKTUR_ID +  "/' target='_blank'><i aria-hidden='true' class='fa fa-print'></i> Cetak</a></td>" +
+          "<td><a class='btn btn-warning btn-xs' href='?show=rmp/pdf/cetak_faktur_adm_kp/" + data.result[i].RMP_FAKTUR_ID +  "/' target='_blank'><i aria-hidden='true' class='fa fa-print'></i> Cetak</a></td>" +
 					"</tr>");
         }
       } else if (data.respon.pesan == "gagal") {
@@ -1575,13 +1624,11 @@ function edit_faktur(d2)
 }
 
 $(".cetak_faktur").on("click", function(){
-  // var no_faktur = btoa(fikri); // Enskrip
-  // var no_faktur = atob(Zmlrcmk=); // Dekrip
   var s = " ";
   var rp_kg = btoa(s)
   var material = btoa($('.JENIS_KELAPA').val())
   var printed = btoa($(this).attr("PRINTED"))
-  window.open("?show=rmp/pdf/cetak_faktur_adm/<?php echo $d2; ?>/"+ rp_kg +"/"+ material +"/"+ printed +"", "_blank");
+  window.open("?show=rmp/pdf/cetak_faktur_adm_kp/<?php echo $d2; ?>/", "_blank");
 })
 
 
@@ -1674,4 +1721,35 @@ function kalkulasi_edit_faktur()
   $("input.NETTO_NOTA").val(parseInt(netto))
 
 }
+
+
+$('.NEW_NO_FAKTUR_KP').on('click', function()
+{
+  var ponton_timbang = $(this).attr("PONTON")
+  var data = "PONTON_TIMBANG="+ponton_timbang+"&TANGGAL_NOTA="+$(".BULAN_NOTA").val()+""+$(".TAHUN_NOTA").val()+"";
+
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=new_no_faktur_kp&' + data ,
+    success: function(data)
+    {
+      if (data.respon.pesan == "sukses")
+      {
+        $(".NO_FAKTUR").val(data.respon.text_msg)
+        $("p.NO_FAKTUR").html(data.respon.text_msg)
+        $(".modalNewNoFAktur").modal('hide');
+      }
+      else
+      {
+        alert("Gagal Membuat Nomor Faktur");
+      }
+    }, //end success
+    error: function(x, e)
+    {
+      console.log("Error Ajaxxxxxxxxxxxxx");
+    } //end error
+  });
+});
 </script>
