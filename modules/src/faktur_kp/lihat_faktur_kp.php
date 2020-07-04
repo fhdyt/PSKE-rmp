@@ -14,27 +14,36 @@ $posisi = $this->PAGING->cariPosisi($batas, $halaman);
 $input = $params['input_option'];
 
 
-$sql = "SELECT * FROM
+$sql = "SELECT *, F.RECORD_STATUS AS FAKTUR_RECORD_STATUS FROM
             RMP_FAKTUR AS F
-          LEFT JOIN
+            LEFT JOIN
             RMP_MASTER_PERSONAL AS P
-          ON F.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
-          LEFT JOIN
-            RMP_FAKTUR_DETAIL AS FD
-          ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
+            ON F.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
           WHERE
-            F.RECORD_STATUS='A'
-          AND
-            P.RECORD_STATUS='A'
-          AND
             F.RMP_FAKTUR_TANGGAL LIKE '%".$input['TANGGAL']."%'
             AND F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%KOPRA%'
+            AND F.RECORD_STATUS IN ('A','N')
           GROUP BY
             F.RMP_FAKTUR_NO_FAKTUR
           ORDER BY
             F.ENTRI_WAKTU
-          DESC
+          ASC
           ";
+// $sql = "SELECT *, F.RECORD_STATUS AS FAKTUR_RECORD_STATUS FROM
+//             RMP_FAKTUR AS F
+//           LEFT JOIN
+//             RMP_MASTER_PERSONAL AS P
+//           ON F.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
+//           WHERE
+//             F.RMP_FAKTUR_TANGGAL LIKE '%".$input['TANGGAL']."%'
+//             AND F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%KOPRA%'
+//             AND (F.RECORD_STATUS='A' OR F.RECORD_STATUS='N')
+//           GROUP BY
+//             F.RMP_FAKTUR_NO_FAKTUR
+//           ORDER BY
+//             F.ENTRI_WAKTU
+//           ASC
+//           ";
 
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;

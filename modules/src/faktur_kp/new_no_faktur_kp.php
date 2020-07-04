@@ -16,6 +16,8 @@ if (empty($params['case']))
 				$data_detail2 = array(
 					'RMP_FAKTUR_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
 					'RMP_FAKTUR_NO_FAKTUR' => $buat_nomor_faktur,
+					'RMP_FAKTUR_TANGGAL' => $input['TANGGAL_FAKTUR'],
+					'RMP_FAKTUR_JENIS_MATERIAL' => 'KOPRA',
 
 				  'ENTRI_WAKTU' => date("Y-m-d H:i:s") ,
 				  'ENTRI_OPERATOR' => $user_login['PERSONAL_NIK'],

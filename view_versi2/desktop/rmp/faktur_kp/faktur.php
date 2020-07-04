@@ -492,7 +492,6 @@
             <tr>
               <th>No.</th>
               <th>No. Faktur</th>
-              <th>No. Nota</th>
               <th>Tanggal</th>
               <th>Nama</th>
               <th>Goni</th>
@@ -1447,12 +1446,13 @@ function lihat_faktur()
     success: function(data) {
       if (data.respon.pesan == "sukses") {
 				//console.log(data.respon.text_msg);
+        //console.log(data.result)
         $("tbody#zone_lihat_faktur").empty();
         $("p.TOTAL_KELAPA_A").html("0")
         $("p.TOTAL_KELAPA_B").html("0")
         $("p.TOTAL_KELAPA_C").html("0")
         for (i = 0; i < data.result.length; i++) {
-
+          //alert(data.result[i].FAKTUR_RECORD_STATUS )
           var kelapa =  $("p.TOTAL_KELAPA_A").text()
           //console.log(kelapa_a)
           var total_kelapa = parseInt(kelapa) + parseInt(data.result[i].NETTO)
@@ -1476,6 +1476,8 @@ function lihat_faktur()
           {
             var purchaser_status = "<p class='text-success'><small><i>Telah diproses oleh Purchaser</i></small></p>"
           }
+
+
           if (data.result[i].TOTAL_A == null)
           {
             var total_a = "0"
@@ -1485,20 +1487,38 @@ function lihat_faktur()
             var total_a = data.result[i].TOTAL_A
           }
 
+          if (data.result[i].FAKTUR_RECORD_STATUS=='A')
+          {
+            var btn = "<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur_kp/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Lihat</a> <a class='btn btn-warning btn-xs' href='?show=rmp/pdf/cetak_faktur_adm_kp/" + data.result[i].RMP_FAKTUR_ID +  "/' target='_blank'><i aria-hidden='true' class='fa fa-print'></i> Cetak</a></td>"
+            var tr = ""
+            var bruto = data.result[i].BRUTO
 
+          }
+          else {
+            var btn = "<td><a class='btn btn-default btn-xs gunakan_nomor_faktur' NO_FAKTUR='"+data.result[i].RMP_FAKTUR_NO_FAKTUR+"'><i aria-hidden='true' class='fa fa-pencil'></i> Gunakan</a></td>"
+            var tr = "warning"
+            var bruto = "0"
+          }
 
-          $("tbody#zone_lihat_faktur").append("<tr class='detailLogId'>" +
+          if (nama==null)
+          {
+            var nama_supplier = "-"
+          }
+          else {
+            var nama_supplier=nama
+          }
+
+          $("tbody#zone_lihat_faktur").append("<tr class='"+tr+"'>" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR +  " "+purchaser_status+"</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_NO_NOTA +  "</td>" +
           "<td>" + data.result[i].RMP_FAKTUR_TANGGAL +  "</td>" +
-					"<td>" + nama +  "</td>" +
+					"<td>" + nama_supplier +  "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_GONI +  "</td>" +
-					"<td>" + data.result[i].BRUTO +  "</td>" +
+					"<td>" + bruto +  "</td>" +
 					"<td>" + data.result[i].NETTO +  "</td>" +
           "<td>" + data.result[i].RMP_FAKTUR_KUALITET +  " %</td>" +
-					"<td><a class='btn btn-success btn-xs' href='?show=rmp/faktur_kp/" + data.result[i].RMP_FAKTUR_ID +  "'><i aria-hidden='true' class='fa fa-pencil'></i> Lihat</a></td>"+
-          "<td><a class='btn btn-warning btn-xs' href='?show=rmp/pdf/cetak_faktur_adm_kp/" + data.result[i].RMP_FAKTUR_ID +  "/' target='_blank'><i aria-hidden='true' class='fa fa-print'></i> Cetak</a></td>" +
+          btn +
+
 					"</tr>");
         }
       } else if (data.respon.pesan == "gagal") {
@@ -1511,6 +1531,14 @@ function lihat_faktur()
   });
 }
 
+$("tbody#zone_lihat_faktur").on('click','a.gunakan_nomor_faktur', function()
+{
+  var no_faktur = $(this).attr("NO_FAKTUR")
+  $(".NO_FAKTUR").val(no_faktur)
+  $("p.NO_FAKTUR").html(no_faktur)
+  $(".modalLihatFaktur").modal("hide")
+
+})
 function filter_tanggal_list(){
   $("tbody#zone_lihat_faktur").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
   lihat_faktur()
@@ -1726,7 +1754,8 @@ function kalkulasi_edit_faktur()
 $('.NEW_NO_FAKTUR_KP').on('click', function()
 {
   var ponton_timbang = $(this).attr("PONTON")
-  var data = "PONTON_TIMBANG="+ponton_timbang+"&TANGGAL_NOTA="+$(".BULAN_NOTA").val()+""+$(".TAHUN_NOTA").val()+"";
+  var tanggal_faktur = $(".TANGGAL_FAKTUR").val()
+  var data = "TANGGAL_FAKTUR="+tanggal_faktur+"&PONTON_TIMBANG="+ponton_timbang+"&TANGGAL_NOTA="+$(".BULAN_NOTA").val()+""+$(".TAHUN_NOTA").val()+"";
 
   $.ajax({
     type: 'POST',
