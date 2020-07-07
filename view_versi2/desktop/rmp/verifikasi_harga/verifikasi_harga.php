@@ -67,7 +67,7 @@ font-size: 12px;
                   <th>Nomor Faktur</th>
                   <th>Rekening</th>
                   <th>Material</th>
-                  <th>Wilayah</th>
+                  <th>Lokasi</th>
                   <th>Tanggal</th>
                   <th>Nama Supplier</th>
                   <th>Harga Baru</th>
@@ -146,12 +146,19 @@ function verifikasi_harga_list(curPage)
           {
             var td = "<td><p class='text-success'><i>Diterima</i></p></td>"
           }
+          if (data.result[i].REKENING == undefined)
+          {
+            var rekening = "-"
+          }
+          else {
+            var rekening = data.result[i].REKENING
+          }
           $("tbody#zone_data").append("<tr class='detailLogId'  >" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR + "</td>" +
-					"<td>" + data.result[i].REKENING + "</td>" +
+					"<td>" + rekening + "</td>" +
 					"<td>" + data.result[i].MATERIAL + "</td>" +
-					"<td>" + data.result[i].MASTER_WILAYAH + "</td>" +
+					"<td>" + data.result[i].LOKASI + "</td>" +
 					"<td>" + data.result[i].TANGGAL + "</td>" +
 					"<td>" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +
 					"<td class='success'>" + data.result[i].RMP_FAKTUR_PURCHASER_RP_KG + "</td>" +

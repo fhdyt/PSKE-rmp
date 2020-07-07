@@ -63,34 +63,33 @@ foreach($result_a as $r)
     $r['PURCHASER'] = $result_abcd[0]['PERSONAL_NAME'];
     $r['MATERIAL'] = substr($material,0,-2);;
 
-    $sql2 = "SELECT * FROM
-             RMP_MASTER_WILAYAH
-             WHERE
-             RMP_MASTER_WILAYAH_ID='".$r['RMP_MASTER_WILAYAH_PREV_LINK']."' AND RECORD_STATUS='A'";
-    $this->MYSQL = new MYSQL();
-    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-    $this->MYSQL->queri = $sql2 ;
-    $result_b = $this->MYSQL->data();
-
-    foreach($result_b as $rb)
-    {
-      $r['MASTER_WILAYAH']=$rb['RMP_MASTER_WILAYAH'];
-    }
-
     $sql2B = "SELECT * FROM
-             RMP_REKENING_RELASI
-             WHERE
-             RMP_MASTER_PERSONAL_ID='".$r['RMP_MASTER_PERSONAL_ID']."' AND RMP_REKENING_RELASI_MATERIAL='".$r['MATERIAL']."' AND RECORD_STATUS='A'";
+               RMP_REKENING_RELASI AS RR LEFT JOIN
+               RMP_MASTER_WILAYAH AS W
+               ON RR.SUB_WILAYAH_KODE=W.RMP_MASTER_WILAYAH_KODE
+               WHERE
+              	RR.RECORD_STATUS='A'
+  				 AND W.RECORD_STATUS='A'
+  				 AND RR.RMP_MASTER_PERSONAL_ID='".$r['RMP_MASTER_PERSONAL_ID']."'
+  				 AND RR.RMP_REKENING_RELASI_MATERIAL='".$r['MATERIAL']."'";
     $this->MYSQL = new MYSQL();
     $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
     $this->MYSQL->queri = $sql2B ;
     $result_bB = $this->MYSQL->data();
 
-    foreach($result_bB as $rbB)
-    {
-      $r['REKENING']=$rbB['RMP_REKENING_RELASI'];
-    }
+    $r['REKENING'] = $result_bB[0]['RMP_REKENING_RELASI'];
+    $sub_wilayah_id = $result_bB[0]['ID_SUB_WILAYAH'];
 
+
+    $sql2 = "SELECT * FROM
+             RMP_MASTER_WILAYAH
+             WHERE
+             RMP_MASTER_WILAYAH_ID='".$sub_wilayah_id."' AND RECORD_STATUS='A'";
+    $this->MYSQL = new MYSQL();
+    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+    $this->MYSQL->queri = $sql2 ;
+    $result_b = $this->MYSQL->data();
+    $r['LOKASI'] = $result_b[0]['RMP_MASTER_WILAYAH'];
     $result[] = $r;
     $no++;
     }
