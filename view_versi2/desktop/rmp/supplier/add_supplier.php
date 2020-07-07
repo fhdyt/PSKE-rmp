@@ -847,6 +847,7 @@ foreach($da['refs'] as $r)
 								<select class="form-control JENIS_REKENING" id="JENIS_REKENING" name="JENIS_REKENING" onchange="jenis_rekening()">
 									<option value="">
 										--Pilih Material--
+                    <option value="22" nama_material="KOPRA">KOPRA (22)</option>
 									</option><?php  $data = $RMP_CONFIG->material(); foreach ($data['rasult'] as $key => $value) {   foreach ($value as $data => $isi)       { ?>
 									<option value="<?php echo $isi['RMP_MASTER_MATERIAL_ID']; ?>" nama_material="<?php  echo $isi['RMP_MASTER_MATERIAL'];?>">
 										<?php  echo $isi['RMP_MASTER_MATERIAL'];?>
