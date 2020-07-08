@@ -113,31 +113,7 @@
       		</div>
           <form id="faktur_detail">
       		<div class="row">
-
-            <!-- <div class="form_faktur_cabang" hidden>
-            <div class="col-md-4">
-            <div class="form-group" >
-              <label for="exampleInputEmail1">ID Faktur Cabang</label> <select class="ID_FAKTUR_CABANG selectpicker with-ajax-personal form-control" data-live-search="true" id="ID_FAKTUR_CABANG" name="ID_FAKTUR_CABANG" onchange="id_faktur_cabang()">
-              </select>
-              <p class="help-block">Pilih ID Faktur Cabang Purchaser.</p>
-            </div>
-            </div>
-            <div class="col-md-4">
-            <div class="form-group" >
-              <label for="exampleInputEmail1">PS Cabang</label><input autocomplete="off" class="form-control PS_CABANG" id="PS_CABANG" name="PS_CABANG" placeholder="PS_CABANG" type="text" readonly>
-              <p class="help-block">Pilih ID Faktur Cabang Purchaser.</p>
-            </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group" >
-                <label for="exampleInputEmail1">Tanggal</label><input autocomplete="off" class="form-control TANGGAL_REKAP_FAKTUR_CABANG" id="TANGGAL_REKAP_FAKTUR_CABANG" name="TANGGAL_REKAP_FAKTUR_CABANG" placeholder="TANGGAL_REKAP_FAKTUR_CABANG" type="text" readonly>
-                <p class="help-block">Tanggal rekap faktur cabang.</p>
-              </div>
-            </div>
-            </div> -->
-
-            <div class="form_faktur_hasil_timbang">
-              <div class="col-md-2">
+            <div class="col-md-2" hidden>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Bulan</label>
                 <select class="form-control BULAN_NOTA" onchange="onchange_pilih_nota()">
@@ -157,7 +133,8 @@
                 <p class="help-block">Bulan Nota.</p>
               </div>
               </div>
-              <div class="col-md-1">
+
+              <div class="col-md-1" hidden>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tahun</label>
                 <select class="form-control TAHUN_NOTA" onchange="onchange_pilih_nota()">
@@ -172,6 +149,13 @@
                 </select>
                 <p class="help-block">Tahun Nota.</p>
               </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Tanggal</label>
+                  <input autocomplete="off" class="form-control TANGGAL_FAKTUR datepicker" id="TANGGAL_FAKTUR" name="TANGGAL_FAKTUR" placeholder="" type="text" value="<?php echo date("Y/m/d"); ?>">
+                  <p class="help-block">Tanggal faktur.</p>
+                </div>
               </div>
             <div class="col-md-3">
             <div class="form-group">
@@ -205,6 +189,8 @@
               </div>
 
           </div>
+          </div>
+          <div class="row">
           <div class="col-md-3">
             <div class="form-group">
               <label for="exampleInputEmail1">Nama Supplier</label>
@@ -213,6 +199,8 @@
               <p class="help-block">Nama Supplier Untuk Faktur.</p>
             </div>
           </div>
+
+
           <div class="col-md-3">
             <div class="form-group">
               <label for="exampleInputEmail1">Nama Petani</label>
@@ -234,67 +222,13 @@
               <p class="help-block">Nama Kapal.</p>
             </div>
           </div>
-            </div>
-      		</div>
-
-
-          <div class="row">
-
-            <div class="col-md-3">
-              <!-- <input type="checkbox" name="CEK_DITERIMA"> Bisa Diterima
-              <input type="checkbox" name="CEK_100_INSPEKSI"> 100 % Inspeksi
-              <input type="checkbox" name="CEK_DIPISAH"> Dipisah -->
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="CEK_DITERIMA" class="CEK_DITERIMA"> Bisa Diterima
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="CEK_KOTORAN" class="CEK_KOTORAN"> Kotoran KG/Goni
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="CEK_100_INSPEKSI" class="CEK_100_INSPEKSI"> 100 % Inspeksi
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="CEK_LANGSUNG_PROSES" class="CEK_LANGSUNG_PROSES"> Langsung Proses
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="CEK_DIPISAH" class="CEK_DIPISAH"> Dipisah
-                </label>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Catatan Purchaser</label>
-                <textarea class="CATATAN_PURCHASER form-control" id="CATATAN_PURCHASER" rows="3" name="CATATAN_PURCHASER"></textarea>
-                <p class="help-block">Catatan untuk Purchaser.</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Catatan Supplier</label>
-                <textarea class="CATATAN_SUPPLIER form-control" id="CATATAN_SUPPLIER" rows="3" name="CATATAN_SUPPLIER"></textarea>
-                <p class="help-block">Catatan untuk Supplier.</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Tanggal</label>
-                <input autocomplete="off" class="form-control TANGGAL_FAKTUR datepicker" id="TANGGAL_FAKTUR" name="TANGGAL_FAKTUR" placeholder="" type="text" value="<?php echo date("Y/m/d"); ?>">
-                <p class="help-block">Tanggal faktur.</p>
-              </div>
-            </div>
           </div>
 
+
+
+
       	</div>
-      </div>
+      	</div>
       </div>
       </div>
 
@@ -404,22 +338,65 @@
       	</div>
       </div>
 
-      <div class="col-lg-12 col-md-12">
-     		<div class="list-group">
+
+
           <div class="box box-solid form_faktur">
             <div class="box-body">
               <div class="row">
-
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Kualitet</label> <input autocomplete="off" class="form-control KUALITET" id="KUALITET" name="KUALITET" placeholder="KUALITET"  type="number">
-                    <p class="help-block">Kualitet %</p>
+                <div class="col-md-2">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="CEK_DITERIMA" class="CEK_DITERIMA"> Bisa Diterima
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="CEK_KOTORAN" class="CEK_KOTORAN"> Kotoran KG/Goni
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="CEK_100_INSPEKSI" class="CEK_100_INSPEKSI"> 100 % Inspeksi
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="CEK_LANGSUNG_PROSES" class="CEK_LANGSUNG_PROSES"> Langsung Proses
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="CEK_DIPISAH" class="CEK_DIPISAH"> Dipisah
+                    </label>
                   </div>
                 </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Catatan Purchaser</label>
+                    <textarea class="CATATAN_PURCHASER form-control" id="CATATAN_PURCHASER" rows="3" name="CATATAN_PURCHASER"></textarea>
+                    <p class="help-block">Catatan untuk Purchaser.</p>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Catatan Supplier</label>
+                    <textarea class="CATATAN_SUPPLIER form-control" id="CATATAN_SUPPLIER" rows="3" name="CATATAN_SUPPLIER"></textarea>
+                    <p class="help-block">Catatan untuk Supplier.</p>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Goni</label> <input autocomplete="off" class="form-control GONI" id="GONI" name="GONI" placeholder="GONI"  type="number">
                     <p class="help-block">Total Goni</p>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Kualitet</label> <input autocomplete="off" class="form-control KUALITET" id="KUALITET" name="KUALITET" placeholder="KUALITET"  type="number">
+                    <p class="help-block">Kualitet %</p>
                   </div>
                 </div>
                 <div class="col-md-3">
@@ -447,12 +424,7 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
- 		</div>
- 	</div>
- </div>
 
 
 
