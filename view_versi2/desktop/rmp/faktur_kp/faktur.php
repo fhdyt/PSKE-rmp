@@ -161,7 +161,7 @@
             <div class="form-group">
               <label for="exampleInputEmail1">No. Faktur</label>
               <div class="input-group">
-                <input autocomplete="off" class="form-control NO_FAKTUR" id="NO_FAKTUR" name="NO_FAKTUR" placeholder="NO_FAKTUR" onkeyup="no_faktur_keyup()" type="text" disabled>
+                <input autocomplete="off" class="form-control NO_FAKTUR" id="NO_FAKTUR" name="NO_FAKTUR" placeholder="NO_FAKTUR" onkeyup="no_faktur_keyup()" type="text">
                 <span class="input-group-btn">
                   <button class="btn btn-success NEW_NO_FAKTUR" id="NEW_NO_FAKTUR" type="button">Baru</button>
                 </span>
@@ -1246,7 +1246,7 @@ $(function()
 function simpan_faktur()
 {
   var fData = $("#faktur_detail").serialize();
-  //console.log(fData)
+  console.log(fData)
   $.ajax({
     type: 'POST',
     url: refseeAPI,
