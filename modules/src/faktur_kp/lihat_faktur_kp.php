@@ -27,7 +27,7 @@ $sql = "SELECT *, F.RECORD_STATUS AS FAKTUR_RECORD_STATUS FROM
             F.RMP_FAKTUR_NO_FAKTUR
           ORDER BY
             F.ENTRI_WAKTU
-          ASC
+          DESC
           ";
 // $sql = "SELECT *, F.RECORD_STATUS AS FAKTUR_RECORD_STATUS FROM
 //             RMP_FAKTUR AS F

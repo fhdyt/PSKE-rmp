@@ -161,7 +161,7 @@
             <div class="form-group">
               <label for="exampleInputEmail1">No. Faktur</label>
               <div class="input-group">
-                <input autocomplete="off" class="form-control NO_FAKTUR" id="NO_FAKTUR" name="NO_FAKTUR" placeholder="NO_FAKTUR" onkeyup="no_faktur_keyup()" type="text" >
+                <input autocomplete="off" class="form-control NO_FAKTUR" id="NO_FAKTUR" name="NO_FAKTUR" placeholder="NO_FAKTUR" onkeyup="no_faktur_keyup()" type="text" disabled>
                 <span class="input-group-btn">
                   <button class="btn btn-success NEW_NO_FAKTUR" id="NEW_NO_FAKTUR" type="button">Baru</button>
                 </span>
@@ -294,15 +294,7 @@
       						<h3 class="box-title">Faktur</h3>
       					</div>
       					<div class="box-body">
-      						<div class="small-box bg-yellow">
-      							<div class="inner">
-      								<p class="total_timbang" style="font-size:40px">0</p>
-      								<p>Total</p>
-      							</div>
-      							<div class="icon">
-      								<i class="fa fa-balance-scale"></i>
-      							</div>
-      						</div>
+
                   <a class="btn btn-primary btn-sm tambah_manual_nota"><i class="fa fa-plus"></i> Tambah Data Faktur</a>
                 </br>
                 </br>
@@ -330,7 +322,15 @@
       								</tr>
       							</tbody>
       						</table>
-
+                  <div class="small-box bg-yellow">
+      							<div class="inner">
+      								<p class="total_timbang" style="font-size:40px">0</p>
+      								<p>Total</p>
+      							</div>
+      							<div class="icon">
+      								<i class="fa fa-balance-scale"></i>
+      							</div>
+      						</div>
       					</div>
       				</div>
       			</div>
@@ -417,10 +417,15 @@
                 </form>
               </div>
               <br>
+              <div class="row">
+
+                <div class="col-md-12">
               <div class="text-right">
                  <button class="btn btn-success simpan_faktur" type="button">Simpan Faktur</button>
                  <!-- <a class="btn btn-default btn_lihat_faktur" style="display:none;"><i class="fa fa-eye" aria-hidden="true"></i> Lihat</a> -->
                  <a class="btn btn-default btn_cetak_faktur" style="display:none;"><i class="fa fa-print" aria-hidden="true"></i> Cetak</a>
+              </div>
+              </div>
               </div>
             </div>
           </div>
