@@ -23,7 +23,6 @@ $sql = "SELECT *, F.RECORD_STATUS AS FAKTUR_RECORD_STATUS FROM
             F.RMP_FAKTUR_TANGGAL LIKE '%".$input['TANGGAL']."%'
             AND F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%KOPRA%'
             AND F.RECORD_STATUS IN ('A','N')
-            AND P.RECORD_STATUS='A'
           GROUP BY
             F.RMP_FAKTUR_NO_FAKTUR
           ORDER BY
