@@ -112,31 +112,8 @@
       			</div>
       		</div>
           <form id="faktur_detail">
-      		<div class="row">
-
-            <!-- <div class="form_faktur_cabang" hidden>
-            <div class="col-md-4">
-            <div class="form-group" >
-              <label for="exampleInputEmail1">ID Faktur Cabang</label> <select class="ID_FAKTUR_CABANG selectpicker with-ajax-personal form-control" data-live-search="true" id="ID_FAKTUR_CABANG" name="ID_FAKTUR_CABANG" onchange="id_faktur_cabang()">
-              </select>
-              <p class="help-block">Pilih ID Faktur Cabang Purchaser.</p>
-            </div>
-            </div>
-            <div class="col-md-4">
-            <div class="form-group" >
-              <label for="exampleInputEmail1">PS Cabang</label><input autocomplete="off" class="form-control PS_CABANG" id="PS_CABANG" name="PS_CABANG" placeholder="PS_CABANG" type="text" readonly>
-              <p class="help-block">Pilih ID Faktur Cabang Purchaser.</p>
-            </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group" >
-                <label for="exampleInputEmail1">Tanggal</label><input autocomplete="off" class="form-control TANGGAL_REKAP_FAKTUR_CABANG" id="TANGGAL_REKAP_FAKTUR_CABANG" name="TANGGAL_REKAP_FAKTUR_CABANG" placeholder="TANGGAL_REKAP_FAKTUR_CABANG" type="text" readonly>
-                <p class="help-block">Tanggal rekap faktur cabang.</p>
-              </div>
-            </div>
-            </div> -->
-
             <div class="form_faktur_hasil_timbang">
+              <div class="row">
               <div class="col-md-2">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Bulan</label>
@@ -198,8 +175,9 @@
 
                 <p class="help-block">Nama Supplier Pada Nota Timbang.</p>
               </div>
-
           </div>
+        </div>
+        <div class="row">
           <div class="col-md-3">
             <div class="form-group">
               <label for="exampleInputEmail1">Kapal</label>
@@ -230,9 +208,8 @@
               <p class="help-block">Alamat Petani Untuk Faktur.</p>
             </div>
           </div>
-
+        </div>
             </div>
-      		</div>
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
