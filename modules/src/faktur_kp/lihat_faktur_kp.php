@@ -16,9 +16,6 @@ $input = $params['input_option'];
 
 $sql = "SELECT *, F.RECORD_STATUS AS FAKTUR_RECORD_STATUS FROM
             RMP_FAKTUR AS F
-            LEFT JOIN
-            RMP_MASTER_PERSONAL AS P
-            ON F.RMP_MASTER_PERSONAL_ID=P.RMP_MASTER_PERSONAL_ID
           WHERE
             F.RMP_FAKTUR_TANGGAL LIKE '%".$input['TANGGAL']."%'
             AND F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%KOPRA%'
@@ -95,6 +92,18 @@ foreach($result_a as $r)
     $r['TOTAL_POTONGAN'] = number_format($r['POTONGAN'],0,",",".");
     $r['NETTO'] = $r['BRUTO'] - round($r['POTONGAN']);
 
+    $sql_supplier = "SELECT * FROM
+                RMP_MASTER_PERSONAL
+              WHERE
+                RMP_MASTER_PERSONAL_ID = '".$r['RMP_MASTER_PERSONAL_ID']."'
+                AND RECORD_STATUS='A'
+              ";
+
+    $this->MYSQL = new MYSQL();
+    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+    $this->MYSQL->queri = $sql_supplier ;
+    $result_supplier = $this->MYSQL->data();
+
     $sql_purchaser = "SELECT * FROM
                 RMP_FAKTUR_PURCHASER
               WHERE
@@ -116,6 +125,7 @@ foreach($result_a as $r)
     }
 
     $r['TOTAL_A'] = $result_aa[0]['SUM'];
+    $r['RMP_MASTER_PERSONAL_NAMA'] = $result_supplier[0]['RMP_MASTER_PERSONAL_NAMA'];
     $result[] = $r;
     $no++;
     }

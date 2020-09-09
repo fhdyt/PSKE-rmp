@@ -44,6 +44,7 @@ $this->MYSQL->queri="SELECT *, PH.RMP_PENYESUAIAN_HARGA_KB_".$input['grade']." A
 												AND PH.RECORD_STATUS='A'
 												AND R.RECORD_STATUS='A'
 												AND (P.RMP_MASTER_PERSONAL_NAMA LIKE '%".$input['q']."%' OR P.RMP_MASTER_PERSONAL_NAMA LIKE '%".$input['nama_supplier']."%')
+												GROUP BY P.RMP_MASTER_PERSONAL_ID
 												";
 $result_a=$this->MYSQL->data();
 $no=1;

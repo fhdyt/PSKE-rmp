@@ -106,10 +106,11 @@ else {
 
 $rekening =$respon['rekening'];
 $tambang =$respon['tambang'];
+$tambang_x =$respon['tambang_x'];
 $biaya =$respon['biaya'];
 $goni =$respon['goni'];
 $goni_total =$respon['goni_total'];
-$cadangan =$respon['cadangan'];
+$cadangan_x =$respon['cadangan_x'];
 $cek_tambang =$respon['cek_tambang'];
 $cek_biaya =$respon['cek_biaya'];
 $cek_rp_kg =$respon['cek_rp_kg'];
@@ -190,7 +191,7 @@ if ($printed == "admin")
 	$goni_total = $goni_total;
 
 	$kualitet_title = "KUALITET";
-	$kualitet_total = ": ".$kualitet." %";
+	$kualitet_total = "".$kualitet." %";
 
 	$hr = "<hr>";
 	$total_jumlah = $kelapa+$tambang+$cadangan+$goni_total;
@@ -202,13 +203,19 @@ if ($printed == "admin")
 	if ($kualitet <= 75)
 	{
 		$kualitet_cnf = $kualitet - 2;
+		if($rekening == "22.01.001.0004")
+		{
+			$kualitet_cnf = $kualitet;
+		}
+
 	}
 	else
 	{
 		$kualitet_cnf = $kualitet;
 	}
 	$cnf_title = "CNF";
-	$cnf = round($rp_kg/($kualitet_cnf/100));
+	$cnf = round(($rp_kg+$cadangan_x+$tambang_x)/($kualitet_cnf/100));
+	//$cnf = round($rp_kg/($kualitet_cnf/100));
 
 }
 
@@ -629,6 +636,7 @@ tr {
 		<td></td>
 		<td></td>
 		<td>'.$kualitet_title.'</td>
+		<td>:</td>
 		<td>'.$kualitet_total.'</td>
 		<td></td>
 		</tr>
@@ -649,7 +657,7 @@ tr {
 		<td>: </td>
 		<td style="text-align:right">'.number_format(round($netto),0,",",".").' </td>
 		<td>Kg</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$rp_kg_cetak.'</td>
+		<td>'.$rp_kg_cetak.'</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>'.$kelapa_title.'</td>

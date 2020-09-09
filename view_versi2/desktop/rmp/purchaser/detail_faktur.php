@@ -64,9 +64,10 @@ font-size: 12px;
         <div class="row">
           <div class="col-md-12">
             <div class="callout callout-warning warning_faktur" hidden>
-                <h4>Tidak dapat melakukan edit.</h4>
+                <h4>Tidak dapat melakukan perubahan.</h4>
 
                 <p>Faktur telah dijurnalkan oleh Accounting.</p>
+                <p>Untuk melakukan perubahan, <b>silahkan hubungi pihak Accounting.</b></p>
               </div>
           </div>
         </div>
@@ -539,6 +540,9 @@ function detail_purchaser(curPage)
           {
             $("div.warning_faktur").attr("hidden", false)
             $(".simpanHargaPurchaser").attr("disabled", true)
+            $("a.verifikasiHargaPurchaser").attr("disabled", true)
+            $(".edit_harga").attr('style','display:none');
+            //$('button').attr("disabled", true)
             $(".batalkankalkulasi").attr("disabled", true)
           }
         //  $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
