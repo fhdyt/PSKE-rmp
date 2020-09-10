@@ -70,7 +70,7 @@ font-size: 12px;
             <option value="TELAH_PROSES">Telah diproses</option>
                   </select> -->
 
-            <select id="FILTER_MATERIAL" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_material()">
+            <select id="FILTER_MATERIAL" onchange="filter()" name="FILTER_MATERIAL" type="text" class=" form-control FILTER_MATERIAL"  autocomplete="off" onchange="filter_material()">
             <option value="">--Semua Material--</option>
             <option value="GELONDONG">GELONDONG</option>
             <option value="JAMBUL">JAMBUL</option>
@@ -78,7 +78,7 @@ font-size: 12px;
             <option value="KOPRA">KOPRA</option>
                   </select>
 
-            <select id="FILTER_BULAN" name="FILTER_BULAN" type="text" class=" form-control FILTER_BULAN"  autocomplete="off" onchange="filter_material()">
+            <select id="FILTER_BULAN" onchange="filter()" name="FILTER_BULAN" type="text" class=" form-control FILTER_BULAN"  autocomplete="off" onchange="filter_material()">
             <option value="">--Bulan--</option>
             <option value="01">Januari</option>
             <option value="02">Februari</option>
@@ -95,7 +95,7 @@ font-size: 12px;
                   </select>
                 </div>
 					<div class="form-group">
-              <input type="text" id="FILTER_TANGGAL" class="form-control FILTER_TANGGAL datepicker" name="FILTER_TANGGAL" value="<?php echo date("Y/m/d") ?>"/>
+              <input type="text" onchange="filter()" id="FILTER_TANGGAL" class="form-control FILTER_TANGGAL datepicker" name="FILTER_TANGGAL" value="<?php echo date("Y/m/d") ?>"/>
           </div>
 					<div class="form-group">
             <button type="submit" class="btn btn-success filter"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -106,7 +106,7 @@ font-size: 12px;
         <br>
         <div class="row">
           <div class="col-md-12">
-            <table class="table table-hover table-bordered">
+            <table class="table">
               <thead>
                 <tr>
                   <th>No.</th>
@@ -158,6 +158,7 @@ $(function()
 });
 
 function filter(){
+  console.log("filter")
 $("tbody#zone_data").html("<tr><td colspan='9'><center><div class='loader'></div></center></td></tr>")
 faktur_list('1')
 }
@@ -193,17 +194,17 @@ function faktur_list(curPage)
         for (i = 0; i < data.result.length; i++) {
           if(data.result[i].STATUS_PURCHASAER == "A")
           {
-            var tr = 'success'
+            var tr = '#66bb6a'
             var verifikasi = ''
           }
           else if(data.result[i].STATUS_PURCHASAER == "V")
           {
-            var tr = 'warning'
+            var tr = '#cddc39'
             var verifikasi = '<p class="text-danger"><small><i>Menunggu Verifikasi...</i></small></p>'
           }
           else
           {
-            var tr = 'default'
+            var tr = '#c8e6c9'
             var verifikasi = ''
           }
 
@@ -230,7 +231,7 @@ function faktur_list(curPage)
           else {
             var detail_faktur = "detail_faktur"
           }
-          $("tbody#zone_data").append("<tr class='"+tr+"'  >" +
+          $("tbody#zone_data").append("<tr bgcolor='"+tr+"'  >" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR + "</td>" +
 					"<td>" + supplier + "</td>" +
@@ -239,7 +240,7 @@ function faktur_list(curPage)
 					"<td>" + data.result[i].RMP_FAKTUR_JENIS_MATERIAL + "</td>" +
 					"<td>" + data.result[i].TANGGAL + "</td>" +
 					//"<td>" + data.result[i].STATUS_PURCHASAERs + "</td>" +
-          "<td><a class='btn btn-success btn-sm' href='?show=rmp/purchaser/"+detail_faktur+"/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
+          "<td><a class='btn btn-default btn-sm' href='?show=rmp/purchaser/"+detail_faktur+"/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
 
 
           "</tr>");

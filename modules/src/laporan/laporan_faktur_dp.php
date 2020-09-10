@@ -15,13 +15,20 @@ $input = $params['input_option'];
 
 $sql = "SELECT * FROM
         RMP_FAKTUR AS F LEFT JOIN
+        RMP_FAKTUR_PURCHASER AS FP
+        ON F.RMP_FAKTUR_NO_FAKTUR=FP.RMP_FAKTUR_NO_FAKTUR
+        LEFT JOIN
         RMP_MASTER_PERSONAL AS P
         ON
-        P.RMP_MASTER_PERSONAL_ID=F.RMP_MASTER_PERSONAL_ID
+        P.RMP_MASTER_PERSONAL_ID=FP.RMP_MASTER_PERSONAL_ID
+        LEFT JOIN
+        RMP_MASTER_WILAYAH AS W
+        ON
+        P.SUB_WILAYAH_ID=W.RMP_MASTER_WILAYAH_ID
         LEFT JOIN
         RMP_REKENING_RELASI AS RR
         ON
-        F.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
+        FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
         WHERE
         RR.RMP_REKENING_RELASI_MATERIAL LIKE '%".$input['material']."%'
         AND
@@ -33,47 +40,13 @@ $sql = "SELECT * FROM
         AND
         F.RECORD_STATUS='A'
         AND
+        FP.RECORD_STATUS='A'
+        AND
         P.RECORD_STATUS='A'
         AND
         RR.RECORD_STATUS='A'
-        ORDER BY F.RMP_MASTER_PERSONAL_ID ASC
+        ORDER BY FP.RMP_FAKTUR_PURCHASER_NO_REKENING ASC
         ";
-
-
-// $sql = "SELECT * FROM
-//         RMP_FAKTUR AS F LEFT JOIN
-//         RMP_FAKTUR_PURCHASER AS FP
-//         ON F.RMP_FAKTUR_NO_FAKTUR=FP.RMP_FAKTUR_NO_FAKTUR
-//         LEFT JOIN
-//         RMP_MASTER_PERSONAL AS P
-//         ON
-//         P.RMP_MASTER_PERSONAL_ID=FP.RMP_MASTER_PERSONAL_ID
-//         LEFT JOIN
-//         RMP_MASTER_WILAYAH AS W
-//         ON
-//         P.SUB_WILAYAH_ID=W.RMP_MASTER_WILAYAH_ID
-//         LEFT JOIN
-//         RMP_REKENING_RELASI AS RR
-//         ON
-//         FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
-//         WHERE
-//         RR.RMP_REKENING_RELASI_MATERIAL LIKE '%".$input['material']."%'
-//         AND
-//         F.RMP_FAKTUR_TANGGAL LIKE '%".$input['tanggal']."%'
-//         AND
-//         RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
-//         AND
-//         F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."%'
-//         AND
-//         F.RECORD_STATUS='A'
-//         AND
-//         FP.RECORD_STATUS='A'
-//         AND
-//         P.RECORD_STATUS='A'
-//         AND
-//         RR.RECORD_STATUS='A'
-//         ORDER BY FP.RMP_FAKTUR_PURCHASER_NO_REKENING ASC
-//         ";
 
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -86,20 +59,10 @@ $no = $posisi + 1;
 
 foreach($result_a as $r)
     {
-      $sql2_purchaser = "SELECT *, RECORD_STATUS AS PURCHASER_STATUS FROM
-               RMP_FAKTUR_PURCHASER
-               WHERE
-               RMP_FAKTUR_NO_FAKTUR='".$r['RMP_FAKTUR_NO_FAKTUR']."' AND RECORD_STATUS='A'";
-      $this->MYSQL = new MYSQL();
-      $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-      $this->MYSQL->queri = $sql2_purchaser ;
-      $result_purchaser = $this->MYSQL->data();
-
     $r['NO'] = $no;
     $r['TOTAL_BRUTO'] += $r['RMP_FAKTUR_PURCHASER_BRUTO'];
     $r['RMP_MASTER_WILAYAH_KODE']=$r['RMP_MASTER_WILAYAH_KODE'];
     $r['MASTER_WILAYAH']=$r['RMP_FAKTUR_ALAMAT'];
-    $r['PURCHASER_STATUS'] = $result_purchaser[0]['PURCHASER_STATUS'];
     $grade_kelapa = substr($r['RMP_FAKTUR_JENIS_MATERIAL'],-1);
     $potongan = $r['RMP_FAKTUR_POTONGAN'];
 

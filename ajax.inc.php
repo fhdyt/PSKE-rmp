@@ -402,6 +402,9 @@ switch($ref){
 			case 'laporan_faktur':
 				require_once("ajax/laporan/laporan_faktur.php");
 			break;
+			case 'laporan_faktur_kp':
+				require_once("ajax/laporan_kp/laporan_faktur_kp.php");
+			break;
 			case 'total_laporan':
 				require_once("ajax/laporan/total_laporan.php");
 			break;

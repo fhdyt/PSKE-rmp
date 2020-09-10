@@ -32,6 +32,9 @@
 						<li class="active" id="licin" role="presentation">
 							<a href="?show=rmp/laporan/laporan_faktur/licin">Licin</a>
 						</li>
+						<li class="active" id="kopra" role="presentation">
+							<a href="?show=rmp/laporan/laporan_faktur/kopra">Kopra</a>
+						</li>
 					</ul><!-- nav nav-tabs -->
 					<br>
 					<script>
@@ -54,6 +57,10 @@
 				        elseif($d3=='licin')
 				        {
 				            require_once("tab/licin.php");
+				        }
+				        elseif($d3=='kopra')
+				        {
+				            require_once("tab/kopra.php");
 				        }
 				        else
 				        {

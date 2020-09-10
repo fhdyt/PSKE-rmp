@@ -415,6 +415,47 @@ else
 	$cetak_catatan_purchaser = "";
 }
 
+$first = reset($respon['result']);
+$jumlah_data_timbang = count($respon['result']);
+foreach ($respon['result'] as $r) {
+	$tanggal_merge = $r['RMP_FAKTUR_DETAIL_TANGGAL'];
+	$timbang_merge = $r['RMP_FAKTUR_DETAIL_ID_TIMBANG'];
+	$referensi_merge = $r['RMP_FAKTUR_DETAIL_REF'];
+	$gross_merge += $r['GROSS'];
+	$tara_merge += $r['RMP_FAKTUR_DETAIL_TARA'];
+	$total_merge += number_format($r['RMP_FAKTUR_DETAIL_BRUTO'],0,",",".");
+}
+
+
+if($d7 == '1')
+{
+		$detail_timbang ='
+		<tr>
+		<td>
+		1
+		</td>
+		<td>
+		'.$first['RMP_FAKTUR_DETAIL_TANGGAL'].' <br><b>s/d</b><br>'.$tanggal_merge.'
+		</td>
+		<td>
+		'.$timbang_merge.'
+		</td>
+		<td>
+		'.$first['RMP_FAKTUR_DETAIL_REF'].' - '.$referensi_merge.' <br>(<b>'.$jumlah_data_timbang.'</b>)
+		</td>
+		<td>
+		'.$gross_merge.' Kg
+		</td>
+		<td>
+		'.$tara_merge.' Kg
+		</td>
+		<td>
+		'.$total_merge.' Kg
+		</td>
+		</tr>
+		';
+}
+else{
 foreach($respon['result'] as $r){
 	$detail_timbang .='
 	<tr>
@@ -442,7 +483,7 @@ foreach($respon['result'] as $r){
 	</tr>
 	';
 }
-
+}
 $headerHTML = '<table table-unbordered>
 	<tr>
 		<td>
@@ -588,7 +629,7 @@ tr {
 			</td>
 		</tr>
 	</table>
-
+<br>
 	<table class="table">
 		<tr>
 			<td>
@@ -623,9 +664,8 @@ tr {
 			</td>
 
 		</tr>
-
-
 	</table >
+	<br>
 	<table>
 		<tr>
 		<td>Banyaknya</td>
@@ -636,7 +676,7 @@ tr {
 		<td></td>
 		<td></td>
 		<td>'.$kualitet_title.'</td>
-		<td>:</td>
+		<td></td>
 		<td>'.$kualitet_total.'</td>
 		<td></td>
 		</tr>

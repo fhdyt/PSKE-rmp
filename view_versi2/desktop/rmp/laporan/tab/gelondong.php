@@ -561,8 +561,80 @@ function laporan_faktur_list(curPage,wilayah)
           else{
             var btn_kirim = ""
           }
+          if(data.result[i].PURCHASER_STATUS == "A")
+          {
+            var tr = ""
+          }
+          else{
+            var tr = "danger"
+            var btn_kirim = ""
+          }
+
+          if(data.result[i].BRUTO_A == undefined)
+          (
+            data.result[i].BRUTO_A = "0"
+          )
+          if(data.result[i].PERSEN_A == undefined)
+          (
+            data.result[i].PERSEN_A = "0"
+          )
+          if(data.result[i].NETTO_A == undefined)
+          (
+            data.result[i].NETTO_A = "0"
+          )
+          if(data.result[i].RP_KG_A == undefined)
+          (
+            data.result[i].RP_KG_A = "0"
+          )
+          if(data.result[i].RP_A == undefined)
+          (
+            data.result[i].RP_A = "0"
+          )
+
+          if(data.result[i].BRUTO_B == undefined)
+          (
+            data.result[i].BRUTO_B = "0"
+          )
+          if(data.result[i].PERSEN_B == undefined)
+          (
+            data.result[i].PERSEN_B = "0"
+          )
+          if(data.result[i].NETTO_B == undefined)
+          (
+            data.result[i].NETTO_B = "0"
+          )
+          if(data.result[i].RP_KG_B == undefined)
+          (
+            data.result[i].RP_KG_B = "0"
+          )
+          if(data.result[i].RP_B == undefined)
+          (
+            data.result[i].RP_B = "0"
+          )
+
+          if(data.result[i].BRUTO_C == undefined)
+          (
+            data.result[i].BRUTO_C = "0"
+          )
+          if(data.result[i].PERSEN_C == undefined)
+          (
+            data.result[i].PERSEN_C = "0"
+          )
+          if(data.result[i].NETTO_C == undefined)
+          (
+            data.result[i].NETTO_C = "0"
+          )
+          if(data.result[i].RP_KG_C == undefined)
+          (
+            data.result[i].RP_KG_C = "0"
+          )
+          if(data.result[i].RP_C == undefined)
+          (
+            data.result[i].RP_C = "0"
+          )
+
           // console.log(nomor);
-          $("tbody#zone_data_"+wilayah+"").append("<tr class='detailLogId' id='list_laporan' >" +
+          $("tbody#zone_data_"+wilayah+"").append("<tr class='"+tr+"' id='list_laporan' >" +
 					"<td >" + btn_kirim + "</td>" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "</td>" +

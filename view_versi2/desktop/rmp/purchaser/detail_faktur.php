@@ -335,7 +335,7 @@ font-size: 12px;
 </div>
 
 <div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-sm modalCetakFaktur" role="dialog" tabindex="-1">
- <div class="modal-dialog modal-sm" role="document">
+ <div class="modal-dialog" role="document">
    <div class="modal-content">
      <div class="modal-header">
        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
@@ -350,7 +350,8 @@ font-size: 12px;
                    Cetak Untuk Relasi
                  </td>
                  <td>
-                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success" PRINTED="relasi"><i class="fa fa-print" aria-hidden="true"></i></a>
+                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success btn-sm" PRINTED="relasi"><i class="fa fa-print" aria-hidden="true"></i> Cetak Lengkap</a>
+                   <a onclick="cetak_faktur()" class="cetak_faktur1 btn btn-warning btn-sm" PRINTED="relasi"><i class="fa fa-print" aria-hidden="true"></i> Cetak Kelompok</a>
                  </td>
                </tr>
                <tr>
@@ -358,7 +359,8 @@ font-size: 12px;
                    Cetak Untuk Admin
                  </td>
                  <td>
-                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success" PRINTED="admin"><i class="fa fa-print" aria-hidden="true"></i></a>
+                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success btn-sm" PRINTED="admin"><i class="fa fa-print" aria-hidden="true"></i> Cetak Lengkap</a>
+                   <a onclick="cetak_faktur()" class="cetak_faktur1 btn btn-warning btn-sm" PRINTED="admin"><i class="fa fa-print" aria-hidden="true"></i> Cetak Kelompok</a>
                  </td>
                </tr>
                <tr>
@@ -366,7 +368,8 @@ font-size: 12px;
                    Cetak Untuk Beacukai
                  </td>
                  <td>
-                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success" PRINTED="beacukai"><i class="fa fa-print" aria-hidden="true"></i></a>
+                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success btn-sm" PRINTED="beacukai"><i class="fa fa-print" aria-hidden="true"></i> Cetak Lengkap</a>
+                   <a onclick="cetak_faktur()" class="cetak_faktur1 btn btn-warning btn-sm" PRINTED="beacukai"><i class="fa fa-print" aria-hidden="true"></i> Cetak Kelompok</a>
                  </td>
                </tr>
              </table>
@@ -823,6 +826,15 @@ $(".cetak_faktur").on("click", function(){
   var material = btoa($('.NAMA_MATERIAL').val())
   var printed = btoa($(this).attr("PRINTED"))
   window.open("?show=rmp/pdf/cetak_faktur/<?php echo $d3; ?>/"+ rp_kg +"/"+ material +"/"+ printed +"", "_blank");
+})
+
+$(".cetak_faktur1").on("click", function(){
+  // var no_faktur = btoa(fikri); // Enskrip
+  // var no_faktur = atob(Zmlrcmk=); // Dekrip
+  var rp_kg = btoa($('.RP_KG').text())
+  var material = btoa($('.NAMA_MATERIAL').val())
+  var printed = btoa($(this).attr("PRINTED"))
+  window.open("?show=rmp/pdf/cetak_faktur/<?php echo $d3; ?>/"+ rp_kg +"/"+ material +"/"+ printed +"/1", "_blank");
 })
 
 
