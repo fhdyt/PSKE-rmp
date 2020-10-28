@@ -30,79 +30,51 @@ $header = array(
 
 // $ttd='asset/platform/files/ttd/'.$nik.'.png';
 $material =base64_decode($d3);
-$tanggal =base64_decode($d4);
+$bulan = $d4;
+$tahun = $d5;
+$supplier = $d6;
 
 $input_option=array(
-	'material'=>$material,
-	'tanggal'=>$tanggal
+	'material'=>$d3,
+	'bulan'=>$bulan,
+	'tahun'=>$tahun,
+	'supplier'=>$supplier
 );
 
 
 $params=array(
 	//'case'=>"presensi_lembur_spl_pdf_nonlogin",
-	'case'=>"nonlogin_cetak_laporan_harian_02",
+	'case'=>"nonlogin_laporan_relasi_faktur_kp",
 	'batas'=>1000,
 	'halaman'=>1,
 	'data_http'=>$_COOKIE['data_http'],
 	'input_option'=>$input_option,
 );
 $respon=$RMP->rmp_modules($params)->load->module;
-
-$params=array(
-	//'case'=>"presensi_lembur_spl_pdf_nonlogin",
-	'case'=>"nonlogin_cetak_laporan_harian_03",
-	'batas'=>1000,
-	'halaman'=>1,
-	'data_http'=>$_COOKIE['data_http'],
-	'input_option'=>$input_option,
-);
-$respon=$RMP->rmp_modules($params)->load->module;
-
-$no_02=1;
-$no_03=1;
-foreach($respon['result_02'] as $r){
-	$laporan_02 .='
+$no = 1;
+foreach($respon['result'] as $r){
+	$laporan_relasi .='
 	<tr>
-	<td>'.$no_02++.'</td>
-	<td>'.$r['RMP_MASTER_PERSONAL_NAMA'].'</td>
-	<td>'.$r['RMP_FAKTUR_KAPAL'].'</td>
-	<td>'.$r['RMP_FAKTUR_PURCHASER_NO_REKENING'].'</td>
+	<td>'.$no++.'</td>
+	<td>'.$r['RMP_FAKTUR_TANGGAL'].'</td>
 	<td>'.$r['RMP_FAKTUR_NO_FAKTUR'].'</td>
-	<td>'.$r['BRUTO_A'].'</td>
-	<td>'.$r['PERSEN_A'].'</td>
-	<td>'.$r['NETTO_A'].'</td>
-	<td>'.$r['RP_KG_A'].'</td>
-	<td>'.$r['RP_A'].'</td>
-	<td>'.$r['BRUTO_B'].'</td>
-	<td>'.$r['PERSEN_B'].'</td>
-	<td>'.$r['NETTO_B'].'</td>
-	<td>'.$r['RP_KG_B'].'</td>
-	<td>'.$r['RP_B'].'</td>
+	<td>'.$r['RMP_FAKTUR_KAPAL'].'</td>
+	<td style="text-align:right">'.$r['RMP_FAKTUR_GONI'].'</td>
+	<td style="text-align:right">'.$r['BRUTO_KG'].'</td>
+	<td style="text-align:right">0</td>
+	<td style="text-align:right">'.$r['NETTO_KG'].'</td>
+	<td style="text-align:right">'.$r['KUALITET_QC'].'</td>
+	<td style="text-align:right">'.$r['KUALITET_FAKTUR'].'</td>
+	<td style="text-align:right">'.$r['RP_KG'].'</td>
+	<td style="text-align:right">'.$r['RP_KELAPA'].'</td>
+	<td style="text-align:right">'.$r['GONI_RP'].'</td>
+	<td style="text-align:right">'.$r['TAMBANG_RP'].'</td>
+	<td style="text-align:right">'.$r['KERING_KG'].'</td>
 	</tr>
 	';
 }
 
-foreach($respon['result_03'] as $r){
-	$laporan_03 .='
-	<tr>
-	<td>'.$no_03++.'</td>
-	<td>'.$r['RMP_MASTER_PERSONAL_NAMA'].'</td>
-	<td>'.$r['RMP_FAKTUR_KAPAL'].'</td>
-	<td>'.$r['RMP_FAKTUR_PURCHASER_NO_REKENING'].'</td>
-	<td>'.$r['RMP_FAKTUR_NO_FAKTUR'].'</td>
-	<td>'.$r['BRUTO_A'].'</td>
-	<td>'.$r['PERSEN_A'].'</td>
-	<td>'.$r['NETTO_A'].'</td>
-	<td>'.$r['RP_KG_A'].'</td>
-	<td>'.$r['RP_A'].'</td>
-	<td>'.$r['BRUTO_B'].'</td>
-	<td>'.$r['PERSEN_B'].'</td>
-	<td>'.$r['NETTO_B'].'</td>
-	<td>'.$r['RP_KG_B'].'</td>
-	<td>'.$r['RP_B'].'</td>
-	</tr>
-	';
-}
+
 
 $headerHTML = '<table table-unbordered>
 	<tr>
@@ -114,25 +86,13 @@ $headerHTML = '<table table-unbordered>
 					</td>
 					<td>
 						<b>PT PULAU SAMBU (KUALA ENOK)</b><br>
-						LAPORAN HARIAN KELAPA BULAT<br>
-						KELAPA '.$material.'
+						LAPORAN BULANAN RELASI KOPRA<br>
 					</td>
 				</tr>
 			</table>
 		</td>
 		<td style="padding-left: 550px;">
 		<table>
-			<tr>
-				<td>
-					Tanggal
-				</td>
-				<td>
-					:
-				</td>
-				<td>
-					'.$tanggal.'
-				</td>
-			</tr>
 			<tr>
 				<td>
 					Halaman
@@ -188,34 +148,38 @@ tr {
 
 	<table class="table table2">
 		<tr>
-			<td rowspan="2">No.</td>
-			<td rowspan="2">Nama</td>
-			<td rowspan="2">Alamat</td>
-			<td rowspan="2">Rekening</td>
-			<td rowspan="2">Nomor Faktur</td>
-			<td colspan="5"><center>KB-A</center></td>
-			<td colspan="5"><center>KB-B</center></td>
+		<td>No.</td>
+		<td>Tanggal</td>
+		<td>No. Faktur</td>
+		<td>Kapal</td>
+		<td><center>Goni</center></td>
+		<td><center>Bruto KG</center></td>
+		<td><center>Goni KG</center></td>
+		<td><center>Netto KG</center></td>
+		<td><center>QC %</center></td>
+		<td><center>Faktur %</center></td>
+		<td><center>Harga / KG RP</center></td>
+		<td><center>Kopra RP</center></td>
+		<td><center>Goni RP</center></td>
+		<td><center>Tambang RP</center></td>
+		<td><center>K.Kering KG</center></td>
 		</tr>
-		<tr>
-      <td><center>Kg BRUTO</center></td>
-      <td><center>%</center></td>
-      <td><center>Kg NETTO</center></td>
-      <td id="td_rp_a">@Rp</td>
-      <td><center>Rp</center></td>
-
-      <td><center>Kg BRUTO</center></td>
-      <td><center>%</center></td>
-      <td><center>Kg NETTO</center></td>
-      <td id="td_rp_b">@Rp</td>
-      <td><center>Rp</center></td>
-    </tr>
-		'.$laporan_02.'
-		<tr><td> </td></tr>
-		'.$laporan_03.'
-
-
-
-	</table >
+		'.$laporan_relasi.'
+		<tr class="warning">
+      <td colspan="4" style="text-align:right ;font-weight: bold;"></td>
+      <td style="text-align:right ;font-weight: bold;">'.$respon['result_total'][0]['TOTAL_GONI'].'</td>
+      <td  style="text-align:right ;font-weight: bold;">'.$respon['result_total'][0]['TOTAL_BRUTO'].'</td>
+      <td  style="text-align:right ;font-weight: bold;">0</td>
+      <td  style="text-align:right ;font-weight: bold;">'.$respon['result_total'][0]['TOTAL_NETTO'].'</td>
+      <td  style="text-align:right ;font-weight: bold;"></td>
+      <td  style="text-align:right ;font-weight: bold;"></td>
+      <td  style="text-align:right ;font-weight: bold;"></td>
+      <td  style="text-align:right ;font-weight: bold;">'.$respon['result_total'][0]['TOTAL_KELAPA'].'</td>
+      <td  style="text-align:right ;font-weight: bold;">'.$respon['result_total'][0]['TOTAL_GONI_RP'].'</td>
+      <td  style="text-align:right ;font-weight: bold;">'.$respon['result_total'][0]['TOTAL_TAMBANG'].'</td>
+      <td  style="text-align:right ;font-weight: bold;">'.$respon['result_total'][0]['TOTAL_KERING_KG'].'</td>
+      <td></tr>
+	</table>
 	</body>
 	</html>
 ';

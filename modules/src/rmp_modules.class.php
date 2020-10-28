@@ -567,8 +567,14 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_laporan_faktur_kp':
 			require_once ("laporan_kp/laporan_faktur_kp.php");
 		break;
+		case 'nonlogin_laporan_faktur_kp_00':
+			require_once ("laporan_kp/laporan_faktur_kp_00.php");
+		break;
 		case 'nonlogin_total_laporan':
 			require_once ("laporan/total_laporan.php");
+		break;
+		case 'nonlogin_total_laporan_kp':
+			require_once ("laporan_kp/total_laporan_kp.php");
 		break;
 		case 'nonlogin_kirim_pembukuan':
 			require_once ("laporan/kirim_pembukuan.php");
@@ -592,12 +598,25 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 
 
 
-		case 'nonlogin_cetak_laporan_harian_02':
-			require_once ("laporan/cetak_laporan_harian_02.php");
+		case 'nonlogin_cetak_laporan_harian_kp':
+			require_once ("laporan_kp/cetak_laporan_harian_kp.php");
 		break;
-		case 'nonlogin_cetak_laporan_harian_03':
-			require_once ("laporan/cetak_laporan_harian_03.php");
+		case 'nonlogin_cetak_laporan_harian_kb':
+			require_once ("laporan/cetak_laporan_harian_kb.php");
 		break;
+
+		case 'nonlogin_sel_nama_supplier_with_rek':
+			require_once ("laporan_relasi/sel_nama_supplier_with_rek.php");
+		break;
+		case 'nonlogin_laporan_relasi_faktur':
+			require_once ("laporan_relasi/laporan_relasi_faktur.php");
+		break;
+		case 'nonlogin_laporan_relasi_faktur_kp':
+			require_once ("laporan_relasi/laporan_relasi_faktur_kp.php");
+		break;
+
+
+
 			// ---------------------end case-----------------------------//
 
 		default:

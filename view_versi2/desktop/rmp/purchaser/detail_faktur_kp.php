@@ -277,7 +277,7 @@ font-size: 12px;
           <div class="col-md-4">
             <table class="table table-hover">
               <tr>
-                <td><b>Kelapa (Rp)</b></td>
+                <td><b>Kopra (Rp)</b></td>
                 <td align="right"><p class="KELAPA_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
                   <input autocomplete="off" class="form-control KELAPA_RUPIAH" id="KELAPA_RUPIAH" name="KELAPA_RUPIAH" type="hidden">
                 </td>

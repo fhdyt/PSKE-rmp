@@ -405,8 +405,14 @@ switch($ref){
 			case 'laporan_faktur_kp':
 				require_once("ajax/laporan_kp/laporan_faktur_kp.php");
 			break;
+			case 'laporan_faktur_kp_00':
+				require_once("ajax/laporan_kp/laporan_faktur_kp_00.php");
+			break;
 			case 'total_laporan':
 				require_once("ajax/laporan/total_laporan.php");
+			break;
+			case 'total_laporan_kp':
+				require_once("ajax/laporan_kp/total_laporan_kp.php");
 			break;
 			case 'kirim_pembukuan':
 				require_once("ajax/laporan/kirim_pembukuan.php");
@@ -424,6 +430,19 @@ switch($ref){
 			break;
 			case 'list_faktur_cabang_c':
 				require_once("ajax/faktur_cabang_adm/list_faktur_cabang_c.php");
+			break;
+
+
+
+
+			case 'sel_nama_supplier_with_rek':
+				require_once("ajax/laporan_relasi/sel_nama_supplier_with_rek.php");
+			break;
+			case 'laporan_relasi_faktur':
+				require_once("ajax/laporan_relasi/laporan_relasi_faktur.php");
+			break;
+			case 'laporan_relasi_faktur_kp':
+				require_once("ajax/laporan_relasi/laporan_relasi_faktur_kp.php");
 			break;
 
 

@@ -662,6 +662,7 @@ function sel_nama_supplier()
     data: 'ref=sel_nama_supplier_rek&'+nama_material+'&'+grade_material+'&'+id_faktur+'',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
+        console.log(data.respon.text_msg)
         for (i = 0; i < data.result.length; i++) {
           if ($(".NAMA_SUPPLIER_PURCHASER_HIDDEN").val() == data.result[i].RMP_MASTER_PERSONAL_NAMA)
           {

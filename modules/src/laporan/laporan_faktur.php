@@ -13,7 +13,17 @@ $batas = $params['batas'];
 $posisi = $this->PAGING->cariPosisi($batas, $halaman);
 $input = $params['input_option'];
 
-$sql = "SELECT * FROM
+$sql = "SELECT
+          P.RMP_MASTER_PERSONAL_NAMA AS RMP_MASTER_PERSONAL_NAMA,
+          F.RMP_FAKTUR_ALAMAT AS RMP_FAKTUR_ALAMAT,
+          F.RMP_FAKTUR_JENIS_MATERIAL AS RMP_FAKTUR_JENIS_MATERIAL,
+          F.RMP_FAKTUR_POTONGAN AS RMP_FAKTUR_POTONGAN,
+          F.RMP_FAKTUR_NO_FAKTUR AS RMP_FAKTUR_NO_FAKTUR,
+          RR.RMP_REKENING_RELASI AS RMP_REKENING_RELASI,
+          F.RMP_FAKTUR_ID AS RMP_FAKTUR_ID,
+          F.RMP_FAKTUR_STATUS AS RMP_FAKTUR_STATUS,
+          F.RMP_FAKTUR_NAMA_SUB AS RMP_FAKTUR_NAMA_SUB
+        FROM
         RMP_FAKTUR AS F LEFT JOIN
         RMP_MASTER_PERSONAL AS P
         ON
@@ -38,42 +48,6 @@ $sql = "SELECT * FROM
         RR.RECORD_STATUS='A'
         ORDER BY F.RMP_MASTER_PERSONAL_ID ASC
         ";
-
-
-// $sql = "SELECT * FROM
-//         RMP_FAKTUR AS F LEFT JOIN
-//         RMP_FAKTUR_PURCHASER AS FP
-//         ON F.RMP_FAKTUR_NO_FAKTUR=FP.RMP_FAKTUR_NO_FAKTUR
-//         LEFT JOIN
-//         RMP_MASTER_PERSONAL AS P
-//         ON
-//         P.RMP_MASTER_PERSONAL_ID=FP.RMP_MASTER_PERSONAL_ID
-//         LEFT JOIN
-//         RMP_MASTER_WILAYAH AS W
-//         ON
-//         P.SUB_WILAYAH_ID=W.RMP_MASTER_WILAYAH_ID
-//         LEFT JOIN
-//         RMP_REKENING_RELASI AS RR
-//         ON
-//         FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
-//         WHERE
-//         RR.RMP_REKENING_RELASI_MATERIAL LIKE '%".$input['material']."%'
-//         AND
-//         F.RMP_FAKTUR_TANGGAL LIKE '%".$input['tanggal']."%'
-//         AND
-//         RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
-//         AND
-//         F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."%'
-//         AND
-//         F.RECORD_STATUS='A'
-//         AND
-//         FP.RECORD_STATUS='A'
-//         AND
-//         P.RECORD_STATUS='A'
-//         AND
-//         RR.RECORD_STATUS='A'
-//         ORDER BY FP.RMP_FAKTUR_PURCHASER_NO_REKENING ASC
-//         ";
 
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
@@ -137,39 +111,6 @@ foreach($result_a as $r)
     {
       $bulan = date("m",strtotime($input['tanggal']));
       $tahun = date("Y",strtotime($input['tanggal']));
-      $sqlsum_bulan = "SELECT
-                        SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO_BULAN,
-                        SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS SUM_NETTO_BULAN,
-                        SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS SUM_RP_BULAN
-                FROM
-                RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
-                ON
-                FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
-                LEFT JOIN
-                RMP_REKENING_RELASI AS RR
-                ON
-                FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
-                WHERE
-                MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
-                AND
-                YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
-                AND
-                F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."-A%'
-                AND
-                RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
-                AND
-                RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
-                AND
-                FP.RECORD_STATUS='A'
-                AND
-                F.RECORD_STATUS='A'
-                AND
-                RR.RECORD_STATUS='A'
-               ";
-      $this->MYSQL = new MYSQL();
-      $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-      $this->MYSQL->queri = $sqlsum_bulan ;
-      $result_sum_bulan = $this->MYSQL->data();
 
       $sqlsum = "SELECT
                         SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO,
@@ -205,11 +146,10 @@ foreach($result_a as $r)
 
       $r['SUM_BRUTO_A']=number_format($result_sum[0]['SUM_BRUTO'],0,",",".");
       $r['SUM_NETTO_A']=number_format($result_sum[0]['SUM_NETTO'],0,",",".");
+      $r['SUM_PERSEN_A'] = round((($result_sum[0]['SUM_BRUTO']-$result_sum[0]['SUM_NETTO'])/$result_sum[0]['SUM_BRUTO'])*100);
       $r['SUM_RP_A']=number_format($result_sum[0]['SUM_RP'],0,",",".");
+      $r['SUM_RP_KG_A'] = number_format($result_sum[0]['SUM_RP']/$result_sum[0]['SUM_NETTO'],0,",",".");
 
-      $r['SUM_BRUTO_A_BULAN']=number_format($result_sum_bulan[0]['SUM_BRUTO_BULAN'],0,",",".");
-      $r['SUM_NETTO_A_BULAN']=number_format($result_sum_bulan[0]['SUM_NETTO_BULAN'],0,",",".");
-      $r['SUM_RP_A_BULAN']=number_format($result_sum_bulan[0]['SUM_RP_BULAN'],0,",",".");
 
       foreach($result_b3 as $rb3)
       {
@@ -238,39 +178,6 @@ foreach($result_a as $r)
     else if($grade_kelapa =='B')
     {
       $bulan = date("m",strtotime($input['tanggal']));
-      $sqlsum_bulan = "SELECT
-                        SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO_BULAN,
-                        SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS SUM_NETTO_BULAN,
-                        SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS SUM_RP_BULAN
-                FROM
-                RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
-                ON
-                FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
-                LEFT JOIN
-                RMP_REKENING_RELASI AS RR
-                ON
-                FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
-                WHERE
-                MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
-                AND
-                YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
-                AND
-                F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-B'
-                AND
-                RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
-                AND
-                RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
-                AND
-                FP.RECORD_STATUS='A'
-                AND
-                F.RECORD_STATUS='A'
-                AND
-                RR.RECORD_STATUS='A'
-               ";
-      $this->MYSQL = new MYSQL();
-      $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-      $this->MYSQL->queri = $sqlsum_bulan ;
-      $result_sum_bulan = $this->MYSQL->data();
 
       $sqlsum = "SELECT
                         SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO,
@@ -305,12 +212,10 @@ foreach($result_a as $r)
       $result_sum = $this->MYSQL->data();
 
       $r['SUM_BRUTO_B']=number_format($result_sum[0]['SUM_BRUTO'],0,",",".");
+      $r['SUM_PERSEN_B'] = round((($result_sum[0]['SUM_BRUTO']-$result_sum[0]['SUM_NETTO'])/$result_sum[0]['SUM_BRUTO'])*100);
       $r['SUM_NETTO_B']=number_format($result_sum[0]['SUM_NETTO'],0,",",".");
       $r['SUM_RP_B']=number_format($result_sum[0]['SUM_RP'],0,",",".");
-
-      $r['SUM_BRUTO_B_BULAN']=number_format($result_sum_bulan[0]['SUM_BRUTO_BULAN'],0,",",".");
-      $r['SUM_NETTO_B_BULAN']=number_format($result_sum_bulan[0]['SUM_NETTO_BULAN'],0,",",".");
-      $r['SUM_RP_B_BULAN']=number_format($result_sum_bulan[0]['SUM_RP_BULAN'],0,",",".");
+      $r['SUM_RP_KG_B'] = number_format($result_sum[0]['SUM_RP']/$result_sum[0]['SUM_NETTO'],0,",",".");
 
       foreach($result_b3 as $rb3)
       {
@@ -341,40 +246,6 @@ foreach($result_a as $r)
     else if($grade_kelapa =='C')
     {
       $bulan = date("m",strtotime($input['tanggal']));
-      $sqlsum_bulan = "SELECT
-                        SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO_BULAN,
-                        SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS SUM_NETTO_BULAN,
-                        SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS SUM_RP_BULAN
-                FROM
-                RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
-                ON
-                FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
-                LEFT JOIN
-                RMP_REKENING_RELASI AS RR
-                ON
-                FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
-                WHERE
-                MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
-                AND
-                YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
-                AND
-                F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-C'
-                AND
-                RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
-                AND
-                RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
-                AND
-                FP.RECORD_STATUS='A'
-                AND
-                F.RECORD_STATUS='A'
-                AND
-                RR.RECORD_STATUS='A'
-               ";
-      $this->MYSQL = new MYSQL();
-      $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-      $this->MYSQL->queri = $sqlsum_bulan ;
-      $result_sum_bulan = $this->MYSQL->data();
-
       $sqlsum = "SELECT
                         SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO,
                         SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS SUM_NETTO,
@@ -408,12 +279,10 @@ foreach($result_a as $r)
       $result_sum = $this->MYSQL->data();
 
       $r['SUM_BRUTO_C']=number_format($result_sum[0]['SUM_BRUTO'],0,",",".");
+      $r['SUM_PERSEN_C'] = round((($result_sum[0]['SUM_BRUTO']-$result_sum[0]['SUM_NETTO'])/$result_sum[0]['SUM_BRUTO'])*100);
       $r['SUM_NETTO_C']=number_format($result_sum[0]['SUM_NETTO'],0,",",".");
       $r['SUM_RP_C']=number_format($result_sum[0]['SUM_RP'],0,",",".");
-
-      $r['SUM_BRUTO_C_BULAN']=number_format($result_sum_bulan[0]['SUM_BRUTO_BULAN'],0,",",".");
-      $r['SUM_NETTO_C_BULAN']=number_format($result_sum_bulan[0]['SUM_NETTO_BULAN'],0,",",".");
-      $r['SUM_RP_C_BULAN']=number_format($result_sum_bulan[0]['SUM_RP_BULAN'],0,",",".");
+      $r['SUM_RP_KG_C'] = number_format($result_sum[0]['SUM_RP']/$result_sum[0]['SUM_NETTO'],0,",",".");
 
       foreach($result_b3 as $rb3)
       {
@@ -454,12 +323,138 @@ foreach($result_a as $r)
     $no++;
     }
 
+    /////////////////////////////////////////////////////////////
+
+    $bulan = date("m",strtotime($input['tanggal']));
+    $tahun = date("Y",strtotime($input['tanggal']));
+
+    $sqlsum_bulan_a = "SELECT
+                      SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO_BULAN,
+                      SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS SUM_NETTO_BULAN,
+                      SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS SUM_RP_BULAN
+              FROM
+              RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
+              ON
+              FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
+              LEFT JOIN
+              RMP_REKENING_RELASI AS RR
+              ON
+              FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
+              WHERE
+              F.RMP_FAKTUR_TANGGAL >= '".$tahun."-".$bulan."-01'
+              AND
+              F.RMP_FAKTUR_TANGGAL <= '".$input['tanggal']."'
+              AND
+              F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."-A%'
+              AND
+              RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
+              AND
+              RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
+              AND
+              FP.RECORD_STATUS='A'
+              AND
+              F.RECORD_STATUS='A'
+              AND
+              RR.RECORD_STATUS='A'
+             ";
+    $this->MYSQL = new MYSQL();
+    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+    $this->MYSQL->queri = $sqlsum_bulan_a ;
+    $result_sum_bulan_a = $this->MYSQL->data();
+    $x['SUM_BRUTO_A_BULAN']=number_format($result_sum_bulan_a[0]['SUM_BRUTO_BULAN'],0,",",".");
+    $x['SUM_PERSEN_A_BULAN'] = round((($result_sum_bulan_a[0]['SUM_BRUTO_BULAN']-$result_sum_bulan_a[0]['SUM_NETTO_BULAN'])/$result_sum_bulan_a[0]['SUM_BRUTO_BULAN'])*100);
+    $x['SUM_NETTO_A_BULAN']=number_format($result_sum_bulan_a[0]['SUM_NETTO_BULAN'],0,",",".");
+    $x['SUM_RP_A_BULAN']=number_format($result_sum_bulan_a[0]['SUM_RP_BULAN'],0,",",".");
+    $x['SUM_RP_KG_A_BULAN'] = number_format($result_sum_bulan_a[0]['SUM_RP_BULAN']/$result_sum_bulan_a[0]['SUM_NETTO_BULAN'],0,",",".");
+
+    $sqlsum_bulan_b = "SELECT
+                      SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO_BULAN,
+                      SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS SUM_NETTO_BULAN,
+                      SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS SUM_RP_BULAN
+              FROM
+              RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
+              ON
+              FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
+              LEFT JOIN
+              RMP_REKENING_RELASI AS RR
+              ON
+              FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
+              WHERE
+              F.RMP_FAKTUR_TANGGAL >= '".$tahun."-".$bulan."-01'
+              AND
+              F.RMP_FAKTUR_TANGGAL <= '".$input['tanggal']."'
+              AND
+              F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."-B%'
+              AND
+              RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
+              AND
+              RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
+              AND
+              FP.RECORD_STATUS='A'
+              AND
+              F.RECORD_STATUS='A'
+              AND
+              RR.RECORD_STATUS='A'
+             ";
+    $this->MYSQL = new MYSQL();
+    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+    $this->MYSQL->queri = $sqlsum_bulan_b ;
+    $result_sum_bulan_b = $this->MYSQL->data();
+    $x['SUM_BRUTO_B_BULAN']=number_format($result_sum_bulan_b[0]['SUM_BRUTO_BULAN'],0,",",".");
+    $x['SUM_PERSEN_B_BULAN'] = round((($result_sum_bulan_b[0]['SUM_BRUTO_BULAN']-$result_sum_bulan_b[0]['SUM_NETTO_BULAN'])/$result_sum_bulan_b[0]['SUM_BRUTO_BULAN'])*100);
+    $x['SUM_NETTO_B_BULAN']=number_format($result_sum_bulan_b[0]['SUM_NETTO_BULAN'],0,",",".");
+    $x['SUM_RP_B_BULAN']=number_format($result_sum_bulan_b[0]['SUM_RP_BULAN'],0,",",".");
+    $x['SUM_RP_KG_B_BULAN'] = number_format($result_sum_bulan_b[0]['SUM_RP_BULAN']/$result_sum_bulan_b[0]['SUM_NETTO_BULAN'],0,",",".");
+
+    $sqlsum_bulan_c = "SELECT
+                      SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS SUM_BRUTO_BULAN,
+                      SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS SUM_NETTO_BULAN,
+                      SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS SUM_RP_BULAN
+              FROM
+              RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
+              ON
+              FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
+              LEFT JOIN
+              RMP_REKENING_RELASI AS RR
+              ON
+              FP.RMP_MASTER_PERSONAL_ID=RR.RMP_MASTER_PERSONAL_ID
+              WHERE
+              F.RMP_FAKTUR_TANGGAL >= '".$tahun."-".$bulan."-01'
+              AND
+              F.RMP_FAKTUR_TANGGAL <= '".$input['tanggal']."'
+              AND
+              F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%".$input['material']."-C%'
+              AND
+              RR.RMP_REKENING_RELASI_MATERIAL = '".$input['material']."'
+              AND
+              RR.RMP_MASTER_WILAYAH_KODE = '".$input['wilayah']."'
+              AND
+              FP.RECORD_STATUS='A'
+              AND
+              F.RECORD_STATUS='A'
+              AND
+              RR.RECORD_STATUS='A'
+             ";
+    $this->MYSQL = new MYSQL();
+    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+    $this->MYSQL->queri = $sqlsum_bulan_c ;
+    $result_sum_bulan_c = $this->MYSQL->data();
+    $x['SUM_BRUTO_C_BULAN']=number_format($result_sum_bulan_c[0]['SUM_BRUTO_BULAN'],0,",",".");
+    $x['SUM_PERSEN_C_BULAN'] = round((($result_sum_bulan_c[0]['SUM_BRUTO_BULAN']-$result_sum_bulan_c[0]['SUM_NETTO_BULAN'])/$result_sum_bulan_c[0]['SUM_BRUTO_BULAN'])*100);
+    $x['SUM_NETTO_C_BULAN']=number_format($result_sum_bulan_c[0]['SUM_NETTO_BULAN'],0,",",".");
+    $x['SUM_RP_C_BULAN']=number_format($result_sum_bulan_c[0]['SUM_RP_BULAN'],0,",",".");
+    $x['SUM_RP_KG_C_BULAN'] = number_format($result_sum_bulan_c[0]['SUM_RP_BULAN']/$result_sum_bulan_c[0]['SUM_NETTO_BULAN'],0,",",".");
+
+    $result_bulan[] = $x;
+
+
 if (empty($result_a))
     {
     $this->callback['respon']['pesan'] = "gagal";
     $this->callback['respon']['text_msg'] = "Data tidak ada";
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
+    $this->callback['result_bulan'] = $result_bulan;
     }
   else
     {
@@ -467,10 +462,7 @@ if (empty($result_a))
     $this->callback['respon']['text_msg'] = "OK..";
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
-    $this->callback['result_option']['jml_halaman'] = $this->pagging(array(
-        'sql' => $sql,
-        'batas' => $batas
-    ))->jmlhalaman;
+    $this->callback['result_bulan'] = $result_bulan;
     }
 
 ?>

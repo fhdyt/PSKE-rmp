@@ -41,8 +41,10 @@ foreach($result_sum_hari as $r)
     {
     $r['TANGGAL'] = tanggal_format(Date("Y-m-d",strtotime($input['tanggal'])));
     $r['TOTAL_SUM_BRUTO_A']=number_format($result_sum_hari[0]['TOTAL_SUM_BRUTO'],0,",",".");
+    $r['TOTAL_SUM_PERSEN_A'] = round((($result_sum_hari[0]['TOTAL_SUM_BRUTO']-$result_sum_hari[0]['TOTAL_SUM_NETTO'])/$result_sum_hari[0]['TOTAL_SUM_BRUTO'])*100);
     $r['TOTAL_SUM_NETTO_A']=number_format($result_sum_hari[0]['TOTAL_SUM_NETTO'],0,",",".");
     $r['TOTAL_SUM_RP_A']=number_format($result_sum_hari[0]['TOTAL_SUM_RP'],0,",",".");
+    $r['TOTAL_SUM_RP_KG_A']=number_format($result_sum_hari[0]['TOTAL_SUM_RP']/$result_sum_hari[0]['TOTAL_SUM_NETTO'],0,",",".");
     $result[] = $r;
     $no++;
     }
@@ -72,8 +74,10 @@ $result_sum_hari_b = $this->MYSQL->data();
 foreach($result_sum_hari_b as $r)
     {
     $r['TOTAL_SUM_BRUTO_B']=number_format($result_sum_hari_b[0]['TOTAL_SUM_BRUTO'],0,",",".");
+    $r['TOTAL_SUM_PERSEN_B'] = round((($result_sum_hari_b[0]['TOTAL_SUM_BRUTO']-$result_sum_hari_b[0]['TOTAL_SUM_NETTO'])/$result_sum_hari_b[0]['TOTAL_SUM_BRUTO'])*100);
     $r['TOTAL_SUM_NETTO_B']=number_format($result_sum_hari_b[0]['TOTAL_SUM_NETTO'],0,",",".");
     $r['TOTAL_SUM_RP_B']=number_format($result_sum_hari_b[0]['TOTAL_SUM_RP'],0,",",".");
+    $r['TOTAL_SUM_RP_KG_B']=number_format($result_sum_hari_b[0]['TOTAL_SUM_RP']/$result_sum_hari_b[0]['TOTAL_SUM_NETTO'],0,",",".");
     $result_b[] = $r;
     }
 
@@ -99,11 +103,14 @@ $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sqlsum_hari_c ;
 $result_sum_hari_c = $this->MYSQL->data();
 
-foreach($result_sum_hari_b as $r)
+foreach($result_sum_hari_c as $r)
     {
     $r['TOTAL_SUM_BRUTO_C']=number_format($result_sum_hari_c[0]['TOTAL_SUM_BRUTO'],0,",",".");
+    $r['TOTAL_SUM_PERSEN_C'] = round((($result_sum_hari_c[0]['TOTAL_SUM_BRUTO']-$result_sum_hari_c[0]['TOTAL_SUM_NETTO'])/$result_sum_hari_c[0]['TOTAL_SUM_BRUTO'])*100);
     $r['TOTAL_SUM_NETTO_C']=number_format($result_sum_hari_c[0]['TOTAL_SUM_NETTO'],0,",",".");
     $r['TOTAL_SUM_RP_C']=number_format($result_sum_hari_c[0]['TOTAL_SUM_RP'],0,",",".");
+    $r['TOTAL_SUM_RP_KG_C']=number_format($result_sum_hari_c[0]['TOTAL_SUM_RP']/$result_sum_hari_c[0]['TOTAL_SUM_NETTO'],0,",",".");
+
     $result_c[] = $r;
     }
 
@@ -129,25 +136,6 @@ $sqlsum_bulan = "SELECT
           AND
           F.RECORD_STATUS='A'
          ";
-// $sqlsum_bulan = "SELECT
-//                   SUM(FP.RMP_FAKTUR_PURCHASER_BRUTO) AS TOTAL_BULAN_SUM_BRUTO,
-//                   SUM(FP.RMP_FAKTUR_PURCHASER_NETTO) AS TOTAL_BULAN_SUM_NETTO,
-//                   SUM(FP.RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR) AS TOTAL_BULAN_SUM_RP
-//           FROM
-//           RMP_FAKTUR_PURCHASER AS FP LEFT JOIN RMP_FAKTUR AS F
-//           ON
-//           FP.RMP_FAKTUR_NO_FAKTUR=F.RMP_FAKTUR_NO_FAKTUR
-//           WHERE
-//           MONTH(F.RMP_FAKTUR_TANGGAL) = '".$bulan."'
-//           AND
-//           YEAR(F.RMP_FAKTUR_TANGGAL) = '".$tahun."'
-//           AND
-//           F.RMP_FAKTUR_JENIS_MATERIAL = '".$input['material']."-A'
-//           AND
-//           FP.RECORD_STATUS='A'
-//           AND
-//           F.RECORD_STATUS='A'
-//          ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sqlsum_bulan ;
@@ -159,8 +147,10 @@ foreach($result_sum_bulan as $r)
     {
     $r['TANGGAL'] = tanggal_format(Date("Y-m-d",strtotime($input['tanggal'])));
     $r['TOTAL_BULAN_SUM_BRUTO_A']=number_format($result_sum_bulan[0]['TOTAL_BULAN_SUM_BRUTO'],0,",",".");
+    $r['TOTAL_BULAN_SUM_PERSEN_A'] = round((($result_sum_bulan[0]['TOTAL_BULAN_SUM_BRUTO']-$result_sum_bulan[0]['TOTAL_BULAN_SUM_NETTO'])/$result_sum_bulan[0]['TOTAL_BULAN_SUM_BRUTO'])*100);
     $r['TOTAL_BULAN_SUM_NETTO_A']=number_format($result_sum_bulan[0]['TOTAL_BULAN_SUM_NETTO'],0,",",".");
     $r['TOTAL_BULAN_SUM_RP_A']=number_format($result_sum_bulan[0]['TOTAL_BULAN_SUM_RP'],0,",",".");
+    $r['TOTAL_BULAN_SUM_RP_KG_A']=number_format($result_sum_bulan[0]['TOTAL_BULAN_SUM_RP']/$result_sum_bulan[0]['TOTAL_BULAN_SUM_NETTO'],0,",",".");
     $result_bulan[] = $r;
     $no++;
     }
@@ -193,8 +183,10 @@ foreach($result_sum_bulan_b as $r)
     {
     $r['TANGGAL'] = tanggal_format(Date("Y-m-d",strtotime($input['tanggal'])));
     $r['TOTAL_BULAN_SUM_BRUTO_B']=number_format($result_sum_bulan_b[0]['TOTAL_BULAN_SUM_BRUTO'],0,",",".");
+    $r['TOTAL_BULAN_SUM_PERSEN_B'] = round((($result_sum_bulan_b[0]['TOTAL_BULAN_SUM_BRUTO']-$result_sum_bulan_b[0]['TOTAL_BULAN_SUM_NETTO'])/$result_sum_bulan_b[0]['TOTAL_BULAN_SUM_BRUTO'])*100);
     $r['TOTAL_BULAN_SUM_NETTO_B']=number_format($result_sum_bulan_b[0]['TOTAL_BULAN_SUM_NETTO'],0,",",".");
     $r['TOTAL_BULAN_SUM_RP_B']=number_format($result_sum_bulan_b[0]['TOTAL_BULAN_SUM_RP'],0,",",".");
+    $r['TOTAL_BULAN_SUM_RP_KG_B']=number_format($result_sum_bulan_b[0]['TOTAL_BULAN_SUM_RP']/$result_sum_bulan_b[0]['TOTAL_BULAN_SUM_NETTO'],0,",",".");
     $result_bulan_b[] = $r;
     $no++;
     }
@@ -227,8 +219,10 @@ foreach($result_sum_bulan_c as $r)
     {
     $r['TANGGAL'] = tanggal_format(Date("Y-m-d",strtotime($input['tanggal'])));
     $r['TOTAL_BULAN_SUM_BRUTO_C']=number_format($result_sum_bulan_c[0]['TOTAL_BULAN_SUM_BRUTO'],0,",",".");
+    $r['TOTAL_BULAN_SUM_PERSEN_C'] = round((($result_sum_bulan_c[0]['TOTAL_BULAN_SUM_BRUTO']-$result_sum_bulan_c[0]['TOTAL_BULAN_SUM_NETTO'])/$result_sum_bulan_c[0]['TOTAL_BULAN_SUM_BRUTO'])*100);
     $r['TOTAL_BULAN_SUM_NETTO_C']=number_format($result_sum_bulan_c[0]['TOTAL_BULAN_SUM_NETTO'],0,",",".");
     $r['TOTAL_BULAN_SUM_RP_C']=number_format($result_sum_bulan_c[0]['TOTAL_BULAN_SUM_RP'],0,",",".");
+    $r['TOTAL_BULAN_SUM_RP_KG_C']=number_format($result_sum_bulan_c[0]['TOTAL_BULAN_SUM_RP']/$result_sum_bulan_c[0]['TOTAL_BULAN_SUM_NETTO'],0,",",".");
     $result_bulan_c[] = $r;
     $no++;
     }

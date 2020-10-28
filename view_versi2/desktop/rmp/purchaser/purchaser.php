@@ -186,7 +186,7 @@ function faktur_list(curPage)
       if (data.respon.pesan == "sukses") {
         //alert(data.respon.text_msg)
         $("tbody#zone_data").empty();
-        $('#tujuan-light-pagination').pagination({
+        $('#tujuan-light-pagination').pagination({ 
           pages: data.result_option.jml_halaman,
           cssStyle: 'light-theme',
           currentPage: curPage,
@@ -204,7 +204,7 @@ function faktur_list(curPage)
           }
           else
           {
-            var tr = '#c8e6c9'
+            var tr = '#e8f5e9'
             var verifikasi = ''
           }
 

@@ -329,13 +329,13 @@ if($d7 == '1')
 		'.$first['RMP_FAKTUR_DETAIL_REF'].' - '.$referensi_merge.' <br>(<b>'.$jumlah_data_timbang.'</b>)
 		</td>
 		<td>
-		'.$gross_merge.' Kg
+		'.number_format($gross_merge,0,",",".").' Kg
 		</td>
 		<td>
-		'.$tara_merge.' Kg
+		'.number_format($tara_merge,0,",",".").' Kg
 		</td>
 		<td>
-		'.$total_merge.' Kg
+		'.number_format($total_merge,0,",",".").' Kg
 		</td>
 		</tr>
 		';
@@ -552,7 +552,7 @@ tr {
 		</tr>
 	</table>
 	<br>
-	<table boder="1">
+	<table>
 		<tr>
 		<td>Berat Bruto</td>
 		<td>: </td>
@@ -570,7 +570,7 @@ tr {
 		<td>: </td>
 		<td style="text-align:right">'.number_format(round($netto),0,",",".").' </td>
 		<td>Kg</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$rp_kg_cetak.'</td>
+		<td>'.$rp_kg_cetak.'</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>'.$kelapa_title.'</td>

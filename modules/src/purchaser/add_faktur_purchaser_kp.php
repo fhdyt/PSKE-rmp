@@ -94,16 +94,6 @@ else
 {
 }
 
-	// $data_detail3V = array(
-	//
-	// );
-	// $this->MYSQL = new MYSQL;
-	// $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-	// $this->MYSQL->tabel = "RMP_FAKTUR";
-	// $this->MYSQL->record = $data_detail3V;
-	// $this->MYSQL->dimana = "where RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."' AND RECORD_STATUS='A'";
-	// $this->MYSQL->ubah();
-
 $data_detail2 = array(
 		'RMP_FAKTUR_PURCHASER_ID' => waktu_decimal(Date("Y-m-d H:i:s")),
 	  'RMP_FAKTUR_NO_FAKTUR' => $input['NO_FAKTUR'],
@@ -152,13 +142,13 @@ if ($this->MYSQL->simpan() == true)
 		$this->MYSQL->dimana = "where RMP_FAKTUR_NO_FAKTUR='".$input['NO_FAKTUR']."' AND RECORD_STATUS='A'";
 		$this->MYSQL->ubah();
 
-	$this->callback['respon']['pesan'] = "sukses";
-	$this->callback['respon']['text_msg'] = "Berhasil";
+		$this->callback['respon']['pesan'] = "sukses";
+		$this->callback['respon']['text_msg'] = "Berhasil";
 	}
   else
 	{
-	$this->callback['respon']['pesan'] = "gagal";
-	$this->callback['respon']['text_msg'] = "Gagal Simpan";
+		$this->callback['respon']['pesan'] = "gagal";
+		$this->callback['respon']['text_msg'] = "Gagal Simpan";
 	}
 
 ?>

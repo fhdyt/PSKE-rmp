@@ -39,6 +39,9 @@ require_once('menu_sidebar.php');
 				case 'LAPORAN_FAKTUR':
 					require_once ("rmp/laporan/laporan_faktur.php");
 					break;
+				case 'LAPORAN_RELASI':
+					require_once ("rmp/laporan/laporan_relasi.php");
+					break;
 					default:
 						require_once ("rmp/laporan/laporan_faktur.php");
 						break;

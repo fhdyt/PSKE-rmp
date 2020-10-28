@@ -36,14 +36,16 @@ font-size: 12px;
 <div class="row">
   <div class="col-md-8">
   </div>
-  <div class="col-md-4 ">
+  <div class="col-md-3">
     <form id="form_filter" method="POST">
       <input type="date" id="FILTER_TANGGAL" class="form-control FILTER_TANGGAL" name="FILTER_TANGGAL" onchange="filter_tanggal()" value="<?php echo date("Y-m-d"); ?>"/>
-          <p class="help-block">Tanggal.</p>
         </form>
-        <!-- <a class="cetak_laporan btn btn-sm btn-primary">Cetak</a> -->
+  </div>
+  <div class="col-md-1">
+    <a onclick="cetak_faktur()" class="form-control cetak_laporan btn btn-success"><i class="fa fa-print" aria-hidden="true"></i> Cetak</a>
   </div>
 </div><!--/.row-->
+<br>
 <table class="table table-hover table-bordered">
   <thead>
     <tr>
@@ -393,15 +395,15 @@ font-size: 12px;
       <tr class="success">
         <td colspan="6" id="BULAN_LAPORAN" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_BULAN_SUM_BRUTO_A" style="text-align:right ;font-weight: bold;"></td>
-        <td id="TOTAL_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_BULAN_SUM_PERSEN_A" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_BULAN_SUM_NETTO_A" style="text-align:right ;font-weight: bold;"></td>
-        <td id="TOTAL_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_BULAN_SUM_RP_KG_A" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_BULAN_SUM_RP_A" style="text-align:right ;font-weight: bold;"></td>
 
         <td id="TOTAL_BULAN_SUM_BRUTO_B" style="text-align:right ;font-weight: bold;"></td>
-        <td id="TOTAL_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_BULAN_SUM_PERSEN_B" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_BULAN_SUM_NETTO_B" style="text-align:right ;font-weight: bold;"></td>
-        <td id="TOTAL_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
+        <td id="TOTAL_BULAN_SUM_RP_KG_B" style="text-align:right ;font-weight: bold;"></td>
         <td id="TOTAL_BULAN_SUM_RP_B" style="text-align:right ;font-weight: bold;"></td>
       </tr></tbody>
 
@@ -421,10 +423,7 @@ function laporan_faktur_list(curPage,wilayah)
     data: 'ref=laporan_faktur&keyword=' + $("input#keyword").val()+ '&tanggal=' + $(".FILTER_TANGGAL").val()+ '&wilayah=' + wilayah + '&material=jambul',
     success: function(data) {
       if (data.respon.pesan == "sukses") {
-				console.log("Sukses");
         $("tbody#zone_data_"+wilayah+"").empty();
-
-        console.log(data.result.length)
         for (i = 0; i < data.result.length; i++) {
           var jumlah_data = data.result.length;
           var nomor = i;
@@ -510,20 +509,28 @@ function laporan_faktur_list(curPage,wilayah)
           "</tr>");
 
           $("td#"+wilayah+"_SUM_BRUTO_A").html(data.result[i].SUM_BRUTO_A)
+          $("td#"+wilayah+"_SUM_PERSEN_A").html(data.result[i].SUM_PERSEN_A)
           $("td#"+wilayah+"_SUM_NETTO_A").html(data.result[i].SUM_NETTO_A)
+          $("td#"+wilayah+"_SUM_RP_KG_A").html(data.result[i].SUM_RP_KG_A)
           $("td#"+wilayah+"_SUM_RP_A").html(data.result[i].SUM_RP_A)
 
           $("td#"+wilayah+"_SUM_BRUTO_B").html(data.result[i].SUM_BRUTO_B)
+          $("td#"+wilayah+"_SUM_PERSEN_B").html(data.result[i].SUM_PERSEN_B)
           $("td#"+wilayah+"_SUM_NETTO_B").html(data.result[i].SUM_NETTO_B)
+          $("td#"+wilayah+"_SUM_RP_KG_B").html(data.result[i].SUM_RP_KG_B)
           $("td#"+wilayah+"_SUM_RP_B").html(data.result[i].SUM_RP_B)
 
-          $("td#"+wilayah+"_SUM_BRUTO_A_BULAN").html(data.result[i].SUM_BRUTO_A_BULAN)
-          $("td#"+wilayah+"_SUM_NETTO_A_BULAN").html(data.result[i].SUM_NETTO_A_BULAN)
-          $("td#"+wilayah+"_SUM_RP_A_BULAN").html(data.result[i].SUM_RP_A_BULAN)
+          $("td#"+wilayah+"_SUM_BRUTO_A_BULAN").html(data.result_bulan[0].SUM_BRUTO_A_BULAN)
+          $("td#"+wilayah+"_SUM_PERSEN_A_BULAN").html(data.result_bulan[0].SUM_PERSEN_A_BULAN)
+          $("td#"+wilayah+"_SUM_NETTO_A_BULAN").html(data.result_bulan[0].SUM_NETTO_A_BULAN)
+          $("td#"+wilayah+"_SUM_RP_A_BULAN").html(data.result_bulan[0].SUM_RP_A_BULAN)
+          $("td#"+wilayah+"_SUM_RP_KG_A_BULAN").html(data.result_bulan[0].SUM_RP_KG_A_BULAN)
 
-          $("td#"+wilayah+"_SUM_BRUTO_B_BULAN").html(data.result[i].SUM_BRUTO_B_BULAN)
-          $("td#"+wilayah+"_SUM_NETTO_B_BULAN").html(data.result[i].SUM_NETTO_B_BULAN)
-          $("td#"+wilayah+"_SUM_RP_B_BULAN").html(data.result[i].SUM_RP_B_BULAN)
+          $("td#"+wilayah+"_SUM_BRUTO_B_BULAN").html(data.result_bulan[0].SUM_BRUTO_B_BULAN)
+          $("td#"+wilayah+"_SUM_PERSEN_B_BULAN").html(data.result_bulan[0].SUM_PERSEN_B_BULAN)
+          $("td#"+wilayah+"_SUM_NETTO_B_BULAN").html(data.result_bulan[0].SUM_NETTO_B_BULAN)
+          $("td#"+wilayah+"_SUM_RP_B_BULAN").html(data.result_bulan[0].SUM_RP_B_BULAN)
+          $("td#"+wilayah+"_SUM_RP_KG_B_BULAN").html(data.result_bulan[0].SUM_RP_KG_B_BULAN)
         }
       } else if (data.respon.pesan == "gagal") {
         $("tbody#zone_data_"+wilayah+"").html("<tr><td colspan='16'></td></tr>");
@@ -536,13 +543,17 @@ function laporan_faktur_list(curPage,wilayah)
         $("td#"+wilayah+"_SUM_NETTO_B").html("0")
         $("td#"+wilayah+"_SUM_RP_B").html("0")
 
-        $("td#"+wilayah+"_SUM_BRUTO_A_BULAN").html("0")
-        $("td#"+wilayah+"_SUM_NETTO_A_BULAN").html("0")
-        $("td#"+wilayah+"_SUM_RP_A_BULAN").html("0")
+        $("td#"+wilayah+"_SUM_BRUTO_A_BULAN").html(data.result_bulan[0].SUM_BRUTO_A_BULAN)
+        $("td#"+wilayah+"_SUM_PERSEN_A_BULAN").html(data.result_bulan[0].SUM_PERSEN_A_BULAN)
+        $("td#"+wilayah+"_SUM_NETTO_A_BULAN").html(data.result_bulan[0].SUM_NETTO_A_BULAN)
+        $("td#"+wilayah+"_SUM_RP_A_BULAN").html(data.result_bulan[0].SUM_RP_A_BULAN)
+        $("td#"+wilayah+"_SUM_RP_KG_A_BULAN").html(data.result_bulan[0].SUM_RP_KG_A_BULAN)
 
-        $("td#"+wilayah+"_SUM_BRUTO_B_BULAN").html("0")
-        $("td#"+wilayah+"_SUM_NETTO_B_BULAN").html("0")
-        $("td#"+wilayah+"_SUM_RP_B_BULAN").html("0")
+        $("td#"+wilayah+"_SUM_BRUTO_B_BULAN").html(data.result_bulan[0].SUM_BRUTO_B_BULAN)
+        $("td#"+wilayah+"_SUM_PERSEN_B_BULAN").html(data.result_bulan[0].SUM_PERSEN_B_BULAN)
+        $("td#"+wilayah+"_SUM_NETTO_B_BULAN").html(data.result_bulan[0].SUM_NETTO_B_BULAN)
+        $("td#"+wilayah+"_SUM_RP_B_BULAN").html(data.result_bulan[0].SUM_RP_B_BULAN)
+        $("td#"+wilayah+"_SUM_RP_KG_B_BULAN").html(data.result_bulan[0].SUM_RP_KG_B_BULAN)
       }
     }, //end success
     error: function(x, e) {
@@ -568,29 +579,37 @@ function total_laporan()
           $("td#TANGGAL_LAPORAN").html("Hari Ini /  "+data.result[i].TANGGAL)
           $("td#BULAN_LAPORAN").html("Tanggal 01 S/D " +data.result[i].TANGGAL)
           $("td#TOTAL_SUM_BRUTO_A").html(data.result[i].TOTAL_SUM_BRUTO_A)
+          $("td#TOTAL_SUM_PERSEN_A").html(data.result[i].TOTAL_SUM_PERSEN_A)
           $("td#TOTAL_SUM_NETTO_A").html(data.result[i].TOTAL_SUM_NETTO_A)
           $("td#TOTAL_SUM_RP_A").html(data.result[i].TOTAL_SUM_RP_A)
+          $("td#TOTAL_SUM_RP_KG_A").html(data.result[i].TOTAL_SUM_RP_KG_A)
         }
 
         // KELAPA B
         for (i = 0; i < data.result_b.length; i++) {
           $("td#TOTAL_SUM_BRUTO_B").html(data.result_b[i].TOTAL_SUM_BRUTO_B)
+          $("td#TOTAL_SUM_PERSEN_B").html(data.result_b[i].TOTAL_SUM_PERSEN_B)
           $("td#TOTAL_SUM_NETTO_B").html(data.result_b[i].TOTAL_SUM_NETTO_B)
           $("td#TOTAL_SUM_RP_B").html(data.result_b[i].TOTAL_SUM_RP_B)
+          $("td#TOTAL_SUM_RP_KG_B").html(data.result_b[i].TOTAL_SUM_RP_KG_B)
         }
 
         // KELAPA A
         for (i = 0; i < data.result_bulan.length; i++) {
           $("td#TOTAL_BULAN_SUM_BRUTO_A").html(data.result_bulan[i].TOTAL_BULAN_SUM_BRUTO_A)
+          $("td#TOTAL_BULAN_SUM_PERSEN_A").html(data.result_bulan[i].TOTAL_BULAN_SUM_PERSEN_A)
           $("td#TOTAL_BULAN_SUM_NETTO_A").html(data.result_bulan[i].TOTAL_BULAN_SUM_NETTO_A)
           $("td#TOTAL_BULAN_SUM_RP_A").html(data.result_bulan[i].TOTAL_BULAN_SUM_RP_A)
+          $("td#TOTAL_BULAN_SUM_RP_KG_A").html(data.result_bulan[i].TOTAL_BULAN_SUM_RP_KG_A)
         }
 
         // KELAPA B
         for (i = 0; i < data.result_bulan_b.length; i++) {
           $("td#TOTAL_BULAN_SUM_BRUTO_B").html(data.result_bulan_b[i].TOTAL_BULAN_SUM_BRUTO_B)
+          $("td#TOTAL_BULAN_SUM_PERSEN_B").html(data.result_bulan_b[i].TOTAL_BULAN_SUM_PERSEN_B)
           $("td#TOTAL_BULAN_SUM_NETTO_B").html(data.result_bulan_b[i].TOTAL_BULAN_SUM_NETTO_B)
           $("td#TOTAL_BULAN_SUM_RP_B").html(data.result_bulan_b[i].TOTAL_BULAN_SUM_RP_B)
+          $("td#TOTAL_BULAN_SUM_RP_KG_B").html(data.result_bulan_b[i].TOTAL_BULAN_SUM_RP_KG_B)
         }
 
       } else if (data.respon.pesan == "gagal") {
@@ -628,6 +647,20 @@ $(function() {
   laporan_faktur_list('1','10');
   total_laporan();
 });
+setInterval(function(){
+  console.log("Refresh");
+  laporan_faktur_list('1','02');
+  laporan_faktur_list('1','03');
+  laporan_faktur_list('1','04');
+  laporan_faktur_list('1','05');
+  laporan_faktur_list('1','06');
+  laporan_faktur_list('1','07');
+  laporan_faktur_list('1','08');
+  laporan_faktur_list('1','09');
+  laporan_faktur_list('1','10');
+  total_laporan();
+}, 30000);
+
 
 
 function search() {
@@ -654,7 +687,6 @@ function filter_tanggal(){
   laporan_faktur_list('1','08');
   laporan_faktur_list('1','09');
   laporan_faktur_list('1','10');
-
 }
 
 function kirim_pembukuan(no_faktur){
@@ -697,8 +729,8 @@ $("tbody#zone_data_02,tbody#zone_data_03,tbody#zone_data_04,tbody#zone_data_05,t
 })
 
 $(".cetak_laporan").on("click", function(){
-  var material = btoa("JAMBUL")
-  var tanggal = btoa($(".FILTER_TANGGAL").val())
-  window.open("?show=rmp/pdf/cetak_laporan_harian/"+ material +"/"+ tanggal , '_blank');
+  var material = "JAMBUL"
+  var tanggal = $(".FILTER_TANGGAL").val()
+  window.open("?show=rmp/pdf/cetak_laporan_harian_kb/"+ material +"/"+ tanggal , '_blank');
 })
 </script>
