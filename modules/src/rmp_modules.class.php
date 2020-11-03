@@ -617,6 +617,31 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 
 
 
+
+		case 'nonlogin_periode_list':
+			require_once ("pengajuan_pembayaran/periode_list.php");
+		break;
+		case 'nonlogin_detail_periode':
+			require_once ("pengajuan_pembayaran/detail_periode.php");
+		break;
+		case 'nonlogin_periode_tersedia':
+			require_once ("pengajuan_pembayaran/periode_tersedia.php");
+		break;
+		case 'nonlogin_kirim_pengajuan_pembayaran':
+			require_once ("pengajuan_pembayaran/kirim_pengajuan_pembayaran.php");
+		break;
+		case 'nonlogin_jurnal_list':
+			require_once ("pengajuan_pembayaran/jurnal_list.php");
+		break;
+		case 'nonlogin_verifikasi_pengajuan':
+			require_once ("pengajuan_pembayaran/verifikasi_pengajuan.php");
+		break;
+		case 'nonlogin_verifikasi_tolak':
+			require_once ("pengajuan_pembayaran/verifikasi_tolak.php");
+		break;
+
+
+
 			// ---------------------end case-----------------------------//
 
 		default:

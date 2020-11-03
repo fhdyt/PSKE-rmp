@@ -733,4 +733,6 @@ $(".cetak_laporan").on("click", function(){
   var tanggal = $(".FILTER_TANGGAL").val()
   window.open("?show=rmp/pdf/cetak_laporan_harian_kb/"+ material +"/"+ tanggal , '_blank');
 })
+
+
 </script>

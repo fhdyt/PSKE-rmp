@@ -58,6 +58,7 @@ foreach($result_a as $r)
       $r['TOTAL_BRUTO'] += $r['RMP_FAKTUR_PURCHASER_BRUTO'];
       $r['RMP_MASTER_WILAYAH_KODE']=$r['RMP_MASTER_WILAYAH_KODE'];
       $r['PURCHASER_STATUS'] = $result_purchaser[0]['PURCHASER_STATUS'];
+      $r['TOTAL_RUPIAH'] = $result_purchaser[0]['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR'];
       $grade_kelapa = substr($r['RMP_FAKTUR_JENIS_MATERIAL'],-1);
 
       $sql23 = "SELECT * FROM

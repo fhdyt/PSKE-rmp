@@ -446,6 +446,32 @@ switch($ref){
 			break;
 
 
+
+
+
+			case 'periode_list':
+				require_once("ajax/pengajuan_pembayaran/periode_list.php");
+			break;
+			case 'detail_periode':
+				require_once("ajax/pengajuan_pembayaran/detail_periode.php");
+			break;
+			case 'periode_tersedia':
+				require_once("ajax/pengajuan_pembayaran/periode_tersedia.php");
+			break;
+			case 'kirim_pengajuan_pembayaran':
+				require_once("ajax/pengajuan_pembayaran/kirim_pengajuan_pembayaran.php");
+			break;
+			case 'jurnal_list':
+				require_once("ajax/pengajuan_pembayaran/jurnal_list.php");
+			break;
+			case 'verifikasi_pengajuan':
+				require_once("ajax/pengajuan_pembayaran/verifikasi_pengajuan.php");
+			break;
+			case 'verifikasi_tolak':
+				require_once("ajax/pengajuan_pembayaran/verifikasi_tolak.php");
+			break;
+
+
 //--------------Handle Error Page-----------------------------------
 	// default:
 	// 	$callback['pesan']="gagal";

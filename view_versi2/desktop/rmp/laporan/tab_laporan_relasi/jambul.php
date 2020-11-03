@@ -99,6 +99,81 @@ font-size: 12px;
 
 
 </table>
+
+<div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg modalPengajuanPembayaran" role="dialog" tabindex="-1">
+ 	<div class="modal-dialog" role="document">
+ 		<div class="modal-content">
+ 			<div class="modal-header">
+ 				<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+ 				<h4 class="modal-title" id="myModalLabel">Pengajuan Pembayaran</h4>
+ 			</div>
+ 			<div class="modal-body">
+
+ 				<form action="javascript:download();" class="fDataPengajuan form-horizontal" id="fDataManualNota" name="fDataManualNota">
+           <div class="form-group">
+             <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Periode Pembayaran</label>
+             <div class="col-sm-8">
+             <input autocomplete="off" class="form-control PERIODE_ID" id="PERIODE_ID" name="PERIODE_ID" placeholder="" type="hidden">
+             <input autocomplete="off" class="form-control PERIODE_PEMBAYARAN" id="PERIODE_PEMBAYARAN" name="PERIODE_PEMBAYARAN" placeholder="" type="text">
+           </div>
+         </div>
+           <div class="form-group">
+             <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">No. Faktur</label>
+             <div class="col-sm-8">
+             <input autocomplete="off" class="form-control NO_FAKTUR_PENGAJUAN datepicker" id="NO_FAKTUR_PENGAJUAN" name="NO_FAKTUR_PENGAJUAN" placeholder="" type="text">
+           </div>
+         </div>
+             <div class="form-group">
+               <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Rupiah Faktur</label>
+               <div class="col-sm-8">
+               <input autocomplete="off" class="form-control TOTAL_RUPIAH" id="TOTAL_RUPIAH" name="TOTAL_RUPIAH" placeholder="" type="number">
+             </div>
+           </div>
+             <div class="form-group">
+               <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Rupiah Pengajuan</label>
+               <div class="col-sm-8">
+               <input autocomplete="off" class="form-control PENGAJUAN_RUPIAH" id="PENGAJUAN_RUPIAH" name="PENGAJUAN_RUPIAH" placeholder="" type="number" onkeyup="kalkulasi_pengajuan()">
+             </div>
+           </div>
+             <div class="form-group">
+               <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Sisa</label>
+               <div class="col-sm-8">
+               <input autocomplete="off" class="form-control SISA_RUPIAH" id="SISA_RUPIAH" name="SISA_RUPIAH" placeholder="" type="number" onkeyup="kalkulasi_pengajuan()">
+             </div>
+           </div>
+         </form>
+         <hr>
+         <table class="table">
+           <tr>
+             <td><b>Total Faktur</b></td>
+             <td><b>:</b></td>
+             <td>Rp.</td>
+             <td align="right"><b><p class="total_rupiah"></p></b></td>
+           </tr>
+           <tr>
+             <td><b>Rupiah Pengajuan</b></td>
+             <td><b>:</b></td>
+             <td>Rp.</td>
+             <td align="right"><b><p class="pengajuan_rupiah"></p></b></td>
+           </tr>
+           <tr>
+             <td><b>Sisa</b></td>
+             <td><b>:</b></td>
+             <td>Rp.</td>
+             <td align="right"><b><p class="sisa_rupiah"></p></b></td>
+           </tr>
+         </table>
+           <div class="row">
+             <div class="col-md-12 text-right">
+               <div class="form-group">
+     						<button class="btn btn-success btn-sm SIMPAN_PENGAJUAN_PEMBAYARAN">Simpan</button>
+     					</div>
+             </div>
+           </div>
+ 		</div>
+ 	</div>
+ </div>
+ </div>
 <script>
 
 $(function() {
@@ -171,7 +246,7 @@ function laporan_faktur_list(curPage,wilayah)
     dataType: 'json',
     data: 'ref=laporan_relasi_faktur&supplier=' + $(".NAMA_SUPPLIER").val()+ '&material=jambul' + '&bulan=' + $(".FILTER_BULAN").val() + '&tahun=' + $(".FILTER_TAHUN").val(),
     success: function(data) {
-      console.log(data.respon.text_msg)
+      console.log(data.result)
       if (data.respon.pesan == "sukses") {
         $("tbody#zone_data").empty();
 
@@ -203,7 +278,8 @@ function laporan_faktur_list(curPage,wilayah)
           "<td align='right'>" + data.result[i].RP_KG_B + "</td>" +
           "<td align='right'>" + data.result[i].RP_B + "</td>" +
 
-          "<td><a class='btn btn-success btn-xs' target='_blank' href='?show=rmp/purchaser/detail_faktur/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
+          "<td><a class='btn btn-success btn-xs' target='_blank' href='?show=rmp/purchaser/detail_faktur/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a>" +
+          " <a class='btn btn-warning btn-xs pengajuan_pembayaran' no_faktur='"+data.result[i].RMP_FAKTUR_NO_FAKTUR+"' total='"+data.result[i].TOTAL_RUPIAH+"'><span class='fa fa-money' aria-hidden='true'></span></a></td>" +
           "</tr>");
         }
       } else if (data.respon.pesan == "gagal") {
@@ -220,4 +296,99 @@ function filter(){
 $("tbody#zone_data").html("<tr><td colspan='20'><center><div class='loader'></div></center></td></tr>")
 laporan_faktur_list()
 }
+
+
+// ------------------------------------------------ pengajuan pembayaran
+function number_format (number, decimals, dec_point, thousands_sep) {
+    number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
+    var n = !isFinite(+number) ? 0 : +number,
+        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+        sep = (typeof thousands_sep === 'undefined') ? '.' : thousands_sep,
+        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+        s = '',
+        toFixedFix = function (n, prec) {
+            var k = Math.pow(10, prec);
+            return '' + Math.round(n * k) / k;
+        };
+    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+    if (s[0].length > 3) {
+        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+    }
+    if ((s[1] || '').length < prec) {
+        s[1] = s[1] || '';
+        s[1] += new Array(prec - s[1].length + 1).join('0');
+    }
+    return s.join(dec);
+}
+
+function periode_tersedia()
+{
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=periode_tersedia',
+    success: function(data) {
+      if (data.respon.pesan == "sukses") {
+        $('.PERIODE_PEMBAYARAN').val(data.result[0].TANGGAL)
+        $('.PERIODE_ID').val(data.result[0].FINANCE_DANA_MATERIAL_ID)
+      } else if (data.respon.pesan == "gagal") {
+      }
+    }, //end success
+    error: function(x, e) {
+      console.log("Error Ajax");
+    } //end error
+  });
+}
+
+function kalkulasi_pengajuan(){
+  var total_rupiah = $(".TOTAL_RUPIAH").val()
+  var pengajuan_rupiah = $(".PENGAJUAN_RUPIAH").val()
+  $("p.pengajuan_rupiah").html(number_format(pengajuan_rupiah))
+  var sisa = total_rupiah-pengajuan_rupiah
+  $(".SISA_RUPIAH").val(sisa)
+  $("p.sisa_rupiah").html(number_format(sisa))
+}
+
+$("tbody").on('click','a.pengajuan_pembayaran', function()
+{
+  periode_tersedia()
+  $(".PENGAJUAN_RUPIAH").val("")
+  $(".SISA_RUPIAH").val("")
+  $("p.sisa_rupiah").html("0")
+  $("p.pengajuan_rupiah").html("0")
+	var no_faktur = $(this).attr('no_faktur');
+	var total = $(this).attr('total');
+  $(".modalPengajuanPembayaran").modal('show');
+  $(".NO_FAKTUR_PENGAJUAN").val(no_faktur);
+  $(".TOTAL_RUPIAH").val(total);
+  $("p.total_rupiah").html(number_format(total))
+});
+
+$(".SIMPAN_PENGAJUAN_PEMBAYARAN").on("click", function(){
+  var fData = $('.fDataPengajuan').serialize();
+console.log(fData)
+  $.ajax({
+  	type: 'POST',
+  	url: refseeAPI,
+  	dataType: 'json',
+  	data: 'ref=kirim_pengajuan_pembayaran&' + fData ,
+  	success: function(data) {
+  		if (data.respon.pesan == "sukses")
+  		{
+        $(".modalPengajuanPembayaran").modal('hide');
+  		}
+
+  		else if (data.respon.pesan == "gagal")
+  		{
+  			console.log(data.respon.text_msg);
+  			alert("Gagal Menyimpan");
+  		}
+  	}, //end success
+  	error: function(x, e) {
+  		console.log("Error Ajax");
+  	} //end error
+  });
+})
+
 </script>
