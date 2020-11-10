@@ -46,7 +46,7 @@ $sql = "SELECT
         P.RECORD_STATUS='A'
         AND
         RR.RECORD_STATUS='A'
-        ORDER BY F.RMP_FAKTUR_NO_FAKTUR ASC
+        ORDER BY RR.RMP_REKENING_RELASI ASC
         ";
 
 $this->MYSQL = new MYSQL();
