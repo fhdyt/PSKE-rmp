@@ -277,9 +277,14 @@ font-size: 12px;
           <div class="col-md-4">
             <table class="table table-hover">
               <tr>
+                <td colspan="2">
+                  <input autocomplete="off" class="form-control KELAPA_RUPIAH" id="KELAPA_RUPIAH" name="KELAPA_RUPIAH" type="text" onkeyup="kalkulasi_biaya_cabang()">
+                  <p class="help-block">Rupiah Kopra.</p>
+                </td>
+              </tr>
+              <tr>
                 <td><b>Kopra (Rp)</b></td>
                 <td align="right"><p class="KELAPA_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
-                  <input autocomplete="off" class="form-control KELAPA_RUPIAH" id="KELAPA_RUPIAH" name="KELAPA_RUPIAH" type="hidden">
                 </td>
               </tr>
               <tr>
@@ -742,11 +747,19 @@ function sel_nama_supplier()
             var sel = "selected"
             $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
             $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
+
             $('p.NPWP').html(data.result[i].RMP_MASTER_PERSONAL_NPWP);
             //$('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
             if($('.INPUT_RP_KG').val() == '')
             {
             $('p.RP_KG').html(data.result[i].HARGA + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
+            }
+            if(data.result[i].RMP_REKENING_RELASI == "14.06.005.0001")
+            {
+              console.log("Ini cabang")
+            }
+            else{
+              console.log("Bukan cabang")
             }
           }
           else if ($(".NAMA_SUPPLIER_HIDDEN").val() == data.result[i].RMP_MASTER_PERSONAL_NAMA)
@@ -760,13 +773,22 @@ function sel_nama_supplier()
             {
             $('p.RP_KG').html(data.result[i].HARGA + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
             }
+            if(data.result[i].RMP_REKENING_RELASI == "14.06.005.0001")
+            {
+              console.log("Ini cabang")
+            }
+            else{
+              console.log("Bukan cabang")
+            }
           }
           else
           {
             var sel = ""
           }
           $("select.NAMA_SUPPLIER").append("<option value='"+ data.result[i].RMP_MASTER_PERSONAL_ID +"' RP='"+data.result[i].HARGA+"' REKENING='"+data.result[i].RMP_REKENING_RELASI+"' NPWP='"+data.result[i].RMP_MASTER_PERSONAL_NPWP+"' ALAMAT='"+data.result[i].ALAMAT+"' "+sel+">"+ data.result[i].RMP_MASTER_PERSONAL_NAMA +"</option>");
-					}
+
+          }
+
           kalkulasi_biaya()
 
       } else if (data.respon.pesan == "gagal") {
@@ -922,8 +944,6 @@ function kalkulasi_biaya()
   var tambang = $('.INPUT_TAMBANG').val()
   var goni = $('.INPUT_GONI').val()
   var cadangan = $('.INPUT_CADANGAN').val()
-  console.log(netto)
-  console.log(netto*rp)
   var kelapa_rp = parseInt(netto*rp);
   var tambang_rp = parseInt(netto*tambang);
   var goni_rp = parseInt(1500*goni);
@@ -939,6 +959,35 @@ function kalkulasi_biaya()
   $('p.CADANGAN_RP').html(number_format(cadangan_rp));
   $('p.TOTAL_RP').html(number_format(total_rp));
   $('.TOTAL_SELURUH').val(total_rp);
+}
+
+function kalkulasi_biaya_cabang()
+{
+  var netto = $('.TOTAL_NETTO').text()
+  // var rp = $('.INPUT_RP_KG').val()
+  // var tambang = $('.INPUT_TAMBANG').val()
+  // var goni = $('.INPUT_GONI').val()
+  // var cadangan = $('.INPUT_CADANGAN').val()
+  // var kelapa_rp = parseInt(netto*rp);
+  // var tambang_rp = parseInt(netto*tambang);
+  // var goni_rp = parseInt(1500*goni);
+  // var cadangan_rp = parseInt(netto*cadangan);
+  //
+  // var total_rp = kelapa_rp+tambang_rp+goni_rp+cadangan_rp
+
+  $('.INPUT_TAMBANG').val("0")
+  $('.INPUT_GONI').val("0")
+  $('.INPUT_CADANGAN').val("0")
+  var kelapa_rupiah = $('.KELAPA_RUPIAH').val();
+  $('.INPUT_RP_KG').val(Math.round(kelapa_rupiah/netto))
+  $('p.KELAPA_RP').html(number_format(kelapa_rupiah));
+
+
+  $('p.TAMBANG_RP').html("0");
+  $('p.GONI_RP').html("0");
+  $('p.CADANGAN_RP').html("0");
+  $('p.TOTAL_RP').html(number_format(kelapa_rupiah));
+  $('.TOTAL_SELURUH').val(kelapa_rupiah);
 }
 
 function total_tambang_rupiah()

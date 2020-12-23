@@ -30,6 +30,7 @@ foreach ($result_a as $r)
     $r['TANGGAL'] = tanggal_format(Date("Y-m-d", strtotime($r['FINANCE_DANA_MATERIAL_TANGGAL'])));
     $r['HARI'] = nama_hari(Date("Y-m-d", strtotime($r['FINANCE_DANA_MATERIAL_TANGGAL'])));
     $r['DANA'] = $r['FINANCE_DANA_MATERIAL_DANA'];
+    $r['TOTAL'] = $result_jurnal[0]['TOTAL_PENGAJUAN'];
     $r['SISA'] = $r['FINANCE_DANA_MATERIAL_DANA']-$result_jurnal[0]['TOTAL_PENGAJUAN'];
     $result[] = $r;
     $no++;

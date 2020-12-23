@@ -57,6 +57,7 @@ $netto = $respon['netto'];
 $kelapa = $respon['rp_kelapa'];
 $today = date("Y-m-d");
 $tanggal = tanggal_format(Date("Y-m-d",strtotime($respon['tanggal_faktur'])));
+$tanggal_faktur = $respon['tanggal_faktur'];
 
 
 $adm =$respon['respon']['adm'];
@@ -84,7 +85,7 @@ $relasi =$respon['respon']['relasi'];
 $catatan_supplier =$respon['respon']['catatan_supplier'];
 $catatan_purchaser =$respon['respon']['catatan_purchaser'];
 
-$alamat =$respon['respon']['alamat'];
+$alamat_supplier =$respon['respon']['alamat_supplier'];
 $lokasi =$respon['respon']['lokasi'];
 
 
@@ -173,7 +174,7 @@ if ($printed == "admin")
 {
 	$rp_kg_cetak = "@Rp ".number_format(round($rp_kg),0,",",".")."";
 	$cetak_catatan_purchaser = $catatan_purchaser;
-	$kelapa_title = "Kelapa";
+	$kelapa_title = "Kopra";
 	$kelapa_rp = " : Rp.";
 	$kelapa_total = number_format($kelapa,0,",",".");
 
@@ -484,6 +485,132 @@ foreach($respon['result'] as $r){
 	';
 }
 }
+
+if($tanggal_faktur <= '2020-11-30')
+{
+	$header_supplier = '<table class="table_header">
+		<tr>
+			<td>
+			Nama
+			</td>
+			<td>
+			:
+			</td>
+			<td >
+			'.$nama_supplier.'
+			</td>
+			<td style="padding-left: 100;"></td>
+			<td>
+			Via Kapal
+			</td>
+			<td>
+			:
+			</td>
+			<td>
+			'.$respon['result'][0]['RMP_FAKTUR_KAPAL'].'
+			</td>
+		</tr>
+		<tr>
+			<td>
+			Alamat
+			</td>
+			<td>
+			:
+			</td>
+			<td>
+			'.$lokasi.'
+			</td>
+			<td style="padding-left: 100;"></td>
+				<td>
+			No Rekening
+			</td>
+			<td>
+			:
+			</td>
+			<td>
+			'.$rekening.'
+			</td>
+		</tr>
+	</table>';
+}
+
+else{
+	if($supplier == "KONTAN 02")
+	{
+		$alamat_supplier = $lokasi;
+	}
+	else if($supplier == "KONTAN 03")
+	{
+		$alamat_supplier = $lokasi;
+	}
+	else if($supplier == "KONTAN 04")
+	{
+		$alamat_supplier = $lokasi;
+	}
+	else if($supplier == "KONTAN 06")
+	{
+		$alamat_supplier = $lokasi;
+	}
+	else if($supplier == "KONTAN 08")
+	{
+		$alamat_supplier = $lokasi;
+	}
+	else if($supplier == "KONTAN 09")
+	{
+		$alamat_supplier = $lokasi;
+	}
+	else if($supplier == "KONTAN 10")
+	{
+		$alamat_supplier = $lokasi;
+	}
+	else{
+		$alamat_supplier = $alamat_supplier;
+	}
+	$header_supplier = '<table class="table_header">
+		<tr>
+			<td>
+			Nama
+			</td>
+			<td>
+			:
+			</td>
+			<td >
+			'.$nama_supplier.'
+			</td>
+			<td style="padding-left: 100;"></td>
+			<td>
+			Via Kapal
+			</td>
+			<td>
+			:
+			</td>
+			<td>
+			'.$respon['result'][0]['RMP_FAKTUR_KAPAL'].' / '.$lokasi.'
+			</td>
+		</tr>
+		<tr>
+			<td>
+			Alamat
+			</td>
+			<td>
+			:
+			</td>
+			<td>
+			'.$alamat_supplier.'
+			</td>
+			<td style="padding-left: 100;"></td>
+				<td>
+			No Rekening
+			</td>
+			<td>
+			:
+			</td>
+			<td>
+			'.$rekening.'
+			</td>
+		</tr>
+	</table>';
+}
 $headerHTML = '<table table-unbordered>
 	<tr>
 		<td>
@@ -567,6 +694,12 @@ border: 1px solid #ddd;
 text-align: center;
 }
 
+.table_header td {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+}
+
 	.table2{
 width: 90%;
 margin-left:5%;
@@ -586,49 +719,7 @@ tr {
 }
 </style>
 	<body>
-	<table>
-		<tr>
-			<td>
-			Nama
-			</td>
-			<td>
-			:
-			</td>
-			<td>
-			'.$nama_supplier.'
-			</td>
-
-				<td style="padding-left: 300;">
-			Via Kapal
-			</td>
-			<td>
-			:
-			</td>
-			<td>
-			'.$respon['result'][0]['RMP_FAKTUR_KAPAL'].'
-			</td>
-		</tr>
-		<tr>
-			<td>
-			Alamat
-			</td>
-			<td>
-			:
-			</td>
-			<td>
-			'.$lokasi.'
-			</td>
-				<td style="padding-left: 300;">
-			No Rekening
-			</td>
-			<td>
-			:
-			</td>
-			<td>
-			'.$rekening.'
-			</td>
-		</tr>
-	</table>
+	'.$header_supplier.'
 <br>
 	<table class="table">
 		<tr>

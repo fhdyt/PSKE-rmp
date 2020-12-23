@@ -73,7 +73,7 @@ $relasi =$respon['respon']['relasi'];
 $catatan_supplier =$respon['respon']['catatan_supplier'];
 $catatan_purchaser =$respon['respon']['catatan_purchaser'];
 
-$alamat =$respon['respon']['alamat'];
+$alamat_supplier =$respon['respon']['alamat_supplier'];
 $lokasi =$respon['respon']['lokasi'];
 $goni =$respon['goni'];
 
@@ -254,6 +254,11 @@ width: 100%;
 border: 1px solid #ddd;
 text-align: center;
 }
+.table_header td {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+}
 
 	.table2{
 width: 90%;
@@ -276,7 +281,7 @@ tr {
 	<body>
 
 
-	<table>
+	<table class="table_header">
 		<tr>
 			<td>
 			Nama
@@ -284,18 +289,18 @@ tr {
 			<td>
 			:
 			</td>
-			<td>
+			<td >
 			'.$nama_supplier.'
 			</td>
-
-				<td style="padding-left: 300;">
+			<td style="padding-left: 100;"></td>
+			<td>
 			Via Kapal
 			</td>
 			<td>
 			:
 			</td>
 			<td>
-			'.$respon['result'][0]['RMP_FAKTUR_KAPAL'].'
+			'.$respon['result'][0]['RMP_FAKTUR_KAPAL'].' / '.$lokasi.'
 			</td>
 		</tr>
 		<tr>
@@ -306,9 +311,10 @@ tr {
 			:
 			</td>
 			<td>
-			'.$lokasi.'
+			'.$alamat_supplier.'
 			</td>
-				<td style="padding-left: 300;">
+			<td style="padding-left: 100;"></td>
+				<td>
 			No Rekening
 			</td>
 			<td>
@@ -319,7 +325,7 @@ tr {
 			</td>
 		</tr>
 	</table>
-
+<br>
 	<table class="table">
 		<tr>
 			<td>
@@ -357,6 +363,7 @@ tr {
 
 
 	</table >
+	<br>
 	<table>
 		<tr>
 		<td>Banyaknya</td>

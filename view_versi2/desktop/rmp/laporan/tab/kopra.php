@@ -412,12 +412,12 @@ function laporan_faktur_list(curPage,wilayah)
 					"<td>" + data.result[i].RMP_FAKTUR_PURCHASER_NO_REKENING + "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR + "</td>" +
 					"<td align='right'>" + data.result[i].GONI + "</td>" +
-					"<td align='right'>" + data.result[i].KG_BASAH + "</td>" +
+					"<td align='right'>" + data.result[i].KG_BASAH + " Kg</td>" +
 					"<td align='right'>" + data.result[i].KUALITET + "</td>" +
-          "<td align='right'>" + data.result[i].RMP_FAKTUR_PURCHASER_RP_KG + "</td>" +
-          "<td align='right'>" + data.result[i].KG_KERING + "</td>" +
-          "<td align='right'>" + data.result[i].RP_KERING + "</td>" +
-          "<td align='right'>" + data.result[i].TOTAL + "</td>" +
+          "<td align='right'>Rp. " + data.result[i].RMP_FAKTUR_PURCHASER_RP_KG + "</td>" +
+          "<td align='right'>" + data.result[i].KG_KERING + " Kg</td>" +
+          "<td align='right'>Rp. " + data.result[i].RP_KERING + "</td>" +
+          "<td align='right'>Rp. " + data.result[i].TOTAL + "</td>" +
 
           "<td><a class='btn btn-success btn-xs' target='_blank' href='?show=rmp/purchaser/detail_faktur_kp/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
           "</tr>");
@@ -438,31 +438,31 @@ function laporan_faktur_list(curPage,wilayah)
           sum_total += parseInt(data.result[i].TOTAL)
         }
         $("td#"+wilayah+"_SUM_GONI").html(data.result_bulan[0].SUM_GONI)
-        $("td#"+wilayah+"_SUM_BRUTO").html(data.result_bulan[0].SUM_KG_BASAH)
+        $("td#"+wilayah+"_SUM_BRUTO").html(data.result_bulan[0].SUM_KG_BASAH+" Kg")
         $("td#"+wilayah+"_SUM_KUALITET").html(Math.round((data.result_bulan[0].SUM_KG_KERING/data.result_bulan[0].SUM_KG_BASAH)*100))
-        $("td#"+wilayah+"_SUM_RP_BASAH").html(data.result_bulan[0].SUM_RP_BASAH)
-        $("td#"+wilayah+"_SUM_KERING").html(data.result_bulan[0].SUM_KG_KERING)
-        $("td#"+wilayah+"_SUM_RP_KERING").html(data.result_bulan[0].SUM_RP_KERING)
-        $("td#"+wilayah+"_SUM_RP").html(data.result_bulan[0].SUM_TOTAL)
+        $("td#"+wilayah+"_SUM_RP_BASAH").html("Rp. "+data.result_bulan[0].SUM_RP_BASAH)
+        $("td#"+wilayah+"_SUM_KERING").html(data.result_bulan[0].SUM_KG_KERING+" Kg")
+        $("td#"+wilayah+"_SUM_RP_KERING").html("Rp. "+data.result_bulan[0].SUM_RP_KERING)
+        $("td#"+wilayah+"_SUM_RP").html("Rp. "+data.result_bulan[0].SUM_TOTAL)
 
         $("td#"+wilayah+"_SUM_GONI_BULAN").html(data.result_bulan[0].SUM_GONI_BULAN)
-        $("td#"+wilayah+"_SUM_BRUTO_BULAN").html(data.result_bulan[0].SUM_KG_BASAH_BULAN)
+        $("td#"+wilayah+"_SUM_BRUTO_BULAN").html(data.result_bulan[0].SUM_KG_BASAH_BULAN+" Kg")
         $("td#"+wilayah+"_SUM_KUALITET_BULAN").html(data.result_bulan[0].SUM_KUALITET_BULAN)
-        $("td#"+wilayah+"_SUM_RP_BASAH_BULAN").html(data.result_bulan[0].SUM_RP_BASAH_BULAN)
-        $("td#"+wilayah+"_SUM_KERING_BULAN").html(data.result_bulan[0].SUM_KG_KERING_BULAN)
-        $("td#"+wilayah+"_SUM_RP_KERING_BULAN").html(data.result_bulan[0].SUM_RP_KERING_BULAN)
-        $("td#"+wilayah+"_SUM_RP_BULAN").html(data.result_bulan[0].SUM_TOTAL_BULAN)
+        $("td#"+wilayah+"_SUM_RP_BASAH_BULAN").html("Rp. "+data.result_bulan[0].SUM_RP_BASAH_BULAN)
+        $("td#"+wilayah+"_SUM_KERING_BULAN").html(data.result_bulan[0].SUM_KG_KERING_BULAN+" Kg")
+        $("td#"+wilayah+"_SUM_RP_KERING_BULAN").html("Rp. "+data.result_bulan[0].SUM_RP_KERING_BULAN)
+        $("td#"+wilayah+"_SUM_RP_BULAN").html("Rp. "+data.result_bulan[0].SUM_TOTAL_BULAN)
 
       } else if (data.respon.pesan == "gagal") {
         $("tbody#zone_data_"+wilayah+"").html("<tr><td colspan='16'></td></tr>");
 
         $("td#"+wilayah+"_SUM_GONI_BULAN").html(data.result_bulan[0].SUM_GONI_BULAN)
-        $("td#"+wilayah+"_SUM_BRUTO_BULAN").html(data.result_bulan[0].SUM_KG_BASAH_BULAN)
+        $("td#"+wilayah+"_SUM_BRUTO_BULAN").html(data.result_bulan[0].SUM_KG_BASAH_BULAN+" Kg")
         $("td#"+wilayah+"_SUM_KUALITET_BULAN").html(data.result_bulan[0].SUM_KUALITET_BULAN)
-        $("td#"+wilayah+"_SUM_RP_BASAH_BULAN").html(data.result_bulan[0].SUM_RP_BASAH_BULAN)
-        $("td#"+wilayah+"_SUM_KERING_BULAN").html(data.result_bulan[0].SUM_KG_KERING_BULAN)
-        $("td#"+wilayah+"_SUM_RP_KERING_BULAN").html(data.result_bulan[0].SUM_RP_KERING_BULAN)
-        $("td#"+wilayah+"_SUM_RP_BULAN").html(data.result_bulan[0].SUM_TOTAL_BULAN)
+        $("td#"+wilayah+"_SUM_RP_BASAH_BULAN").html("Rp. "+data.result_bulan[0].SUM_RP_BASAH_BULAN)
+        $("td#"+wilayah+"_SUM_KERING_BULAN").html(data.result_bulan[0].SUM_KG_KERING_BULAN+" Kg")
+        $("td#"+wilayah+"_SUM_RP_KERING_BULAN").html("Rp. "+data.result_bulan[0].SUM_RP_KERING_BULAN)
+        $("td#"+wilayah+"_SUM_RP_BULAN").html("Rp. "+data.result_bulan[0].SUM_TOTAL_BULAN)
       }
     }, //end success
     error: function(x, e) {
@@ -516,12 +516,12 @@ function laporan_faktur_list_00(curPage,wilayah)
 					"<td>" + data.result[i].RMP_REKENING_RELASI + "</td>" +
 					"<td>" + data.result[i].RMP_FAKTUR_NO_FAKTUR + "</td>" +
 					"<td align='right'>" + data.result[i].GONI + "</td>" +
-					"<td align='right'>" + data.result[i].KG_BASAH + "</td>" +
+					"<td align='right'>" + data.result[i].KG_BASAH + " Kg</td>" +
 					"<td align='right'>" + data.result[i].KUALITET + "</td>" +
-          "<td align='right'>" + data.result[i].RMP_FAKTUR_PURCHASER_RP_KG + "</td>" +
-          "<td align='right'>" + data.result[i].KG_KERING + "</td>" +
-          "<td align='right'>" + data.result[i].RP_KERING + "</td>" +
-          "<td align='right'>" + data.result[i].TOTAL + "</td>" +
+          "<td align='right'>Rp. " + data.result[i].RMP_FAKTUR_PURCHASER_RP_KG + "</td>" +
+          "<td align='right'>" + data.result[i].KG_KERING + " Kg</td>" +
+          "<td align='right'>Rp. " + data.result[i].RP_KERING + "</td>" +
+          "<td align='right'>Rp. " + data.result[i].TOTAL + "</td>" +
 
           "<td><a class='btn btn-success btn-xs' target='_blank' href='?show=rmp/purchaser/detail_faktur_kp/"+ data.result[i].RMP_FAKTUR_ID +"'><span class='fa fa-calculator' aria-hidden='true'></span></a></td>" +
           "</tr>");
@@ -552,20 +552,20 @@ function total_laporan()
           $("td#BULAN_LAPORAN").html("Tanggal 01 S/D " +data.result_bulan[0].TANGGAL)
 
           $("td#TOTAL_SUM_GONI").html(data.result_bulan[0].SUM_GONI)
-          $("td#TOTAL_SUM_BRUTO").html(data.result_bulan[0].SUM_KG_BASAH)
-          $("td#TOTAL_SUM_KUALITET").html(Math.round((data.result_bulan[0].SUM_KG_KERING/data.result_bulan[0].SUM_KG_BASAH)*100))
-          $("td#TOTAL_SUM_RP_BASAH").html(data.result_bulan[0].SUM_RP_BASAH)
-          $("td#TOTAL_SUM_KERING").html(data.result_bulan[0].SUM_KG_KERING)
-          $("td#TOTAL_SUM_RP_KERING").html(data.result_bulan[0].SUM_RP_KERING)
-          $("td#TOTAL_SUM_RP").html(data.result_bulan[0].SUM_TOTAL)
+          $("td#TOTAL_SUM_BRUTO").html(data.result_bulan[0].SUM_KG_BASAH+" Kg")
+          $("td#TOTAL_SUM_KUALITET").html(data.result_bulan[0].SUM_KUALITET)
+          $("td#TOTAL_SUM_RP_BASAH").html("Rp. "+data.result_bulan[0].SUM_RP_BASAH)
+          $("td#TOTAL_SUM_KERING").html(data.result_bulan[0].SUM_KG_KERING+" Kg")
+          $("td#TOTAL_SUM_RP_KERING").html("Rp. "+data.result_bulan[0].SUM_RP_KERING)
+          $("td#TOTAL_SUM_RP").html("Rp. "+data.result_bulan[0].SUM_TOTAL)
 
           $("td#TOTAL_SUM_GONI_BULAN").html(data.result_bulan[0].SUM_GONI_BULAN)
-          $("td#TOTAL_SUM_BRUTO_BULAN").html(data.result_bulan[0].SUM_KG_BASAH_BULAN)
+          $("td#TOTAL_SUM_BRUTO_BULAN").html(data.result_bulan[0].SUM_KG_BASAH_BULAN+" Kg")
           $("td#TOTAL_SUM_KUALITET_BULAN").html(data.result_bulan[0].SUM_KUALITET_BULAN)
-          $("td#TOTAL_SUM_RP_BASAH_BULAN").html(data.result_bulan[0].SUM_RP_BASAH_BULAN)
-          $("td#TOTAL_SUM_KERING_BULAN").html(data.result_bulan[0].SUM_KG_KERING_BULAN)
-          $("td#TOTAL_SUM_RP_KERING_BULAN").html(data.result_bulan[0].SUM_RP_KERING_BULAN)
-          $("td#TOTAL_SUM_RP_BULAN").html(data.result_bulan[0].SUM_TOTAL_BULAN)
+          $("td#TOTAL_SUM_RP_BASAH_BULAN").html("Rp. "+data.result_bulan[0].SUM_RP_BASAH_BULAN)
+          $("td#TOTAL_SUM_KERING_BULAN").html(data.result_bulan[0].SUM_KG_KERING_BULAN+" Kg")
+          $("td#TOTAL_SUM_RP_KERING_BULAN").html("Rp. "+data.result_bulan[0].SUM_RP_KERING_BULAN)
+          $("td#TOTAL_SUM_RP_BULAN").html("Rp. "+data.result_bulan[0].SUM_TOTAL_BULAN)
 
 
       } else if (data.respon.pesan == "gagal") {

@@ -753,7 +753,27 @@ font-size: 12px;
 </div>
 <!-- MODAL EDIT PROSES DATA -->
 <script>
-
+function number_format (number, decimals, dec_point, thousands_sep) {
+    number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
+    var n = !isFinite(+number) ? 0 : +number,
+        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+        sep = (typeof thousands_sep === 'undefined') ? '.' : thousands_sep,
+        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+        s = '',
+        toFixedFix = function (n, prec) {
+            var k = Math.pow(10, prec);
+            return '' + Math.round(n * k) / k;
+        };
+    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+    if (s[0].length > 3) {
+        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+    }
+    if ((s[1] || '').length < prec) {
+        s[1] = s[1] || '';
+        s[1] += new Array(prec - s[1].length + 1).join('0');
+    }
+    return s.join(dec);
+}
 
 
 $(function()
@@ -837,11 +857,11 @@ function list_gl_a()
           $("tbody#zone_data_a").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_a[i].NO + ".</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_NAMA + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_BRUTO + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_POTONGAN + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_NETTO + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_RP_KG + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_DETAIL_RUPIAH + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_DETAIL_BRUTO) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_DETAIL_POTONGAN) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_DETAIL_NETTO) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_DETAIL_RP_KG) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_DETAIL_RUPIAH) + "</td>" +
           "<td><a class='btn btn-danger btn-sm hapus_a' ID_REKAP_FAKTUR_DETAIL_A='" + data.result_a[i].RMP_REKAP_FC_DETAIL_ID  + "'><i class='fa fa-trash'></a></td>" +
           "</tr>");
 					}
@@ -850,11 +870,11 @@ function list_gl_a()
         for (i = 0; i < data.result_total_a.length; i++) {
           $("tfoot#total_a").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
-					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].POTONGAN + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].NETTO + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].BRUTO) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].POTONGAN) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].NETTO) + "</b></td>" +
 					"<td ><b></b></td>" +
-					"<td ><b>" + data.result_total_a[i].RUPIAH + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].RUPIAH) + "</b></td>" +
           "<td></td>" +
           "</tr>");
 					}
@@ -891,11 +911,11 @@ function list_gl_b()
           $("tbody#zone_data_b").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_b[i].NO + ".</td>" +
 					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_NAMA + "</td>" +
-					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_BRUTO + "</td>" +
-					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_POTONGAN + "</td>" +
-					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_NETTO + "</td>" +
-					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_RP_KG + "</td>" +
-					"<td>" + data.result_b[i].RMP_REKAP_FC_DETAIL_RUPIAH + "</td>" +
+					"<td align='right'>" + number_format(data.result_b[i].RMP_REKAP_FC_DETAIL_BRUTO) + "</td>" +
+					"<td align='right'>" + number_format(data.result_b[i].RMP_REKAP_FC_DETAIL_POTONGAN) + "</td>" +
+					"<td align='right'>" + number_format(data.result_b[i].RMP_REKAP_FC_DETAIL_NETTO) + "</td>" +
+					"<td align='right'>" + number_format(data.result_b[i].RMP_REKAP_FC_DETAIL_RP_KG) + "</td>" +
+					"<td align='right'>" + number_format(data.result_b[i].RMP_REKAP_FC_DETAIL_RUPIAH) + "</td>" +
           "<td><a class='btn btn-danger btn-sm hapus_a' ID_REKAP_FAKTUR_DETAIL_A='" + data.result_b[i].RMP_REKAP_FC_DETAIL_ID  + "'><i class='fa fa-trash'></a></td>" +
           "</tr>");
 					}
@@ -904,11 +924,11 @@ function list_gl_b()
         for (i = 0; i < data.result_total_b.length; i++) {
           $("tfoot#total_b").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
-					"<td ><b>" + data.result_total_b[i].BRUTO + "</b></td>" +
-					"<td ><b>" + data.result_total_b[i].POTONGAN + "</b></td>" +
-					"<td ><b>" + data.result_total_b[i].NETTO + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_b[i].BRUTO) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_b[i].POTONGAN) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_b[i].NETTO) + "</b></td>" +
 					"<td ><b></b></td>" +
-					"<td ><b>" + data.result_total_b[i].RUPIAH + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_b[i].RUPIAH) + "</b></td>" +
           "<td></td>" +
           "</tr>");
 					}
@@ -946,11 +966,11 @@ function list_gl_c()
           $("tbody#zone_data_c").append("<tr class='detailLogId'>" +
 					"<td >" + data.result_c[i].NO + ".</td>" +
 					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_NAMA + "</td>" +
-					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_BRUTO + "</td>" +
-					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_POTONGAN + "</td>" +
-					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_NETTO + "</td>" +
-					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_RP_KG + "</td>" +
-					"<td>" + data.result_c[i].RMP_REKAP_FC_DETAIL_RUPIAH + "</td>" +
+					"<td align='right'>" + number_format(data.result_c[i].RMP_REKAP_FC_DETAIL_BRUTO) + "</td>" +
+					"<td align='right'>" + number_format(data.result_c[i].RMP_REKAP_FC_DETAIL_POTONGAN) + "</td>" +
+					"<td align='right'>" + number_format(data.result_c[i].RMP_REKAP_FC_DETAIL_NETTO) + "</td>" +
+					"<td align='right'>" + number_format(data.result_c[i].RMP_REKAP_FC_DETAIL_RP_KG) + "</td>" +
+					"<td align='right'>" + number_format(data.result_c[i].RMP_REKAP_FC_DETAIL_RUPIAH) + "</td>" +
           "<td><a class='btn btn-danger btn-sm hapus_a' ID_REKAP_FAKTUR_DETAIL_A='" + data.result_c[i].RMP_REKAP_FC_DETAIL_ID  + "'><i class='fa fa-trash'></a></td>" +
           "</tr>");
 					}
@@ -959,11 +979,11 @@ function list_gl_c()
         for (i = 0; i < data.result_total_c.length; i++) {
           $("tfoot#total_c").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
-					"<td ><b>" + data.result_total_c[i].BRUTO + "</b></td>" +
-					"<td ><b>" + data.result_total_c[i].POTONGAN + "</b></td>" +
-					"<td ><b>" + data.result_total_c[i].NETTO + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_c[i].BRUTO) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_c[i].POTONGAN) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_c[i].NETTO) + "</b></td>" +
 					"<td ><b></b></td>" +
-					"<td ><b>" + data.result_total_c[i].RUPIAH + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_c[i].RUPIAH) + "</b></td>" +
           "<td></td>" +
           "</tr>");
 					}
@@ -1275,14 +1295,14 @@ function list_cabang_proses_a()
           $("tbody#proses_data_a").append("<tr id='edit_proses' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'>" +
 					"<td>" + data.result_a[i].NO + ".</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NETTO + "</td>" +
-          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_KB + "</td>" +
-          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_TAMBANG + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_NETTO) + "</td>" +
+          "<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_KB) + "</td>" +
+          "<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_TAMBANG) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG) + "</td>" +
           "<td><a class='btn btn-success btn-sm edit_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-pencil'></i></a> " +
           "<a class='btn btn-danger btn-sm hapus_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-trash'></i></a></td>" +
           "</tr>");
@@ -1292,13 +1312,13 @@ function list_cabang_proses_a()
         for (i = 0; i < data.result_total_a.length; i++) {
           $("tfoot#proses_total_a").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
-					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].POTONGAN + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].NETTO + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].RUPIAH_KB + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].TAMBANG + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].BIAYA + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].TOTAL_RUPIAH + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].BRUTO) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].POTONGAN) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].NETTO) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].RUPIAH_KB) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].TAMBANG) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].BIAYA) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].TOTAL_RUPIAH) + "</b></td>" +
           "<td></td>" +
           "</tr>");
           $(".total_rp_faktur_pske_input_a").val(data.result_total_a[i].TOTAL_RUPIAH)
@@ -1335,14 +1355,14 @@ function list_cabang_proses_b()
           $("tbody#proses_data_b").append("<tr id='edit_proses' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'>" +
 					"<td>" + data.result_a[i].NO + ".</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NETTO + "</td>" +
-          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_KB + "</td>" +
-          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_TAMBANG + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_NETTO) + "</td>" +
+          "<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_KB) + "</td>" +
+          "<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_TAMBANG) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG) + "</td>" +
           "<td><a class='btn btn-success btn-sm edit_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-pencil'></i></a> " +
           "<a class='btn btn-danger btn-sm hapus_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-trash'></i></a></td>" +
           "</tr>");
@@ -1352,13 +1372,13 @@ function list_cabang_proses_b()
         for (i = 0; i < data.result_total_a.length; i++) {
           $("tfoot#proses_total_b").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
-					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].POTONGAN + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].NETTO + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].RUPIAH_KB + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].TAMBANG + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].BIAYA + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].TOTAL_RUPIAH + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].BRUTO) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].POTONGAN) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].NETTO) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].RUPIAH_KB) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].TAMBANG) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].BIAYA) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].TOTAL_RUPIAH) + "</b></td>" +
           "<td></td>" +
           "</tr>");
           $(".total_rp_faktur_pske_input_b").val(data.result_total_a[i].TOTAL_RUPIAH)
@@ -1395,14 +1415,14 @@ function list_cabang_proses_c()
           $("tbody#proses_data_c").append("<tr id='edit_proses' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'>" +
 					"<td>" + data.result_a[i].NO + ".</td>" +
 					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NAMA + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_NETTO + "</td>" +
-          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_KB + "</td>" +
-          "<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_TAMBANG + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL + "</td>" +
-					"<td>" + data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_BRUTO) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_POTONGAN) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_NETTO) + "</td>" +
+          "<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_KB) + "</td>" +
+          "<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_TAMBANG) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_BIAYA) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_RUPIAH_TOTAL) + "</td>" +
+					"<td align='right'>" + number_format(data.result_a[i].RMP_REKAP_FC_PROSES_RP_KG) + "</td>" +
           "<td><a class='btn btn-success btn-sm edit_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-pencil'></i></a> " +
           "<a class='btn btn-danger btn-sm hapus_proses_a' ID_data='" + data.result_a[i].RMP_REKAP_FC_PROSES_ID  + "'><i class='fa fa-trash'></i></a></td>" +
           "</tr>");
@@ -1412,13 +1432,13 @@ function list_cabang_proses_c()
         for (i = 0; i < data.result_total_a.length; i++) {
           $("tfoot#proses_total_c").append("<tr class='warning'>" +
 					"<td colspan='2' class='text-center'><b>Total</b></td>" +
-					"<td ><b>" + data.result_total_a[i].BRUTO + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].POTONGAN + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].NETTO + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].RUPIAH_KB + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].TAMBANG + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].BIAYA + "</b></td>" +
-					"<td ><b>" + data.result_total_a[i].TOTAL_RUPIAH + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].BRUTO) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].POTONGAN) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].NETTO) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].RUPIAH_KB) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].TAMBANG) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].BIAYA) + "</b></td>" +
+					"<td align='right'><b>" + number_format(data.result_total_a[i].TOTAL_RUPIAH) + "</b></td>" +
           "<td></td>" +
           "</tr>");
           $(".total_rp_faktur_pske_input_c").val(data.result_total_a[i].TOTAL_RUPIAH)

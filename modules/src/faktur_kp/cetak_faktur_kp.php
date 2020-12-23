@@ -87,7 +87,7 @@ $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sqlU;
 $result_au = $this->MYSQL->data();
-//$lokasi = $result_au[0]['RMP_MASTER_WILAYAH'];
+$alamat_supplier = $result_au[0]['RMP_MASTER_WILAYAH'];
 
 //NAMA OPERATOR TIMBANG
 $sql3333 = "SELECT * FROM RMP_FAKTUR AS F LEFT JOIN PERSONAL AS P ON F.RMP_FAKTUR_OPERATOR_TIMBANG=P.PERSONAL_NIK
@@ -196,6 +196,7 @@ if (empty($result_a))
     $this->callback['respon']['catatan_supplier'] = $catatan_supplier;
     $this->callback['respon']['catatan_purchaser'] = $catatan_purchaser;
     $this->callback['respon']['lokasi'] = $lokasi;
+    $this->callback['respon']['alamat_supplier'] = $alamat_supplier;
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
     $this->callback['diterima'] = $diterima;

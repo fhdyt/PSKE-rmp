@@ -639,6 +639,12 @@ CLASS RMP_MODULES extends USER_PRIVILEGES
 		case 'nonlogin_verifikasi_tolak':
 			require_once ("pengajuan_pembayaran/verifikasi_tolak.php");
 		break;
+		case 'nonlogin_gl_jurnal_list':
+			require_once ("pengajuan_pembayaran/gl_jurnal_list.php");
+		break;
+		case 'nonlogin_sel_nama_supplier_rekening':
+			require_once ("pengajuan_pembayaran/sel_nama_supplier_rekening.php");
+		break;
 
 
 

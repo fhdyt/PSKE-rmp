@@ -23,7 +23,7 @@ $no = $posisi + 1;
 foreach ($result_a as $r)
 {
     $r['NO'] = $no;
-    $r['TANGGAL'] = tanggal_format(Date("Y-m-d", strtotime($r['FINANCE_DANA_MATERIAL_TANGGAL'])));
+    $r['TANGGAL'] = tanggal_format(Date("Y-m-d", strtotime($r['RMP_JURNAL_TANGGAL_FAKTUR'])));
     $r['DANA'] = number_format($r['FINANCE_DANA_MATERIAL_DANA'],0,",",".");
     $r['SISA'] = number_format($r['FINANCE_DANA_MATERIAL_DANA'],0,",",".");
     $result[] = $r;
@@ -32,7 +32,7 @@ foreach ($result_a as $r)
 if (empty($result_a))
 {
     $this->callback['respon']['pesan'] = "gagal";
-    $this->callback['respon']['text_msg'] = "Data item tidak ada.";
+    $this->callback['respon']['text_msg'] = "Belum ada pengajuan.";
     $this->callback['filter'] = $params;
     $this->callback['result'] = $result;
 }

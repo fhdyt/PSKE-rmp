@@ -36,16 +36,29 @@ $this->MYSQL->queri="SELECT *, PH.RMP_PENYESUAIAN_HARGA_KB_".$input['grade']." A
 												ON P.RMP_MASTER_PERSONAL_ID=R.RMP_MASTER_PERSONAL_ID
 												LEFT JOIN RMP_PENYESUAIAN_HARGA_KB AS PH ON P.RMP_MASTER_PERSONAL_ID=PH.RMP_MASTER_PERSONAL_ID
 												WHERE R.RMP_REKENING_RELASI_MATERIAL='".$input['material']."'
-												AND (PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal_faktur2."' AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR>='".$tanggal_faktur2."')
-												OR (PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal_faktur2."' AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR='0000-00-00')
+												AND ((PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal_faktur2."' AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR>='".$tanggal_faktur2."')
+												OR (PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal_faktur2."' AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR='0000-00-00'))
 												AND PH.RMP_PENYESUAIAN_HARGA_KB_JENIS_MATERIAL='".$input['material']."'
 												AND R.RMP_REKENING_RELASI_MATERIAL='".$input['material']."'
 												AND P.RECORD_STATUS='A'
 												AND PH.RECORD_STATUS='A'
 												AND R.RECORD_STATUS='A'
-												AND (P.RMP_MASTER_PERSONAL_NAMA LIKE '%".$input['q']."%' OR P.RMP_MASTER_PERSONAL_NAMA LIKE '%".$input['nama_supplier']."%')
 												GROUP BY P.RMP_MASTER_PERSONAL_ID
 												";
+// $this->MYSQL->queri="SELECT *, PH.RMP_PENYESUAIAN_HARGA_KB_".$input['grade']." AS HARGA FROM RMP_MASTER_PERSONAL AS P LEFT JOIN RMP_REKENING_RELASI AS R
+// 												ON P.RMP_MASTER_PERSONAL_ID=R.RMP_MASTER_PERSONAL_ID
+// 												LEFT JOIN RMP_PENYESUAIAN_HARGA_KB AS PH ON P.RMP_MASTER_PERSONAL_ID=PH.RMP_MASTER_PERSONAL_ID
+// 												WHERE R.RMP_REKENING_RELASI_MATERIAL='".$input['material']."'
+// 												AND (PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal_faktur2."' AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR>='".$tanggal_faktur2."')
+// 												OR (PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERLAKU<='".$tanggal_faktur2."' AND PH.RMP_PENYESUAIAN_HARGA_KB_TANGGAL_BERAKHIR='0000-00-00')
+// 												AND PH.RMP_PENYESUAIAN_HARGA_KB_JENIS_MATERIAL='".$input['material']."'
+// 												AND R.RMP_REKENING_RELASI_MATERIAL='".$input['material']."'
+// 												AND P.RECORD_STATUS='A'
+// 												AND PH.RECORD_STATUS='A'
+// 												AND R.RECORD_STATUS='A'
+// 												AND (P.RMP_MASTER_PERSONAL_NAMA LIKE '%".$input['q']."%' OR P.RMP_MASTER_PERSONAL_NAMA LIKE '%".$input['nama_supplier']."%')
+// 												GROUP BY P.RMP_MASTER_PERSONAL_ID
+// 												";
 $result_a=$this->MYSQL->data();
 $no=1;
 foreach($result_a as $r){

@@ -470,6 +470,12 @@ switch($ref){
 			case 'verifikasi_tolak':
 				require_once("ajax/pengajuan_pembayaran/verifikasi_tolak.php");
 			break;
+			case 'gl_jurnal_list':
+				require_once("ajax/pengajuan_pembayaran/gl_jurnal_list.php");
+			break;
+			case 'sel_nama_supplier_rekening':
+				require_once("ajax/pengajuan_pembayaran/sel_nama_supplier_rekening.php");
+			break;
 
 
 //--------------Handle Error Page-----------------------------------
