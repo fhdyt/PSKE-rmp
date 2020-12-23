@@ -205,8 +205,10 @@ font-size: 12px;
               <th>Rekening</th>
               <th>Nama</th>
               <th>Total Faktur</th>
+              <th>Bayar Faktur</th>
+              <th>Sisa Hutang</th>
               <th>Pengajuan</th>
-              <th>Sisa</th>
+              <th>Sisa Pengajuan</th>
             </tr>
           </thead>
           <tbody id="pengajuan_zone_data">
@@ -308,17 +310,30 @@ font-size: 12px;
             </div>
           </div>
               <div class="form-group">
-                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Rupiah Faktur</label>
+                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Total Faktur</label>
+                <div class="col-sm-8">
+                <input autocomplete="off" class="form-control TOTAL_FAKTUR" id="TOTAL_FAKTUR" name="TOTAL_FAKTUR" placeholder="" type="number">
+              </div>
+            </div>
+              <div class="form-group">
+                <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Bayar Faktur</label>
                 <div class="col-sm-8">
                 <input autocomplete="off" class="form-control TOTAL_RUPIAH" id="TOTAL_RUPIAH" name="TOTAL_RUPIAH" placeholder="" type="number">
               </div>
             </div>
+            <div class="form-group">
+              <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Sisa Hutang</label>
+              <div class="col-sm-8">
+              <input autocomplete="off" class="form-control SISA_HUTANG_FAKTUR" id="SISA_HUTANG_FAKTUR" name="SISA_HUTANG_FAKTUR" placeholder="" type="number" onkeyup="kalkulasi_pengajuan()">
+            </div>
+          </div>
               <div class="form-group">
                 <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Rupiah Pengajuan</label>
                 <div class="col-sm-8">
                 <input autocomplete="off" class="form-control PENGAJUAN_RUPIAH" id="PENGAJUAN_RUPIAH" name="PENGAJUAN_RUPIAH" placeholder="" type="number" onkeyup="kalkulasi_pengajuan()">
               </div>
             </div>
+
               <div class="form-group">
                 <label class="ICD_TRANSAKSI_INVENTORI_LOKASI col-sm-4 control-label">Sisa</label>
                 <div class="col-sm-8">
@@ -332,16 +347,19 @@ font-size: 12px;
           <hr>
           <table class="table">
             <tr>
-              <td><b>Total Faktur</b></td>
+              <td><b>Sisa Hutang Faktur</b></td>
               <td><b>:</b></td>
               <td>Rp.</td>
-              <td align="right"><b><p class="total_rupiah"></p></b></td>
+              <td align="right"><b><p class="sisa_hutang_faktur"></p></b></td>
             </tr>
             <tr>
               <td><b>Rupiah Pengajuan</b></td>
               <td><b>:</b></td>
               <td>Rp.</td>
               <td align="right"><b><p class="pengajuan_rupiah"></p></b></td>
+            </tr>
+            <tr>
+              <td colspan="4"><hr></td>
             </tr>
             <tr>
               <td><b>Sisa</b></td>
@@ -443,7 +461,7 @@ function dana_material_list(curPage)
           else
           {
             var status = ""
-            var btn_hapus = "<td><a class='btn btn-danger btn-sm verifikasi_tolak' id_jurnal='"+data.result[i].RMP_JURNAL_ID+"'><span class='fa fa-trash' aria-hidden='true'></span></a></td>"
+            var btn_hapus = "<td><a class='btn btn-danger btn-xs verifikasi_tolak' id_jurnal='"+data.result[i].RMP_JURNAL_ID+"'><span class='fa fa-trash' aria-hidden='true'></span></a></td>"
           }
           $("tbody#pengajuan_zone_data").append("<tr>" +
 					"<td >" + status + "</td>" +
@@ -452,7 +470,9 @@ function dana_material_list(curPage)
 					"<td >" + data.result[i].RMP_JURNAL_NO_FAKTUR + "</td>" +
 					"<td >" + data.result[i].RMP_JURNAL_REKENING + "</td>" +
 					"<td >" + data.result[i].RMP_JURNAL_NAMA_SUPPLIER + "</td>" +
+					"<td style='text-align:right'>" + number_format(data.result[i].RMP_JURNAL_RUPIAH_FAKTUR) + "</td>" +
 					"<td style='text-align:right'>" + number_format(data.result[i].RMP_JURNAL_RUPIAH_TOTAL) + "</td>" +
+					"<td style='text-align:right'>" + number_format(data.result[i].RMP_JURNAL_RUPIAH_SISA_HUTANG_FAKTUR) + "</td>" +
 					"<td class='success' style='text-align:right'>" + number_format(data.result[i].RMP_JURNAL_RUPIAH_PENGAJUAN) + "</td>" +
 					"<td style='text-align:right'>" + number_format(data.result[i].RMP_JURNAL_RUPIAH_SISA) + "</td>"+btn_hapus+"" +
           // "<td><a class='btn btn-success btn-sm verifikasi_action' id_jurnal='"+data.result[i].RMP_JURNAL_ID+"'><span class='fa fa-thumbs-o-up' aria-hidden='true'></span></a></td>" +
@@ -502,7 +522,7 @@ function gl_jurnal_list()
 					"<td style='text-align:right'>" + number_format(data.result[i].NilaiFaktur) + "</td>" +
 					"<td style='text-align:right'>" + number_format(data.result[i].BayarAP) + "</td>" +
 					"<td style='text-align:right'>" + number_format(data.result[i].SisaHutang) + "</td>" +
-          "<td><a class='btn btn-success btn-xs pengajuan_pembayaran' no_faktur='"+data.result[i].NoFaktur+"' total='"+data.result[i].BayarAP+"'><span class='fa fa-arrow-circle-right' aria-hidden='true'></span></a></td>" +
+          "<td><a class='btn btn-success btn-xs pengajuan_pembayaran' no_faktur='"+data.result[i].NoFaktur+"' total='"+data.result[i].BayarAP+"' total_faktur='"+data.result[i].NilaiFaktur+"' sisa_hutang='"+data.result[i].SisaHutang+"'><span class='fa fa-arrow-circle-right' aria-hidden='true'></span></a></td>" +
           "</tr>");
 					}
       } else if (data.respon.pesan == "gagal") {
@@ -749,18 +769,23 @@ $("tbody#ms_zone_data").on('click','a.pengajuan_pembayaran', function()
   $("p.pengajuan_rupiah").html("0")
 	var no_faktur = $(this).attr('no_faktur');
 	var total = $(this).attr('total');
+	var total_faktur = $(this).attr('total_faktur');
+	var sisa_hutang = $(this).attr('sisa_hutang');
   $(".modalPengajuanPembayaran").modal('show');
   $(".NO_FAKTUR_PENGAJUAN").val(no_faktur);
   $(".TOTAL_RUPIAH").val(total);
-  $("p.total_rupiah").html(number_format(total))
+  $(".TOTAL_FAKTUR").val(total_faktur);
+  $(".SISA_HUTANG_FAKTUR").val(sisa_hutang);
+  $("p.sisa_hutang_faktur").html(number_format(sisa_hutang))
 });
 
 function kalkulasi_pengajuan(){
-  var total_rupiah = $(".TOTAL_RUPIAH").val()
+  var sisa_hutang_faktur = $(".SISA_HUTANG_FAKTUR").val()
+  //var total_rupiah = $(".TOTAL_RUPIAH").val()
   var pengajuan_rupiah = $(".PENGAJUAN_RUPIAH").val()
   var sisa_dana = $(".SISA_DANA").val()
   $("p.pengajuan_rupiah").html(number_format(pengajuan_rupiah))
-  var sisa = total_rupiah-pengajuan_rupiah
+  var sisa = sisa_hutang_faktur-pengajuan_rupiah
   if(sisa < 0 ){
     $("p.alert_minus").removeAttr("style")
     $(".SIMPAN_PENGAJUAN_PEMBAYARAN").attr("disabled", true)
