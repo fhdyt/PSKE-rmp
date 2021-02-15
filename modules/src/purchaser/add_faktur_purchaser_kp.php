@@ -105,6 +105,7 @@ $data_detail2 = array(
 	  'RMP_FAKTUR_PURCHASER_KUALITET_FAKTUR' => $input['KUALITET_FAKTUR'],
 		'RMP_FAKTUR_PURCHASER_TAMBANG' => $input['TAMBANG'],
 	  'RMP_FAKTUR_PURCHASER_TOTAL_TAMBANG' => $total_tambang,
+	'RMP_FAKTUR_PURCHASER_GONI_OPERATOR' => $input['GONI_OPERATOR'],
 		'RMP_FAKTUR_PURCHASER_GONI' => $input['GONI'],
 	  'RMP_FAKTUR_PURCHASER_TOTAL_GONI' => $total_goni,
 		'RMP_FAKTUR_PURCHASER_CADANGAN' => $input['CADANGAN'],
@@ -150,5 +151,3 @@ if ($this->MYSQL->simpan() == true)
 		$this->callback['respon']['pesan'] = "gagal";
 		$this->callback['respon']['text_msg'] = "Gagal Simpan";
 	}
-
-?>

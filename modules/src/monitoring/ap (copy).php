@@ -13,7 +13,7 @@ $posisi = $this->PAGING->cariPosisi($batas, $halaman);
 $input = $params['input_option'];
 $date = date("Y-m-d");
 $sql = "SELECT *
-                FROM RMP_JURNAL WHERE RMP_JURNAL_GRUP_ID='".$input['id_grup']."' AND RECORD_STATUS='A'";
+                FROM RMP_JURNAL WHERE FINANCE_DANA_MATERIAL_ID='".$input['id_periode']."' AND RECORD_STATUS='A'";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql;
@@ -47,3 +47,4 @@ else
         'batas' => $batas
     ))->jmlhalaman;
 }
+?>

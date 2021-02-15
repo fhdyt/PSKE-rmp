@@ -2481,13 +2481,22 @@ function rekening_list(curPage)
 				console.log(data.respon.text_msg);
         $("tbody#data_rekening").empty();
         for (i = 0; i < data.result.length; i++) {
-          $("tbody#data_rekening").append("<tr class='detailLogId'>" +
+          if(data.result[i].RMP_REKENING_STATUS == "PRIORITAS"){
+            var tr = "success"
+            var status = "<br><small class='help-block'>Rekening Prioritas</small>"
+          }
+          else{
+            var tr=""
+            var status = ""
+          }
+          $("tbody#data_rekening").append("<tr class='"+tr+"'>" +
 					"<td >" + data.result[i].NO + ".</td>" +
 					"<td>" + data.result[i].RMP_REKENING_KODE_BANK +  "</td>" +
 					"<td>" + data.result[i].MASTER_BANK_NAMA +  "</td>" +
-					"<td>" + data.result[i].RMP_REKENING +  "</td>" +
+					"<td>" + data.result[i].RMP_REKENING +  " "+status+"</td>" +
 					"<td>" + data.result[i].RMP_REKENING_NAMA +  "</td>" +
-          "<td><a class='btn btn-danger btn-sm hapus_rekening' ID_REKENING='" + data.result[i].RMP_REKENING_ID +  "'><i aria-hidden='true' class='fa fa-trash'></i></a></td>" +
+          "<td><a class='btn btn-danger btn-sm hapus_rekening' ID_REKENING='" + data.result[i].RMP_REKENING_ID +  "'><i aria-hidden='true' class='fa fa-trash'></i></a>"+
+          " <a class='btn btn-success btn-sm prioritas_rekening' ID_REKENING='" + data.result[i].RMP_REKENING_ID +  "'><i aria-hidden='true' class='fa fa-check-circle'></i> Prioritas Rekening</a></td>" +
           "</tr>");
         }
       } else if (data.respon.pesan == "gagal") {
@@ -2513,6 +2522,14 @@ $("tbody#data_rekening").on('click','a.hapus_rekening', function()
 		hapus_rekening(id)
 	}
 })
+$("tbody#data_rekening").on('click','a.prioritas_rekening', function()
+{
+  var id = $(this).attr('ID_REKENING');
+  console.log(id);
+  if(confirm('Apakah anda sudah yakin ?')) {
+		prioritas_rekening(id)
+	}
+})
 
 function hapus_rekening(id)
 {
@@ -2521,6 +2538,31 @@ function hapus_rekening(id)
     url: refseeAPI,
     dataType: 'json',
     data: 'ref=hapus_rekening&ID=' + id ,
+    success: function(data) {
+      if (data.respon.pesan == "sukses")
+      {
+        console.log(data.respon.text_msg);
+          rekening_list();
+      }
+      else if (data.respon.pesan == "gagal")
+      {
+        console.log(data.respon.text_msg);
+        alert("Gagal Menghapus");
+      }
+    }, //end success
+    error: function(x, e) {
+      console.log("Error Ajax");
+    } //end error
+  });
+}
+
+function prioritas_rekening(id)
+{
+  $.ajax({
+    type: 'POST',
+    url: refseeAPI,
+    dataType: 'json',
+    data: 'ref=prioritas_rekening&ID=' + id ,
     success: function(data) {
       if (data.respon.pesan == "sukses")
       {

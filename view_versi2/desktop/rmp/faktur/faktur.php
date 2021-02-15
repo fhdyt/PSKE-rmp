@@ -64,7 +64,7 @@
       	<div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
-              <h2>Kepala Bulat</h2>
+              <h2>Kelapa Bulat</h2>
               <hr>
             </div>
           </div>

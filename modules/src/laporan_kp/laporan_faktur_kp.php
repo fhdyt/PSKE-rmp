@@ -109,8 +109,9 @@ foreach($result_a as $r)
       $r['KG_KERING2']=($result_faktur[0]['KG_BASAH']*$r['KUALITET'])/100;
       $kg_kering += $r['KG_KERING2'];
       $r['RP_KERING']=number_format(round(($r['RMP_FAKTUR_PURCHASER_RP_KELAPA']/$r['KG_KERING2'])),0,",",".");
+      $r['TOTALLL'] = $r['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR']-$r['RMP_FAKTUR_PURCHASER_TOTAL_GONI'];
       $r['TOTAL'] = number_format(($r['RMP_FAKTUR_PURCHASER_TOTAL_FAKTUR']-$r['RMP_FAKTUR_PURCHASER_TOTAL_GONI']),0,",",".");
-      $r['RMP_FAKTUR_PURCHASER_RP_KG'] = number_format($r['RMP_FAKTUR_PURCHASER_RP_KG'],0,",",".");
+      $r['RMP_FAKTUR_PURCHASER_RP_KG'] = number_format(($r['TOTALLL']/$result_faktur[0]['KG_BASAH']),0,",",".");
       $r['PURCHASER_STATUS'] = $r['PURCHASER_STATUS'];
 
     if (empty($r['RMP_FAKTUR_NAMA_SUB']))
@@ -208,10 +209,10 @@ $x['SUM_BRUTO']=number_format($hari_bruto,0,",",".");
 $x['SUM_NETTO']=number_format($hari_netto,0,",",".");
 $x['SUM_RP']=number_format($hari_rp,0,",",".");
 $x['SUM_KG_BASAH']=number_format($hari_kg_basah,0,",",".");
-$x['SUM_RP_BASAH']=number_format($hari_rp_basah,0,",",".");
+$x['SUM_RP_BASAH']=number_format(($hari_total/$hari_kg_basah),0,",",".");
 $x['SUM_KG_KERING']=number_format($hari_kg_kering,0,",",".");
 $x['SUM_TOTAL']=number_format($hari_total,0,",",".");
-$x['SUM_RP_KERING']=number_format($hari_rp_kering);
+$x['SUM_RP_KERING']=number_format(($hari_total/$hari_kg_kering));
 $x['SUM_KUALITET']=round($hari_kualitet);
 
 // $x['SUM_GONI']=number_format($result_sum[0]['SUM_GONI'],0,",",".");
@@ -361,10 +362,10 @@ $x['SUM_BRUTO_BULAN']=number_format($bulan_bruto,0,",",".");
 $x['SUM_NETTO_BULAN']=number_format($bulan_netto,0,",",".");
 $x['SUM_RP_BULAN']=number_format($bulan_rp,0,",",".");
 $x['SUM_KG_BASAH_BULAN']=number_format($bulan_kg_basah,0,",",".");
-$x['SUM_RP_BASAH_BULAN']=number_format($bulan_rp_basah,0,",",".");
+$x['SUM_RP_BASAH_BULAN']=number_format(($total/$bulan_kg_basah),0,",",".");
 $x['SUM_KG_KERING_BULAN']=number_format($bulan_kg_kering,0,",",".");
 $x['SUM_TOTAL_BULAN']=number_format($total,0,",",".");
-$x['SUM_RP_KERING_BULAN']=number_format($bulan_rp_kering);
+$x['SUM_RP_KERING_BULAN']=number_format($total/$bulan_kg_kering);
 $x['SUM_KUALITET_BULAN']=round($bulan_kualitet);
 $result_bulan[] = $x;
 

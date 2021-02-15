@@ -1,148 +1,179 @@
 <?php
 $id_faktur = $d3;
- ?>
+?>
 <style>
-.modalMD
-{
-  width: 1000px;
-}
-.modal
-{
+  .modalMD {
+    width: 1000px;
+  }
+
+  .modal {
     overflow-y: auto;
-}
-.loader
-{
-  border: 5px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 5px solid #3498db;
-  width: 40px;
-  height: 40px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-}
+  }
 
-/* Safari */
-@-webkit-keyframes spin
-{
-  0%
-  {
-    -webkit-transform: rotate(0deg);
+  .loader {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
   }
-  100%
-  {
-    -webkit-transform: rotate(360deg);
-  }
-}
 
-@keyframes spin
-{
-  0%
-  {
-    transform: rotate(0deg);
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
   }
-  100%
-  {
-    transform: rotate(360deg);
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
   }
-}
-/* table{
+
+  /* table{
 font-size: 12px;
 } */
 </style>
 
 <div class="row">
-	<div class="col-lg-12 col-md-12">
-		<div class="list-group">
-			<div class="list-group-item">
-				<div class="row">
-					<div class="col-md-8">
-						<h3><i class="fa fa-calculator"></i> Pemberian Harga Faktur <b>Kopra</b></h3>
-						<hr>
-					</div>
-					<div class="col-md-4 text-right"></div>
-				</div><!--/.row-->
+  <div class="col-lg-12 col-md-12">
+    <div class="list-group">
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-md-8">
+            <h3><i class="fa fa-calculator"></i> Pemberian Harga Faktur <b>Kopra</b></h3>
+            <hr>
+          </div>
+          <div class="col-md-4 text-right"></div>
+        </div>
+        <!--/.row-->
         <div class="row">
           <div class="col-md-12">
             <div class="callout callout-warning warning_faktur" hidden>
-                <h4>Tidak dapat melakukan edit.</h4>
+              <h4>Tidak dapat melakukan edit.</h4>
 
-                <p>Faktur telah dijurnalkan oleh Accounting.</p>
-              </div>
+              <p>Faktur telah dijurnalkan oleh Accounting.</p>
+            </div>
           </div>
         </div>
-          <div class="row">
-            <div class="col-md-5">
-              <table class="table">
-                <tr>
-                  <td><b>No Faktur</b></td>
-                  <td><p class="NO_FAKTUR"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
-                </tr>
-                <tr>
-                  <td><b>Tanggal Faktur</b></td>
-                  <td><p class="TANGGAL_FAKTUR"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
-                </tr>
-                <tr>
-                  <td><b>Kapal</b></td>
-                  <td><p class="KAPAL_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
-                </tr>
-                <tr>
-                  <td bgcolor="#239B56"><font color="white"><b>Nama Supplier</b> <small><i>Admin<i></small></font></td>
-                  <td bgcolor="#239B56"><font color="white"><p class="NAMA_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></font>
-                  </td>
-                </tr>
-                <tr>
-                  <td bgcolor="#239B56"><font color="white"><b>Nama Supplier</b> <small><i>Purchaser<i></small></font></td>
-                  <td bgcolor="#239B56"><font color="white"><p class="NAMA_SUPPLIER_PURCHASER">
-                    <select class="NAMA_SUPPLIER form-control select2" style="width: 100%;" id="NAMA_SUPPLIER" name="NAMA_SUPPLIER">
-                      <option value=""></option>
-                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_HIDDEN" id="NAMA_SUPPLIER_HIDDEN" name="NAMA_SUPPLIER_HIDDEN" type="hidden">
-                      <input autocomplete="off" class="form-control NAMA_SUPPLIER_PURCHASER_HIDDEN" id="NAMA_SUPPLIER_PURCHASER_HIDDEN" name="NAMA_SUPPLIER_PURCHASER_HIDDEN" type="hidden">
-                    </select>
-                </p></font>
+        <div class="row">
+          <div class="col-md-5">
+            <table class="table">
+              <tr>
+                <td><b>No Faktur</b></td>
+                <td>
+                  <p class="NO_FAKTUR"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Tanggal Faktur</b></td>
+                <td>
+                  <p class="TANGGAL_FAKTUR"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Kapal</b></td>
+                <td>
+                  <p class="KAPAL_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#239B56">
+                  <font color="white"><b>Nama Supplier</b> <small><i>Admin<i></small></font>
+                </td>
+                <td bgcolor="#239B56">
+                  <font color="white">
+                    <p class="NAMA_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                  </font>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#239B56">
+                  <font color="white"><b>Nama Supplier</b> <small><i>Purchaser<i></small></font>
+                </td>
+                <td bgcolor="#239B56">
+                  <font color="white">
+                    <p class="NAMA_SUPPLIER_PURCHASER">
+                      <select class="NAMA_SUPPLIER form-control select2" style="width: 100%;" id="NAMA_SUPPLIER" name="NAMA_SUPPLIER">
+                        <option value=""></option>
+                        <input autocomplete="off" class="form-control NAMA_SUPPLIER_HIDDEN" id="NAMA_SUPPLIER_HIDDEN" name="NAMA_SUPPLIER_HIDDEN" type="hidden">
+                        <input autocomplete="off" class="form-control NAMA_SUPPLIER_PURCHASER_HIDDEN" id="NAMA_SUPPLIER_PURCHASER_HIDDEN" name="NAMA_SUPPLIER_PURCHASER_HIDDEN" type="hidden">
+                      </select>
+                    </p>
+                  </font>
                   <input autocomplete="off" class="form-control ID_SUPPLIER" id="ID_SUPPLIER" name="ID_SUPPLIER" type="hidden">
                 </td>
-                </tr>
-                <tr>
-                  <td><b>Nomor Rekening</b></td>
-                  <td><p class="NO_REKENING">-</p></td>
-                </tr>
-                <tr>
-                  <td><b>NPWP</b></td>
-                  <td><p class="NPWP">-</p></td>
-                </tr>
-                <tr>
-                  <td><b>Alamat</b></td>
-                  <td><p class="ALAMAT_SUPPLIER">-</p></td>
-                </tr>
-                <tr>
-                  <td><b>Jenis Material</b></td>
-                  <td><p class="MATERIAL"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+              </tr>
+              <tr>
+                <td><b>Nomor Rekening</b></td>
+                <td>
+                  <p class="NO_REKENING">-</p>
+                </td>
+              </tr>
+              <tr>
+                <td><b>NPWP</b></td>
+                <td>
+                  <p class="NPWP">-</p>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Alamat</b></td>
+                <td>
+                  <p class="ALAMAT_SUPPLIER">-</p>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Jenis Material</b></td>
+                <td>
+                  <p class="MATERIAL"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
 
-                  </td>
-                </tr>
-                <tr>
-                  <td><b>Catatan Purchaser</b></td>
-                  <td><p class="CATATAN"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
-                </tr>
-                <tr>
-                  <td><b>Catatan Supplier</b></td>
-                  <td><p class="CATATAN_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
-                </tr>
-              </table>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Catatan Purchaser</b></td>
+                <td>
+                  <p class="CATATAN"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Catatan Supplier</b></td>
+                <td>
+                  <p class="CATATAN_SUPPLIER"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
+              </tr>
+            </table>
           </div>
           <div class="col-md-4">
             <table class="table">
               <tr>
                 <td><b>Berat Gross (Kg)</b></td>
-                <td><p class="TOTAL_GROSS"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td>
+                  <p class="TOTAL_GROSS"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
               </tr>
               <tr>
                 <td><b>Berat Tara (Kg)</b></td>
-                <td><p class="TOTAL_TARA"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td>
+                  <p class="TOTAL_TARA"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
               </tr>
               <tr>
                 <td><b>Berat Bruto (Kg)</b></td>
-                <td><p class="TOTAL_BRUTO"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td>
+                  <p class="TOTAL_BRUTO"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
               </tr>
 
               <tr>
@@ -154,38 +185,52 @@ font-size: 12px;
               </tr>
               <tr>
                 <td><b>Kualitet</b></td>
-                <td><p class="KUALITET"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td>
+                  <p class="KUALITET"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
               </tr>
               <tr>
                 <td><b>Goni</b></td>
-                <td><p class="GONI_TEXT"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td>
+                  <p class="GONI_TEXT"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
               </tr>
               <tr bgcolor="#239B56">
-                <td><font color="white"><b>Kualitet Faktur</b></font></td>
+                <td>
+                  <font color="white"><b>Kualitet Faktur</b></font>
+                </td>
                 <td><input autocomplete="off" class="form-control KUALITET_FAKTUR" id="KUALITET_FAKTUR" name="KUALITET_FAKTUR" type="text">
                 </td>
               </tr>
               <tr bgcolor="#239B56">
-                <td><input type="checkbox" name="CEK_RP_KG" class="CEK_RP_KG"> <font color="white"><b>@Rp</b></font></td>
+                <td><input type="checkbox" name="CEK_RP_KG" class="CEK_RP_KG">
+                  <font color="white"><b>@Rp</b></font>
+                </td>
                 <td><input autocomplete="off" class="form-control INPUT_RP_KG" id="INPUT_RP_KG" name="INPUT_RP_KG" type="text" onkeyup="kalkulasi_biaya()">
                   <p class="VERIFIKASI_HARGA_NOTE text-danger loading"></p>
 
                 </td>
               </tr>
               <tr bgcolor="#239B56">
-                <td><input type="checkbox" name="CEK_TAMBANG" class="CEK_TAMBANG"> <font color="white"><b>Tambang</b></font></td>
+                <td><input type="checkbox" name="CEK_TAMBANG" class="CEK_TAMBANG">
+                  <font color="white"><b>Tambang</b></font>
+                </td>
                 <td><input autocomplete="off" class="form-control INPUT_TAMBANG" id="INPUT_TAMBANG" name="INPUT_TAMBANG" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
-                    <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="" type="hidden">
-                    <!-- <input type="checkbox" name="TOTAL_TAMBANG_RUPIAH" onchange="total_tambang_rupiah()" class="TOTAL_TAMBANG_RUPIAH"><font color="white"> Total Rupiah Tambang</font> -->
+                  <input autocomplete="off" class="form-control JENIS_FAKTUR" id="JENIS_FAKTUR" name="JENIS_FAKTUR" placeholder="" type="hidden">
+                  <!-- <input type="checkbox" name="TOTAL_TAMBANG_RUPIAH" onchange="total_tambang_rupiah()" class="TOTAL_TAMBANG_RUPIAH"><font color="white"> Total Rupiah Tambang</font> -->
                 </td>
               </tr>
               <tr bgcolor="#239B56">
-                <td><input type="checkbox" name="CEK_GONI" class="CEK_GONI"> <font color="white"><b>Goni</b></font></td>
+                <td><input type="checkbox" name="CEK_GONI" class="CEK_GONI">
+                  <font color="white"><b>Goni</b></font>
+                </td>
                 <td><input autocomplete="off" class="form-control INPUT_GONI" id="INPUT_GONI" name="INPUT_GONI" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
                 </td>
               </tr>
               <tr bgcolor="#239B56">
-                <td><input type="checkbox" name="CEK_CADANGAN" class="CEK_CADANGAN"> <font color="white"><b>Cadangan</b></font></td>
+                <td><input type="checkbox" name="CEK_CADANGAN" class="CEK_CADANGAN">
+                  <font color="white"><b>Cadangan</b></font>
+                </td>
                 <td><input autocomplete="off" class="form-control INPUT_CADANGAN" id="INPUT_CADANGAN" name="INPUT_CADANGAN" placeholder="" type="text" onkeyup="kalkulasi_biaya()">
                   <input autocomplete="off" class="form-control NAMA_MATERIAL" id="NAMA_MATERIAL" name="NAMA_MATERIAL" type="hidden">
                   <input autocomplete="off" class="form-control GRADE_MATERIAL" id="GRADE_MATERIAL" name="GRADE_MATERIAL" type="hidden">
@@ -235,19 +280,19 @@ font-size: 12px;
               <tr>
                 <td><b>PPH</b></td>
                 <td>
-                  <input autocomplete="off" class="form-control INPUT_PPH" id="INPUT_PPH" name="INPUT_PPH" placeholder="" type="text"/>
+                  <input autocomplete="off" class="form-control INPUT_PPH" id="INPUT_PPH" name="INPUT_PPH" placeholder="" type="text" />
                 </td>
               </tr>
               <tr>
                 <td><b>Uang Muka</b></td>
                 <td>
-                  <input autocomplete="off" class="form-control INPUT_UANG_MUKA" id="INPUT_UANG_MUKA" name="INPUT_UANG_MUKA" placeholder="" type="text"/>
+                  <input autocomplete="off" class="form-control INPUT_UANG_MUKA" id="INPUT_UANG_MUKA" name="INPUT_UANG_MUKA" placeholder="" type="text" />
                 </td>
               </tr>
             </table>
           </div>
-      		</div>
-          <hr>
+        </div>
+        <hr>
         <div class="row">
           <div class="col-md-8">
             <table class="table table-hover table-bordered">
@@ -284,27 +329,42 @@ font-size: 12px;
               </tr>
               <tr>
                 <td><b>Kopra (Rp)</b></td>
-                <td align="right"><p class="KELAPA_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                <td align="right">
+                  <p class="KELAPA_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
                 </td>
               </tr>
               <tr>
                 <td><b>Tambang (Rp)</b></td>
-                <td align="right"><p class="TAMBANG_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td align="right">
+                  <p class="TAMBANG_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
               </tr>
               <tr>
                 <td><b>Goni (Rp)</b></td>
-                <td align="right"><p class="GONI_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td align="right">
+                  <p class="GONI_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
               </tr>
               <tr>
                 <td><b>Cadangan (Rp)</b></td>
-                <td align="right"><p class="CADANGAN_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p></td>
+                <td align="right">
+                  <p class="CADANGAN_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                </td>
               </tr>
               <tr>
-                <td bgcolor="#239B56"><font color="white"><h4><b>Total (Rp)</b></h4></font></td>
-                <td align="right" bgcolor="#239B56"><font color="white"><h4><b>
-                  <p class="TOTAL_RP" id="TOTAL_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
-                  <input autocomplete="off" class="form-control TOTAL_SELURUH" id="TOTAL_SELURUH" name="TOTAL_SELURUH" type="hidden">
-                </b></h4></font></td>
+                <td bgcolor="#239B56">
+                  <font color="white">
+                    <h4><b>Total (Rp)</b></h4>
+                  </font>
+                </td>
+                <td align="right" bgcolor="#239B56">
+                  <font color="white">
+                    <h4><b>
+                        <p class="TOTAL_RP" id="TOTAL_RP"><i class="fa fa-spinner fa-pulse fa-fw"></i></p>
+                        <input autocomplete="off" class="form-control TOTAL_SELURUH" id="TOTAL_SELURUH" name="TOTAL_SELURUH" type="hidden">
+                      </b></h4>
+                  </font>
+                </td>
               </tr>
             </table>
             <p class="help-block">Mohon periksa kembali kesesuaian data faktur dan data yang anda masukkan.</p>
@@ -331,476 +391,414 @@ font-size: 12px;
 
 
 <div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg modalEditHarga" role="dialog" tabindex="-1">
- <div class="modal-dialog modal-large" role="document">
-   <div class="modal-content">
-     <div class="modal-header">
-       <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-       <h4 class="modal-title" id="myModalLabel">Penyesuaian Harga Baru</h4>
-     </div>
-     <div class="modal-body">
-       <form action="javascript:download();" class="fDataHarga" id="fDataHarga" name="fDataHarga">
-             <div class="form-group">
-               <label for="exampleInputEmail1">@Rp Lama</label>
-               <input autocomplete="off" class="form-control RP_KG_EDIT_HARGA_LAMA" id="RP_KG_EDIT_HARGA_LAMA" name="RP_KG_EDIT_HARGA_LAMA" placeholder="" type="text" readonly>
-               <p class="help-block text-danger">@Rp Lama.</p>
-             </div>
-             <div class="form-group">
-               <label for="exampleInputEmail1">@Rp Baru</label>
-               <input autocomplete="off" class="form-control RP_KG_EDIT_HARGA" id="RP_KG_EDIT_HARGA" name="RP_KG_EDIT_HARGA" placeholder="" type="text">
-               <p class="help-block text-danger">@Rp baru.</p>
-             </div>
-             <div class="form-group">
-               <label for="exampleInputEmail1">Keterangan</label>
-               <textarea class="KETERANGAN_EDIT_HARGA form-control" name="KETERANGAN_EDIT_HARGA"></textarea>
-               <p class="help-block">Alasan pergantian penyesuaian harga baru.</p>
-             </div>
+  <div class="modal-dialog modal-large" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Penyesuaian Harga Baru</h4>
+      </div>
+      <div class="modal-body">
+        <form action="javascript:download();" class="fDataHarga" id="fDataHarga" name="fDataHarga">
+          <div class="form-group">
+            <label for="exampleInputEmail1">@Rp Lama</label>
+            <input autocomplete="off" class="form-control RP_KG_EDIT_HARGA_LAMA" id="RP_KG_EDIT_HARGA_LAMA" name="RP_KG_EDIT_HARGA_LAMA" placeholder="" type="text" readonly>
+            <p class="help-block text-danger">@Rp Lama.</p>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">@Rp Baru</label>
+            <input autocomplete="off" class="form-control RP_KG_EDIT_HARGA" id="RP_KG_EDIT_HARGA" name="RP_KG_EDIT_HARGA" placeholder="" type="text">
+            <p class="help-block text-danger">@Rp baru.</p>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Keterangan</label>
+            <textarea class="KETERANGAN_EDIT_HARGA form-control" name="KETERANGAN_EDIT_HARGA"></textarea>
+            <p class="help-block">Alasan pergantian penyesuaian harga baru.</p>
+          </div>
 
-         <div class="row">
-           <div class="col-md-12">
-             <div class="form-group">
-               <button class="btn btn-success btn-sm verifikasiHargaPurchaser">Simpan</button>
-             </div>
-           </div>
-         </div>
-       </form>
-   </div>
- </div>
-</div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <button class="btn btn-success btn-sm verifikasiHargaPurchaser">Simpan</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-sm modalCetakFaktur" role="dialog" tabindex="-1">
- <div class="modal-dialog" role="document">
-   <div class="modal-content">
-     <div class="modal-header">
-       <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-       <!-- <h4 class="modal-title" id="myModalLabel"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Berhasil Disimpan</h4> -->
-     </div>
-     <div class="modal-body">
-       <div class="row">
-         <div class="col-md-12">
-             <table class="table-hover table">
-               <tr>
-                 <td>
-                   Cetak Untuk Relasi
-                 </td>
-                 <td>
-                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success btn-sm" PRINTED="relasi"><i class="fa fa-print" aria-hidden="true"></i> Cetak Lengkap</a>
-                   <a onclick="cetak_faktur()" class="cetak_faktur1 btn btn-warning btn-sm" PRINTED="relasi"><i class="fa fa-print" aria-hidden="true"></i> Cetak Gabung</a>
-                 </td>
-               </tr>
-               <tr>
-                 <td>
-                   Cetak Untuk Admin
-                 </td>
-                 <td>
-                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success btn-sm" PRINTED="admin"><i class="fa fa-print" aria-hidden="true"></i> Cetak Lengkap</a>
-                   <a onclick="cetak_faktur()" class="cetak_faktur1 btn btn-warning btn-sm" PRINTED="admin"><i class="fa fa-print" aria-hidden="true"></i> Cetak Gabung</a>
-                 </td>
-               </tr>
-               <tr>
-                 <td>
-                   Cetak Untuk Beacukai
-                 </td>
-                 <td>
-                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success btn-sm" PRINTED="beacukai"><i class="fa fa-print" aria-hidden="true"></i> Cetak Lengkap</a>
-                   <a onclick="cetak_faktur()" class="cetak_faktur1 btn btn-warning btn-sm" PRINTED="beacukai"><i class="fa fa-print" aria-hidden="true"></i> Cetak Gabung</a>
-                 </td>
-               </tr>
-               <tr>
-                 <td>
-                   Cetak Untuk Accounting
-                 </td>
-                 <td>
-                   <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success btn-sm" PRINTED="accounting"><i class="fa fa-print" aria-hidden="true"></i> Cetak Lengkap</a>
-                   <a onclick="cetak_faktur()" class="cetak_faktur1 btn btn-warning btn-sm" PRINTED="accounting"><i class="fa fa-print" aria-hidden="true"></i> Cetak Gabung</a>
-                 </td>
-               </tr>
-             </table>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+        <!-- <h4 class="modal-title" id="myModalLabel"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Berhasil Disimpan</h4> -->
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table-hover table">
+              <tr>
+                <td>
+                  Cetak Untuk Relasi
+                </td>
+                <td>
+                  <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success btn-sm" PRINTED="relasi"><i class="fa fa-print" aria-hidden="true"></i> Cetak Lengkap</a>
+                  <a onclick="cetak_faktur()" class="cetak_faktur1 btn btn-warning btn-sm" PRINTED="relasi"><i class="fa fa-print" aria-hidden="true"></i> Cetak Gabung</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Cetak Untuk Admin
+                </td>
+                <td>
+                  <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success btn-sm" PRINTED="admin"><i class="fa fa-print" aria-hidden="true"></i> Cetak Lengkap</a>
+                  <a onclick="cetak_faktur()" class="cetak_faktur1 btn btn-warning btn-sm" PRINTED="admin"><i class="fa fa-print" aria-hidden="true"></i> Cetak Gabung</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Cetak Untuk Beacukai
+                </td>
+                <td>
+                  <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success btn-sm" PRINTED="beacukai"><i class="fa fa-print" aria-hidden="true"></i> Cetak Lengkap</a>
+                  <a onclick="cetak_faktur()" class="cetak_faktur1 btn btn-warning btn-sm" PRINTED="beacukai"><i class="fa fa-print" aria-hidden="true"></i> Cetak Gabung</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Cetak Untuk Accounting
+                </td>
+                <td>
+                  <a onclick="cetak_faktur()" class="cetak_faktur btn btn-success btn-sm" PRINTED="accounting"><i class="fa fa-print" aria-hidden="true"></i> Cetak Lengkap</a>
+                  <a onclick="cetak_faktur()" class="cetak_faktur1 btn btn-warning btn-sm" PRINTED="accounting"><i class="fa fa-print" aria-hidden="true"></i> Cetak Gabung</a>
+                </td>
+              </tr>
+            </table>
 
-         </div>
-       </div>
+          </div>
+        </div>
 
-   </div>
- </div>
-</div>
+      </div>
+    </div>
+  </div>
 </div>
 <script>
-function customRound(n){
-  var angka = n.toString()
+  function customRound(n) {
+    var angka = n.toString()
 
-  if (angka.includes('.') == true)
-  {
-    var r = angka.split(".")
-    var x = r[1].substr(0,1)
-    if (x < 5)
-    {
-    var bulat = Math.floor(angka)
+    if (angka.includes('.') == true) {
+      var r = angka.split(".")
+      var x = r[1].substr(0, 1)
+      if (x < 5) {
+        var bulat = Math.floor(angka)
+      } else {
+        var bulat = Math.ceil(angka)
+      }
+      return bulat;
+    } else {
+      return n
     }
-    else
-    {
-    var bulat = Math.ceil(angka)
-    }
-    return bulat;
-  }
-  else
-  {
-    return n
+
+
   }
 
-
-}
-
-function number_format (number, decimals, dec_point, thousands_sep) {
+  function number_format(number, decimals, dec_point, thousands_sep) {
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
     var n = !isFinite(+number) ? 0 : +number,
-        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-        sep = (typeof thousands_sep === 'undefined') ? '.' : thousands_sep,
-        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-        s = '',
-        toFixedFix = function (n, prec) {
-            var k = Math.pow(10, prec);
-            return '' + Math.round(n * k) / k;
-        };
+      prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+      sep = (typeof thousands_sep === 'undefined') ? '.' : thousands_sep,
+      dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+      s = '',
+      toFixedFix = function(n, prec) {
+        var k = Math.pow(10, prec);
+        return '' + Math.round(n * k) / k;
+      };
     s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
     if (s[0].length > 3) {
-        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+      s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
     }
     if ((s[1] || '').length < prec) {
-        s[1] = s[1] || '';
-        s[1] += new Array(prec - s[1].length + 1).join('0');
+      s[1] = s[1] || '';
+      s[1] += new Array(prec - s[1].length + 1).join('0');
     }
     return s.join(dec);
-}
+  }
 
-$(function () {
-  //Initialize Select2 Elements
-  $('.select2').select2()
-})
+  $(function() {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+  })
 
-function faktur_detail_list(curPage)
-{
-  $.ajax({
-    type: 'POST',
-    url: refseeAPI,
-    dataType: 'json',
-    data: 'ref=faktur_detail_list&ID_FAKTUR=<?php echo $d3; ?>',
-    success: function(data) {
-      if (data.respon.pesan == "sukses") {
-        console.log("faktur_detail_list")
-        $('p.TOTAL_GROSS').html( data.total_gross_kp)
-        $('p.TOTAL_TARA').html( data.total_tara)
-        $('p.TOTAL_BRUTO').html( data.total_bruto)
-        $('p.KUALITET').html( data.kualitet + " %")
-        $('p.GONI_TEXT').html( data.goni)
+  function faktur_detail_list(curPage) {
+    $.ajax({
+      type: 'POST',
+      url: refseeAPI,
+      dataType: 'json',
+      data: 'ref=faktur_detail_list&ID_FAKTUR=<?php echo $d3; ?>',
+      success: function(data) {
+        if (data.respon.pesan == "sukses") {
+          console.log("faktur_detail_list")
+          $('p.TOTAL_GROSS').html(data.total_gross_kp)
+          $('p.TOTAL_TARA').html(data.total_tara)
+          $('p.TOTAL_BRUTO').html(data.total_bruto)
+          $('p.KUALITET').html(data.kualitet + " %")
+          $('p.GONI_TEXT').html(data.goni)
 
-        var potongan = data.total_bruto*(data.potongan/100)
+          var potongan = data.total_bruto * (data.potongan / 100)
 
-        $('p.TOTAL_NETTO').html(data.total_netto)
-        $('p.TOTAL_NETTO_SEBELUM').html(data.total_bruto-potongan)
+          $('p.TOTAL_NETTO').html(data.total_netto)
+          $('p.TOTAL_NETTO_SEBELUM').html(data.total_bruto - potongan)
 
-        $("tbody#zone_data").empty();
-        for (i = 0; i < data.result.length; i++) {
-          if(data.result[i].RMP_FAKTUR_CEK_DITERIMA == 'Y')
-          {
-            $('.CEK_DITERIMA').prop('checked', true)
-          }
-          else
-          {
-          }
+          $("tbody#zone_data").empty();
+          for (i = 0; i < data.result.length; i++) {
+            if (data.result[i].RMP_FAKTUR_CEK_DITERIMA == 'Y') {
+              $('.CEK_DITERIMA').prop('checked', true)
+            } else {}
 
-          if(data.result[i].RMP_FAKTUR_CEK_KOTORAN == 'Y')
-          {
-            $('.CEK_KOTORAN').prop('checked', true)
-          }
-          else{}
+            if (data.result[i].RMP_FAKTUR_CEK_KOTORAN == 'Y') {
+              $('.CEK_KOTORAN').prop('checked', true)
+            } else {}
 
-          if(data.result[i].RMP_FAKTUR_CEK_100_INSPEKSI == 'Y')
-          {
-            $('.CEK_100_INSPEKSI').prop('checked', true)
-          }
-          else{}
+            if (data.result[i].RMP_FAKTUR_CEK_100_INSPEKSI == 'Y') {
+              $('.CEK_100_INSPEKSI').prop('checked', true)
+            } else {}
 
-          if(data.result[i].RMP_FAKTUR_CEK_DIPISAH == 'Y')
-          {
-            $('.CEK_DIPISAH').prop('checked', true)
-          }
-          else{}
+            if (data.result[i].RMP_FAKTUR_CEK_DIPISAH == 'Y') {
+              $('.CEK_DIPISAH').prop('checked', true)
+            } else {}
 
-          if(data.result[i].RMP_FAKTUR_CEK_LANGSUNG_PROSES == 'Y')
-          {
-            $('.CEK_LANGSUNG_PROSES').prop('checked', true)
-          }
-          else{}
+            if (data.result[i].RMP_FAKTUR_CEK_LANGSUNG_PROSES == 'Y') {
+              $('.CEK_LANGSUNG_PROSES').prop('checked', true)
+            } else {}
 
-          $("tbody#zone_data").append("<tr class='detailLogId'  >" +
-					"<td >" + data.result[i].NO + ".</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_TANGGAL + "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_REF + "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_GROSS + "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_TEMPURUNG + "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_KOPRA_BASAH + "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_TARA + "</td>" +
-					"<td>" + data.result[i].RMP_FAKTUR_DETAIL_BRUTO + "</td>" +
-          "</tr>");
-					}
-
-        for (i = 0; i < data.resultb.length; i++) {
-          if (data.result[i].RMP_FAKTUR_NAMA_SUB == "" )
-          {
-            var supplier = data.resultb[i].RMP_MASTER_PERSONAL_NAMA
-          }
-          else
-          {
-            var supplier = data.resultb[i].RMP_MASTER_PERSONAL_NAMA +" / <b>"+ data.resultb[i].RMP_FAKTUR_NAMA_SUB +"</b>"
+            $("tbody#zone_data").append("<tr class='detailLogId'  >" +
+              "<td >" + data.result[i].NO + ".</td>" +
+              "<td>" + data.result[i].RMP_FAKTUR_DETAIL_TANGGAL + "</td>" +
+              "<td>" + data.result[i].RMP_FAKTUR_DETAIL_REF + "</td>" +
+              "<td>" + data.result[i].RMP_FAKTUR_DETAIL_GROSS + "</td>" +
+              "<td>" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_TEMPURUNG + "</td>" +
+              "<td>" + data.result[i].RMP_FAKTUR_DETAIL_POTONGAN_KOPRA_BASAH + "</td>" +
+              "<td>" + data.result[i].RMP_FAKTUR_DETAIL_TARA + "</td>" +
+              "<td>" + data.result[i].RMP_FAKTUR_DETAIL_BRUTO + "</td>" +
+              "</tr>");
           }
 
-          $("p.NO_FAKTUR").html(data.resultb[i].RMP_FAKTUR_NO_FAKTUR)
-          //alert(data.resultb[i].RMP_FAKTUR_NO_FAKTUR)
-          $("p.KAPAL_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_KAPAL)
-          $("p.ALAMAT_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_ALAMAT)
-          $("p.NAMA_SUPPLIER").html(supplier)
-          $(".NAMA_SUPPLIER_HIDDEN").val(data.resultb[i].RMP_MASTER_PERSONAL_NAMA)
-          $("p.TANGGAL_FAKTUR").html(data.resultb[i].TANGGAL)
-          $("p.MATERIAL").html(data.resultb[i].RMP_FAKTUR_JENIS_MATERIAL)
-          $(".NAMA_MATERIAL").val(data.resultb[i].RMP_FAKTUR_JENIS_MATERIAL)
-          $(".GRADE_MATERIAL").val(data.resultb[i].GRADE_MATERIAL)
-          $(".CATATAN").html(data.resultb[i].RMP_FAKTUR_CATATAN_PURCHASER)
-          $(".CATATAN_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_CATATAN_SUPPLIER)
-          $(".JENIS_FAKTUR").val(data.resultb[i].RMP_FAKTUR_JENIS)
-					}
+          for (i = 0; i < data.resultb.length; i++) {
+            if (data.result[i].RMP_FAKTUR_NAMA_SUB == "") {
+              var supplier = data.resultb[i].RMP_MASTER_PERSONAL_NAMA
+            } else {
+              var supplier = data.resultb[i].RMP_MASTER_PERSONAL_NAMA + " / <b>" + data.resultb[i].RMP_FAKTUR_NAMA_SUB + "</b>"
+            }
+
+            $("p.NO_FAKTUR").html(data.resultb[i].RMP_FAKTUR_NO_FAKTUR)
+            //alert(data.resultb[i].RMP_FAKTUR_NO_FAKTUR)
+            $("p.KAPAL_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_KAPAL)
+            $("p.ALAMAT_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_ALAMAT)
+            $("p.NAMA_SUPPLIER").html(supplier)
+            $(".NAMA_SUPPLIER_HIDDEN").val(data.resultb[i].RMP_MASTER_PERSONAL_NAMA)
+            $("p.TANGGAL_FAKTUR").html(data.resultb[i].TANGGAL)
+            $("p.MATERIAL").html(data.resultb[i].RMP_FAKTUR_JENIS_MATERIAL)
+            $(".NAMA_MATERIAL").val(data.resultb[i].RMP_FAKTUR_JENIS_MATERIAL)
+            $(".GRADE_MATERIAL").val(data.resultb[i].GRADE_MATERIAL)
+            $(".CATATAN").html(data.resultb[i].RMP_FAKTUR_CATATAN_PURCHASER)
+            $(".CATATAN_SUPPLIER").html(data.resultb[i].RMP_FAKTUR_CATATAN_SUPPLIER)
+            $(".JENIS_FAKTUR").val(data.resultb[i].RMP_FAKTUR_JENIS)
+          }
           sel_nama_supplier();
 
-      } else if (data.respon.pesan == "gagal") {
-        console.log("Gagal");
-        $("tbody#zone_data").html("<tr><td colspan='9'><div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> " + data.respon.text_msg + "</div></td></tr>");
-      }
-    }, //end success
-    error: function(x, e) {
-      console.log("Error Ajax");
-    } //end error
+        } else if (data.respon.pesan == "gagal") {
+          console.log("Gagal");
+          $("tbody#zone_data").html("<tr><td colspan='9'><div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> " + data.respon.text_msg + "</div></td></tr>");
+        }
+      }, //end success
+      error: function(x, e) {
+        console.log("Error Ajax");
+      } //end error
+    });
+  }
+
+  function detail_purchaser(curPage) {
+    $.ajax({
+      type: 'POST',
+      url: refseeAPI,
+      dataType: 'json',
+      data: 'ref=detail_purchaser&ID_FAKTUR=<?php echo $d3; ?>',
+      success: function(data) {
+        if (data.respon.pesan == "sukses") {
+          console.log("detail_purchaser");
+          for (i = 0; i < data.resultbc.length; i++) {
+            //alert(data.respon.text_msg)
+            if (data.resultbc[i].RMP_FAKTUR_JENIS == "FAKTUR CABANG") {
+              //alert(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA)
+              $('p.KELAPA_RP').html(number_format(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA));
+              $('.KELAPA_RUPIAH').val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA);
+              $('.TOTAL_TAMBANG_RUPIAH').prop('checked', true);
+            }
+            if (data.resultbc[i].MYGL_STATUS == "1") {
+              $("div.warning_faktur").attr("hidden", false)
+              $(".simpanHargaPurchaser").attr("disabled", true)
+              $(".batalkankalkulasi").attr("disabled", true)
+            }
+            //  $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
+            $('p.RP_KG').html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
+            $("p.NO_REKENING").html(data.resultbc[i].REKENING)
+            $("p.NPWP").html(data.resultbc[i].RMP_MASTER_PERSONAL_NPWP)
+            //$("p.ALAMAT_SUPPLIER").html(data.resultbc[i].ALAMAT)
+            $(".INPUT_RP_KG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
+            $(".INPUT_TAMBANG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_TAMBANG)
+            $(".KUALITET_FAKTUR").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_KUALITET_FAKTUR)
+            $(".INPUT_GONI").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_GONI)
+            $(".INPUT_CADANGAN").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_CADANGAN)
+            //$("p.NAMA_SUPPLIER_PURCHASER").html(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
+            $(".INPUT_BIAYA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_BIAYA)
+            $(".INPUT_PPH").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_PPH)
+            $(".INPUT_UANG_MUKA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_UANG_MUKA)
+            $(".ID_SUPPLIER").val(data.resultbc[i].RMP_MASTER_PERSONAL_ID)
+            $(".JENIS_FAKTUR").val(data.resultbc[i].RMP_FAKTUR_JENIS)
+            $(".NAMA_SUPPLIER_PURCHASER_HIDDEN").val(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
+            kalkulasi_biaya()
+            //  $(".ID_FAKTUR_PURCHASER").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_ID)
+            if (data.resultbc[i].FRRECORD_STATUS == 'A') {
+              $(".ID_FAKTUR_PURCHASER").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_ID)
+              if (data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_TAMBANG == "Y") {
+                $('.CEK_TAMBANG').prop('checked', true);
+              } else {
+                $('.CEK_TAMBANG').prop('checked', false);
+              }
+
+              if (data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_BIAYA == "Y") {
+                $('.CEK_BIAYA').prop('checked', true);
+              } else {
+                $('.CEK_BIAYA').prop('checked', false);
+              }
+
+              if (data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_RP == "Y") {
+                $('.CEK_RP_KG').prop('checked', true);
+              } else {
+                $('.CEK_RP_KG').prop('checked', false);
+              }
+
+              if (data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_GONI == "Y") {
+                $('.CEK_GONI').prop('checked', true);
+              } else {
+                $('.CEK_GONI').prop('checked', false);
+              }
+
+              if (data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_CADANGAN == "Y") {
+                $('.CEK_CADANGAN').prop('checked', true);
+              } else {
+                $('.CEK_CADANGAN').prop('checked', false);
+              }
+
+              if (data.resultbc[i].RMP_FAKTUR_PURCHASER_KONTAN == "Y") {
+                $('.CEK_KONTAN').prop('checked', true);
+              } else {
+                $('.CEK_KONTAN').prop('checked', false);
+              }
+
+
+
+              $('.cetak_relasi_dropdown').removeAttr('style');
+              $('.batalkankalkulasi').removeAttr('style');
+            } else if (data.resultbc[i].FRRECORD_STATUS == "V") {
+              $("p.VERIFIKASI_HARGA_NOTE").html("<small><i>Menunggu Verifikasi...</i></small>")
+              $(".simpanHargaPurchaser").attr("disabled", true)
+            } else {
+              $(".ID_FAKTUR_PURCHASER").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_ID)
+            }
+
+            if (data.resultbc[i].RMP_FAKTUR_PURCHASER_VERIFIKASI_STATUS == 'VERIFIKASI' && data.resultbc[i].FRRECORD_STATUS == "N") {
+              $("p.VERIFIKASI_HARGA_NOTE").html("<small><i>Harga Terverifikasi</i></small>")
+              $("p.VERIFIKASI_HARGA_NOTE").removeAttr("class", "text-danger")
+            }
+          }
+
+        } else if (data.respon.pesan == "gagal") {
+          //  alert(data.respon.text_msg)
+          $("p.RP_KG").html("0")
+          $(".INPUT_RP_KG").val("")
+          $(".INPUT_TAMBANG").val("0")
+          $(".INPUT_BIAYA").val("0")
+        }
+
+      }, //end success
+      error: function(x, e) {
+        console.log("Error Ajax");
+      } //end error
+    });
+  }
+
+
+
+  $(function() {
+    detail_purchaser();
   });
-}
 
-function detail_purchaser(curPage)
-{
-  $.ajax({
-    type: 'POST',
-    url: refseeAPI,
-    dataType: 'json',
-    data: 'ref=detail_purchaser&ID_FAKTUR=<?php echo$d3; ?>',
-    success: function(data) {
-      if (data.respon.pesan == "sukses") {
-        console.log("detail_purchaser");
-        for (i = 0; i < data.resultbc.length; i++) {
-          //alert(data.respon.text_msg)
-          if(data.resultbc[i].RMP_FAKTUR_JENIS == "FAKTUR CABANG")
-          {
-            //alert(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA)
-            $('p.KELAPA_RP').html(number_format(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA));
-            $('.KELAPA_RUPIAH').val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KELAPA);
-            $('.TOTAL_TAMBANG_RUPIAH').prop('checked', true);
-          }
-          if(data.resultbc[i].MYGL_STATUS == "1")
-          {
-            $("div.warning_faktur").attr("hidden", false)
-            $(".simpanHargaPurchaser").attr("disabled", true)
-            $(".batalkankalkulasi").attr("disabled", true)
-          }
-        //  $("p.RP_KG").html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
-          $('p.RP_KG').html(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
-          $("p.NO_REKENING").html(data.resultbc[i].REKENING)
-          $("p.NPWP").html(data.resultbc[i].RMP_MASTER_PERSONAL_NPWP)
-          //$("p.ALAMAT_SUPPLIER").html(data.resultbc[i].ALAMAT)
-          $(".INPUT_RP_KG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_RP_KG)
-          $(".INPUT_TAMBANG").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_TAMBANG)
-          $(".KUALITET_FAKTUR").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_KUALITET_FAKTUR)
-          $(".INPUT_GONI").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_GONI)
-          $(".INPUT_CADANGAN").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_CADANGAN)
-          //$("p.NAMA_SUPPLIER_PURCHASER").html(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
-          $(".INPUT_BIAYA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_BIAYA)
-          $(".INPUT_PPH").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_PPH)
-          $(".INPUT_UANG_MUKA").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_UANG_MUKA)
-          $(".ID_SUPPLIER").val(data.resultbc[i].RMP_MASTER_PERSONAL_ID)
-          $(".JENIS_FAKTUR").val(data.resultbc[i].RMP_FAKTUR_JENIS)
-          $(".NAMA_SUPPLIER_PURCHASER_HIDDEN").val(data.resultbc[i].RMP_MASTER_PERSONAL_NAMA)
-          kalkulasi_biaya()
-        //  $(".ID_FAKTUR_PURCHASER").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_ID)
-          if(data.resultbc[i].FRRECORD_STATUS == 'A')
-          {
-            $(".ID_FAKTUR_PURCHASER").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_ID)
-            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_TAMBANG == "Y")
-            {
-              $('.CEK_TAMBANG').prop('checked', true);
-            }
-            else
-            {
-              $('.CEK_TAMBANG').prop('checked', false);
-            }
-
-            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_BIAYA == "Y")
-            {
-              $('.CEK_BIAYA').prop('checked', true);
-            }
-            else
-            {
-              $('.CEK_BIAYA').prop('checked', false);
-            }
-
-            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_RP == "Y")
-            {
-              $('.CEK_RP_KG').prop('checked', true);
-            }
-            else
-            {
-              $('.CEK_RP_KG').prop('checked', false);
-            }
-
-            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_GONI == "Y")
-            {
-              $('.CEK_GONI').prop('checked', true);
-            }
-            else
-            {
-              $('.CEK_GONI').prop('checked', false);
-            }
-
-            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_CEK_CADANGAN == "Y")
-            {
-              $('.CEK_CADANGAN').prop('checked', true);
-            }
-            else
-            {
-              $('.CEK_CADANGAN').prop('checked', false);
-            }
-
-            if(data.resultbc[i].RMP_FAKTUR_PURCHASER_KONTAN == "Y")
-            {
-              $('.CEK_KONTAN').prop('checked', true);
-            }
-            else
-            {
-              $('.CEK_KONTAN').prop('checked', false);
-            }
-
-
-
-            $('.cetak_relasi_dropdown').removeAttr('style');
-            $('.batalkankalkulasi').removeAttr('style');
-          }
-          else if(data.resultbc[i].FRRECORD_STATUS == "V")
-          {
-            $("p.VERIFIKASI_HARGA_NOTE").html("<small><i>Menunggu Verifikasi...</i></small>")
-            $(".simpanHargaPurchaser").attr("disabled", true)
-          }
-          else
-          {
-            $(".ID_FAKTUR_PURCHASER").val(data.resultbc[i].RMP_FAKTUR_PURCHASER_ID)
-          }
-
-          if(data.resultbc[i].RMP_FAKTUR_PURCHASER_VERIFIKASI_STATUS == 'VERIFIKASI' && data.resultbc[i].FRRECORD_STATUS == "N")
-          {
-            $("p.VERIFIKASI_HARGA_NOTE").html("<small><i>Harga Terverifikasi</i></small>")
-            $("p.VERIFIKASI_HARGA_NOTE").removeAttr("class", "text-danger")
-          }
-					}
-
-      } else if (data.respon.pesan == "gagal") {
-      //  alert(data.respon.text_msg)
-        $("p.RP_KG").html("0")
-        $(".INPUT_RP_KG").val("")
-        $(".INPUT_TAMBANG").val("0")
-        $(".INPUT_BIAYA").val("0")
-      }
-
-    }, //end success
-    error: function(x, e) {
-      console.log("Error Ajax");
-    } //end error
+  $(function() {
+    faktur_detail_list();
   });
-}
 
+  function sel_nama_supplier() {
+    var nama_material = "material=" + $(".NAMA_MATERIAL").val()
+    var grade_material = "grade=" + $(".GRADE_MATERIAL").val()
+    var id_faktur = "id_faktur=<?php echo $d3; ?>"
+    $.ajax({
+      type: 'POST',
+      url: refseeAPI,
+      dataType: 'json',
+      data: 'ref=sel_nama_supplier_rek_kp&' + nama_material + '&' + grade_material + '&' + id_faktur + '',
+      success: function(data) {
+        if (data.respon.pesan == "sukses") {
+          for (i = 0; i < data.result.length; i++) {
+            if ($(".NAMA_SUPPLIER_PURCHASER_HIDDEN").val() == data.result[i].RMP_MASTER_PERSONAL_NAMA) {
+              var sel = "selected"
+              $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
+              $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
 
-
-$(function() {
-  detail_purchaser();
-});
-
-$(function() {
-  faktur_detail_list();
-});
-
-function sel_nama_supplier()
-{
-  var nama_material = "material="+$(".NAMA_MATERIAL").val()
-  var grade_material = "grade="+$(".GRADE_MATERIAL").val()
-  var id_faktur = "id_faktur=<?php echo $d3; ?>"
-  $.ajax({
-    type: 'POST',
-    url: refseeAPI,
-    dataType: 'json',
-    data: 'ref=sel_nama_supplier_rek_kp&'+nama_material+'&'+grade_material+'&'+id_faktur+'',
-    success: function(data) {
-      if (data.respon.pesan == "sukses") {
-        for (i = 0; i < data.result.length; i++) {
-          if ($(".NAMA_SUPPLIER_PURCHASER_HIDDEN").val() == data.result[i].RMP_MASTER_PERSONAL_NAMA)
-          {
-            var sel = "selected"
-            $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
-            $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
-
-            $('p.NPWP').html(data.result[i].RMP_MASTER_PERSONAL_NPWP);
-            //$('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
-            if($('.INPUT_RP_KG').val() == '')
-            {
-            $('p.RP_KG').html(data.result[i].HARGA + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
+              $('p.NPWP').html(data.result[i].RMP_MASTER_PERSONAL_NPWP);
+              //$('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
+              if ($('.INPUT_RP_KG').val() == '') {
+                $('p.RP_KG').html(data.result[i].HARGA + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
+              }
+              if (data.result[i].RMP_REKENING_RELASI == "14.06.005.0001") {
+                console.log("Ini cabang")
+              } else {
+                console.log("Bukan cabang")
+              }
+            } else if ($(".NAMA_SUPPLIER_HIDDEN").val() == data.result[i].RMP_MASTER_PERSONAL_NAMA) {
+              var sel = "selected"
+              $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
+              $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
+              $('p.NPWP').html(data.result[i].RMP_MASTER_PERSONAL_NPWP);
+              //$('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
+              if ($('.INPUT_RP_KG').val() == '') {
+                $('p.RP_KG').html(data.result[i].HARGA + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
+              }
+              if (data.result[i].RMP_REKENING_RELASI == "14.06.005.0001") {
+                console.log("Ini cabang")
+              } else {
+                console.log("Bukan cabang")
+              }
+            } else {
+              var sel = ""
             }
-            if(data.result[i].RMP_REKENING_RELASI == "14.06.005.0001")
-            {
-              console.log("Ini cabang")
-            }
-            else{
-              console.log("Bukan cabang")
-            }
-          }
-          else if ($(".NAMA_SUPPLIER_HIDDEN").val() == data.result[i].RMP_MASTER_PERSONAL_NAMA)
-          {
-            var sel = "selected"
-            $('.ID_SUPPLIER').val(data.result[i].RMP_MASTER_PERSONAL_ID)
-            $('p.NO_REKENING').html(data.result[i].RMP_REKENING_RELASI);
-            $('p.NPWP').html(data.result[i].RMP_MASTER_PERSONAL_NPWP);
-            //$('p.ALAMAT_SUPPLIER').html(data.result[i].ALAMAT);
-            if($('.INPUT_RP_KG').val() == '')
-            {
-            $('p.RP_KG').html(data.result[i].HARGA + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
-            }
-            if(data.result[i].RMP_REKENING_RELASI == "14.06.005.0001")
-            {
-              console.log("Ini cabang")
-            }
-            else{
-              console.log("Bukan cabang")
-            }
-          }
-          else
-          {
-            var sel = ""
-          }
-          $("select.NAMA_SUPPLIER").append("<option value='"+ data.result[i].RMP_MASTER_PERSONAL_ID +"' RP='"+data.result[i].HARGA+"' REKENING='"+data.result[i].RMP_REKENING_RELASI+"' NPWP='"+data.result[i].RMP_MASTER_PERSONAL_NPWP+"' ALAMAT='"+data.result[i].ALAMAT+"' "+sel+">"+ data.result[i].RMP_MASTER_PERSONAL_NAMA +"</option>");
+            $("select.NAMA_SUPPLIER").append("<option value='" + data.result[i].RMP_MASTER_PERSONAL_ID + "' RP='" + data.result[i].HARGA + "' REKENING='" + data.result[i].RMP_REKENING_RELASI + "' NPWP='" + data.result[i].RMP_MASTER_PERSONAL_NPWP + "' ALAMAT='" + data.result[i].ALAMAT + "' " + sel + ">" + data.result[i].RMP_MASTER_PERSONAL_NAMA + "</option>");
 
           }
 
           kalkulasi_biaya()
 
-      } else if (data.respon.pesan == "gagal") {
-      }
-    }, //end success
-    error: function(x, e) {
-      console.log("Error Ajax");
-    } //end error
-  });
+        } else if (data.respon.pesan == "gagal") {}
+      }, //end success
+      error: function(x, e) {
+        console.log("Error Ajax");
+      } //end error
+    });
   };
 
-    $('select.NAMA_SUPPLIER').on('change', function(){
+  $('select.NAMA_SUPPLIER').on('change', function() {
     var id_supplier = $(this).val();
     $('.ID_SUPPLIER').val(id_supplier)
     var rekening = $('.NAMA_SUPPLIER option:selected').attr('REKENING');
@@ -809,230 +807,212 @@ function sel_nama_supplier()
     $('p.NPWP').html(npwp);
     // var alamat = $('.NAMA_SUPPLIER option:selected').attr('ALAMAT');
     // $('p.ALAMAT_SUPPLIER').html(alamat);
-    if($('.INPUT_RP_KG').val() == '')
-    {
+    if ($('.INPUT_RP_KG').val() == '') {
       var rp = $('.NAMA_SUPPLIER option:selected').attr('RP');
       $('p.RP_KG').html(rp + " &nbsp; &nbsp; &nbsp;<a class='edit_harga' onclick='edit_harga()' id='edit_harga'><i class='fa fa-pencil'></i></a>");
-    }
-    else{}
+    } else {}
     kalkulasi_biaya()
   })
 
 
-function edit_harga(){
-var harga_lama = $('p.RP_KG').text()
-$('.RP_KG_EDIT_HARGA_LAMA').val(harga_lama)
- $('.modalEditHarga').modal('show')
-}
-
-
-$(".simpanHargaPurchaser").on('click', function(){
-  var no_faktur = "NO_FAKTUR=" +$('.NO_FAKTUR').text()+ ""
-  var personal_id = "PERSONAL_ID=" +$('.ID_SUPPLIER').val()+ ""
-  var rp_kg = "RP_KG=" +$('.INPUT_RP_KG').val()+ ""
-  var tambang = "TAMBANG=" +$('.INPUT_TAMBANG').val()+ ""
-  var goni = "GONI=" +$('.INPUT_GONI').val()+ ""
-  var cadangan = "CADANGAN=" +$('.INPUT_CADANGAN').val()+ ""
-  var id_faktur_purchaser = "ID_FAKTUR_PURCHASER=" +$('.ID_FAKTUR_PURCHASER').val()+ ""
-  var bruto = "TOTAL_BRUTO=" +$('.TOTAL_BRUTO').text()+ ""
-  var kualitet = "KUALITET=" +$('.KUALITET').text()+ ""
-  var kualitet_faktur = "KUALITET_FAKTUR=" +$('.KUALITET_FAKTUR').val()+ ""
-  var netto = "TOTAL_NETTO=" +$('.TOTAL_NETTO').text()+ ""
-  var rekening = "NO_REKENING=" +$('.NO_REKENING').text()+ ""
-  var total_seluruh = "TOTAL_SELURUH=" +$('.TOTAL_SELURUH').val()+ ""
-  var rp_kelapa = "RP_KELAPA=" +$('.KELAPA_RUPIAH').val()+ ""
-  var jenis_faktur = "JENIS_FAKTUR=" +$('.JENIS_FAKTUR').val()+ ""
-
-  var cek_tambang = "CEK_TAMBANG=" +$('.CEK_TAMBANG').is(":checked")+ ""
-  var cek_goni = "CEK_GONI=" +$('.CEK_GONI').is(":checked")+ ""
-  var cek_cadangan = "CEK_CADANGAN=" +$('.CEK_CADANGAN').is(":checked")+ ""
-  var cek_rp = "CEK_RP_KG=" +$('.CEK_RP_KG').is(":checked")+ ""
-
-  var cek_kontan = "CEK_KONTAN=" +$('.CEK_KONTAN').is(":checked")+ ""
-  var input_pph = "INPUT_PPH=" +$('.INPUT_PPH').val()+ ""
-  var input_uang_muka = "INPUT_UANG_MUKA=" +$('.INPUT_UANG_MUKA').val()+ ""
-  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + goni + "&" + cadangan + "&" + bruto + "&" + kualitet + "&" + kualitet_faktur + "&" + netto + "&" + rekening + "&" + total_seluruh + "&" + rp_kelapa + "&" + cek_kontan + "&" + input_pph + "&" + input_uang_muka + "&" + cek_tambang + "&" + cek_goni + "&" + cek_cadangan + "&" + cek_rp + "&" + jenis_faktur + ""
-  console.log(form)
-  $.ajax({
-    type: 'POST',
-    url: refseeAPI,
-    dataType: 'json',
-    data: 'ref=add_faktur_purchaser_kp&' + form ,
-    success: function(data) {
-      if (data.respon.pesan == "sukses")
-      {
-        //alert(data.respon.text_msg)
-        faktur_detail_list();
-        detail_purchaser();
-        $('.modalCetakFaktur').modal('show')
-      }
-      else if (data.respon.pesan == "gagal")
-      {
-        alert (data.respon.text_msg);
-        alert("Gagal Menyimpan");
-      }
-    }, //end success
-    error: function(x, e)
-    {
-      console.log("Error Ajax QUALITED");
-    } //end error
-  });
-})
-
-$(".cetak_relasi_dropdown").on("click", function(){
-  $('.modalCetakFaktur').modal('show')
-})
-
-$(".verifikasiHargaPurchaser").on('click', function(){
-  var no_faktur = "NO_FAKTUR=" +$('.NO_FAKTUR').text()+ ""
-  var personal_id = "PERSONAL_ID=" +$('.ID_SUPPLIER').val()+ ""
-  var rp_kg = "RP_KG=" +$('.RP_KG_EDIT_HARGA').val()+ ""
-  var rp_kg_lama = "RP_KG_LAMA=" +$('.RP_KG_EDIT_HARGA_LAMA').val()+ ""
-  var tambang = "TAMBANG=" +$('.INPUT_TAMBANG').val()+ ""
-  var biaya = "BIAYA=" +$('.INPUT_BIAYA').val()+ ""
-  var keterangan = "KETERANGAN=" +$('.KETERANGAN_EDIT_HARGA').val()+ ""
-  var id_faktur_purchaser = "ID_FAKTUR_PURCHASER=" +$('.ID_FAKTUR_PURCHASER').val()+ ""
-  var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + keterangan + "&" + rp_kg_lama + "&" + biaya + ""
-
-  $.ajax({
-    type: 'POST',
-    url: refseeAPI,
-    dataType: 'json',
-    data: 'ref=add_verifikasi_harga&' + form ,
-    success: function(data) {
-      if (data.respon.pesan == "sukses")
-      {
-        $('.modalEditHarga').modal('hide')
-        faktur_detail_list();
-        detail_purchaser();
-      }
-      else if (data.respon.pesan == "gagal")
-      {
-        alert (data.respon.text_msg);
-      }
-    }, //end success
-    error: function(x, e)
-    {
-      console.log("Error Ajax QUALITED");
-    } //end error
-  });
-})
-
-$(".cetak_faktur").on("click", function(){
-  // var no_faktur = btoa(fikri); // Enskrip
-  // var no_faktur = atob(Zmlrcmk=); // Dekrip
-  var rp_kg = btoa($('.RP_KG').text())
-  var material = btoa($('.NAMA_MATERIAL').val())
-  var printed = btoa($(this).attr("PRINTED"))
-  window.open("?show=rmp/pdf/cetak_faktur_kp/<?php echo $d3; ?>/"+ rp_kg +"/"+ material +"/"+ printed +"", "_blank");
-})
-
-$(".cetak_faktur1").on("click", function(){
-  // var no_faktur = btoa(fikri); // Enskrip
-  // var no_faktur = atob(Zmlrcmk=); // Dekrip
-  var rp_kg = btoa($('.RP_KG').text())
-  var material = btoa($('.NAMA_MATERIAL').val())
-  var printed = btoa($(this).attr("PRINTED"))
-  window.open("?show=rmp/pdf/cetak_faktur_kp/<?php echo $d3; ?>/"+ rp_kg +"/"+ material +"/"+ printed +"/1", "_blank");
-})
-
-
-function kalkulasi_biaya()
-{
-  var netto = $('.TOTAL_NETTO').text()
-  var rp = $('.INPUT_RP_KG').val()
-  var tambang = $('.INPUT_TAMBANG').val()
-  var goni = $('.INPUT_GONI').val()
-  var cadangan = $('.INPUT_CADANGAN').val()
-  var kelapa_rp = parseInt(netto*rp);
-  var tambang_rp = parseInt(netto*tambang);
-  var goni_rp = parseInt(1500*goni);
-  var cadangan_rp = parseInt(netto*cadangan);
-
-  var total_rp = kelapa_rp+tambang_rp+goni_rp+cadangan_rp
-
-  $('p.KELAPA_RP').html(number_format(kelapa_rp));
-  $('.KELAPA_RUPIAH').val(kelapa_rp);
-
-  $('p.TAMBANG_RP').html(number_format(tambang*netto));
-  $('p.GONI_RP').html(number_format(goni_rp));
-  $('p.CADANGAN_RP').html(number_format(cadangan_rp));
-  $('p.TOTAL_RP').html(number_format(total_rp));
-  $('.TOTAL_SELURUH').val(total_rp);
-}
-
-function kalkulasi_biaya_cabang()
-{
-  var netto = $('.TOTAL_NETTO').text()
-  // var rp = $('.INPUT_RP_KG').val()
-  // var tambang = $('.INPUT_TAMBANG').val()
-  // var goni = $('.INPUT_GONI').val()
-  // var cadangan = $('.INPUT_CADANGAN').val()
-  // var kelapa_rp = parseInt(netto*rp);
-  // var tambang_rp = parseInt(netto*tambang);
-  // var goni_rp = parseInt(1500*goni);
-  // var cadangan_rp = parseInt(netto*cadangan);
-  //
-  // var total_rp = kelapa_rp+tambang_rp+goni_rp+cadangan_rp
-
-  $('.INPUT_TAMBANG').val("0")
-  $('.INPUT_GONI').val("0")
-  $('.INPUT_CADANGAN').val("0")
-  var kelapa_rupiah = $('.KELAPA_RUPIAH').val();
-  $('.INPUT_RP_KG').val(Math.round(kelapa_rupiah/netto))
-  $('p.KELAPA_RP').html(number_format(kelapa_rupiah));
-
-
-  $('p.TAMBANG_RP').html("0");
-  $('p.GONI_RP').html("0");
-  $('p.CADANGAN_RP').html("0");
-  $('p.TOTAL_RP').html(number_format(kelapa_rupiah));
-  $('.TOTAL_SELURUH').val(kelapa_rupiah);
-}
-
-function total_tambang_rupiah()
-{
-  if ($('.TOTAL_TAMBANG_RUPIAH').is(':checked'))
-  {
-    $(".JENIS_FAKTUR").val("FAKTUR CABANG")
-    kalkulasi_biaya()
+  function edit_harga() {
+    var harga_lama = $('p.RP_KG').text()
+    $('.RP_KG_EDIT_HARGA_LAMA').val(harga_lama)
+    $('.modalEditHarga').modal('show')
   }
-  else {
-    $(".JENIS_FAKTUR").val("FAKTUR")
-    kalkulasi_biaya()
+
+
+  $(".simpanHargaPurchaser").on('click', function() {
+    var no_faktur = "NO_FAKTUR=" + $('.NO_FAKTUR').text() + ""
+    var personal_id = "PERSONAL_ID=" + $('.ID_SUPPLIER').val() + ""
+    var rp_kg = "RP_KG=" + $('.INPUT_RP_KG').val() + ""
+    var tambang = "TAMBANG=" + $('.INPUT_TAMBANG').val() + ""
+    var goni = "GONI=" + $('.INPUT_GONI').val() + ""
+    var goni_operator = "GONI_OPERATOR=" + $('.GONI_TEXT').text() + ""
+    var cadangan = "CADANGAN=" + $('.INPUT_CADANGAN').val() + ""
+    var id_faktur_purchaser = "ID_FAKTUR_PURCHASER=" + $('.ID_FAKTUR_PURCHASER').val() + ""
+    var bruto = "TOTAL_BRUTO=" + $('.TOTAL_BRUTO').text() + ""
+    var kualitet = "KUALITET=" + $('.KUALITET').text() + ""
+    var kualitet_faktur = "KUALITET_FAKTUR=" + $('.KUALITET_FAKTUR').val() + ""
+    var netto = "TOTAL_NETTO=" + $('.TOTAL_NETTO').text() + ""
+    var rekening = "NO_REKENING=" + $('.NO_REKENING').text() + ""
+    var total_seluruh = "TOTAL_SELURUH=" + $('.TOTAL_SELURUH').val() + ""
+    var rp_kelapa = "RP_KELAPA=" + $('.KELAPA_RUPIAH').val() + ""
+    var jenis_faktur = "JENIS_FAKTUR=" + $('.JENIS_FAKTUR').val() + ""
+
+    var cek_tambang = "CEK_TAMBANG=" + $('.CEK_TAMBANG').is(":checked") + ""
+    var cek_goni = "CEK_GONI=" + $('.CEK_GONI').is(":checked") + ""
+    var cek_cadangan = "CEK_CADANGAN=" + $('.CEK_CADANGAN').is(":checked") + ""
+    var cek_rp = "CEK_RP_KG=" + $('.CEK_RP_KG').is(":checked") + ""
+
+    var cek_kontan = "CEK_KONTAN=" + $('.CEK_KONTAN').is(":checked") + ""
+    var input_pph = "INPUT_PPH=" + $('.INPUT_PPH').val() + ""
+    var input_uang_muka = "INPUT_UANG_MUKA=" + $('.INPUT_UANG_MUKA').val() + ""
+    var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + goni + "&" + goni_operator + "&" + cadangan + "&" + bruto + "&" + kualitet + "&" + kualitet_faktur + "&" + netto + "&" + rekening + "&" + total_seluruh + "&" + rp_kelapa + "&" + cek_kontan + "&" + input_pph + "&" + input_uang_muka + "&" + cek_tambang + "&" + cek_goni + "&" + cek_cadangan + "&" + cek_rp + "&" + jenis_faktur + ""
+    console.log(form)
+    $.ajax({
+      type: 'POST',
+      url: refseeAPI,
+      dataType: 'json',
+      data: 'ref=add_faktur_purchaser_kp&' + form,
+      success: function(data) {
+        if (data.respon.pesan == "sukses") {
+          //alert(data.respon.text_msg)
+          faktur_detail_list();
+          detail_purchaser();
+          $('.modalCetakFaktur').modal('show')
+        } else if (data.respon.pesan == "gagal") {
+          alert(data.respon.text_msg);
+          alert("Gagal Menyimpan");
+        }
+      }, //end success
+      error: function(x, e) {
+        console.log("Error Ajax QUALITED");
+      } //end error
+    });
+  })
+
+  $(".cetak_relasi_dropdown").on("click", function() {
+    $('.modalCetakFaktur').modal('show')
+  })
+
+  $(".verifikasiHargaPurchaser").on('click', function() {
+    var no_faktur = "NO_FAKTUR=" + $('.NO_FAKTUR').text() + ""
+    var personal_id = "PERSONAL_ID=" + $('.ID_SUPPLIER').val() + ""
+    var rp_kg = "RP_KG=" + $('.RP_KG_EDIT_HARGA').val() + ""
+    var rp_kg_lama = "RP_KG_LAMA=" + $('.RP_KG_EDIT_HARGA_LAMA').val() + ""
+    var tambang = "TAMBANG=" + $('.INPUT_TAMBANG').val() + ""
+    var biaya = "BIAYA=" + $('.INPUT_BIAYA').val() + ""
+    var keterangan = "KETERANGAN=" + $('.KETERANGAN_EDIT_HARGA').val() + ""
+    var id_faktur_purchaser = "ID_FAKTUR_PURCHASER=" + $('.ID_FAKTUR_PURCHASER').val() + ""
+    var form = "" + no_faktur + "&" + personal_id + "&" + id_faktur_purchaser + "&" + rp_kg + "&" + tambang + "&" + keterangan + "&" + rp_kg_lama + "&" + biaya + ""
+
+    $.ajax({
+      type: 'POST',
+      url: refseeAPI,
+      dataType: 'json',
+      data: 'ref=add_verifikasi_harga&' + form,
+      success: function(data) {
+        if (data.respon.pesan == "sukses") {
+          $('.modalEditHarga').modal('hide')
+          faktur_detail_list();
+          detail_purchaser();
+        } else if (data.respon.pesan == "gagal") {
+          alert(data.respon.text_msg);
+        }
+      }, //end success
+      error: function(x, e) {
+        console.log("Error Ajax QUALITED");
+      } //end error
+    });
+  })
+
+  $(".cetak_faktur").on("click", function() {
+    // var no_faktur = btoa(fikri); // Enskrip
+    // var no_faktur = atob(Zmlrcmk=); // Dekrip
+    var rp_kg = btoa($('.RP_KG').text())
+    var material = btoa($('.NAMA_MATERIAL').val())
+    var printed = btoa($(this).attr("PRINTED"))
+    window.open("?show=rmp/pdf/cetak_faktur_kp/<?php echo $d3; ?>/" + rp_kg + "/" + material + "/" + printed + "", "_blank");
+  })
+
+  $(".cetak_faktur1").on("click", function() {
+    // var no_faktur = btoa(fikri); // Enskrip
+    // var no_faktur = atob(Zmlrcmk=); // Dekrip
+    var rp_kg = btoa($('.RP_KG').text())
+    var material = btoa($('.NAMA_MATERIAL').val())
+    var printed = btoa($(this).attr("PRINTED"))
+    window.open("?show=rmp/pdf/cetak_faktur_kp/<?php echo $d3; ?>/" + rp_kg + "/" + material + "/" + printed + "/1", "_blank");
+  })
+
+
+  function kalkulasi_biaya() {
+    var netto = $('.TOTAL_NETTO').text()
+    var rp = $('.INPUT_RP_KG').val()
+    var tambang = $('.INPUT_TAMBANG').val()
+    var goni = $('.INPUT_GONI').val()
+    var cadangan = $('.INPUT_CADANGAN').val()
+    var kelapa_rp = parseInt(netto * rp);
+    var tambang_rp = parseInt(netto * tambang);
+    var goni_rp = parseInt(1500 * goni);
+    var cadangan_rp = parseInt(netto * cadangan);
+
+    var total_rp = kelapa_rp + tambang_rp + goni_rp + cadangan_rp
+
+    $('p.KELAPA_RP').html(number_format(kelapa_rp));
+    $('.KELAPA_RUPIAH').val(kelapa_rp);
+
+    $('p.TAMBANG_RP').html(number_format(tambang * netto));
+    $('p.GONI_RP').html(number_format(goni_rp));
+    $('p.CADANGAN_RP').html(number_format(cadangan_rp));
+    $('p.TOTAL_RP').html(number_format(total_rp));
+    $('.TOTAL_SELURUH').val(total_rp);
   }
-}
 
-$(".batalkankalkulasi").on('click', function(){
-  var no_faktur = "NO_FAKTUR=" +$('.NO_FAKTUR').text()+ ""
-  if(confirm('Apakah anda sudah yakin ?')) {
+  function kalkulasi_biaya_cabang() {
+    var netto = $('.TOTAL_NETTO').text()
+    // var rp = $('.INPUT_RP_KG').val()
+    // var tambang = $('.INPUT_TAMBANG').val()
+    // var goni = $('.INPUT_GONI').val()
+    // var cadangan = $('.INPUT_CADANGAN').val()
+    // var kelapa_rp = parseInt(netto*rp);
+    // var tambang_rp = parseInt(netto*tambang);
+    // var goni_rp = parseInt(1500*goni);
+    // var cadangan_rp = parseInt(netto*cadangan);
+    //
+    // var total_rp = kelapa_rp+tambang_rp+goni_rp+cadangan_rp
 
-  $.ajax({
-    type: 'POST',
-    url: refseeAPI,
-    dataType: 'json',
-    data: 'ref=batalkan_kalkulasi&' + no_faktur ,
-    success: function(data) {
-      if (data.respon.pesan == "sukses")
-      {
-        alert(data.respon.text_msg)
-        faktur_detail_list();
-        detail_purchaser();
-        $('.cetak_relasi_dropdown').attr('style','display:none');
-        $('.batalkankalkulasi').attr('style','display:none');
-        //$('.modalCetakFaktur').modal('show')
-      }
-      else if (data.respon.pesan == "gagal")
-      {
-        alert (data.respon.text_msg);
-        alert("Gagal Menyimpan");
-      }
-    }, //end success
-    error: function(x, e)
-    {
-      console.log("Error Ajax BATALKAN KALKULASI");
-    } //end error
-  });
-}
-})
+    $('.INPUT_TAMBANG').val("0")
+    $('.INPUT_GONI').val("0")
+    $('.INPUT_CADANGAN').val("0")
+    var kelapa_rupiah = $('.KELAPA_RUPIAH').val();
+    $('.INPUT_RP_KG').val(Math.round(kelapa_rupiah / netto))
+    $('p.KELAPA_RP').html(number_format(kelapa_rupiah));
+
+
+    $('p.TAMBANG_RP').html("0");
+    $('p.GONI_RP').html("0");
+    $('p.CADANGAN_RP').html("0");
+    $('p.TOTAL_RP').html(number_format(kelapa_rupiah));
+    $('.TOTAL_SELURUH').val(kelapa_rupiah);
+  }
+
+  function total_tambang_rupiah() {
+    if ($('.TOTAL_TAMBANG_RUPIAH').is(':checked')) {
+      $(".JENIS_FAKTUR").val("FAKTUR CABANG")
+      kalkulasi_biaya()
+    } else {
+      $(".JENIS_FAKTUR").val("FAKTUR")
+      kalkulasi_biaya()
+    }
+  }
+
+  $(".batalkankalkulasi").on('click', function() {
+    var no_faktur = "NO_FAKTUR=" + $('.NO_FAKTUR').text() + ""
+    if (confirm('Apakah anda sudah yakin ?')) {
+
+      $.ajax({
+        type: 'POST',
+        url: refseeAPI,
+        dataType: 'json',
+        data: 'ref=batalkan_kalkulasi&' + no_faktur,
+        success: function(data) {
+          if (data.respon.pesan == "sukses") {
+            alert(data.respon.text_msg)
+            faktur_detail_list();
+            detail_purchaser();
+            $('.cetak_relasi_dropdown').attr('style', 'display:none');
+            $('.batalkankalkulasi').attr('style', 'display:none');
+            //$('.modalCetakFaktur').modal('show')
+          } else if (data.respon.pesan == "gagal") {
+            alert(data.respon.text_msg);
+            alert("Gagal Menyimpan");
+          }
+        }, //end success
+        error: function(x, e) {
+          console.log("Error Ajax BATALKAN KALKULASI");
+        } //end error
+      });
+    }
+  })
 </script>

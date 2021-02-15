@@ -5,8 +5,8 @@
 //==============================================================
 include("../../main.config.php");
 
-$tanggalsekarang=date('d F Y');
-$mpdf=new mPDF('c','A4','','',10,10,30,40,5,5);
+$tanggalsekarang = date('d F Y');
+$mpdf = new mPDF('c', 'A4', '', '', 10, 10, 30, 40, 5, 5);
 
 //==============================================================
 
@@ -15,10 +15,8 @@ $mpdf->pagenumSuffix = '';
 $mpdf->nbpgPrefix = ' dari ';
 $mpdf->nbpgSuffix = '';
 $header = array(
-	'L' => array(
-	),
-	'C' => array(
-	),
+	'L' => array(),
+	'C' => array(),
 	'R' => array(
 		'content' => '{PAGENO}{nbpg}',
 		'font-family' => 'sans',
@@ -29,220 +27,190 @@ $header = array(
 );
 
 // $ttd='asset/platform/files/ttd/'.$nik.'.png';
-$material =base64_decode($d5);
-$rp_kg =base64_decode($d4);
-$printed =base64_decode($d6);
+$material = base64_decode($d5);
+$rp_kg = base64_decode($d4);
+$printed = base64_decode($d6);
 
-$input_option=array(
-	'NO_FAKTUR'=>$d3,
-	'MATERIAL'=>$material
+$input_option = array(
+	'NO_FAKTUR' => $d3,
+	'MATERIAL' => $material
 );
 
 
-$params=array(
+$params = array(
 	//'case'=>"presensi_lembur_spl_pdf_nonlogin",
-	'case'=>"nonlogin_cetak_faktur_kp",
-	'batas'=>1000,
-	'halaman'=>1,
-	'data_http'=>$_COOKIE['data_http'],
-	'input_option'=>$input_option,
+	'case' => "nonlogin_cetak_faktur_kp",
+	'batas' => 1000,
+	'halaman' => 1,
+	'data_http' => $_COOKIE['data_http'],
+	'input_option' => $input_option,
 );
-$respon=$RMP->rmp_modules($params)->load->module;
-$no=1;
-$bruto =$respon['respon']['total_kg'];
+$respon = $RMP->rmp_modules($params)->load->module;
+$no = 1;
+$bruto = $respon['respon']['total_kg'];
 $total_potongan = $bruto * ($potongan / 100);
 $netto = $respon['netto'];
 
 
 $kelapa = $respon['rp_kelapa'];
 $today = date("Y-m-d");
-$tanggal = tanggal_format(Date("Y-m-d",strtotime($respon['tanggal_faktur'])));
+$tanggal = tanggal_format(Date("Y-m-d", strtotime($respon['tanggal_faktur'])));
 $tanggal_faktur = $respon['tanggal_faktur'];
 
 
-$adm =$respon['respon']['adm'];
-$admnama =$respon['respon']['admnama'];
+$adm = $respon['respon']['adm'];
+$admnama = $respon['respon']['admnama'];
 
-$operator =$respon['respon']['operator'];
-$operatornama =$respon['respon']['operatornama'];
+$operator = $respon['respon']['operator'];
+$operatornama = $respon['respon']['operatornama'];
 
 
-$purchaser =$respon['respon']['purchaser'];
+$purchaser = $respon['respon']['purchaser'];
 //$purchasernama =$respon['respon']['purchasernama'];
-if($respon['respon']['purchasernama']=="MEIKO ELI SUHESTI LUBIS")
-{
+if ($respon['respon']['purchasernama'] == "MEIKO ELI SUHESTI LUBIS") {
 	$purchasernama = "MEIKO";
+} else {
+	$purchasernama = $respon['respon']['purchasernama'];
 }
-else {
-	$purchasernama =$respon['respon']['purchasernama'];
-}
 
-$qc =$respon['respon']['qc'];
-$qcnama =$respon['respon']['qcnama'];
+$qc = $respon['respon']['qc'];
+$qcnama = $respon['respon']['qcnama'];
 
-$jenis =$respon['respon']['jenis'];
-$relasi =$respon['respon']['relasi'];
-$catatan_supplier =$respon['respon']['catatan_supplier'];
-$catatan_purchaser =$respon['respon']['catatan_purchaser'];
+$jenis = $respon['respon']['jenis'];
+$relasi = $respon['respon']['relasi'];
+$catatan_supplier = $respon['respon']['catatan_supplier'];
+$catatan_purchaser = $respon['respon']['catatan_purchaser'];
 
-$alamat_supplier =$respon['respon']['alamat_supplier'];
-$lokasi =$respon['respon']['lokasi'];
+$alamat_supplier = $respon['respon']['alamat_supplier'];
+$lokasi = $respon['respon']['lokasi'];
 
 
-$diterima =$respon['diterima'];
-$inspeksi =$respon['inspeksi'];
-$dipisah =$respon['dipisah'];
-$kotoran =$respon['kotoran'];
-$langsung_proses =$respon['langsung_proses'];
-$supplier =$respon['supplier'];
-$supplier_sub =$respon['supplier_sub'];
+$diterima = $respon['diterima'];
+$inspeksi = $respon['inspeksi'];
+$dipisah = $respon['dipisah'];
+$kotoran = $respon['kotoran'];
+$langsung_proses = $respon['langsung_proses'];
+$supplier = $respon['supplier'];
+$supplier_sub = $respon['supplier_sub'];
 
-if($supplier_sub == "")
-{
+if ($supplier_sub == "") {
 	$nama_supplier = $supplier;
+} else {
+	$nama_supplier = $supplier . ' / ' . $supplier_sub;
 }
-else {
-	$nama_supplier = $supplier.' / '.$supplier_sub;
-}
 
-$rekening =$respon['rekening'];
-$tambang =$respon['tambang'];
-$tambang_x =$respon['tambang_x'];
-$biaya =$respon['biaya'];
-$goni =$respon['goni'];
-$goni_total =$respon['goni_total'];
-$cadangan_x =$respon['cadangan_x'];
-$cek_tambang =$respon['cek_tambang'];
-$cek_biaya =$respon['cek_biaya'];
-$cek_rp_kg =$respon['cek_rp_kg'];
-$cek_goni =$respon['cek_goni'];
-$cek_cadangan =$respon['cek_cadangan'];
-$kualitet =$respon['kualitet'];
-$kualitet_faktur =$respon['kualitet_faktur'];
+$rekening = $respon['rekening'];
+$tambang = $respon['tambang'];
+$tambang_x = $respon['tambang_x'];
+$biaya = $respon['biaya'];
+$goni = $respon['goni'];
+$goni_total = $respon['goni_total'];
+$cadangan = $respon['cadangan'];
+$cadangan_x = $respon['cadangan_x'];
+$cek_tambang = $respon['cek_tambang'];
+$cek_biaya = $respon['cek_biaya'];
+$cek_rp_kg = $respon['cek_rp_kg'];
+$cek_goni = $respon['cek_goni'];
+$cek_cadangan = $respon['cek_cadangan'];
+$kualitet = $respon['kualitet'];
+$kualitet_faktur = $respon['kualitet_faktur'];
 
-$rp_kg =$respon['rp_kg'];
+$rp_kg = $respon['rp_kg'];
 
 
 
 
-if($diterima == 'Y')
-{
+if ($diterima == 'Y') {
 	$check_diterima = 'checked.png';
-}
-else
-{
+} else {
 	$check_diterima = 'check.png';
 }
 
-if($inspeksi == 'Y')
-{
+if ($inspeksi == 'Y') {
 	$check_inspeksi = 'checked.png';
-}
-else
-{
+} else {
 	$check_inspeksi = 'check.png';
 }
 
-if($dipisah == 'Y')
-{
+if ($dipisah == 'Y') {
 	$check_dipisah = 'checked.png';
-}
-else
-{
+} else {
 	$check_dipisah = 'check.png';
 }
 
-if($kotoran == 'Y')
-{
+if ($kotoran == 'Y') {
 	$check_kotoran = 'checked.png';
-}
-else
-{
+} else {
 	$check_kotoran = 'check.png';
 }
 
-if($langsung_proses == 'Y')
-{
+if ($langsung_proses == 'Y') {
 	$check_langsung_proses = 'checked.png';
-}
-else
-{
+} else {
 	$check_langsung_proses = 'check.png';
 }
 
-if ($printed == "admin")
-{
-	$rp_kg_cetak = "@Rp ".number_format(round($rp_kg),0,",",".")."";
+if ($printed == "admin") {
+	$rp_kg_cetak = "@Rp " . number_format(round($rp_kg), 0, ",", ".") . "";
 	$cetak_catatan_purchaser = $catatan_purchaser;
 	$kelapa_title = "Kopra";
 	$kelapa_rp = " : Rp.";
-	$kelapa_total = number_format($kelapa,0,",",".");
+	$kelapa_total = number_format($kelapa, 0, ",", ".");
 
 	$tambang_title = "Tambang";
 	$tambang_rp = " : Rp.";
-	$tambang_total = number_format($tambang,0,",",".");
+	$tambang_total = number_format($tambang, 0, ",", ".");
 
 	$cadangan_title = "Cadangan";
 	$cadangan_rp = " : Rp.";
-	$cadangan_total = number_format($cadangan,0,",",".");
+	$cadangan_total = number_format($cadangan, 0, ",", ".");
 
 	$goni_title = "Goni";
 	$goni_rp = " : Rp.";
-	$goni_total_rp = number_format($goni_total,0,",",".");
+	$goni_total_rp = number_format($goni_total, 0, ",", ".");
 	$goni_total = $goni_total;
 
 	$kualitet_title = "KUALITET";
-	$kualitet_total = "".$kualitet." %";
+	$kualitet_total = "" . $kualitet . " %";
 
 	$hr = "<hr>";
-	$total_jumlah = $kelapa+$tambang+$cadangan+$goni_total;
+	$total_jumlah = $kelapa + $tambang + $cadangan + $goni_total;
 	$total_jumlah_title = "Jumlah";
 	$total_jumlah_rp = " : Rp.";
-	$total_jumlah_total = number_format($total_jumlah,0,",",".");
-	$terbilang=terbilang($total_jumlah)." Rupiah";
+	$total_jumlah_total = number_format($total_jumlah, 0, ",", ".");
+	$terbilang = terbilang($total_jumlah) . " Rupiah";
 
-	if ($kualitet <= 75)
-	{
+	if ($kualitet <= 75) {
 		$kualitet_cnf = $kualitet - 2;
-		if($rekening == "22.01.001.0004")
-		{
+		if ($rekening == "22.01.001.0004") {
 			$kualitet_cnf = $kualitet;
 		}
-
-	}
-	else
-	{
+	} else {
 		$kualitet_cnf = $kualitet;
 	}
 	$cnf_title = "CNF";
-	$cnf = round(($rp_kg+$cadangan_x+$tambang_x)/($kualitet_cnf/100));
+	$cnf = round(($rp_kg + $cadangan_x + $tambang_x) / ($kualitet_cnf / 100));
 	//$cnf = round($rp_kg/($kualitet_cnf/100));
 
-}
-
-else if ($printed == "beacukai")
-{
+} else if ($printed == "beacukai") {
 	$cetak_catatan_purchaser = $catatan_purchaser;
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
 
-	if ($kualitet <= 75)
-	{
+	if ($kualitet <= 75) {
 		$kualitet = $kualitet - 2;
-	}
-	else
-	{
+	} else {
 		$kualitet = $kualitet;
 	}
 
 	$kualitet_title = "KUALITET";
-	$kualitet_total = ": ".$kualitet." %";
+	$kualitet_total = ": " . $kualitet . " %";
 
-	$kelapa_total = number_format(($kelapa+$tambang+$cadangan+$goni_total),0,",",".");
-	$terbilang=terbilang($kelapa+$tambang+$cadangan+$goni_total)." Rupiah";
-
-	$rp_kgs = ($kelapa+$tambang+$cadangan+$goni_total) / $netto;
-	$rp_kg_cetak = "@Rp ".number_format(round($rp_kgs),0,",",".")."";
+	$kelapa_total = number_format(($kelapa + $tambang + $cadangan + $goni_total), 0, ",", ".");
+	$terbilang = terbilang($kelapa + $tambang + $cadangan + $goni_total) . " Rupiah";
+	$netto = $netto * $kualitet / 100;
+	$rp_kgs = ($kelapa + $tambang + $cadangan + $goni_total) / round($netto);
+	$rp_kg_cetak = "@Rp " . number_format(round($rp_kgs), 0, ",", ".") . "";
 
 	$tambang_title = " ";
 	$tambang_rp = " ";
@@ -257,20 +225,13 @@ else if ($printed == "beacukai")
 	$total_jumlah_title = " ";
 	$total_jumlah_rp = " ";
 	$total_jumlah_total = " ";
-
-
-}
-
-else if ($printed == "relasi")
-{
-	if($cek_tambang == "Y")
-	{
+} else if ($printed == "relasi") {
+	if ($cek_tambang == "Y") {
 		$tambang_title = "Tambang";
 		$tambang_rp = " : Rp.";
-		$tambang_total = number_format($tambang,0,",",".");
+		$tambang_total = number_format($tambang, 0, ",", ".");
 		$tambang = $tambang;
-	}
-	else {
+	} else {
 		$tambang_title = " ";
 		$tambang_rp = " ";
 		$tambang_total = " ";
@@ -279,14 +240,12 @@ else if ($printed == "relasi")
 		$cetak_catatan_purchaser = "";
 	}
 
-	if($cek_cadangan == "Y")
-	{
+	if ($cek_cadangan == "Y") {
 		$cadangan_title = "Cadangan";
 		$cadangan_rp = " : Rp.";
-		$cadangan_total = number_format($cadangan,0,",",".");
+		$cadangan_total = number_format($cadangan, 0, ",", ".");
 		$cadangan = $cadangan;
-	}
-	else {
+	} else {
 		$cadangan_title = " ";
 		$cadangan_rp = " ";
 		$cadangan_total = " ";
@@ -295,14 +254,12 @@ else if ($printed == "relasi")
 		$cetak_catatan_purchaser = "";
 	}
 
-	if($cek_goni == "Y")
-	{
+	if ($cek_goni == "Y") {
 		$goni_title = "Goni";
 		$goni_rp = " : Rp.";
-		$goni_total_rp = number_format($goni_total,0,",",".");
+		$goni_total_rp = number_format($goni_total, 0, ",", ".");
 		$goni_total = $goni_total;
-	}
-	else {
+	} else {
 		$goni_title = " ";
 		$goni_rp = " ";
 		$goni_total_rp = " ";
@@ -311,34 +268,29 @@ else if ($printed == "relasi")
 		$cetak_catatan_purchaser = "";
 	}
 
-	if($kualitet_faktur == "" OR $kualitet_faktur == 0)
-	{
+	if ($kualitet_faktur == "" or $kualitet_faktur == 0) {
 		$kualitet_title = "";
 		$kualitet_total = "";
-	}
-	else
-	{
+	} else {
 		$kualitet_title = "KUALITET";
-		$kualitet_total = ": ".$kualitet_faktur." %";
+		$kualitet_total = ": " . $kualitet_faktur . " %";
 	}
 
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
-	$kelapa_total = number_format($kelapa,0,",",".");
+	$kelapa_total = number_format($kelapa, 0, ",", ".");
 
-	$total_jumlah = $kelapa+$tambang+$goni_total+$cadangan;
-	$terbilang=terbilang($total_jumlah)." Rupiah";
+	$total_jumlah = $kelapa + $tambang + $goni_total + $cadangan;
+	$terbilang = terbilang($total_jumlah) . " Rupiah";
 	$hr = "<hr>";
 
 	$total_jumlah_title = "Jumlah";
 	$total_jumlah_rp = " : Rp.";
-	$total_jumlah_total = number_format($total_jumlah,0,",",".");
+	$total_jumlah_total = number_format($total_jumlah, 0, ",", ".");
 
-	if($cek_rp_kg == "Y")
-	{
-		$rp_kg_cetak = "@Rp ".number_format(round($rp_kg),0,",",".")."";
-	}
-	else {
+	if ($cek_rp_kg == "Y") {
+		$rp_kg_cetak = "@Rp " . number_format(round($rp_kg), 0, ",", ".") . "";
+	} else {
 		$rp_kg_cetak = "";
 
 		$tambang_title = " ";
@@ -356,63 +308,52 @@ else if ($printed == "relasi")
 		$kelapa_rp = " ";
 		$kelapa_total = " ";
 		$total_jumlah = " ";
-		$terbilang="-";
+		$terbilang = "-";
 		$hr = " ";
 
 		$total_jumlah_title = " ";
 		$total_jumlah_rp = " ";
 		$total_jumlah_total = " ";
 	}
-
-
-}
-
-else if ($printed == "accounting")
-{
-	$rp_kg_cetak = "@Rp ".number_format(round($rp_kg),0,",",".")."";
+} else if ($printed == "accounting") {
+	$rp_kg_cetak = "@Rp " . number_format(round($rp_kg), 0, ",", ".") . "";
 	$cetak_catatan_purchaser = $catatan_purchaser;
 	$kelapa_title = "Kelapa";
 	$kelapa_rp = " : Rp.";
-	$kelapa_total = number_format($kelapa,0,",",".");
+	$kelapa_total = number_format($kelapa, 0, ",", ".");
 
 	$tambang_title = "Tambang";
 	$tambang_rp = " : Rp.";
-	$tambang_total = number_format($tambang,0,",",".");
+	$tambang_total = number_format($tambang, 0, ",", ".");
 
 	$cadangan_title = "Cadangan";
 	$cadangan_rp = " : Rp.";
-	$cadangan_total = number_format($cadangan,0,",",".");
+	$cadangan_total = number_format($cadangan, 0, ",", ".");
 
 	$goni_title = "Goni";
 	$goni_rp = " : Rp.";
-	$goni_total_rp = number_format($goni_total,0,",",".");
+	$goni_total_rp = number_format($goni_total, 0, ",", ".");
 	$goni_total = $goni_total;
 
 	$kualitet_title = "KUALITET";
-	$kualitet_total = ": ".$kualitet." %";
+	$kualitet_total = ": " . $kualitet . " %";
 
 	$hr = "<hr>";
-	$total_jumlah = $kelapa+$tambang+$cadangan+$goni_total;
+	$total_jumlah = $kelapa + $tambang + $cadangan + $goni_total;
 	$total_jumlah_title = "Jumlah";
 	$total_jumlah_rp = " : Rp.";
-	$total_jumlah_total = number_format($total_jumlah,0,",",".");
-	$terbilang=terbilang($total_jumlah)." Rupiah";
+	$total_jumlah_total = number_format($total_jumlah, 0, ",", ".");
+	$terbilang = terbilang($total_jumlah) . " Rupiah";
 
-	if ($kualitet <= 75)
-	{
+	if ($kualitet <= 75) {
 		$kualitet = $kualitet - 2;
-	}
-	else
-	{
+	} else {
 		$kualitet = $kualitet;
 	}
 
 	$kualitet_title = "KUALITET";
-	$kualitet_total = ": ".$kualitet." %";
-
-}
-else
-{
+	$kualitet_total = ": " . $kualitet . " %";
+} else {
 	$cetak_catatan_purchaser = "";
 }
 
@@ -424,70 +365,67 @@ foreach ($respon['result'] as $r) {
 	$referensi_merge = $r['RMP_FAKTUR_DETAIL_REF'];
 	$gross_merge += $r['GROSS'];
 	$tara_merge += $r['RMP_FAKTUR_DETAIL_TARA'];
-	$total_merge += number_format($r['RMP_FAKTUR_DETAIL_BRUTO'],0,",",".");
+	$total_merge += number_format($r['RMP_FAKTUR_DETAIL_BRUTO'], 0, ",", ".");
 }
 
 
-if($d7 == '1')
-{
-		$detail_timbang ='
+if ($d7 == '1') {
+	$detail_timbang = '
 		<tr>
 		<td>
 		1
 		</td>
 		<td>
-		'.$first['RMP_FAKTUR_DETAIL_TANGGAL'].' <br><b>s/d</b><br>'.$tanggal_merge.'
+		' . $first['RMP_FAKTUR_DETAIL_TANGGAL'] . ' <br><b>s/d</b><br>' . $tanggal_merge . '
 		</td>
 		<td>
-		'.$timbang_merge.'
+		' . $timbang_merge . '
 		</td>
 		<td>
-		'.$first['RMP_FAKTUR_DETAIL_REF'].' - '.$referensi_merge.' <br>(<b>'.$jumlah_data_timbang.'</b>)
+		' . $first['RMP_FAKTUR_DETAIL_REF'] . ' - ' . $referensi_merge . ' <br>(<b>' . $jumlah_data_timbang . '</b>)
 		</td>
 		<td>
-		'.$gross_merge.' Kg
+		' . $gross_merge . ' Kg
 		</td>
 		<td>
-		'.$tara_merge.' Kg
+		' . $tara_merge . ' Kg
 		</td>
 		<td>
-		'.$total_merge.' Kg
+		' . $total_merge . ' Kg
 		</td>
 		</tr>
 		';
-}
-else{
-foreach($respon['result'] as $r){
-	$detail_timbang .='
+} else {
+	foreach ($respon['result'] as $r) {
+		$detail_timbang .= '
 	<tr>
 	<td>
-	'.$no++.'
+	' . $no++ . '
 	</td>
 	<td>
-	'.$r['RMP_FAKTUR_DETAIL_TANGGAL'].'
+	' . $r['RMP_FAKTUR_DETAIL_TANGGAL'] . '
 	</td>
 	<td>
-	'.$r['RMP_FAKTUR_DETAIL_ID_TIMBANG'].'
+	' . $r['RMP_FAKTUR_DETAIL_ID_TIMBANG'] . '
 	</td>
 	<td>
-	'.$r['RMP_FAKTUR_DETAIL_REF'].'
+	' . $r['RMP_FAKTUR_DETAIL_REF'] . '
 	</td>
 	<td>
-	'.$r['GROSS'].' Kg
+	' . $r['GROSS'] . ' Kg
 	</td>
 	<td>
-	'.$r['RMP_FAKTUR_DETAIL_TARA'].' Kg
+	' . $r['RMP_FAKTUR_DETAIL_TARA'] . ' Kg
 	</td>
 	<td>
-	'.number_format($r['RMP_FAKTUR_DETAIL_BRUTO'],0,",",".").' Kg
+	' . number_format($r['RMP_FAKTUR_DETAIL_BRUTO'], 0, ",", ".") . ' Kg
 	</td>
 	</tr>
 	';
-}
+	}
 }
 
-if($tanggal_faktur <= '2020-11-30')
-{
+if ($tanggal_faktur <= '2020-11-30') {
 	$header_supplier = '<table class="table_header">
 		<tr>
 			<td>
@@ -497,7 +435,7 @@ if($tanggal_faktur <= '2020-11-30')
 			:
 			</td>
 			<td >
-			'.$nama_supplier.'
+			' . $nama_supplier . '
 			</td>
 			<td style="padding-left: 100;"></td>
 			<td>
@@ -507,7 +445,7 @@ if($tanggal_faktur <= '2020-11-30')
 			:
 			</td>
 			<td>
-			'.$respon['result'][0]['RMP_FAKTUR_KAPAL'].'
+			' . $respon['result'][0]['RMP_FAKTUR_KAPAL'] . '
 			</td>
 		</tr>
 		<tr>
@@ -518,7 +456,7 @@ if($tanggal_faktur <= '2020-11-30')
 			:
 			</td>
 			<td>
-			'.$lokasi.'
+			' . $lokasi . '
 			</td>
 			<td style="padding-left: 100;"></td>
 				<td>
@@ -528,42 +466,26 @@ if($tanggal_faktur <= '2020-11-30')
 			:
 			</td>
 			<td>
-			'.$rekening.'
+			' . $rekening . '
 			</td>
 		</tr>
 	</table>';
-}
-
-else{
-	if($supplier == "KONTAN 02")
-	{
+} else {
+	if ($supplier == "KONTAN 02") {
 		$alamat_supplier = $lokasi;
-	}
-	else if($supplier == "KONTAN 03")
-	{
+	} else if ($supplier == "KONTAN 03") {
 		$alamat_supplier = $lokasi;
-	}
-	else if($supplier == "KONTAN 04")
-	{
+	} else if ($supplier == "KONTAN 04") {
 		$alamat_supplier = $lokasi;
-	}
-	else if($supplier == "KONTAN 06")
-	{
+	} else if ($supplier == "KONTAN 06") {
 		$alamat_supplier = $lokasi;
-	}
-	else if($supplier == "KONTAN 08")
-	{
+	} else if ($supplier == "KONTAN 08") {
 		$alamat_supplier = $lokasi;
-	}
-	else if($supplier == "KONTAN 09")
-	{
+	} else if ($supplier == "KONTAN 09") {
 		$alamat_supplier = $lokasi;
-	}
-	else if($supplier == "KONTAN 10")
-	{
+	} else if ($supplier == "KONTAN 10") {
 		$alamat_supplier = $lokasi;
-	}
-	else{
+	} else {
 		$alamat_supplier = $alamat_supplier;
 	}
 	$header_supplier = '<table class="table_header">
@@ -575,7 +497,7 @@ else{
 			:
 			</td>
 			<td >
-			'.$nama_supplier.'
+			' . $nama_supplier . '
 			</td>
 			<td style="padding-left: 100;"></td>
 			<td>
@@ -585,7 +507,7 @@ else{
 			:
 			</td>
 			<td>
-			'.$respon['result'][0]['RMP_FAKTUR_KAPAL'].' / '.$lokasi.'
+			' . $respon['result'][0]['RMP_FAKTUR_KAPAL'] . ' / ' . $lokasi . '
 			</td>
 		</tr>
 		<tr>
@@ -596,7 +518,7 @@ else{
 			:
 			</td>
 			<td>
-			'.$alamat_supplier.'
+			' . $alamat_supplier . '
 			</td>
 			<td style="padding-left: 100;"></td>
 				<td>
@@ -606,7 +528,7 @@ else{
 			:
 			</td>
 			<td>
-			'.$rekening.'
+			' . $rekening . '
 			</td>
 		</tr>
 	</table>';
@@ -631,7 +553,7 @@ $headerHTML = '<table table-unbordered>
 		<table>
 		<tr>
 		<td colspan="3">
-		<p><font size="2"><i>Printed for '.$printed.'</i></font></p>
+		<p><font size="2"><i>Printed for ' . $printed . '</i></font></p>
 		</td>
 		</tr>
 			<tr>
@@ -642,7 +564,7 @@ $headerHTML = '<table table-unbordered>
 					:
 				</td>
 				<td>
-					'.$respon['result'][0]['RMP_FAKTUR_NO_FAKTUR'].'
+					' . $respon['result'][0]['RMP_FAKTUR_NO_FAKTUR'] . '
 				</td>
 			</tr>
 			<tr>
@@ -653,7 +575,7 @@ $headerHTML = '<table table-unbordered>
 					:
 				</td>
 				<td>
-					'.$tanggal.'
+					' . $tanggal . '
 				</td>
 			</tr>
 			<tr>
@@ -676,7 +598,7 @@ $html = '
 	<html>
 	<head>
 
-		<title>Cetak Faktur ('.$printed.')</title>
+		<title>Cetak Faktur (' . $printed . ')</title>
 	</head>
 <style>
 
@@ -719,7 +641,7 @@ tr {
 }
 </style>
 	<body>
-	'.$header_supplier.'
+	' . $header_supplier . '
 <br>
 	<table class="table">
 		<tr>
@@ -745,13 +667,13 @@ tr {
 			Bruto
 			</td>
 		</tr>
-		'.$detail_timbang.'
+		' . $detail_timbang . '
 		<tr>
 			<td colspan="6">
 			</td>
 
 			<td>
-			'.number_format($bruto,0,",",".").' Kg
+			' . number_format($bruto, 0, ",", ".") . ' Kg
 			</td>
 
 		</tr>
@@ -761,20 +683,20 @@ tr {
 		<tr>
 		<td>Banyaknya</td>
 		<td>: </td>
-		<td style="text-align:right">'.number_format($goni,0,",",".").' </td>
+		<td style="text-align:right">' . number_format($goni, 0, ",", ".") . ' </td>
 		<td>Goni</td>
 		<td></td>
 		<td></td>
 		<td></td>
-		<td>'.$kualitet_title.'</td>
+		<td>' . $kualitet_title . '</td>
 		<td></td>
-		<td>'.$kualitet_total.'</td>
+		<td>' . $kualitet_total . '</td>
 		<td></td>
 		</tr>
 		<tr>
 		<td>Berat Bruto</td>
 		<td>: </td>
-		<td style="text-align:right">'.number_format($bruto,0,",",".").' </td>
+		<td style="text-align:right">' . number_format($bruto, 0, ",", ".") . ' </td>
 		<td>Kg</td>
 		</tr>
 		<tr>
@@ -786,14 +708,14 @@ tr {
 		<tr>
 		<td>Berat Netto</td>
 		<td>: </td>
-		<td style="text-align:right">'.number_format(round($netto),0,",",".").' </td>
+		<td style="text-align:right">' . number_format(round($netto), 0, ",", ".") . ' </td>
 		<td>Kg</td>
-		<td>'.$rp_kg_cetak.'</td>
+		<td>' . $rp_kg_cetak . '</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>'.$kelapa_title.'</td>
-		<td>'.$kelapa_rp.'</td>
-		<td align="right">'.$kelapa_total.'</td>
+		<td>' . $kelapa_title . '</td>
+		<td>' . $kelapa_rp . '</td>
+		<td align="right">' . $kelapa_total . '</td>
 		</tr>
 		<tr>
 		<td>
@@ -805,9 +727,9 @@ tr {
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>'.$tambang_title.'</td>
-		<td>'.$tambang_rp.'</td>
-		<td align="right">'.$tambang_total.'</td>
+		<td>' . $tambang_title . '</td>
+		<td>' . $tambang_rp . '</td>
+		<td align="right">' . $tambang_total . '</td>
 		</tr>
 		<tr>
 		<td>
@@ -817,11 +739,11 @@ tr {
 		<td></td>
 		<td></td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td><center><b>'.$cnf_title.'</b></center></td>
+		<td><center><b>' . $cnf_title . '</b></center></td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>'.$goni_title.'</td>
-		<td>'.$goni_rp.'</td>
-		<td align="right">'.$goni_total_rp.'</td>
+		<td>' . $goni_title . '</td>
+		<td>' . $goni_rp . '</td>
+		<td align="right">' . $goni_total_rp . '</td>
 		</tr>
 		<tr>
 		<td>
@@ -831,11 +753,11 @@ tr {
 		<td></td>
 		<td></td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td><center><b>'.$cnf.'</b></center></td>
+		<td><center><b>' . $cnf . '</b></center></td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>'.$cadangan_title.'</td>
-		<td>'.$cadangan_rp.'</td>
-		<td align="right">'.$cadangan_total.'</td>
+		<td>' . $cadangan_title . '</td>
+		<td>' . $cadangan_rp . '</td>
+		<td align="right">' . $cadangan_total . '</td>
 		</tr>
 		<tr>
 		<td>
@@ -847,40 +769,40 @@ tr {
 		<td></td>
 		<td></td>
 		<td></td>
-		<td colspan="3">'.$hr.'</td>
+		<td colspan="3">' . $hr . '</td>
 		</tr>
 		<tr>
-		<td><img src="aplikasi/rmp/asset/'.$check_diterima.'" width="10" /> Bisa Diterima</td>
+		<td><img src="aplikasi/rmp/asset/' . $check_diterima . '" width="10" /> Bisa Diterima</td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td><b>'.$total_jumlah_title.'</b></td>
-		<td><b>'.$total_jumlah_rp.'</b></td>
-		<td align="right"><b>'.$total_jumlah_total.'</b></td>
+		<td><b>' . $total_jumlah_title . '</b></td>
+		<td><b>' . $total_jumlah_rp . '</b></td>
+		<td align="right"><b>' . $total_jumlah_total . '</b></td>
 		</tr>
 		<tr>
-		<td><img src="aplikasi/rmp/asset/'.$check_kotoran.'" width="10" /> Kotoran KG/Goni</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		</tr>
-		<tr>
-		<td><img src="aplikasi/rmp/asset/'.$check_inspeksi.'" width="10" /> 100 % Inspeksi</td>
+		<td><img src="aplikasi/rmp/asset/' . $check_kotoran . '" width="10" /> Kotoran KG/Goni</td>
 		<td></td>
 		<td></td>
 		<td></td>
 		</tr>
 		<tr>
-		<td><img src="aplikasi/rmp/asset/'.$check_langsung_proses.'" width="10" /> Langsung Proses</td>
+		<td><img src="aplikasi/rmp/asset/' . $check_inspeksi . '" width="10" /> 100 % Inspeksi</td>
 		<td></td>
 		<td></td>
 		<td></td>
 		</tr>
 		<tr>
-		<td><img src="aplikasi/rmp/asset/'.$check_dipisah.'" width="10" /> Dipisah</td>
+		<td><img src="aplikasi/rmp/asset/' . $check_langsung_proses . '" width="10" /> Langsung Proses</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		</tr>
+		<tr>
+		<td><img src="aplikasi/rmp/asset/' . $check_dipisah . '" width="10" /> Dipisah</td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -888,14 +810,14 @@ tr {
 
 		<tr>
 		<td>Catatan : </td>
-		<td colspan="3">'.$catatan_supplier.'</td>
+		<td colspan="3">' . $catatan_supplier . '</td>
 		</tr>
 		<tr>
 		<td></td>
-		<td colspan="3">'.$cetak_catatan_purchaser.'</td>
+		<td colspan="3">' . $cetak_catatan_purchaser . '</td>
 		</tr>
 	</table>
-<p align="right"><i><b>Terbilang :</b> '.ucwords($terbilang).'</i></p>
+<p align="right"><i><b>Terbilang :</b> ' . ucwords($terbilang) . '</i></p>
 
 	<table class="table2">
 		<tr>
@@ -906,10 +828,10 @@ tr {
 			<td>Disetujui Oleh</td>
 		</tr>
 		<tr>
-			<td><img width="50" height="54" src="asset/platform/files/ttd/'.$operator.'.png"><br><br>'.$operatornama.'<hr>Opr Timbang </td>
-			<td><img width="50" height="54" src="asset/platform/files/ttd/'.$qc.'.png"><br><br>'.$qcnama.'<hr>Inspektur Mutu</td>
-			<td><img width="50" height="54" src="asset/platform/files/ttd/'.$adm.'.png"><br><br>'.$admnama.'<hr>ADM RMPr-KB</td>
-			<td><img width="50" height="54" src="asset/platform/files/ttd/'.$purchaser.'.png"><br><br>'.$purchasernama.'<hr>Purchaser</td>
+			<td><img width="50" height="54" src="asset/platform/files/ttd/' . $operator . '.png"><br><br>' . $operatornama . '<hr>Opr Timbang </td>
+			<td><img width="50" height="54" src="asset/platform/files/ttd/' . $qc . '.png"><br><br>' . $qcnama . '<hr>Inspektur Mutu</td>
+			<td><img width="50" height="54" src="asset/platform/files/ttd/' . $adm . '.png"><br><br>' . $admnama . '<hr>ADM RMPr-KB</td>
+			<td><img width="50" height="54" src="asset/platform/files/ttd/' . $purchaser . '.png"><br><br>' . $purchasernama . '<hr>Purchaser</td>
 			<td><br><br><br><br>&nbsp;<hr>Dept. Head PCH</td>
 		</tr>
 	</table>
@@ -938,6 +860,3 @@ exit;
 //==============================================================
 //==============================================================
 //==============================================================
-
-
-?>
