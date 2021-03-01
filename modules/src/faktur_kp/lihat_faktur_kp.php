@@ -1,12 +1,11 @@
 <?php
 
-if (empty($params['case']))
-    {
-    $result['respon']['pesan'] == "gagal";
-    $result['respon']['pesan'] == "Module tidak dapat di muat";
-    echo json_encode($result);
-    exit();
-    }
+if (empty($params['case'])) {
+  $result['respon']['pesan'] == "gagal";
+  $result['respon']['pesan'] == "Module tidak dapat di muat";
+  echo json_encode($result);
+  exit();
+}
 
 $halaman = $params['halaman'];
 $batas = $params['batas'];
@@ -17,7 +16,7 @@ $input = $params['input_option'];
 $sql = "SELECT *, F.RECORD_STATUS AS FAKTUR_RECORD_STATUS FROM
             RMP_FAKTUR AS F
           WHERE
-            F.RMP_FAKTUR_TANGGAL LIKE '%".$input['TANGGAL']."%'
+            F.RMP_FAKTUR_TANGGAL LIKE '%" . $input['TANGGAL'] . "%'
             AND F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%KOPRA%'
             AND F.RECORD_STATUS IN ('A','N')
           GROUP BY
@@ -44,17 +43,17 @@ $sql = "SELECT *, F.RECORD_STATUS AS FAKTUR_RECORD_STATUS FROM
 
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-$this->MYSQL->queri = $sql ;
+$this->MYSQL->queri = $sql;
 $result_a = $this->MYSQL->data();
 
 ///////////////// TOTAL KG A
-$sql_a = "SELECT SUM(FD.RMP_FAKTUR_DETAIL_NETTO) AS SUM FROM
+$sql_a = "SELECT *,SUM(FD.RMP_FAKTUR_DETAIL_NETTO) AS SUM FROM
             RMP_FAKTUR AS F
           LEFT JOIN
             RMP_FAKTUR_DETAIL AS FD
           ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
           WHERE
-            F.RMP_FAKTUR_TANGGAL LIKE '%".$input['TANGGAL']."%'
+            F.RMP_FAKTUR_TANGGAL LIKE '%" . $input['TANGGAL'] . "%'
             AND F.RMP_FAKTUR_JENIS_MATERIAL LIKE '%KOPRA%'
             AND  F.RECORD_STATUS='A'
           AND FD.RECORD_STATUS='A'
@@ -62,89 +61,99 @@ $sql_a = "SELECT SUM(FD.RMP_FAKTUR_DETAIL_NETTO) AS SUM FROM
 
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-$this->MYSQL->queri = $sql_a ;
+$this->MYSQL->queri = $sql_a;
 $result_aa = $this->MYSQL->data();
+foreach ($result_sum as $r) {
+}
 
 // -- >>
 
 $no = $posisi + 1;
 
-foreach($result_a as $r)
-    {
-    $r['NO'] = $no;
-    $sql_a = "SELECT *, SUM(FD.RMP_FAKTUR_DETAIL_NETTO)AS SUM FROM
+foreach ($result_a as $r) {
+  $r['NO'] = $no;
+  $sql_a = "SELECT *, SUM(FD.RMP_FAKTUR_DETAIL_NETTO)AS SUM FROM
                 RMP_FAKTUR AS F
               LEFT JOIN
                 RMP_FAKTUR_DETAIL AS FD
               ON F.RMP_FAKTUR_NO_FAKTUR=FD.RMP_FAKTUR_NO_FAKTUR
               WHERE
-                F.RMP_FAKTUR_NO_FAKTUR = '".$r['RMP_FAKTUR_NO_FAKTUR']."'
+                F.RMP_FAKTUR_NO_FAKTUR = '" . $r['RMP_FAKTUR_NO_FAKTUR'] . "'
                 AND  F.RECORD_STATUS='A'
               AND FD.RECORD_STATUS='A'
               ";
 
-    $this->MYSQL = new MYSQL();
-    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-    $this->MYSQL->queri = $sql_a ;
-    $result_aa = $this->MYSQL->data();
-    $r['BRUTO'] = $result_aa[0]['SUM'];
-    $r['POTONGAN'] = $r['BRUTO'] * ($result_aa[0]['RMP_FAKTUR_POTONGAN']/100);
-    $r['TOTAL_POTONGAN'] = number_format($r['POTONGAN'],0,",",".");
-    $r['NETTO'] = $r['BRUTO'] - round($r['POTONGAN']);
+  $this->MYSQL = new MYSQL();
+  $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+  $this->MYSQL->queri = $sql_a;
+  $result_aa = $this->MYSQL->data();
 
-    $sql_supplier = "SELECT * FROM
+
+
+
+
+  $sql_supplier = "SELECT * FROM
                 RMP_MASTER_PERSONAL
               WHERE
-                RMP_MASTER_PERSONAL_ID = '".$r['RMP_MASTER_PERSONAL_ID']."'
+                RMP_MASTER_PERSONAL_ID = '" . $r['RMP_MASTER_PERSONAL_ID'] . "'
                 AND RECORD_STATUS='A'
               ";
 
-    $this->MYSQL = new MYSQL();
-    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-    $this->MYSQL->queri = $sql_supplier ;
-    $result_supplier = $this->MYSQL->data();
+  $this->MYSQL = new MYSQL();
+  $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+  $this->MYSQL->queri = $sql_supplier;
+  $result_supplier = $this->MYSQL->data();
 
-    $sql_purchaser = "SELECT * FROM
+  $sql_purchaser = "SELECT * FROM
                 RMP_FAKTUR_PURCHASER
               WHERE
-                RMP_FAKTUR_NO_FAKTUR = '".$r['RMP_FAKTUR_NO_FAKTUR']."'
+                RMP_FAKTUR_NO_FAKTUR = '" . $r['RMP_FAKTUR_NO_FAKTUR'] . "'
                 AND RECORD_STATUS='A'
               ";
 
-    $this->MYSQL = new MYSQL();
-    $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
-    $this->MYSQL->queri = $sql_purchaser ;
-    $result_purchaser = $this->MYSQL->data();
-    if (empty($result_purchaser))
-    {
-      $r['PURCHASER_STATUS'] = "BELUM DIPROSES";
-    }
-    else
-    {
-      $r['PURCHASER_STATUS'] = "TELAH DIPROSES";
-    }
+  $this->MYSQL = new MYSQL();
+  $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
+  $this->MYSQL->queri = $sql_purchaser;
+  $result_purchaser = $this->MYSQL->data();
+  if (empty($result_purchaser)) {
+    $r['PURCHASER_STATUS'] = "BELUM DIPROSES";
+  } else {
+    $r['PURCHASER_STATUS'] = "TELAH DIPROSES";
+  }
 
-    $r['TOTAL_A'] = $result_aa[0]['SUM'];
-    $r['RMP_MASTER_PERSONAL_NAMA'] = $result_supplier[0]['RMP_MASTER_PERSONAL_NAMA'];
-    $result[] = $r;
-    $no++;
-    }
+  $r['TOTAL_A'] = $result_aa[0]['SUM'];
+  $r['RMP_MASTER_PERSONAL_NAMA'] = $result_supplier[0]['RMP_MASTER_PERSONAL_NAMA'];
 
-if (empty($result_a))
-    {
-    $this->callback['respon']['pesan'] = "gagal";
-    $this->callback['respon']['text_msg'] = "Data tidak ada";
-    $this->callback['filter'] = $params;
-    $this->callback['result'] = $result;
+  if ($r['RMP_MASTER_PERSONAL_NAMA'] == "PKB") {
+    $r['KUALITET'] = intval($r['RMP_FAKTUR_KUALITET']);
+  } else {
+    if (intval($r['RMP_FAKTUR_KUALITET']) <= 75) {
+      $r['KUALITET'] = intval($r['RMP_FAKTUR_KUALITET']) - 2;
+    } else {
+      $r['KUALITET'] = intval($r['RMP_FAKTUR_KUALITET']);
     }
-  else
-    {
-    $this->callback['respon']['pesan'] = "sukses";
-    $this->callback['respon']['text_msg'] = "OK..".$total_kg;
-    $this->callback['respon']['total_kg'] = $total_kg;
-    $this->callback['filter'] = $params;
-    $this->callback['result'] = $result;
+  }
 
-    }
 
-?>
+  $r['BRUTO'] = $result_aa[0]['SUM'];
+  $r['POTONGAN'] = $r['BRUTO'] * ($result_aa[0]['RMP_FAKTUR_POTONGAN'] / 100);
+  $r['TOTAL_POTONGAN'] = number_format($r['POTONGAN'], 0, ",", ".");
+  $r['NETTO'] = $r['BRUTO'] - round($r['POTONGAN']);
+  $r['KERING'] = round($r['NETTO'] * $r['KUALITET'] / 100);
+
+  $result[] = $r;
+  $no++;
+}
+
+if (empty($result_a)) {
+  $this->callback['respon']['pesan'] = "gagal";
+  $this->callback['respon']['text_msg'] = "Data tidak ada";
+  $this->callback['filter'] = $params;
+  $this->callback['result'] = $result;
+} else {
+  $this->callback['respon']['pesan'] = "sukses";
+  $this->callback['respon']['text_msg'] = "OK.." . $total_kg;
+  $this->callback['respon']['total_kg'] = $total_kg;
+  $this->callback['filter'] = $params;
+  $this->callback['result'] = $result;
+}

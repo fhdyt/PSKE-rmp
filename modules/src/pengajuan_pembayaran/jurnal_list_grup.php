@@ -11,8 +11,14 @@ $batas = $params['batas'];
 $posisi = $this->PAGING->cariPosisi($batas, $halaman);
 $input = $params['input_option'];
 $date = date("Y-m-d");
+if (empty($input['material'])) {
+    $material = "";
+} else {
+    $material = "AND RMP_JURNAL_MATERIAL LIKE '%" . $input['material'] . "%'";
+}
+
 $sql = "SELECT *
-                FROM RMP_JURNAL WHERE FINANCE_DANA_MATERIAL_ID='" . $input['id_periode'] . "' AND RECORD_STATUS='A' GROUP BY RMP_JURNAL_GRUP_ID ";
+                FROM RMP_JURNAL WHERE FINANCE_DANA_MATERIAL_ID='" . $input['id_periode'] . "' " . $material . " AND RECORD_STATUS='A' GROUP BY RMP_JURNAL_GRUP_ID ";
 $this->MYSQL = new MYSQL();
 $this->MYSQL->database = $this->CONFIG->mysql_koneksi()->db_nama;
 $this->MYSQL->queri = $sql;

@@ -150,7 +150,11 @@
         <i class="ion ion-person-add"></i>
       </div>
     </div> -->
-        <a class="btn btn-primary check_btn btn-sm">Tambah Pengajuan</a>
+        <div>
+          <a class="btn btn-primary check_btn btn-sm">Tambah Pengajuan</a>
+          <p class="total_check" style="font-size: 18px; font-weight:800; padding-top:10px">Rp. 0</p>
+        </div>
+        <input type="hidden" class="TOTAL_CHECK" value="0">
         <br>
         <br>
         <div class="Content">
@@ -212,6 +216,17 @@
       </div>
       <!-- /.box-header -->
       <div class="box-body" style="">
+        <div class="row">
+          <div class="col-md-6">
+            <select class="form-control JENIS_MATERIAL_PENGAJUAN" id="JENIS_MATERIAL_PENGAJUAN" name="JENIS_MATERIAL_PENGAJUAN" onchange="dana_material_list_grup()">
+              <option value="">--Pilih Material--</option>
+              <option value="KOPRA" nama_material="KOPRA">KOPRA</option>
+              <option value="JAMBUL" nama_material="JAMBUL">JAMBUL</option>
+              <option value="GELONDONG" nama_material="GELONDONG">GELONDONG</option>
+            </select>
+          </div>
+        </div>
+        <hr>
         <div class="Content">
           <div class="table-responsive">
             <table class="table table-bordered">
@@ -492,22 +507,30 @@
 </div>
 
 <script>
+  $('.NOMOR_REKENING').on("keypress", function(e) {
+    if (e.which === 13) {
+      sel_nama_supplier_rekening()
+      gl_jurnal_list()
+    }
+  });
+
   $(".check_btn").on("click", function() {
     sel_rekening_bank($('input[type="checkbox"]:checked').attr("supplier_name"))
     $(".modalCheck").modal("show")
-
   })
 
 
-  // $('tbody#ms_zone_data').click("input.check_check", function() {
-  //   console.log($(".input.check_check:checked").val())
-  //   if ($(this).is(':checked')) {
-  //     console.log("Check");
-  //   } else {
-  //     console.log("Uncheck");
-  //   }
+  function check_check(sisa_hutang, no) {
+    var total_check = $(".TOTAL_CHECK").val()
+    if ($(".check_check_" + no + "").is(':checked') == true) {
+      var hasil = parseInt(total_check) + parseInt(sisa_hutang)
+    } else {
+      var hasil = parseInt(total_check) - parseInt(sisa_hutang)
+    }
+    $("p.total_check").html("Rp. " + number_format(hasil))
+    $(".TOTAL_CHECK").val(hasil)
 
-  // });
+  }
 
   $(".SIMPAN_PENGAJUAN_CHECK").on("click", function() {
     var fDataCheck = $('.form_check input[type="checkbox"]:checked').serialize()
@@ -593,7 +616,7 @@
       type: 'POST',
       url: refseeAPI,
       dataType: 'json',
-      data: 'ref=jurnal_list_grup&batas=' + $('input#REC_PER_HALAMAN').val() + '&halaman=' + curPage + '&keyword=' + $("input#keyword").val() + '&id_periode=<?php echo $d3; ?>',
+      data: 'ref=jurnal_list_grup&batas=' + $('input#REC_PER_HALAMAN').val() + '&halaman=' + curPage + '&material=' + $(".JENIS_MATERIAL_PENGAJUAN").val() + '&id_periode=<?php echo $d3; ?>',
       success: function(data) {
         if (data.respon.pesan == "sukses") {
           $("tbody#pengajuan_zone_data").empty();
@@ -701,7 +724,7 @@
             // no_rekening_supplier.innerText = data.result[0].KodeSup
             // nama_supplier.innerText = data.result[0].NAMA_SUPPLIER
             $("tbody#ms_zone_data").append("<tr class=" + tr + ">" +
-              "<td ><input type='checkbox' onclick='check_check(\"" + data.result[i].NoFaktur + "\")' name='check[" + i + "]' value='" + data.result[i].NoFaktur + "' id='" + data.result[i].NoFaktur + "' supplier_name='" + data.result[i].SupplierName + "' class='check_check'/></td>" +
+              "<td ><input type='checkbox' onclick='check_check(\"" + data.result[i].SisaHutang + "\"," + i + ")' name='check[" + i + "]' value='" + data.result[i].NoFaktur + "' id='" + data.result[i].NoFaktur + "' supplier_name='" + data.result[i].SupplierName + "' class='check_check_" + i + "'/></td>" +
               "<td >" + data.result[i].NO + ".</td>" +
               "<td >" + data.result[i].TANGGAL + "</td>" +
               "<td >" + data.result[i].NoFaktur + "</td>" +
@@ -722,9 +745,7 @@
     });
   }
 
-  function check_check(no_faktur) {
-    console.log(no_faktur)
-  }
+
 
   function pilih_material() {
     var material = $(".JENIS_MATERIAL").val()
